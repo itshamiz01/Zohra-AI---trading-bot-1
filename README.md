@@ -1,0 +1,174 @@
+# Forex Trading Bot
+
+**Strategy:** EMA Crossover + ATR Filter  
+**Timeframe:** 1 Hour  
+**Mode:** Paper Trading (OANDA Practice)  
+
+---
+
+## ⚠️ CRITICAL WARNINGS
+
+1. **This is PAPER TRADING only.** No real money is at risk.
+2. **Past performance ≠ future results.** The strategy may lose money.
+3. **3-month minimum paper test required** before considering live capital.
+4. **Never risk more than you can afford to lose completely.**
+
+---
+
+## Features
+
+- ✅ Automated 1H forex trading on 5 major pairs
+- ✅ Strict risk management (1% per trade, max 3 positions)
+- ✅ ATR-based dynamic stops and targets
+- ✅ Telegram command interface for monitoring
+- ✅ SQLite logging and performance analytics
+- ✅ Optional free LLM integration for Q&A
+
+---
+
+## Quick Start
+
+### 1. Install Dependencies
+
+```bash
+cd trading_bot
+pip install -r requirements.txt
+```
+
+### 2. Set Up OANDA Practice Account
+
+1. Go to [OANDA Demo Account](https://www.oanda.com/demo-account/)
+2. Create account and log in
+3. Go to **Account → Manage API Access**
+4. Generate API key
+5. Note your Account ID (top of dashboard)
+
+### 3. Configure Environment
+
+```bash
+# Copy example and fill in your credentials
+cp .env.example .env
+# Edit .env with your actual values
+```
+
+Or set directly:
+```bash
+export OANDA_ACCOUNT_ID="101-001-1234567-001"
+export OANDA_API_KEY="abcdef1234567890abcdef1234567890"
+```
+
+### 4. (Optional) Set Up Telegram
+
+1. Message [@BotFather](https://t.me/BotFather) on Telegram
+2. Create new bot, copy token
+3. Message your bot `/start`
+4. Get your chat ID: visit `https://api.telegram.org/bot<TOKEN>/getUpdates`
+5. Add to `.env`:
+```bash
+TELEGRAM_BOT_TOKEN="123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+TELEGRAM_CHAT_ID="123456789"
+```
+
+### 5. Run the Bot
+
+```bash
+python main.py
+```
+
+---
+
+## Telegram Commands
+
+| Command | Description |
+|---------|-------------|
+| `/status` | Account balance, equity, open positions |
+| `/history [n]` | Last n trades (default 10) |
+| `/equity` | 30-day equity curve summary |
+| `/stats` | Full performance statistics |
+| `/why EUR_USD` | Last signal reason for a pair |
+| `/pause` | Stop opening new trades |
+| `/resume` | Resume trading |
+| `/help` | Show all commands |
+
+---
+
+## Strategy Details
+
+### Entry Rules
+- **LONG:** Fast EMA (20) crosses above Slow EMA (50) + price above both EMAs + ATR > minimum
+- **SHORT:** Fast EMA crosses below Slow EMA + price below both EMAs + ATR > minimum
+
+### Exit Rules
+- **Stop Loss:** 1.5 × ATR from entry
+- **Take Profit:** 3.0 × ATR from entry (2:1 minimum R/R)
+- **Trailing Stop:** Move to breakeven at +1× ATR, trail at 1.5× ATR
+- **Time Stop:** Close after 5 days (120 hours)
+- **Reverse Signal:** Close on opposite crossover
+
+### Risk Management
+- 1% risk per trade
+- Maximum 3 open positions
+- Daily loss limit: 3% (pauses for 24h)
+- Monthly loss limit: 10% (pauses for month)
+- No weekend positions (close Friday 5pm EST)
+- Correlated pair filter
+
+---
+
+## Project Structure
+
+```
+trading_bot/
+├── main.py              # Entry point
+├── config.py            # Settings and environment
+├── database.py          # SQLite logging
+├── data_feed.py         # OANDA API client
+├── strategy.py          # EMA+ATR signal logic
+├── risk_manager.py      # Position sizing, limits
+├── executor.py          # Order execution
+├── telegram_bot.py      # Command interface
+├── scheduler.py         # Main trading loop
+├── llm_interface.py     # Optional AI Q&A
+├── requirements.txt     # Dependencies
+├── .env.example         # Environment template
+└── logs/
+    └── trades.db        # SQLite database
+```
+
+---
+
+## Expected Performance (Realistic)
+
+| Metric | Target | Reality Check |
+|--------|--------|---------------|
+| Win Rate | 45-55% | Most trades will lose |
+| Avg Winner | 2-3× avg loser | Winners must be bigger |
+| Annual Return | 10-30% | With significant variance |
+| Max Drawdown | 15-25% | Prepare mentally for this |
+
+**If you cannot accept losing 25% of your account, do not trade.**
+
+---
+
+## Troubleshooting
+
+### "Failed to fetch account summary"
+- Check OANDA credentials
+- Ensure practice account is active
+- Verify API key has trading permissions
+
+### No trades opening
+- Normal during low volatility
+- Check `/status` for trading state
+- Ensure not paused or at loss limits
+
+### Telegram not working
+- Bot token must be exact (copy from BotFather)
+- Chat ID is numeric, not username
+- Send `/start` to bot first
+
+---
+
+## License
+
+MIT License — Use at your own risk. This software is for educational purposes only. The authors are not responsible for any financial losses.
