@@ -1,0 +1,9 @@
+.venv
+venv
+scratch
+zohra_backups
+.codex-remote-attachments
+logs
+*.log
+__pycache__
+.git
