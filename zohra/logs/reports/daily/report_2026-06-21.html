@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zohra Daily Report — 2026-06-21</title>
+<style>
+  :root {
+    --bg: #0f0f1a; --card: #1a1a2e; --border: #2a2a4a;
+    --text: #e0e0e0; --dim: #888; --accent: #00d4aa;
+    --good: #00d4aa; --bad: #ff6b6b; --warn: #ffd700;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: var(--bg);
+         color: var(--text); padding: 20px; }
+  h1 { font-size: 1.8rem; color: var(--accent); margin-bottom: 4px; }
+  .subtitle { color: var(--dim); font-size: 0.9rem; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+           gap: 12px; margin-bottom: 24px; }
+  .kpi { background: var(--card); border: 1px solid var(--border);
+          border-radius: 10px; padding: 16px; text-align: center; }
+  .kpi .val { font-size: 1.6rem; font-weight: 700; margin: 6px 0; }
+  .kpi .lbl { font-size: 0.75rem; color: var(--dim); text-transform: uppercase; }
+  .good { color: var(--good); }
+  .bad  { color: var(--bad); }
+  .warn { color: var(--warn); }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 0.8rem; font-weight: 600; }
+  .badge.good { background: rgba(0,212,170,0.15); color: var(--good); }
+  .badge.bad  { background: rgba(255,107,107,0.15); color: var(--bad);  }
+  .badge.neutral { background: #333; color: var(--dim); }
+  .chart { background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 12px; margin-bottom: 16px; overflow: hidden; }
+  .chart img { width: 100%; border-radius: 6px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card);
+           border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  th { background: #252540; color: var(--dim); font-size: 0.75rem;
+        text-transform: uppercase; padding: 10px 12px; text-align: left; }
+  td { padding: 9px 12px; font-size: 0.85rem; border-top: 1px solid var(--border); }
+  tr:hover td { background: rgba(255,255,255,0.03); }
+  .section-title { font-size: 1.1rem; color: var(--accent); margin: 20px 0 10px; }
+  footer { color: var(--dim); font-size: 0.75rem; text-align: center; margin-top: 30px; }
+</style>
+</head>
+<body>
+<h1>🤖 Zohra Daily Report — 2026-06-21</h1>
+<p class="subtitle">Generated: 2026-06-21 08:16:36 UTC | Period: Daily</p>
+
+<!-- KPI Grid -->
+<div class="grid">
+  <div class="kpi">
+    <div class="lbl">Net P&L</div>
+    <div class="val good">$+0.00</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Win Rate</div>
+    <div class="val bad">0.0%</div>
+    <div style="font-size:0.78rem;color:var(--dim)">0W / 0L</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Profit Factor</div>
+    <div class="val bad">0.00</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Expectancy</div>
+    <div class="val good">$0.00</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Sharpe Ratio</div>
+    <div class="val warn">0.00</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Max Drawdown</div>
+    <div class="val warn">0.22%</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Total Trades</div>
+    <div class="val">0</div>
+  </div>
+  <div class="kpi">
+    <div class="lbl">Avg Duration</div>
+    <div class="val">0m</div>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="chart"><img src="c:\Users\dell\Desktop\trading_bot\zohra\logs\reports\daily_equity_2026-06-21.png" alt="chart" /></div>
+
+
+<!-- Recent Trades -->
+<div class="section-title">📋 Recent Trades</div>
+<table>
+  <thead>
+    <tr>
+      <th>Close Time</th><th>Symbol</th><th>Dir</th><th>Strategy</th>
+      <th>Session</th><th>Score</th><th>Grade</th><th>P&L</th><th>Exit</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<footer>Zohra AI Trading Engine — MetaTrader 5 | 2026</footer>
+</body>
+</html>

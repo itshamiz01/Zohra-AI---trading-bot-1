@@ -1,0 +1,60 @@
+{
+  "USDJPY": {
+    "symbol": "USDJPY",
+    "dominant_direction": "BUY",
+    "buy_count": 1,
+    "sell_count": 0,
+    "total_signals": 1,
+    "active_strategies": [
+      "fibonacci_pullback"
+    ],
+    "updated_at": "2026-10-28T22:33:39.733211+00:00"
+  },
+  "GBPJPY": {
+    "symbol": "GBPJPY",
+    "dominant_direction": "SELL",
+    "buy_count": 0,
+    "sell_count": 2,
+    "total_signals": 2,
+    "active_strategies": [
+      "fibonacci_pullback",
+      "mtf_alignment"
+    ],
+    "updated_at": "2026-10-28T22:29:47.618429+00:00"
+  },
+  "EURUSD": {
+    "symbol": "EURUSD",
+    "dominant_direction": "SELL",
+    "buy_count": 0,
+    "sell_count": 2,
+    "total_signals": 2,
+    "active_strategies": [
+      "vwap_mean_reversion",
+      "sr_rejection"
+    ],
+    "updated_at": "2026-10-28T22:19:58.104941+00:00"
+  },
+  "XAUUSD": {
+    "symbol": "XAUUSD",
+    "dominant_direction": "BUY",
+    "buy_count": 1,
+    "sell_count": 0,
+    "total_signals": 1,
+    "active_strategies": [
+      "fvg_retracement"
+    ],
+    "updated_at": "2026-10-28T20:14:49.041090+00:00"
+  },
+  "GBPUSD": {
+    "symbol": "GBPUSD",
+    "dominant_direction": "BUY",
+    "buy_count": 2,
+    "sell_count": 0,
+    "total_signals": 2,
+    "active_strategies": [
+      "fibonacci_pullback",
+      "mtf_alignment"
+    ],
+    "updated_at": "2026-10-28T22:14:58.111234+00:00"
+  }
+}

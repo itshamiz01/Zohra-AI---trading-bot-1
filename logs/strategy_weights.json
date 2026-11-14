@@ -1,0 +1,10 @@
+{
+    "MarketStructure": 20.0,
+    "SMC": 20.0,
+    "Trend": 15.0,
+    "Momentum": 10.0,
+    "Volume": 10.0,
+    "Volatility": 10.0,
+    "Breakout": 10.0,
+    "MeanReversion": 5.0
+}

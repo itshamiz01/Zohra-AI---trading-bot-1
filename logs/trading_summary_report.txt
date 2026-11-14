@@ -1,0 +1,23 @@
+=== ZOHRA TRADING BOT PERFORMANCE & AUDIT REPORT ===
+
+1. LIVE ACCOUNT PERFORMANCE (MT5 Login #10011542635)
+   - Initial Capital   : $200.00 (Deposited 2026-06-30)
+   - Current Balance   : $164.71
+   - Realized Net PnL  : $-35.29
+   - Total Trades      : 170
+   - Wins / Losses     : 72 Wins / 98 Losses
+   - Win Rate          : 42.35%
+
+2. REJECTIONS SUMMARY
+   - Total Rejections  : 10499
+   - Primary Veto Reasons:
+     * Risk Veto: Sector exposure cap for Forex (3) reached.: 2243 times
+     * Risk Guardian Scout Veto: Maximum open position limits (5) reached.: 1643 times
+     * Risk Veto: VETO: Correlation with open position XAUUSD is too high (0.78).: 810 times
+     * Risk Veto: Currency exposure cap for USD (3) reached. Skip to prevent stacking.: 585 times
+     * Risk Veto: VETO: Inverse correlation with open position USDJPY is too high (-0.84).: 405 times
+     * Risk Veto: VETO: Inverse correlation with open position XAUUSD is too high (-0.86).: 344 times
+     * Risk Veto: Maximum active positions limit (5) reached.: 336 times
+     * Risk Veto: VETO: Correlation with open position EURJPY is too high (0.91).: 198 times
+     * Risk Veto: VETO: Correlation with open position NZDJPY is too high (0.89).: 187 times
+     * Risk Guardian Scout Veto: Safety halt: Drawdown is 26.35% (Limit: 8.0%): 182 times

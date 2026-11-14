@@ -1,0 +1,45 @@
+{
+  "active_positions": {
+    "BOT_2_REVERSAL_58266449169": {
+      "bot_id": "BOT_2_REVERSAL",
+      "ticket": 58266449169,
+      "symbol": "GBPJPY",
+      "direction": "SELL",
+      "lots": 0.01,
+      "strategy": "sr_rejection",
+      "entry_price": 215.405,
+      "opened_at": "2026-09-02T06:10:06.555215+00:00"
+    },
+    "BOT_3_STRUCTURE_152571298134": {
+      "bot_id": "BOT_3_STRUCTURE",
+      "ticket": 152571298134,
+      "symbol": "USDJPY",
+      "direction": "SELL",
+      "lots": 0.01,
+      "strategy": "fvg_retracement",
+      "entry_price": 159.509,
+      "opened_at": "2026-09-02T06:10:09.163168+00:00"
+    },
+    "BOT_2_REVERSAL_58266548067": {
+      "bot_id": "BOT_2_REVERSAL",
+      "ticket": 58266548067,
+      "symbol": "USDJPY",
+      "direction": "BUY",
+      "lots": 0.01,
+      "strategy": "sr_rejection",
+      "entry_price": 159.547,
+      "opened_at": "2026-09-02T06:15:06.966309+00:00"
+    },
+    "BOT_1_TREND_152571325164": {
+      "bot_id": "BOT_1_TREND",
+      "ticket": 152571325164,
+      "symbol": "GBPJPY",
+      "direction": "SELL",
+      "lots": 0.01,
+      "strategy": "mtf_alignment",
+      "entry_price": 215.442,
+      "opened_at": "2026-09-02T06:15:10.363372+00:00"
+    }
+  },
+  "last_updated": "2026-09-02T06:15:10.363372+00:00"
+}

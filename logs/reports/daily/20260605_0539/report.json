@@ -1,0 +1,20 @@
+{
+  "period": "daily",
+  "label": "Daily",
+  "generated_at": "2026-06-05T05:39:39.948878",
+  "metrics": {
+    "total_trades": 0,
+    "win_rate_pct": 0,
+    "profit_factor": 0,
+    "expectancy_usd": 0,
+    "max_drawdown_pct": 0,
+    "sharpe_ratio": 0,
+    "avg_trade_duration_minutes": 0,
+    "session_performance": {},
+    "pair_performance": {},
+    "strategy_performance": {},
+    "generated_at": "2026-06-05T05:39:39.941875"
+  },
+  "charts": {},
+  "summary_text": "Daily Report \u2014 0 trades | Win Rate: 0% | Net P&L: $0 | Profit Factor: 0 | Sharpe: 0 | Max DD: 0%"
+}

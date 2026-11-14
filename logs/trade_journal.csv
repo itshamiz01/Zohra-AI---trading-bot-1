@@ -1,0 +1,4 @@
+date,ticket,symbol,direction,lots,entry,sl,tp1,exit_price,pnl_usd,rr_actual,exit_reason,confidence_score,session,h1_trend,market_structure,rsi_at_entry,atr_at_entry,notes
+2026-06-04,56929443936,XAUUSD,SHORT,0.02,4469.80,4471.79,4467.81,4469.80,0.00,0.00,MT5_SL,60,off-peak,BEAR,TRENDING,46.2,4.61,Conf=60 Dir=SHORT
+2026-06-04,56929447988,XAUUSD,SHORT,0.02,4470.08,4471.79,4468.37,4470.08,0.00,0.00,MT5_SL,60,off-peak,BEAR,TRENDING,46.2,4.61,Conf=60 Dir=SHORT
+2026-06-04,56929451266,XAUUSD,SHORT,0.02,4470.37,4471.79,4468.95,4470.37,0.00,0.00,MT5_SL,60,off-peak,BEAR,TRENDING,46.2,4.61,Conf=60 Dir=SHORT

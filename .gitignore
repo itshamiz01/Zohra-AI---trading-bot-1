@@ -1,19 +1,41 @@
-# Secrets — NEVER commit
-.env
-
-# Python cache
+# Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
+*.env
+.env
+*.sqlite3
+*.db
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE / editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build artifacts
+build/
+Dist/
 *.egg-info/
 
-# Logs & generated data
-logs/
-assistant_workspace/
-assistant_runtime/.env
-
-# Editor / OS
-.vscode/
-*.DS_Store
-Thumbs.db
+# Sensitive files
+*.key
+*.pem
