@@ -1158,10 +1158,15 @@ class ZohraDatabase:
             logger.info(f"📦 Database: PostgreSQL @ {POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}")
             self._init_postgres()
         else:
-            os.makedirs(os.path.dirname(os.path.abspath(DB_PATH)), exist_ok=True)
-            self._sqlite_conn = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30.0)
+            _db_path = DB_PATH
+            try:
+                os.makedirs(os.path.dirname(os.path.abspath(_db_path)), exist_ok=True)
+            except OSError:
+                # Read-only deployment filesystem (e.g. Vercel) - fall back to /tmp
+                _db_path = "/tmp/zohra_trades.db"
+            self._sqlite_conn = sqlite3.connect(_db_path, check_same_thread=False, timeout=30.0)
             self._sqlite_conn.row_factory = sqlite3.Row
-            logger.info(f"📦 Database: SQLite @ {DB_PATH}")
+            logger.info(f"📦 Database: SQLite @ {_db_path}")
             self._init_sqlite()
 
     # ─── Init ─────────────────────────────────────────────
@@ -1777,5 +1782,8 @@ class ZohraDatabase:
 # ════════════════════════════════════════════════
 #  SINGLETON
 # ════════════════════════════════════════════════
-os.makedirs(LOG_DIR, exist_ok=True)
+try:
+    os.makedirs(LOG_DIR, exist_ok=True)
+except OSError:
+    pass  # read-only deployment filesystem (e.g. Vercel) - paths fall back to /tmp
 db = ZohraDatabase()
