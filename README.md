@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Forex Trading Bot
 
 ## Zohra Assistant Upgrade
@@ -182,3 +183,6 @@ trading_bot/
 ## License
 
 MIT License — Use at your own risk. This software is for educational purposes only. The authors are not responsible for any financial losses.
+=======
+# Zohra-AI---trading-bot-1
+>>>>>>> 999ffceaf09d9ba27253ae240bf99527c238b4ef
