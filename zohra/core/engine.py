@@ -49,7 +49,10 @@ from core.enums import StrategyName
 
 # ─── Logging setup ────────────────────────────────────
 from config.settings import settings
-os.makedirs(LOG_DIR, exist_ok=True)
+try:
+    os.makedirs(LOG_DIR, exist_ok=True)
+except OSError:
+    pass  # read-only deployment filesystem (e.g. Vercel)
 system_log_path = getattr(settings, "SYSTEM_LOG", os.path.join(LOG_DIR, "zohra_engine_a.log"))
 logging.basicConfig(
     level=logging.INFO,

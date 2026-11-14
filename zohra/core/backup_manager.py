@@ -19,7 +19,10 @@ logger = logging.getLogger("zohra.core.backup_manager")
 # Resolve absolute project root so backups persist independently of CWD
 _ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BACKUP_DIR = os.path.join(_ROOT, "zohra_backups")
-os.makedirs(BACKUP_DIR, exist_ok=True)
+try:
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+except OSError:
+    pass  # read-only deployment filesystem (e.g. Vercel)
 
 # Assets included in every backup archive
 BACKUP_ASSETS = [

@@ -80,8 +80,12 @@ class BrokerLogger:
         # Determine log file path
         if log_dir is None:
             base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            log_dir = os.path.join(base, "logs")
-        os.makedirs(log_dir, exist_ok=True)
+            log_dir = os.getenv("ZOHRA_LOG_DIR") or os.path.join(base, "logs")
+        try:
+            os.makedirs(log_dir, exist_ok=True)
+        except OSError:
+            # Read-only deployment filesystem (e.g. Vercel) - fall back to /tmp
+            log_dir = "/tmp"
         self._log_file = os.path.join(log_dir, "broker_interactions.jsonl")
 
     def log_interaction(self, entry: BrokerInteractionLog) -> None:
