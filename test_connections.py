@@ -14,11 +14,19 @@ print('=' * 50)
 # ── 1. ENV VARS ──────────────────────────────────
 print()
 print('[1/4] Checking .env credentials...')
-from config import MT5_LOGIN, MT5_PASSWORD, MT5_SERVER, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, GROQ_API_KEY, GROQ_MODEL
+MT5_LOGIN = int(os.getenv("MT5_LOGIN", "0"))
+MT5_PASSWORD = os.getenv("MT5_PASSWORD", "")
+MT5_SERVER = os.getenv("MT5_SERVER", "")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama3-8b-8192")
+MT5_TERMINAL_PATH = os.getenv("MT5_TERMINAL_PATH", r"C:\Program Files\MetaTrader 5\terminal64.exe")
 
 print(f'  MT5 Login  : {MT5_LOGIN}')
 print(f'  MT5 Server : {MT5_SERVER}')
 print(f'  MT5 Pass   : {"*" * len(MT5_PASSWORD)} ({len(MT5_PASSWORD)} chars)')
+print(f'  MT5 Path   : {MT5_TERMINAL_PATH}')
 print(f'  Telegram   : {"SET" if TELEGRAM_BOT_TOKEN else "NOT SET"}')
 print(f'  Telegram ID: {TELEGRAM_CHAT_ID}')
 print(f'  Groq Model : {GROQ_MODEL}')
@@ -30,7 +38,8 @@ print()
 print('[2/4] Testing MetaTrader 5 connection...')
 try:
     import MetaTrader5 as mt5
-    if mt5.initialize():
+    init_ok = mt5.initialize(path=MT5_TERMINAL_PATH) if MT5_TERMINAL_PATH else mt5.initialize()
+    if init_ok:
         authorized = mt5.login(login=MT5_LOGIN, password=MT5_PASSWORD, server=MT5_SERVER)
         if authorized:
             info = mt5.account_info()

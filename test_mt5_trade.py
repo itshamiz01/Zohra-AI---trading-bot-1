@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
-from config import MT5_LOGIN, MT5_PASSWORD, MT5_SERVER
+from zohra.config.settings import MT5_LOGIN, MT5_PASSWORD, MT5_SERVER, MT5_TERMINAL_PATH
 
 import MetaTrader5 as mt5
 import pandas as pd
@@ -22,7 +22,8 @@ print("=" * 55)
 
 # ─── STEP 1: Initialize ───────────────────────────────────
 print("\n[STEP 1] Connecting to MetaTrader 5...")
-if not mt5.initialize():
+init_ok = mt5.initialize(path=MT5_TERMINAL_PATH) if MT5_TERMINAL_PATH else mt5.initialize()
+if not init_ok:
     err = mt5.last_error()
     print(f"  FAILED: {err}")
     print()

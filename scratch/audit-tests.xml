@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="2" failures="36" skipped="0" tests="135" time="445.863" timestamp="2026-09-20T16:04:48.790470" hostname="DESKTOP-Q8RCTPH"><testcase classname="zohra.tests.test_15_strategy_confluence.Test15StrategyConfluenceEngine" name="test_01_all_15_strategies_registered" time="0.012" /><testcase classname="zohra.tests.test_15_strategy_confluence.Test15StrategyConfluenceEngine" name="test_02_insufficient_confirmations_rejected" time="0.012" /><testcase classname="zohra.tests.test_15_strategy_confluence.Test15StrategyConfluenceEngine" name="test_03_single_group_correlation_rejection" time="0.005" /><testcase classname="zohra.tests.test_15_strategy_confluence.Test15StrategyConfluenceEngine" name="test_04_valid_multi_group_confluence_approved" time="0.004" /><testcase classname="zohra.tests.test_15_strategy_confluence.Test15StrategyConfluenceEngine" name="test_05_directional_conflict_veto" time="0.004" /><testcase classname="zohra.tests.test_15_strategy_confluence.Test15StrategyConfluenceEngine" name="test_06_diagnostic_box_formatting" time="0.008"><failure message="AssertionError: 'ZOHRA — 15-STRATEGY REGIME-ADAPTIVE CONFLUENCE ENGINE' not found in '╔════════════════════════════════════════════════════════════════════════╗\n║  ZOHRA Unified Trading OS (ZOHRA_UNIFIED)  — SPECIALIZED CONFLUENCE ENGINE\n║  Role: Unified Multi-Strategy Engine                                  ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ MARKET REGIME: TRENDING_UP      CONFIDENCE: 87%    PRIORITY: HIGH       ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ STRATEGY EVALUATION BREAKDOWN:                                         ║\n║ ─── TREND GROUP ───                                                    ║\n║   • EMA_PULLBACK               OFF    [OFF     ]                   ║\n║   • FIBONACCI_PULLBACK         OFF    [OFF     ]                   ║\n║   • MTF_ALIGNMENT              OFF    [OFF     ]                   ║\n║   • MOMENTUM_CONTINUATION      OFF    [OFF     ]                   ║\n║ ─── MEAN_REVERSION GROUP ───                                           ║\n║   • VWAP_MEAN_REVERSION        OFF    [OFF     ]                   ║\n║   • BOLLINGER_RSI              OFF    [OFF     ]                   ║\n║   • SR_REJECTION               OFF    [OFF     ]                   ║\n║ ─── STRUCTURE_SMC GROUP ───                                            ║\n║   • LIQUIDITY_MSS              OFF    [OFF     ]                   ║\n║   • SUPPLY_DEMAND              OFF    [OFF     ]                   ║\n║   • FVG_RETRACEMENT            OFF    [OFF     ]                   ║\n║   • ORDER_BLOCK                OFF    [OFF     ]                   ║\n║   • FALSE_BREAKOUT             OFF    [OFF     ]                   ║\n║ ─── BREAKOUT_VOLATILITY GROUP ───                                      ║\n║   • BREAKOUT                   OFF    [OFF     ]                   ║\n║   • VOLUME_BREAKOUT            OFF    [OFF     ]                   ║\n║   • ATR_EXPANSION              OFF    [OFF     ]                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ CONFLUENCE SUMMARY:                                                    ║\n║   • DIRECTION:             NONE                                        ║\n║   • RAW CONFIRMATIONS:     0  (Required: &gt;=1)                              ║\n║   • INDEPENDENT GROUPS:    0  (Required: &gt;=1)                              ║\n║   • GROUPS REPRESENTED:    []                                          ║\n║   • COMPOSITE SCORE:       0  /100  [GRADE: REJECT]                  ║\n║   • SPREAD QUALITY:        2.0 pips (Max: 4.0 pips)                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ FINAL DECISION: NO_TRADE           REASON: NO_VALID_STRATEGY_SIGNALS        ║\n╚════════════════════════════════════════════════════════════════════════╝'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_15_strategy_confluence.py:222: in test_06_diagnostic_box_formatting
+    self.assertIn("ZOHRA — 15-STRATEGY REGIME-ADAPTIVE CONFLUENCE ENGINE", diag_box)
+E   AssertionError: 'ZOHRA — 15-STRATEGY REGIME-ADAPTIVE CONFLUENCE ENGINE' not found in '╔════════════════════════════════════════════════════════════════════════╗\n║  ZOHRA Unified Trading OS (ZOHRA_UNIFIED)  — SPECIALIZED CONFLUENCE ENGINE\n║  Role: Unified Multi-Strategy Engine                                  ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ MARKET REGIME: TRENDING_UP      CONFIDENCE: 87%    PRIORITY: HIGH       ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ STRATEGY EVALUATION BREAKDOWN:                                         ║\n║ ─── TREND GROUP ───                                                    ║\n║   • EMA_PULLBACK               OFF    [OFF     ]                   ║\n║   • FIBONACCI_PULLBACK         OFF    [OFF     ]                   ║\n║   • MTF_ALIGNMENT              OFF    [OFF     ]                   ║\n║   • MOMENTUM_CONTINUATION      OFF    [OFF     ]                   ║\n║ ─── MEAN_REVERSION GROUP ───                                           ║\n║   • VWAP_MEAN_REVERSION        OFF    [OFF     ]                   ║\n║   • BOLLINGER_RSI              OFF    [OFF     ]                   ║\n║   • SR_REJECTION               OFF    [OFF     ]                   ║\n║ ─── STRUCTURE_SMC GROUP ───                                            ║\n║   • LIQUIDITY_MSS              OFF    [OFF     ]                   ║\n║   • SUPPLY_DEMAND              OFF    [OFF     ]                   ║\n║   • FVG_RETRACEMENT            OFF    [OFF     ]                   ║\n║   • ORDER_BLOCK                OFF    [OFF     ]                   ║\n║   • FALSE_BREAKOUT             OFF    [OFF     ]                   ║\n║ ─── BREAKOUT_VOLATILITY GROUP ───                                      ║\n║   • BREAKOUT                   OFF    [OFF     ]                   ║\n║   • VOLUME_BREAKOUT            OFF    [OFF     ]                   ║\n║   • ATR_EXPANSION              OFF    [OFF     ]                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ CONFLUENCE SUMMARY:                                                    ║\n║   • DIRECTION:             NONE                                        ║\n║   • RAW CONFIRMATIONS:     0  (Required: &gt;=1)                              ║\n║   • INDEPENDENT GROUPS:    0  (Required: &gt;=1)                              ║\n║   • GROUPS REPRESENTED:    []                                          ║\n║   • COMPOSITE SCORE:       0  /100  [GRADE: REJECT]                  ║\n║   • SPREAD QUALITY:        2.0 pips (Max: 4.0 pips)                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ FINAL DECISION: NO_TRADE           REASON: NO_VALID_STRATEGY_SIGNALS        ║\n╚════════════════════════════════════════════════════════════════════════╝'</failure></testcase><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_01_hard_symbol_guard" time="0.006"><failure message="AssertionError: True is not false : Disallowed symbol EURUSD was not blocked!">..\..\..\..\Desktop\trading_bot\zohra\tests\test_5_strategies.py:74: in test_01_hard_symbol_guard
+    self.assertFalse(symbol_resolver.is_symbol_allowed(sym), f"Disallowed symbol {sym} was not blocked!")
+E   AssertionError: True is not false : Disallowed symbol EURUSD was not blocked!</failure></testcase><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_02_market_regime_classification" time="0.346" /><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_03_ema_pullback_strategy" time="0.006"><failure message="AttributeError: 'EmaPullbackStrategy' object has no attribute 'generate_signal'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_5_strategies.py:110: in test_03_ema_pullback_strategy
+    sig_disallowed = strat.generate_signal(generate_synthetic_ohlcv(), symbol="EURUSD")
+E   AttributeError: 'EmaPullbackStrategy' object has no attribute 'generate_signal'</failure></testcase><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_04_vwap_mean_reversion_strategy" time="0.013" /><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_05_liquidity_mss_strategy" time="0.047" /><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_06_breakout_strategy_duplicate_prevention" time="0.020"><failure message="AttributeError: 'BreakoutStrategy' object has no attribute 'generate_signal'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_5_strategies.py:142: in test_06_breakout_strategy_duplicate_prevention
+    sig1 = strat.generate_signal(df, symbol="XAUUSD")
+E   AttributeError: 'BreakoutStrategy' object has no attribute 'generate_signal'</failure></testcase><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_07_bollinger_rsi_strategy" time="0.004" /><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_08_signal_arbitration_and_conflict_resolution" time="0.006"><failure message="KeyError: 'conflict_status'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_5_strategies.py:183: in test_08_signal_arbitration_and_conflict_resolution
+    self.assertEqual(arb_conflict["conflict_status"], "CONFLICT_OPPOSING_DIRECTIONS")
+E   KeyError: 'conflict_status'</failure></testcase><testcase classname="zohra.tests.test_5_strategies.Test5StrategyRegimeSuite" name="test_09_full_regime_suite_integration" time="0.303"><failure message="AssertionError: 'XAUUSD 5-STRATEGY REGIME EVALUATION' not found in '╔════════════════════════════════════════════════════════════════════════╗\n║  ZOHRA Unified Trading OS (ZOHRA_UNIFIED)  — SPECIALIZED CONFLUENCE ENGINE\n║  Role: Unified Multi-Strategy Engine                                  ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ MARKET REGIME: BREAKOUT_EXPANSION CONFIDENCE: 95%    PRIORITY: HIGH       ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ STRATEGY EVALUATION BREAKDOWN:                                         ║\n║ ─── TREND GROUP ───                                                    ║\n║   • EMA_PULLBACK               OFF    [OFF     ]                   ║\n║   • FIBONACCI_PULLBACK         OFF    [OFF     ]                   ║\n║   • MTF_ALIGNMENT              NONE   [ELIGIBLE]                   ║\n║   • MOMENTUM_CONTINUATION      NONE   [ELIGIBLE]                   ║\n║ ─── MEAN_REVERSION GROUP ───                                           ║\n║   • VWAP_MEAN_REVERSION        OFF    [OFF     ]                   ║\n║   • BOLLINGER_RSI              OFF    [OFF     ]                   ║\n║   • SR_REJECTION               OFF    [OFF     ]                   ║\n║ ─── STRUCTURE_SMC GROUP ───                                            ║\n║   • LIQUIDITY_MSS              OFF    [OFF     ]                   ║\n║   • SUPPLY_DEMAND              NONE   [ELIGIBLE]                   ║\n║   • FVG_RETRACEMENT            NONE   [ELIGIBLE]                   ║\n║   • ORDER_BLOCK                NONE   [ELIGIBLE]                   ║\n║   • FALSE_BREAKOUT             OFF    [OFF     ]                   ║\n║ ─── BREAKOUT_VOLATILITY GROUP ───                                      ║\n║   • BREAKOUT                   NONE   [ELIGIBLE]                   ║\n║   • VOLUME_BREAKOUT            NONE   [ELIGIBLE]                   ║\n║   • ATR_EXPANSION              NONE   [ELIGIBLE]                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ CONFLUENCE SUMMARY:                                                    ║\n║   • DIRECTION:             NONE                                        ║\n║   • RAW CONFIRMATIONS:     0  (Required: &gt;=1)                              ║\n║   • INDEPENDENT GROUPS:    0  (Required: &gt;=1)                              ║\n║   • GROUPS REPRESENTED:    []                                          ║\n║   • COMPOSITE SCORE:       0  /100  [GRADE: REJECT]                  ║\n║   • SPREAD QUALITY:        2.0 pips (Max: 4.0 pips)                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ FINAL DECISION: NO_TRADE           REASON: NO_VALID_STRATEGY_SIGNALS        ║\n╚════════════════════════════════════════════════════════════════════════╝'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_5_strategies.py:208: in test_09_full_regime_suite_integration
+    self.assertIn("XAUUSD 5-STRATEGY REGIME EVALUATION", diag_box)
+E   AssertionError: 'XAUUSD 5-STRATEGY REGIME EVALUATION' not found in '╔════════════════════════════════════════════════════════════════════════╗\n║  ZOHRA Unified Trading OS (ZOHRA_UNIFIED)  — SPECIALIZED CONFLUENCE ENGINE\n║  Role: Unified Multi-Strategy Engine                                  ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ MARKET REGIME: BREAKOUT_EXPANSION CONFIDENCE: 95%    PRIORITY: HIGH       ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ STRATEGY EVALUATION BREAKDOWN:                                         ║\n║ ─── TREND GROUP ───                                                    ║\n║   • EMA_PULLBACK               OFF    [OFF     ]                   ║\n║   • FIBONACCI_PULLBACK         OFF    [OFF     ]                   ║\n║   • MTF_ALIGNMENT              NONE   [ELIGIBLE]                   ║\n║   • MOMENTUM_CONTINUATION      NONE   [ELIGIBLE]                   ║\n║ ─── MEAN_REVERSION GROUP ───                                           ║\n║   • VWAP_MEAN_REVERSION        OFF    [OFF     ]                   ║\n║   • BOLLINGER_RSI              OFF    [OFF     ]                   ║\n║   • SR_REJECTION               OFF    [OFF     ]                   ║\n║ ─── STRUCTURE_SMC GROUP ───                                            ║\n║   • LIQUIDITY_MSS              OFF    [OFF     ]                   ║\n║   • SUPPLY_DEMAND              NONE   [ELIGIBLE]                   ║\n║   • FVG_RETRACEMENT            NONE   [ELIGIBLE]                   ║\n║   • ORDER_BLOCK                NONE   [ELIGIBLE]                   ║\n║   • FALSE_BREAKOUT             OFF    [OFF     ]                   ║\n║ ─── BREAKOUT_VOLATILITY GROUP ───                                      ║\n║   • BREAKOUT                   NONE   [ELIGIBLE]                   ║\n║   • VOLUME_BREAKOUT            NONE   [ELIGIBLE]                   ║\n║   • ATR_EXPANSION              NONE   [ELIGIBLE]                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ CONFLUENCE SUMMARY:                                                    ║\n║   • DIRECTION:             NONE                                        ║\n║   • RAW CONFIRMATIONS:     0  (Required: &gt;=1)                              ║\n║   • INDEPENDENT GROUPS:    0  (Required: &gt;=1)                              ║\n║   • GROUPS REPRESENTED:    []                                          ║\n║   • COMPOSITE SCORE:       0  /100  [GRADE: REJECT]                  ║\n║   • SPREAD QUALITY:        2.0 pips (Max: 4.0 pips)                   ║\n╠════════════════════════════════════════════════════════════════════════╣\n║ FINAL DECISION: NO_TRADE           REASON: NO_VALID_STRATEGY_SIGNALS        ║\n╚════════════════════════════════════════════════════════════════════════╝'</failure></testcase><testcase classname="zohra.tests.test_agents.TestMultiAgentTradingDesk" name="test_agent_message_serialization" time="0.006" /><testcase classname="zohra.tests.test_agents.TestMultiAgentTradingDesk" name="test_execution_agent_consensus" time="0.020" /><testcase classname="zohra.tests.test_agents.TestMultiAgentTradingDesk" name="test_news_agent_verdicts" time="0.053" /><testcase classname="zohra.tests.test_agents.TestMultiAgentTradingDesk" name="test_performance_agent_reviews" time="0.004" /><testcase classname="zohra.tests.test_agents.TestMultiAgentTradingDesk" name="test_risk_agent_sizing_and_limits" time="0.015" /><testcase classname="zohra.tests.test_architecture_v2.TestVolume2Architecture" name="test_event_bus_validates_core_event_schema" time="0.005"><failure message="AttributeError: 'EventBus' object has no attribute 'create_envelope'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:40: in test_event_bus_validates_core_event_schema
+    bus.create_envelope("agent.task.requested", {"task_id": "missing-fields"})
+E   AttributeError: 'EventBus' object has no attribute 'create_envelope'</failure></testcase><testcase classname="zohra.tests.test_architecture_v2.TestVolume2Architecture" name="test_readiness_marks_required_service_degraded_after_health_misses" time="0.127" /><testcase classname="zohra.tests.test_architecture_v2.TestVolume2Architecture" name="test_static_services_config_loads_required_topology" time="0.007" /><testcase classname="zohra.tests.test_architecture_v2.TestVolume2Architecture" name="test_tool_execution_rejects_insufficient_permission_tier" time="0.008"><failure message="OSError: Network disabled in audit tests">..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:67: in test_tool_execution_rejects_insufficient_permission_tier
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+E   OSError: Network disabled in audit tests</failure></testcase><testcase classname="zohra.tests.test_architecture_v2.TestVolume2Architecture" name="test_tool_execution_runs_registered_tool_when_tier_allows" time="0.005"><failure message="OSError: Network disabled in audit tests">..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:86: in test_tool_execution_runs_registered_tool_when_tier_allows
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:67: in test_tool_execution_rejects_insufficient_permission_tier
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+E   OSError: Network disabled in audit tests</failure></testcase><testcase classname="zohra.tests.test_backtest.TestBacktestingEngine" name="test_backtest_execution" time="0.030"><failure message="TypeError: ExecutionAgent.__init__() got an unexpected keyword argument 'permission_gateway'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_backtest.py:78: in test_backtest_execution
+    report = engine.run_backtest(
+..\..\..\..\Desktop\trading_bot\zohra\core\backtest.py:54: in run_backtest
+    exec_agent = ExecutionAgent(
+E   TypeError: ExecutionAgent.__init__() got an unexpected keyword argument 'permission_gateway'</failure></testcase><testcase classname="zohra.tests.test_brain_v3.TestVolume3Brain" name="test_context_assembly_is_deterministic_and_ordered" time="0.006" /><testcase classname="zohra.tests.test_brain_v3.TestVolume3Brain" name="test_model_router_forces_local_when_network_is_off" time="0.003" /><testcase classname="zohra.tests.test_brain_v3.TestVolume3Brain" name="test_prompt_manager_loads_versioned_templates" time="0.003" /><testcase classname="zohra.tests.test_brain_v3.TestVolume3Brain" name="test_reasoning_orchestrator_builds_stable_snapshot" time="0.005" /><testcase classname="zohra.tests.test_brain_v3.TestVolume3Brain" name="test_reflection_bounds_memory_capture" time="0.004"><failure message="AttributeError: 'ReflectionEngine' object has no attribute 'should_store_memory'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_brain_v3.py:97: in test_reflection_bounds_memory_capture
+    self.assertTrue(reflection_engine.should_store_memory(
+E   AttributeError: 'ReflectionEngine' object has no attribute 'should_store_memory'</failure></testcase><testcase classname="zohra.tests.test_chart_pattern.TestChartPatternStrategy" name="test_double_bottom_detection" time="0.045" /><testcase classname="zohra.tests.test_chart_pattern.TestChartPatternStrategy" name="test_double_top_detection" time="0.048" /><testcase classname="zohra.tests.test_chart_pattern.TestChartPatternStrategy" name="test_indicators_calculation" time="0.040" /><testcase classname="zohra.tests.test_conversational_center.TestConversationalCenter" name="test_api_endpoint" time="0.024"><failure message="OSError: Network disabled in audit tests">..\..\..\..\Desktop\trading_bot\zohra\tests\test_conversational_center.py:147: in test_api_endpoint
+    response = client.post("/api/v1/chat/message", json={
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:593: in post
+    return super().post(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:484: in request
+    return super().request(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:377: in handle_request
+    raise exc
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:372: in handle_request
+    with self.portal_factory() as portal:
+..\..\Programs\Python\Python312\Lib\contextlib.py:137: in __enter__
+    return next(self.gen)
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:445: in _portal_factory
+    with anyio.from_thread.start_blocking_portal(**self.async_backend) as portal:
+..\..\Programs\Python\Python312\Lib\contextlib.py:137: in __enter__
+    return next(self.gen)
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:544: in start_blocking_portal
+    portal = future.result()
+..\..\Programs\Python\Python312\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+..\..\Programs\Python\Python312\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:532: in run_blocking_portal
+    run_eventloop(
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\_core\_eventloop.py:77: in run
+    return async_backend.run(func, args, {}, backend_options)
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\_backends\_asyncio.py:2341: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:86: in test_tool_execution_runs_registered_tool_when_tier_allows
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:67: in test_tool_execution_rejects_insufficient_permission_tier
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+E   OSError: Network disabled in audit tests</failure></testcase><testcase classname="zohra.tests.test_conversational_center.TestConversationalCenter" name="test_command_routing_modify_risk" time="0.060" /><testcase classname="zohra.tests.test_conversational_center.TestConversationalCenter" name="test_regex_intent_parsing" time="0.007" /><testcase classname="zohra.tests.test_conversational_center.TestConversationalCenter" name="test_session_manager" time="0.006" /><testcase classname="zohra.tests.test_crypto_engine.TestCryptoSubsystem" name="test_crypto_intelligence_indicators" time="0.010" /><testcase classname="zohra.tests.test_crypto_engine.TestCryptoSubsystem" name="test_crypto_momentum_strategy_triggers" time="0.029" /><testcase classname="zohra.tests.test_crypto_engine.TestCryptoSubsystem" name="test_crypto_portfolio_allocations_rebalance" time="0.016" /><testcase classname="zohra.tests.test_crypto_engine.TestCryptoSubsystem" name="test_crypto_risk_guardian_evaluation" time="0.022" /><testcase classname="zohra.tests.test_crypto_engine.TestCryptoSubsystem" name="test_voice_agent_bridge_routing" time="0.070"><failure message="AssertionError: 'received' != 'success'&#10;- received&#10;+ success">..\..\..\..\Desktop\trading_bot\zohra\tests\test_crypto_engine.py:162: in test_voice_agent_bridge_routing
+    self.assertEqual(res["status"], "success")
+E   AssertionError: 'received' != 'success'
+E   - received
+E   + success</failure></testcase><testcase classname="zohra.tests.test_die.TestDecisionIntelligenceEngine" name="test_adaptive_scorer_performance_weights" time="0.012" /><testcase classname="zohra.tests.test_die.TestDecisionIntelligenceEngine" name="test_decision_engine_pipeline" time="0.044" /><testcase classname="zohra.tests.test_die.TestDecisionIntelligenceEngine" name="test_regime_detector_news_driven" time="0.016"><failure message="TypeError: MarketRegimeEngine.__init__() got an unexpected keyword argument 'adx_period'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_die.py:57: in test_regime_detector_news_driven
+    detector = MarketRegimeDetector(adx_period=5, bb_period=10, atr_period=5)
+E   TypeError: MarketRegimeEngine.__init__() got an unexpected keyword argument 'adx_period'</failure></testcase><testcase classname="zohra.tests.test_die.TestDecisionIntelligenceEngine" name="test_regime_detector_trending" time="0.012"><failure message="TypeError: MarketRegimeEngine.__init__() got an unexpected keyword argument 'adx_period'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_die.py:41: in test_regime_detector_trending
+    detector = MarketRegimeDetector(adx_period=5, bb_period=10, atr_period=5)
+E   TypeError: MarketRegimeEngine.__init__() got an unexpected keyword argument 'adx_period'</failure></testcase><testcase classname="zohra.tests.test_engine_registry.TestEngineRegistry" name="test_invalid_engine_handling" time="0.004" /><testcase classname="zohra.tests.test_engine_registry.TestEngineRegistry" name="test_registration_and_status" time="0.003" /><testcase classname="zohra.tests.test_engine_registry.TestEngineRegistry" name="test_start_stop_callbacks" time="0.004" /><testcase classname="zohra.tests.test_framework_v5.TestMultiAgentFrameworkV5" name="test_ceo_agent_arbitration" time="0.005" /><testcase classname="zohra.tests.test_framework_v5.TestMultiAgentFrameworkV5" name="test_evaluate_escalation_candidacy" time="0.003" /><testcase classname="zohra.tests.test_framework_v5.TestMultiAgentFrameworkV5" name="test_permission_tier_enforcement" time="0.004" /><testcase classname="zohra.tests.test_framework_v5.TestMultiAgentFrameworkV5" name="test_plan_dag_and_delegation_scheduler" time="0.004" /><testcase classname="zohra.tests.test_framework_v5.TestMultiAgentFrameworkV5" name="test_resource_lock_contention_and_expiration" time="0.005"><failure message="OSError: Network disabled in audit tests">..\..\..\..\Desktop\trading_bot\zohra\tests\test_framework_v5.py:138: in test_resource_lock_contention_and_expiration
+    res1 = asyncio.run(manager.acquire_resource_lock("db_write", "trading_agent", max_hold_seconds=30))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\..\..\Desktop\trading_bot\zohra\tests\test_conversational_center.py:147: in test_api_endpoint
+    response = client.post("/api/v1/chat/message", json={
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:593: in post
+    return super().post(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:484: in request
+    return super().request(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+..\..\Programs\Python\Python312\Lib\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:377: in handle_request
+    raise exc
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:372: in handle_request
+    with self.portal_factory() as portal:
+..\..\Programs\Python\Python312\Lib\contextlib.py:137: in __enter__
+    return next(self.gen)
+..\..\Programs\Python\Python312\Lib\site-packages\starlette\testclient.py:445: in _portal_factory
+    with anyio.from_thread.start_blocking_portal(**self.async_backend) as portal:
+..\..\Programs\Python\Python312\Lib\contextlib.py:137: in __enter__
+    return next(self.gen)
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:544: in start_blocking_portal
+    portal = future.result()
+..\..\Programs\Python\Python312\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+..\..\Programs\Python\Python312\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\from_thread.py:532: in run_blocking_portal
+    run_eventloop(
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\_core\_eventloop.py:77: in run
+    return async_backend.run(func, args, {}, backend_options)
+..\..\Programs\Python\Python312\Lib\site-packages\anyio\_backends\_asyncio.py:2341: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:86: in test_tool_execution_runs_registered_tool_when_tier_allows
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\..\..\Desktop\trading_bot\zohra\tests\test_architecture_v2.py:67: in test_tool_execution_rejects_insufficient_permission_tier
+    result = asyncio.run(engine.execute(call))
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:194: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:58: in __enter__
+    self._lazy_init()
+..\..\Programs\Python\Python312\Lib\asyncio\runners.py:137: in _lazy_init
+    self._loop = events.new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:823: in new_event_loop
+    return get_event_loop_policy().new_event_loop()
+..\..\Programs\Python\Python312\Lib\asyncio\events.py:720: in new_event_loop
+    return self._loop_factory()
+..\..\Programs\Python\Python312\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:640: in __init__
+    self._make_self_pipe()
+..\..\Programs\Python\Python312\Lib\asyncio\proactor_events.py:787: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+..\..\Programs\Python\Python312\Lib\socket.py:623: in _fallback_socketpair
+    csock.connect((addr, port))
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\urllib\request.py:1344: in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+..\..\Programs\Python\Python312\Lib\http\client.py:1338: in request
+    self._send_request(method, url, body, headers, encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1384: in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1333: in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+..\..\Programs\Python\Python312\Lib\http\client.py:1093: in _send_output
+    self.send(msg)
+..\..\Programs\Python\Python312\Lib\http\client.py:1037: in send
+    self.connect()
+..\..\Programs\Python\Python312\Lib\http\client.py:1003: in connect
+    self.sock = self._create_connection(
+..\..\Programs\Python\Python312\Lib\socket.py:865: in create_connection
+    raise exceptions[0]
+..\..\Programs\Python\Python312\Lib\socket.py:850: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py:204: in _new_conn
+    sock = connection.create_connection(
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:85: in create_connection
+    raise err
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+..\..\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py:73: in create_connection
+    sock.connect(sa)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1139: in __call__
+    return self._mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1143: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+..\..\Programs\Python\Python312\Lib\unittest\mock.py:1198: in _execute_mock_call
+    raise effect
+E   OSError: Network disabled in audit tests</failure></testcase><testcase classname="zohra.tests.test_framework_v5.TestMultiAgentFrameworkV5" name="test_scoped_write_procedural_memory" time="0.003" /><testcase classname="zohra.tests.test_intelligence" name="test_portfolio_intelligence_allocations" time="0.004" /><testcase classname="zohra.tests.test_intelligence" name="test_multi_timeframe_analysis" time="0.005" /><testcase classname="zohra.tests.test_intelligence" name="test_smart_money_engine" time="0.010" /><testcase classname="zohra.tests.test_intelligence" name="test_macro_intelligence" time="0.004" /><testcase classname="zohra.tests.test_intelligence" name="test_regime_detection" time="0.011" /><testcase classname="zohra.tests.test_intelligence" name="test_strategy_marketplace" time="0.004" /><testcase classname="zohra.tests.test_intelligence" name="test_strategy_sdk" time="0.010" /><testcase classname="zohra.tests.test_intelligence" name="test_strategy_optimizer" time="0.015" /><testcase classname="zohra.tests.test_intelligence" name="test_cross_market_intelligence" time="0.007"><failure message="AssertionError: assert 'EURUSD' in {'XAGUSD': {'BTCUSDT': 0.2, 'EURUSD': 0.35, 'XAUUSD': 0.9}, 'XAUUSD': {'BTCUSDT': 0.25, 'EURUSD': 0.4, 'US500': -0.15, 'USDJPY': -0.35, ...}}&#10; +  where {'XAGUSD': {'BTCUSDT': 0.2, 'EURUSD': 0.35, 'XAUUSD': 0.9}, 'XAUUSD': {'BTCUSDT': 0.25, 'EURUSD': 0.4, 'US500': -0.15, 'USDJPY': -0.35, ...}} = CrossMarketIntel(timestamp='2026-09-20T10:35:30.003375', correlation_matrix={'XAUUSD': {'XAGUSD': 0.9, 'EURUSD': 0.4, ...', global_sentiment_score=50.0, institutional_flow={}, dxy_trend='NEUTRAL', vix_level=18.5, bond_yield_trend='NEUTRAL').correlation_matrix">..\..\..\..\Desktop\trading_bot\zohra\tests\test_intelligence.py:210: in test_cross_market_intelligence
+    assert "EURUSD" in intel.correlation_matrix
+E   AssertionError: assert 'EURUSD' in {'XAGUSD': {'BTCUSDT': 0.2, 'EURUSD': 0.35, 'XAUUSD': 0.9}, 'XAUUSD': {'BTCUSDT': 0.25, 'EURUSD': 0.4, 'US500': -0.15, 'USDJPY': -0.35, ...}}
+E    +  where {'XAGUSD': {'BTCUSDT': 0.2, 'EURUSD': 0.35, 'XAUUSD': 0.9}, 'XAUUSD': {'BTCUSDT': 0.25, 'EURUSD': 0.4, 'US500': -0.15, 'USDJPY': -0.35, ...}} = CrossMarketIntel(timestamp='2026-09-20T10:35:30.003375', correlation_matrix={'XAUUSD': {'XAGUSD': 0.9, 'EURUSD': 0.4, ...', global_sentiment_score=50.0, institutional_flow={}, dxy_trend='NEUTRAL', vix_level=18.5, bond_yield_trend='NEUTRAL').correlation_matrix</failure></testcase><testcase classname="zohra.tests.test_intelligence" name="test_decision_pipeline" time="0.007" /><testcase classname="zohra.tests.test_memory_v4.TestVolume4Memory" name="test_consolidation_extracts_semantic_memory_and_graph" time="0.699" /><testcase classname="zohra.tests.test_memory_v4.TestVolume4Memory" name="test_forgetting_policy_blocks_active_backlink_then_purges_after_removed" time="0.287" /><testcase classname="zohra.tests.test_memory_v4.TestVolume4Memory" name="test_user_forget_deletes_solely_derived_semantic_fact" time="0.236" /><testcase classname="zohra.tests.test_memory_v4.TestVolume4Memory" name="test_user_forget_narrows_partially_derived_semantic_fact" time="0.253" /><testcase classname="zohra.tests.test_memory_v4.TestVolume4Memory" name="test_write_path_creates_pending_sync_log" time="0.187" /><testcase classname="zohra.tests.test_mission_control" name="test_capital_rotation" time="0.003"><failure message="AttributeError: 'CapitalRotationEngine' object has no attribute 'rotate_capital'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_mission_control.py:21: in test_capital_rotation
+    mission_control.rotate_capital("mt5", 50.0)
+..\..\..\..\Desktop\trading_bot\zohra\mission_control\mission_control.py:43: in rotate_capital
+    capital_rotation_engine.rotate_capital(target_broker, target_percentage)
+E   AttributeError: 'CapitalRotationEngine' object has no attribute 'rotate_capital'</failure></testcase><testcase classname="zohra.tests.test_mission_control" name="test_risk_mode_overrides" time="0.004" /><testcase classname="zohra.tests.test_mission_control" name="test_strategy_switching" time="0.003" /><testcase classname="zohra.tests.test_mission_control" name="test_self_healing_diagnostics" time="199.999" /><testcase classname="zohra.tests.test_mission_control" name="test_ai_commander_prompt_nlp" time="198.402" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_cross_market_engine" time="0.004" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_portfolio_intelligence" time="0.004" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_capital_rotation_computation" time="0.004" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_opportunity_ranking_engine" time="0.005" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_correlation_engine" time="0.003" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_autonomous_risk_management" time="0.003" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_autonomous_capital_allocator" time="0.004" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_autonomous_strategy_switching" time="0.004" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_continuous_ai_optimization" time="0.004" /><testcase classname="zohra.tests.test_mission_control_expanded" name="test_autonomous_decision_engine_cycle" time="0.004" /><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_bot_profiles_strategy_isolation" time="0.005" /><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_bot_profiles_regime_tradability" time="0.009"><failure message="AssertionError: assert 'LOW' == 'BLOCKED'&#10;  &#10;  - BLOCKED&#10;  + LOW">..\..\..\..\Desktop\trading_bot\zohra\tests\test_multi_bot_specialization.py:55: in test_bot_profiles_regime_tradability
+    assert BOT_1_TREND_PROFILE.get_regime_priority("ranging") == "BLOCKED"
+E   AssertionError: assert 'LOW' == 'BLOCKED'
+E     
+E     - BLOCKED
+E     + LOW</failure></testcase><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_duplicate_exposure_scoring" time="0.040"><error message="failed on setup with &quot;PermissionError: [WinError 5] Access is denied: 'C:\\Users\\dell\\AppData\\Local\\Temp\\pytest-of-dell'&quot;">..\..\Programs\Python\Python312\Lib\site-packages\pytest_asyncio\plugin.py:728: in pytest_fixture_setup
+    return (yield)
+E   PermissionError: [WinError 5] Access is denied: 'C:\\Users\\dell\\AppData\\Local\\Temp\\pytest-of-dell'</error></testcase><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_portfolio_risk_coordinator_pruning" time="0.011"><error message="failed on setup with &quot;PermissionError: [WinError 5] Access is denied: 'C:\\Users\\dell\\AppData\\Local\\Temp\\pytest-of-dell'&quot;">..\..\Programs\Python\Python312\Lib\site-packages\pytest_asyncio\plugin.py:728: in pytest_fixture_setup
+    return (yield)
+E   PermissionError: [WinError 5] Access is denied: 'C:\\Users\\dell\\AppData\\Local\\Temp\\pytest-of-dell'</error></testcase><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_simulation_scenario_1_strong_trend" time="0.005"><failure message="AssertionError: assert 'MEDIUM' == 'BLOCKED'&#10;  &#10;  - BLOCKED&#10;  + MEDIUM">..\..\..\..\Desktop\trading_bot\zohra\tests\test_multi_bot_specialization.py:186: in test_simulation_scenario_1_strong_trend
+    assert BOT_2_REVERSAL_PROFILE.get_regime_priority(regime) == "BLOCKED"
+E   AssertionError: assert 'MEDIUM' == 'BLOCKED'
+E     
+E     - BLOCKED
+E     + MEDIUM</failure></testcase><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_simulation_scenario_2_range_market" time="0.005"><failure message="AssertionError: assert 'LOW' == 'BLOCKED'&#10;  &#10;  - BLOCKED&#10;  + LOW">..\..\..\..\Desktop\trading_bot\zohra\tests\test_multi_bot_specialization.py:197: in test_simulation_scenario_2_range_market
+    assert BOT_1_TREND_PROFILE.get_regime_priority(regime) == "BLOCKED"
+E   AssertionError: assert 'LOW' == 'BLOCKED'
+E     
+E     - BLOCKED
+E     + LOW</failure></testcase><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_simulation_scenario_3_liquidity_sweep_reversal" time="0.005" /><testcase classname="zohra.tests.test_multi_bot_specialization" name="test_simulation_scenario_4_high_volatility_breakout" time="0.007"><failure message="AssertionError: assert 'MEDIUM' == 'BLOCKED'&#10;  &#10;  - BLOCKED&#10;  + MEDIUM">..\..\..\..\Desktop\trading_bot\zohra\tests\test_multi_bot_specialization.py:219: in test_simulation_scenario_4_high_volatility_breakout
+    assert BOT_2_REVERSAL_PROFILE.get_regime_priority(regime) == "BLOCKED"
+E   AssertionError: assert 'MEDIUM' == 'BLOCKED'
+E     
+E     - BLOCKED
+E     + MEDIUM</failure></testcase><testcase classname="zohra.tests.test_multi_symbol.TestMultiSymbolArchitecture" name="test_correlation_engine_portfolio_checks" time="0.007"><failure message="AssertionError: 0.0 != 0.85 within 2 places (0.85 difference)">..\..\..\..\Desktop\trading_bot\zohra\tests\test_multi_symbol.py:88: in test_correlation_engine_portfolio_checks
+    self.assertAlmostEqual(coeff, 0.85, places=2)
+E   AssertionError: 0.0 != 0.85 within 2 places (0.85 difference)</failure></testcase><testcase classname="zohra.tests.test_multi_symbol.TestMultiSymbolArchitecture" name="test_opportunity_engine_ranking" time="0.011" /><testcase classname="zohra.tests.test_multi_symbol.TestMultiSymbolArchitecture" name="test_symbol_manager_registration" time="0.006"><failure message="AssertionError: False is not true">..\..\..\..\Desktop\trading_bot\zohra\tests\test_multi_symbol.py:24: in test_symbol_manager_registration
+    self.assertTrue(symbol_manager.is_active("XAUUSD"))
+E   AssertionError: False is not true</failure></testcase><testcase classname="zohra.tests.test_permissions.TestTradingPermissions" name="test_live_execution_requires_preauthorization" time="0.007" /><testcase classname="zohra.tests.test_permissions.TestTradingPermissions" name="test_pipeline_allows_preauthorized_live_trade" time="0.006" /><testcase classname="zohra.tests.test_permissions.TestTradingPermissions" name="test_pipeline_rejects_without_risk_evaluator" time="0.005" /><testcase classname="zohra.tests.test_regime_engine.TestMarketRegimeEngine" name="test_ranging_classification" time="0.051"><failure message="AttributeError: 'RegimeReport' object has no attribute 'adx_trending'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_regime_engine.py:66: in test_ranging_classification
+    self.assertFalse(report.adx_trending)
+E   AttributeError: 'RegimeReport' object has no attribute 'adx_trending'</failure></testcase><testcase classname="zohra.tests.test_regime_engine.TestMarketRegimeEngine" name="test_trending_up_classification" time="0.055" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestSettingsConstants" name="test_max_open_positions" time="0.005" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestSettingsConstants" name="test_max_scale_up_tickets_per_symbol" time="0.004" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestSettingsConstants" name="test_metal_lot_multiplier" time="0.005" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestSettingsConstants" name="test_metal_symbols_defined" time="0.006"><failure message="AssertionError: 'XAGUSD' not found in {'XAUUSD'}">..\..\..\..\Desktop\trading_bot\zohra\tests\test_risk_guardian_fixes.py:27: in test_metal_symbols_defined
+    self.assertIn("XAGUSD", METAL_SYMBOLS)
+E   AssertionError: 'XAGUSD' not found in {'XAUUSD'}</failure></testcase><testcase classname="zohra.tests.test_risk_guardian_fixes.TestSettingsConstants" name="test_sector_positions_include_metals" time="0.006"><failure message="AssertionError: 5 != 2">..\..\..\..\Desktop\trading_bot\zohra\tests\test_risk_guardian_fixes.py:35: in test_sector_positions_include_metals
+    self.assertEqual(MAX_SECTOR_POSITIONS["Metals"], 2)
+E   AssertionError: 5 != 2</failure></testcase><testcase classname="zohra.tests.test_risk_guardian_fixes.TestRiskGuardianPositionLimits" name="test_global_limit_enforced_even_for_scale_ups" time="0.011" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestRiskGuardianPositionLimits" name="test_per_symbol_limit_enforced" time="0.012" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestRiskGuardianPositionLimits" name="test_scale_up_allowed_within_limits" time="0.008" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestMetalsCorrelationExemption" name="test_metal_symbols_set" time="0.006"><failure message="AssertionError: Items in the second set but not the first:&#10;'XAGUSD'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_risk_guardian_fixes.py:148: in test_metal_symbols_set
+    self.assertEqual(METAL_SYMBOLS, {"XAUUSD", "XAGUSD"})
+E   AssertionError: Items in the second set but not the first:
+E   'XAGUSD'</failure></testcase><testcase classname="zohra.tests.test_risk_guardian_fixes.TestMetalsCorrelationExemption" name="test_metal_to_metal_not_blocked_by_correlation" time="0.007" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestMetalsSectorExposure" name="test_metals_have_separate_sector_limit" time="0.008" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestMetalsSectorExposure" name="test_metals_sector_limit_is_2" time="0.008"><failure message="AssertionError: True is not false">..\..\..\..\Desktop\trading_bot\zohra\tests\test_risk_guardian_fixes.py:197: in test_metals_sector_limit_is_2
+    self.assertFalse(is_safe)
+E   AssertionError: True is not false</failure></testcase><testcase classname="zohra.tests.test_risk_guardian_fixes.TestRiskAgentMetalsExemption" name="test_metal_correlation_exemption" time="0.007" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestCorrelationEngineMetalsExemption" name="test_portfolio_exposure_no_veto_for_metals" time="0.006" /><testcase classname="zohra.tests.test_risk_guardian_fixes.TestScoutEngineLotSizing" name="test_metal_probe_lot_reduced" time="0.007" /><testcase classname="zohra.tests.test_sim_broker.TestSimulatedBroker" name="test_broker_initialization" time="0.006" /><testcase classname="zohra.tests.test_sim_broker.TestSimulatedBroker" name="test_open_and_close_trade" time="0.004" /><testcase classname="zohra.tests.test_sim_broker.TestSimulatedBroker" name="test_stop_loss_hit" time="0.004" /><testcase classname="zohra.tests.test_sim_broker.TestSimulatedBroker" name="test_take_profit_hit" time="0.004" /><testcase classname="zohra.tests.test_sim_broker.TestSimulatedBroker" name="test_trade_modifications" time="0.007" /><testcase classname="zohra.tests.test_validation" name="test_backtester_run_and_mc" time="0.032" /><testcase classname="zohra.tests.test_validation" name="test_paper_engine_lifecycle" time="0.006" /><testcase classname="zohra.tests.test_validation" name="test_replay_engine_controls" time="0.012" /><testcase classname="zohra.tests.test_validation" name="test_explainability_narrative" time="2.368" /><testcase classname="zohra.tests.test_validation" name="test_broker_health_monitor" time="0.319" /><testcase classname="zohra.tests.test_validation" name="test_audit_system" time="0.125" /><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_01_ema_pullback_long_and_short" time="0.017"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:55: in test_01_ema_pullback_long_and_short
+    regime_report = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_02_vwap_mean_reversion_veto_in_trend" time="0.008"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:83: in test_02_vwap_mean_reversion_veto_in_trend
+    trend_regime = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_03_liquidity_sweep_and_mss" time="0.012"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:115: in test_03_liquidity_sweep_and_mss
+    regime_report = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_04_donchian_breakout_duplicate_prevention" time="0.017"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:149: in test_04_donchian_breakout_duplicate_prevention
+    regime_report = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_05_bollinger_rsi_reversal" time="0.018"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:184: in test_05_bollinger_rsi_reversal
+    regime_report = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_06_signal_arbitrator_conflict_resolution" time="0.006"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:208: in test_06_signal_arbitrator_conflict_resolution
+    regime_report = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase><testcase classname="zohra.tests.test_xauusd_strategy_engine.TestXauusdStrategyEngine" name="test_07_diagnostic_logger" time="0.005"><failure message="TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'">..\..\..\..\Desktop\trading_bot\zohra\tests\test_xauusd_strategy_engine.py:247: in test_07_diagnostic_logger
+    regime_report = RegimeReport(
+E   TypeError: RegimeReport.__init__() got an unexpected keyword argument 'explanation'</failure></testcase></testsuite></testsuites>

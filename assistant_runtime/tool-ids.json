@@ -1,0 +1,20 @@
+{
+  "actions": {
+    "write_file": "files.create",
+    "export_document": "documents.create",
+    "create_task": "tasks.create",
+    "complete_task": "tasks.complete",
+    "launch_app": "windows.launch",
+    "open_browser": "browser.open",
+    "writer_review": "writer.review",
+    "set_tool_enabled": "security.configure",
+    "configure_audio": "windows.audio",
+    "configure_brightness": "windows.display"
+  },
+  "read_tools": [
+    "capabilities.list", "chat.respond", "web.search", "tasks.list",
+    "backend.system", "backend.trading", "backend.research", "backend.memory",
+    "backend.learning", "backend.agents", "system.processes", "system.network", "system.audio", "system.display", "document.pdf", "coding.explain"
+  ],
+  "protected": ["capabilities.list", "security.configure"]
+}

@@ -171,7 +171,7 @@ class TelegramInterface:
         # ─── WHY ───
         elif command == "/why":
             if len(parts) < 2:
-                return "Usage: /why EUR_USD\nShows last signal reason for a pair."
+                return "Usage: /why EURUSD\nShows last signal reason for a pair."
 
             symbol = parts[1].upper()
             # Get last signal from DB
@@ -210,6 +210,14 @@ class TelegramInterface:
             db.log_system("INFO", "Trading resumed by user")
             return "✅ <b>TRADING RESUMED</b>"
 
+        elif command == "/panic":
+            try:
+                with open("panic.flag", "w") as f:
+                    f.write("PANIC")
+                return "🚨 <b>PANIC MODE ACTIVE!</b>\nEmergency panic flag file created. Central brain is closing all positions and halting all trading loops immediately."
+            except Exception as e:
+                return f"❌ Failed to activate panic mode: {e}"
+
         # ─── HELP ───
         elif command == "/help":
             return (
@@ -218,9 +226,10 @@ class TelegramInterface:
                 "/history [n] - Last n trades (default 10)\n"
                 "/equity - Equity curve summary\n"
                 "/stats - Full performance statistics\n"
-                "/why [SYMBOL] - Last signal reason (e.g., /why EUR_USD)\n"
+                "/why [SYMBOL] - Last signal reason (e.g., /why EURUSD)\n"
                 "/pause - Stop opening new trades\n"
                 "/resume - Resume trading\n"
+                "/panic - EMERGENCY CLOSE ALL POSITIONS & HALT SCANS\n"
                 "/help - This message\n\n"
                 "⏰ Bot checks for signals every hour."
             )

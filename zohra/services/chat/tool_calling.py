@@ -1,0 +1,351 @@
+import logging
+import json
+import sqlite3
+try:
+    import numpy as np
+    NUMPY_AVAILABLE = True
+except ImportError:
+    NUMPY_AVAILABLE = False
+from datetime import datetime
+from typing import Dict, Any, List, Optional
+from zohra.brokers.mt5_broker import mt5_broker
+from zohra.db.schema import db
+from zohra.config.settings import STATE, settings
+from zohra.analytics.performance import analytics
+from zohra.services.chat.vector_memory import vector_memory
+
+logger = logging.getLogger("zohra.services.chat.tools")
+
+def get_account_positions() -> str:
+    """
+    Get current MT5 account parameters (balance, equity, free margin, floating profit)
+    and list all active/open positions with their ticket numbers, entry prices, and current PnL.
+    """
+    try:
+        acc = mt5_broker.get_account_info() or {}
+        open_trades = db.get_open_trades() or []
+        
+        summary = {
+            "account": {
+                "balance": acc.get("balance", 0.0),
+                "equity": acc.get("equity", 0.0),
+                "margin_free": acc.get("margin_free", 0.0),
+                "profit": acc.get("profit", 0.0),
+                "margin_level": acc.get("margin_level", 0.0)
+            },
+            "open_positions": [
+                {
+                    "ticket": t.get("mt5_ticket"),
+                    "symbol": t.get("symbol"),
+                    "direction": t.get("direction"),
+                    "volume": t.get("position_size_lots"),
+                    "entry_price": t.get("entry_price"),
+                    "current_pnl_usd": t.get("pnl_usd", 0.0),
+                    "confidence_score": t.get("confidence_score")
+                } for t in open_trades
+            ]
+        }
+        return json.dumps(summary, indent=2)
+    except Exception as e:
+        logger.error(f"Error executing get_account_positions: {e}")
+        return json.dumps({"error": f"Failed to retrieve account positions: {str(e)}"})
+
+def query_trade_journal(ticket: Optional[int] = None, symbol: Optional[str] = None) -> str:
+    """
+    Queries historical closed trades and post-mortem notes from the database.
+    Optionally filter by a specific MT5 ticket ID or currency symbol (e.g. 'XAUUSD', 'EURUSD').
+    """
+    try:
+        conn = db.get_connection()
+        cursor = conn.cursor()
+        placeholder = db.placeholder()
+        
+        query = """
+            SELECT t.trade_id, t.mt5_ticket, t.symbol, t.direction, t.timestamp_open, t.timestamp_close,
+                   t.entry_price, t.exit_price, t.pnl_usd, t.confidence_score, t.strategy_used,
+                   j.post_mortem_notes, j.ai_coach_verdict, j.confluence_matrix
+            FROM trades t
+            LEFT JOIN trade_journal j ON t.trade_id = j.trade_id
+            WHERE 1=1
+        """
+        params = []
+        if ticket:
+            query += f" AND t.mt5_ticket = {placeholder}"
+            params.append(ticket)
+        elif symbol:
+            query += f" AND t.symbol = {placeholder}"
+            params.append(symbol.upper())
+            
+        query += " ORDER BY t.timestamp_open DESC LIMIT 10"
+        
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        
+        trades = []
+        for r in rows:
+            trades.append({
+                "trade_id": r[0],
+                "ticket": r[1],
+                "symbol": r[2],
+                "direction": r[3],
+                "timestamp_open": r[4],
+                "timestamp_close": r[5],
+                "entry_price": r[6],
+                "exit_price": r[7],
+                "pnl_usd": r[8],
+                "confidence_score": r[9],
+                "strategy": r[10],
+                "post_mortem": r[11],
+                "ai_coach_verdict": r[12],
+                "confluence_breakdown": json.loads(r[13]) if r[13] else None
+            })
+        
+        conn.close()
+        return json.dumps(trades, indent=2)
+    except Exception as e:
+        logger.error(f"Error executing query_trade_journal: {e}")
+        return json.dumps({"error": f"Failed to query trade journal: {str(e)}"})
+
+def get_performance_analytics(days: int = 30) -> str:
+    """
+    Query system performance statistics aggregated over the last N days (e.g. 7, 30, 90).
+    Includes total trades, win rate percentage, profit factor, net PnL, expectancy, and max drawdown.
+    """
+    try:
+        trades = db.get_closed_trades(limit=1000, days=days) or []
+        equity_curve = db.get_equity_curve(days=days) or []
+        
+        report = analytics.full_performance_report(trades, equity_curve, period=f"Last {days} days")
+        return json.dumps(report, indent=2)
+    except Exception as e:
+        logger.error(f"Error executing get_performance_analytics: {e}")
+        return json.dumps({"error": f"Failed to calculate performance analytics: {str(e)}"})
+
+def scan_market_regimes(symbol: str) -> str:
+    """
+    Check current technical indicators and market structure regime for a specific symbol (e.g. 'EURUSD', 'XAUUSD').
+    Returns ADX trend strength, Bollinger Bands width, and trend direction.
+    """
+    try:
+        from zohra.core.market_regime import regime_detector
+        df_check = mt5_broker.get_ohlcv(symbol, "M15", 50)
+        if df_check is None or df_check.empty:
+            return json.dumps({"error": f"No market data available for {symbol}"})
+            
+        regime = regime_detector.detect(df_check)
+        
+        # Basic calculations
+        close = df_check['close'].values
+        high = df_check['high'].values
+        low = df_check['low'].values
+        
+        # Simple ATR estimate
+        if NUMPY_AVAILABLE:
+            tr = np.maximum(high - low, np.maximum(np.abs(high - np.roll(close, 1)), np.abs(low - np.roll(close, 1))))
+            atr = float(np.mean(tr[-14:]))
+        else:
+            # Fallback when numpy is not available
+            tr_list = []
+            for i in range(len(close)):
+                h, l = high[i], low[i]
+                prev_c = close[i-1] if i > 0 else close[i]
+                tr_val = max(h - l, abs(h - prev_c), abs(l - prev_c))
+                tr_list.append(tr_val)
+            atr = float(sum(tr_list[-14:]) / len(tr_list[-14:])) if len(tr_list) >= 14 else (float(sum(tr_list) / len(tr_list)) if tr_list else 0.0)
+        
+        summary = {
+            "symbol": symbol,
+            "regime": regime.value if hasattr(regime, 'value') else str(regime),
+            "close_price": float(close[-1]),
+            "atr_14": atr,
+            "session_time_utc": datetime.utcnow().strftime("%H:%M:%S")
+        }
+        return json.dumps(summary, indent=2)
+    except Exception as e:
+        logger.error(f"Error scanning market regimes: {e}")
+        # Build local import safe variables
+        try:
+            import numpy as np
+        except ImportError:
+            pass
+        return json.dumps({"error": f"Failed to scan market regimes: {str(e)}"})
+
+def check_system_status() -> str:
+    """
+    Verify Zohra's operational state. Includes connected broker status, daily drawdown values,
+    trading halt flags, and economic news blackout alerts.
+    """
+    try:
+        acc_ok = mt5_broker.is_connected()
+        drawdown_pct = 0.0
+        equity = mt5_broker.get_equity()
+        if STATE.peak_equity > 0 and equity > 0:
+            drawdown_pct = max(0.0, (STATE.peak_equity - equity) / STATE.peak_equity * 100.0)
+            
+        status = {
+            "trading_enabled": STATE.trading_enabled,
+            "trading_halted": STATE.trading_halted,
+            "halt_reason": STATE.halt_reason or "None",
+            "daily_trades_taken": STATE.daily_trades,
+            "daily_pnl_usd": round(STATE.daily_pnl, 2),
+            "peak_drawdown_pct": round(drawdown_pct, 2),
+            "mt5_broker_connected": acc_ok,
+            "hybrid_scalper_active": settings.HYBRID_SCALPER_MODE,
+            "risk_per_trade_pct": settings.RISK_PER_TRADE_PCT
+        }
+        return json.dumps(status, indent=2)
+    except Exception as e:
+        logger.error(f"Error checking system status: {e}")
+        return json.dumps({"error": f"Failed to fetch system status: {str(e)}"})
+
+def search_long_term_memories(query_text: str) -> str:
+    """
+    Query long-term AI memory and past user instruction files for relevant context.
+    Use this to recall past agreements, trade reasons, and strategy insights.
+    """
+    try:
+        mem_str = vector_memory.query_semantic_memories(query_text, limit=4)
+        if not mem_str:
+            return json.dumps({"message": "No relevant memories found for this query."})
+        return json.dumps({"memories": mem_str})
+    except Exception as e:
+        logger.error(f"Error searching long-term memories: {e}")
+        return json.dumps({"error": f"Failed to search memories: {str(e)}"})
+
+def modify_risk_setting(risk_pct: float) -> str:
+    """
+    Updates the system risk per trade configuration setting to a new percentage value.
+    The new value must be between 0.1% and 5.0%.
+    """
+    if not (0.1 <= risk_pct <= 5.0):
+        return json.dumps({"success": False, "error": "Risk percentage must be between 0.1% and 5.0%"})
+        
+    try:
+        settings.RISK_PER_TRADE_PCT = risk_pct / 100.0
+        db.log_system("INFO", f"Risk per trade adjusted via agent chat tool call to {risk_pct}%", "ChatAgent")
+        return json.dumps({"success": True, "new_risk_pct": risk_pct, "message": "Risk per trade successfully updated."})
+    except Exception as e:
+        logger.error(f"Error updating risk: {e}")
+        return json.dumps({"success": False, "error": str(e)})
+
+def close_active_positions(action_type: str) -> str:
+    """
+    Triggers an emergency closing of open positions.
+    action_type must be either 'ALL' (exit everything) or 'PROFITABLE' (exit winning trades only).
+    """
+    if action_type.upper() not in ("ALL", "PROFITABLE"):
+        return json.dumps({"success": False, "error": "action_type must be either 'ALL' or 'PROFITABLE'"})
+        
+    try:
+        if action_type.upper() == "ALL":
+            closed = mt5_broker.close_all_positions(comment="Agent-Emergency-Close")
+            db.log_system("WARNING", f"Emergency CLOSE_ALL executed by chat agent. Closed {closed} positions.", "ChatAgent")
+            return json.dumps({"success": True, "positions_closed": closed, "message": f"Successfully closed all {closed} positions."})
+        else:
+            # Profit close
+            from zohra.api.connectors.engine_connector import EngineConnector
+            conn = EngineConnector()
+            closed = conn.close_profitable_positions()
+            db.log_system("INFO", f"CLOSE_PROFITABLE executed by chat agent. Closed {closed} positions.", "ChatAgent")
+            return json.dumps({"success": True, "positions_closed": closed, "message": f"Successfully closed {closed} profitable positions."})
+    except Exception as e:
+        logger.error(f"Error closing positions: {e}")
+        return json.dumps({"success": False, "error": str(e)})
+
+# Mapping dictionary for runtime lookup
+def query_hie_pattern_stats(
+    symbol: Optional[str] = None,
+    setup_type: Optional[str] = None,
+    session: Optional[str] = None,
+    direction: Optional[str] = None,
+    timeframe: Optional[str] = None,
+    min_occurrences: int = 5
+) -> str:
+    """
+    Queries statistical historical pattern performance stats from the HIE Pattern Library.
+    Optionally filter by symbol, setup_type (e.g. 'BOS', 'FVG'), session ('London', 'NewYork', etc.), direction ('LONG', 'SHORT'), or timeframe.
+    """
+    try:
+        from zohra.hie.historical_pattern_database import historical_pattern_database
+        stats = historical_pattern_database.get_pattern_stats(
+            symbol=symbol,
+            setup_type=setup_type,
+            session=session,
+            direction=direction,
+            timeframe=timeframe,
+            min_occurrences=min_occurrences
+        )
+        return json.dumps(stats, indent=2)
+    except Exception as e:
+        logger.error(f"Error in query_hie_pattern_stats: {e}")
+        return json.dumps({"error": str(e)})
+
+def get_hie_symbol_profile(symbol: str) -> str:
+    """
+    Query the Symbol Intelligence Profile and Market Memory Summary for a specific symbol (e.g. 'EURUSD', 'XAUUSD').
+    Returns the symbol's best/worst session, best/worst timeframe, win rate, and average R-multiple.
+    """
+    try:
+        from zohra.hie.symbol_intelligence_profiles import symbol_intelligence_profiles
+        from zohra.hie.market_memory_engine import market_memory_engine
+        
+        profile = symbol_intelligence_profiles.get_profile(symbol) or {}
+        memory = market_memory_engine.get_symbol_memory_summary(symbol) or {}
+        
+        return json.dumps({
+            "profile": profile,
+            "memory_summary": memory
+        }, indent=2)
+    except Exception as e:
+        logger.error(f"Error in get_hie_symbol_profile: {e}")
+        return json.dumps({"error": str(e)})
+
+def query_hie_similarity(
+    symbol: str,
+    direction: str,
+    session: str,
+    setup_type: Optional[str] = None
+) -> str:
+    """
+    Find historically similar past setups and return their win rate, average R-multiple, and evidence.
+    Useful when asking 'what does history say about long XAUUSD during London?'.
+    """
+    try:
+        from zohra.hie.trade_similarity_engine import trade_similarity_engine
+        res = trade_similarity_engine.find_similar(
+            symbol=symbol,
+            direction=direction.upper(),
+            session=session,
+            setup_type=setup_type
+        )
+        return json.dumps(res, indent=2)
+    except Exception as e:
+        logger.error(f"Error in query_hie_similarity: {e}")
+        return json.dumps({"error": str(e)})
+
+def get_hie_failure_patterns() -> str:
+    """
+    Retrieve flagged recurring losing patterns and failure setups detected by the Failure Pattern Detector.
+    """
+    try:
+        from zohra.hie.failure_pattern_detector import failure_pattern_detector
+        failures = failure_pattern_detector.get_flagged_patterns()
+        return json.dumps(failures, indent=2)
+    except Exception as e:
+        logger.error(f"Error in get_hie_failure_patterns: {e}")
+        return json.dumps({"error": str(e)})
+
+TOOL_REGISTRY = {
+    "get_account_positions": get_account_positions,
+    "query_trade_journal": query_trade_journal,
+    "get_performance_analytics": get_performance_analytics,
+    "scan_market_regimes": scan_market_regimes,
+    "check_system_status": check_system_status,
+    "search_long_term_memories": search_long_term_memories,
+    "modify_risk_setting": modify_risk_setting,
+    "close_active_positions": close_active_positions,
+    "query_hie_pattern_stats": query_hie_pattern_stats,
+    "get_hie_symbol_profile": get_hie_symbol_profile,
+    "query_hie_similarity": query_hie_similarity,
+    "get_hie_failure_patterns": get_hie_failure_patterns
+}

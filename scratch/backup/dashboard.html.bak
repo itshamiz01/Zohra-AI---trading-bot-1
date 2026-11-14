@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zohra AI | Institutional Intelligence Command Center</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ApexCharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <style>
+        :root {
+            --bg: #05060b;
+            --card-bg: rgba(13, 16, 29, 0.75);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-hover: rgba(255, 255, 255, 0.09);
+            --primary: #8a2be2;
+            --primary-glow: rgba(138, 43, 226, 0.35);
+            --accent: #00ffcc;
+            --accent-glow: rgba(0, 255, 204, 0.2);
+            --danger: #ff007f;
+            --danger-glow: rgba(255, 0, 127, 0.2);
+            --text-main: #f3f4f6;
+            --text-muted: #838fa7;
+            --success: #00ffcc;
+        }
+
+        * {
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.1) transparent;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(0, 255, 204, 0.05) 0%, transparent 45%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: rgba(5, 6, 11, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            margin: 0;
+            background: linear-gradient(45deg, #b026ff, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .pulse-badge {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 15px var(--accent); }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 9px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background: rgba(255, 0, 127, 0.08);
+            border-color: rgba(255, 0, 127, 0.25);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+            box-shadow: 0 0 15px var(--danger-glow);
+            color: #fff;
+        }
+
+        /* Tabs Layout */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            padding: 10px 40px;
+            background: rgba(13, 16, 29, 0.4);
+            border-bottom: 1px solid var(--card-border);
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            background: rgba(0, 255, 204, 0.06);
+            border: 1px solid rgba(0, 255, 204, 0.15);
+        }
+
+        /* Core Grid */
+        .tab-content {
+            display: none;
+            max-width: 1650px;
+            margin: 0 auto;
+            padding: 30px 40px;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 24px;
+            backdrop-filter: blur(24px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: var(--card-hover);
+        }
+
+        .col-3 { grid-column: span 3; }
+        .col-4 { grid-column: span 4; }
+        .col-5 { grid-column: span 5; }
+        .col-6 { grid-column: span 6; }
+        .col-7 { grid-column: span 7; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            letter-spacing: 0.3px;
+        }
+
+        /* KPI Panel styling */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .kpi-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        .kpi-box.green::after { background: var(--accent); opacity: 0.6; }
+        .kpi-box.red::after { background: var(--danger); opacity: 0.6; }
+
+        .kpi-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-val {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Lists & Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 14px 16px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--card-border);
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 14px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-buy { background: rgba(0, 255, 204, 0.1); color: var(--accent); border: 1px solid rgba(0, 255, 204, 0.15); }
+        .badge-sell { background: rgba(255, 0, 127, 0.1); color: var(--danger); border: 1px solid rgba(255, 0, 127, 0.15); }
+        .badge-info { background: rgba(138, 43, 226, 0.1); color: #c084fc; border: 1px solid rgba(138, 43, 226, 0.15); }
+
+        .text-green { color: var(--accent); }
+        .text-red { color: var(--danger); }
+
+        /* Exposure heat progress bar */
+        .exp-bar-container {
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .exp-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+
+        /* Correlation grid coloring */
+        .corr-cell {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Timeline styles */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px dashed rgba(255,255,255,0.1);
+            margin-top: 15px;
+        }
+        .timeline-step {
+            position: relative;
+        }
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+        .timeline-step.closed::before {
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        /* Filter elements */
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select, .filter-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-main);
+            padding: 10px 16px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .filter-select:focus, .filter-input:focus {
+            border-color: var(--accent);
+        }
+
+        .filter-input {
+            flex-grow: 1;
+            min-width: 250px;
+        }
+
+        /* NLP query interface styles */
+        .nlp-box {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .nlp-input {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            padding: 14px 20px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+        .nlp-input:focus {
+            border-color: var(--accent);
+        }
+        .nlp-response {
+            background: rgba(138, 43, 226, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Modal Explainer styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 6, 11, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-content {
+            background: #0d101d;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 680px;
+            padding: 30px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: #fff;
+        }
+
+        .explainer-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+        }
+
+        .explainer-block {
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .explainer-block.taken { border-left-color: var(--accent); }
+        .explainer-block.lost { border-left-color: var(--danger); }
+
+        .explainer-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .explainer-val {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .check-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .check-item {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Coach section cards */
+        .coach-card {
+            background: rgba(138, 43, 226, 0.04);
+            border: 1px solid rgba(138, 43, 226, 0.15);
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .coach-card::before {
+            content: "💡 AI COACH TIP";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--primary);
+            color: #fff;
+            padding: 3px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .insight-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .insight-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        /* ─── ZOHRA CHAT ──────────────────────────────────── */
+        .chat-container { display: flex; flex-direction: column; height: 70vh; background: var(--card-bg); border-radius: 16px; border: 1px solid var(--card-border); overflow: hidden; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+        .chat-msg { max-width: 75%; padding: 14px 18px; border-radius: 16px; font-size: 14px; line-height: 1.6; animation: fadeSlideIn 0.3s ease; }
+        .chat-msg.user { align-self: flex-end; background: linear-gradient(135deg, #8a2be2, #6a1fb0); color: white; border-bottom-right-radius: 4px; }
+        .chat-msg.bot { align-self: flex-start; background: rgba(20,24,40,0.9); border: 1px solid var(--card-border); border-bottom-left-radius: 4px; color: var(--text-main); }
+        .chat-msg.bot .intent-badge { display: inline-block; background: rgba(0,255,204,0.15); color: var(--accent); padding: 2px 8px; border-radius: 8px; font-size: 11px; margin-bottom: 6px; }
+        .chat-input-area { padding: 16px 20px; background: rgba(5,6,11,0.9); border-top: 1px solid var(--card-border); display: flex; gap: 12px; align-items: center; }
+        .chat-input-area input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 16px; color: var(--text-main); font-size: 14px; font-family: 'Space Grotesk'; outline: none; transition: border 0.2s; }
+        .chat-input-area input:focus { border-color: var(--primary); }
+        .chat-send-btn { background: linear-gradient(135deg, #8a2be2, #6a1fb0); border: none; color: white; padding: 12px 20px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .chat-send-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary-glow); }
+        .chat-quick-actions { display: flex; gap: 8px; padding: 10px 20px; flex-wrap: wrap; }
+        .chat-quick-btn { background: rgba(138,43,226,0.1); border: 1px solid rgba(138,43,226,0.3); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s; font-family: 'Space Grotesk'; }
+        .chat-quick-btn:hover { background: rgba(138,43,226,0.25); transform: translateY(-1px); }
+        .typing-indicator { display: none; align-self: flex-start; padding: 12px 18px; background: rgba(20,24,40,0.9); border-radius: 16px; border: 1px solid var(--card-border); }
+        .typing-indicator span { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: typingBounce 1.4s infinite; margin: 0 2px; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
+        @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── AI MEMORY ───────────────────────────────────── */
+        .memory-search-bar { display: flex; gap: 12px; margin-bottom: 20px; }
+        .memory-search-bar input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 16px; color: var(--text-main); font-size: 14px; font-family: 'Space Grotesk'; outline: none; transition: border 0.2s; }
+        .memory-search-bar input:focus { border-color: var(--primary); }
+        .memory-search-bar button { background: linear-gradient(135deg, #8a2be2, #6a1fb0); border: none; color: white; padding: 12px 20px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s; font-family: 'Space Grotesk'; }
+        .memory-search-bar button:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary-glow); }
+        .memory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+
+        /* ─── LEARNING ENGINE ─────────────────────────────── */
+        .learning-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        @media (max-width: 900px) { .learning-columns { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="pulse-badge"></div>
+            <h1>ZOHRA | Institutional command center</h1>
+        </div>
+        <div class="btn-group">
+            <button class="btn" onclick="sendCommand('resume')">RESUME SCANS</button>
+            <button class="btn btn-danger" onclick="sendCommand('halt')">HALT ENGINE</button>
+            <button class="btn btn-danger" onclick="closeAll()">CLOSE ALL</button>
+        </div>
+    </header>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" id="tab-overview" onclick="switchTab('overview')">Overview</button>
+        <button class="tab-btn" id="tab-risk" onclick="switchTab('risk')">Risk & Exposure</button>
+        <button class="tab-btn" id="tab-strategies" onclick="switchTab('strategies')">Strategy Matrix</button>
+        <button class="tab-btn" id="tab-playback" onclick="switchTab('playback')">Replay & Timeline</button>
+        <button class="tab-btn" id="tab-health" onclick="switchTab('health')">System Health</button>
+        <button class="tab-btn" id="tab-ai-coach" onclick="switchTab('ai-coach')">AI Query & Debrief</button>
+        <button class="tab-btn" id="tab-simulators" onclick="switchTab('simulators')">Backtest & Sim</button>
+        <button class="tab-btn" id="tab-symbols" onclick="switchTab('symbols')">Symbol Performance</button>
+        <button class="tab-btn" id="tab-rejections" onclick="switchTab('rejections')">Rejections Log</button>
+        <button class="tab-btn" id="tab-journal" onclick="switchTab('journal')">Execution Journal</button>
+        <button class="tab-btn" id="tab-coach" onclick="switchTab('coach')">Pattern Coach</button>
+        <button class="tab-btn" id="tab-zohra-chat" onclick="switchTab('zohra-chat')">🤖 Zohra Chat</button>
+        <button class="tab-btn" id="tab-memory" onclick="switchTab('memory')">🧠 AI Memory</button>
+        <button class="tab-btn" id="tab-learning" onclick="switchTab('learning')">📊 Learning Engine</button>
+        <button class="tab-btn" id="tab-settings" onclick="switchTab('settings')">⚙️ Settings</button>
+    </div>
+
+    <!-- T1: OVERVIEW -->
+    <div id="content-overview" class="tab-content active">
+        <!-- KPI Row -->
+        <div class="kpi-row">
+            <div class="kpi-box" id="kpi-today-pnl">
+                <div class="kpi-title">Today's P&L</div>
+                <div class="kpi-val">$0.00</div>
+            </div>
+            <div class="kpi-box" id="kpi-target-remaining">
+                <div class="kpi-title">Target Remaining</div>
+                <div class="kpi-val">$0.00</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-title">Account Equity</div>
+                <div class="kpi-val" id="kpi-equity">$0.00</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-title">Daily Trades</div>
+                <div class="kpi-val" id="kpi-trades">0</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-title">Profit Factor</div>
+                <div class="kpi-val text-green" id="kpi-pf">0.00</div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-title">Avg Quality Score</div>
+                <div class="kpi-val text-green" id="kpi-avg-quality">0.0</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Equity curve line chart -->
+            <div class="card col-6">
+                <h2>Equity Growth Curve (Simulated vs Balance)</h2>
+                <div id="equity-chart" style="min-height: 180px; height: 180px;"></div>
+            </div>
+
+            <!-- Exposure limits -->
+            <div class="card col-6">
+                <h2>Exposure & Risk Guard</h2>
+                <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>Engine Status:</span>
+                        <strong class="text-green" id="engine-status-text">ACTIVE</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>Forex Exposure Limits:</span>
+                        <strong id="forex-exposure-txt">0 / 3</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>Metals Exposure Limits:</span>
+                        <strong id="metals-exposure-txt">0 / 2</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>USD Exposure Stacking:</span>
+                        <strong id="usd-exposure-txt">0 / 3</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>Safety Stop Limit:</span>
+                        <strong class="text-red">$100.00 Equity</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>Maximum Open Positions:</span>
+                        <strong>5 Positions</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 15px;">
+                        <span>Daily Loss Kill Switch:</span>
+                        <strong>2% Equity</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Open Positions -->
+            <div class="card col-7">
+                <h2>Active Open Positions</h2>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Symbol</th>
+                                <th>Dir</th>
+                                <th>Lots</th>
+                                <th>Entry</th>
+                                <th>SL</th>
+                                <th>TP</th>
+                                <th>Floating PnL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="open-positions-tbody">
+                            <tr>
+                                <td colspan="8" style="text-align: center; color: var(--text-muted);">No active open positions.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Opportunities Leaderboard -->
+            <div class="card col-5">
+                <h2>Live Opportunity Leaderboard</h2>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Strategy</th>
+                                <th>Dir</th>
+                                <th>Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-tbody">
+                            <tr>
+                                <td colspan="5" style="text-align: center; color: var(--text-muted);">No active opportunities detected.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TradingView Live Chart widget -->
+            <div class="card col-12">
+                <h2>📈 TradingView Real-Time Market Feed</h2>
+                <div style="height: 450px; width: 100%; margin-top: 15px;">
+                    <div id="tradingview_widget" style="height: 100%; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T2: RISK & EXPOSURE -->
+    <div id="content-risk" class="tab-content">
+        <div class="dashboard-grid">
+            <div class="card col-6">
+                <h2>Currency Basket Absolute Exposures</h2>
+                <div id="exposures-container" style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                    <!-- Filled dynamically -->
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <h2>Asset Correlation Risk Matrix</h2>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table id="correlation-table">
+                        <!-- Filled dynamically -->
+                    </table>
+                </div>
+                <div id="correlation-alerts" style="margin-top: 20px; font-size: 13px;"></div>
+            </div>
+
+            <div class="card col-6">
+                <h2>Risk Concentration Analysis</h2>
+                <div id="concentration-alerts-list" style="display: flex; flex-direction: column; gap: 12px;">
+                    <!-- Alerts dynamically loaded -->
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <h2>Broker Margin Stress Guard</h2>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <div class="insight-box">
+                        <div class="explainer-label">Margin Level</div>
+                        <strong id="margin-level-val">100%</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Liquidation Risk</div>
+                        <strong id="liquidation-risk-val" class="text-green">LOW</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Margin Used</div>
+                        <strong id="margin-used-val">$0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Free Margin</div>
+                        <strong id="margin-free-val">$0.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T3: STRATEGY MATRIX -->
+    <div id="content-strategies" class="tab-content">
+        <div class="dashboard-grid">
+            <div class="card col-12">
+                <h2>Strategy-by-Strategy Matrix</h2>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Strategy</th>
+                                <th>Total Trades</th>
+                                <th>Wins</th>
+                                <th>Losses</th>
+                                <th>Win Rate</th>
+                                <th>Net P&L</th>
+                                <th>Avg Hold Time</th>
+                                <th>Avg R:R</th>
+                            </tr>
+                        </thead>
+                        <tbody id="strategies-performance-tbody">
+                            <!-- Filled dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col-12">
+                <h2>Trade Classification Grade Matrix</h2>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Grade</th>
+                                <th>Total Trades</th>
+                                <th>Wins</th>
+                                <th>Losses</th>
+                                <th>Win Rate</th>
+                                <th>Profit Factor</th>
+                                <th>Average Drawdown</th>
+                                <th>Average R Multiple</th>
+                                <th>Expected Value</th>
+                                <th>Net P&L</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grade-performance-tbody">
+                            <!-- Filled dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col-4">
+                <h2>Market Conditions Performance</h2>
+                <table id="conditions-performance-table">
+                    <!-- Filled dynamically -->
+                </table>
+            </div>
+
+            <div class="card col-4">
+                <h2>Trading Session Analytics</h2>
+                <table id="sessions-performance-table">
+                    <!-- Filled dynamically -->
+                </table>
+            </div>
+
+            <div class="card col-4">
+                <h2>Timeframe Performance</h2>
+                <table id="timeframe-performance-table">
+                    <!-- Filled dynamically -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- T4: REPLAY & TIMELINE -->
+    <div id="content-playback" class="tab-content">
+        <div class="dashboard-grid">
+            <div class="card col-8">
+                <h2>Candle Replay Console (Visual Step Simulation)</h2>
+                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; height: 350px; display: flex; align-items: center; justify-content: center;" id="playback-chart-container">
+                    <span style="color: var(--text-muted);">Select a trade from the journal or execution lists to load the candle replay frame.</span>
+                </div>
+            </div>
+
+            <div class="card col-4">
+                <h2>Decision Timeline Log</h2>
+                <div class="timeline-container" id="timeline-log-list">
+                    <div class="timeline-step">
+                        <strong>Signal Detected</strong>
+                        <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">CHOCH & FVG aligned on M5 symbol scanner.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <strong>Consensus Analysis</strong>
+                        <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Consensus score calculated at 92.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <strong>Risk Guard Clearance</strong>
+                        <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Exposure and margin constraints verified as clear.</p>
+                    </div>
+                    <div class="timeline-step closed">
+                        <strong>Trade Opened</strong>
+                        <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Order execution request sent successfully to MT5.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T5: SYSTEM HEALTH -->
+    <div id="content-health" class="tab-content">
+        <div class="dashboard-grid">
+            <div class="card col-6">
+                <h2>Zohra Module Latency Map</h2>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;" id="modules-health-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <h2>Live Feature Connectivity Map</h2>
+                <div style="text-align: center; padding: 20px;">
+                    <svg viewBox="0 0 500 250" width="100%" height="220" style="background: rgba(0,0,0,0.2); border-radius: 12px;">
+                        <rect x="20" y="90" width="100" height="40" rx="8" fill="rgba(138, 43, 226, 0.2)" stroke="#8a2be2" />
+                        <text x="70" y="115" fill="#fff" text-anchor="middle" font-size="12">SMC Module</text>
+
+                        <line x1="120" y1="110" x2="200" y2="110" stroke="#00ffcc" stroke-width="2" stroke-dasharray="4" />
+
+                        <rect x="200" y="90" width="100" height="40" rx="8" fill="rgba(138, 43, 226, 0.2)" stroke="#8a2be2" />
+                        <text x="250" y="115" fill="#fff" text-anchor="middle" font-size="12">Consensus</text>
+
+                        <line x1="300" y1="110" x2="380" y2="110" stroke="#00ffcc" stroke-width="2" />
+
+                        <rect x="380" y="90" width="100" height="40" rx="8" fill="rgba(0, 255, 204, 0.2)" stroke="#00ffcc" />
+                        <text x="430" y="115" fill="#fff" text-anchor="middle" font-size="12">MT5 Bridge</text>
+
+                        <rect x="200" y="180" width="100" height="40" rx="8" fill="rgba(138, 43, 226, 0.2)" stroke="#8a2be2" />
+                        <text x="250" y="205" fill="#fff" text-anchor="middle" font-size="12">Risk Guard</text>
+
+                        <line x1="250" y1="130" x2="250" y2="180" stroke="#ff007f" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="card col-12">
+                <h2>Execution & Broker Quality History</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div class="insight-box">
+                        <div class="explainer-label">Execution Delay</div>
+                        <strong id="exec-delay-val">45 ms</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Latency to Broker</div>
+                        <strong id="broker-lat-val">12 ms</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Average Bid/Ask Spread</div>
+                        <strong id="avg-spread-val">1.2 Pips</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Slippage at Entry</div>
+                        <strong id="slippage-val">0.15 Points</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T6: AI QUERY & DEBRIEF -->
+    <div id="content-ai-coach" class="tab-content">
+        <div class="dashboard-grid">
+            <div class="card col-12">
+                <h2>Natural Language Memory Query Engine</h2>
+                <div class="nlp-box">
+                    <input type="text" class="nlp-input" id="nlp-query-input" placeholder="Ask me anything: 'Why did you buy XAUUSD?', 'Show best pair', or 'What is our worst strategy?'">
+                    <button class="btn" onclick="submitNLPQuery()">Query Memory</button>
+                </div>
+                <div class="nlp-response" id="nlp-response-box" style="display: none;">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="card col-4">
+                <h2>Morning Briefing</h2>
+                <p id="debrief-morning" style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">Loading morning brief...</p>
+            </div>
+
+            <div class="card col-4">
+                <h2>Midday Update</h2>
+                <p id="debrief-midday" style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">Loading midday update...</p>
+            </div>
+
+            <div class="card col-4">
+                <h2>End-of-Day Review</h2>
+                <p id="debrief-eod" style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">Loading end-of-day review...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- T7: BACKTEST & SIM -->
+    <div id="content-simulators" class="tab-content">
+        <div class="dashboard-grid">
+            <div class="card col-8">
+                <h2>Monte Carlo 30-Day Simulated Growth Curve Projections</h2>
+                <div id="monte-carlo-chart" style="min-height: 250px;"></div>
+                <div style="margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+                    Ruin Probability (hit safety equity limit): <strong id="ruin-probability-val" class="text-green">0.0%</strong>
+                </div>
+            </div>
+
+            <div class="card col-4">
+                <h2>Risk Scenario Simulator</h2>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                    <div>
+                        <label style="font-size: 12px; color: var(--text-muted);">Double position sizing multiplier?</label>
+                        <select class="filter-select" id="sim-lot-mult" style="width: 100%; margin-top: 5px;" onchange="runRiskSimulation()">
+                            <option value="1.0">Standard Sizing (1.0x)</option>
+                            <option value="2.0">Double Lot Size (2.0x)</option>
+                            <option value="3.0">Triple Lot Size (3.0x)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 12px; color: var(--text-muted);">Daily drawdown safety stop target?</label>
+                        <select class="filter-select" id="sim-stop-equity" style="width: 100%; margin-top: 5px;" onchange="runRiskSimulation()">
+                            <option value="100.0">$100.00 Equity</option>
+                            <option value="120.0">$120.00 Equity (Tighter)</option>
+                            <option value="80.0">$80.00 Equity (Looser)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 12px; color: var(--text-muted);">Disable JPY assets?</label>
+                        <select class="filter-select" id="sim-disable-jpy" style="width: 100%; margin-top: 5px;" onchange="runRiskSimulation()">
+                            <option value="false">Active Scan JPY</option>
+                            <option value="true">Block / Disable JPY</option>
+                        </select>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--card-border); padding-top: 15px; font-size: 14px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Historical Profit:</span>
+                            <strong id="sim-orig-pnl">$0.00</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Simulated Profit:</span>
+                            <strong id="sim-new-pnl" class="text-green">$0.00</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Simulated Max Drawdown:</span>
+                            <strong id="sim-new-dd" class="text-red">0.0%</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Margin Level State:</span>
+                            <strong id="sim-margin-level-state" class="text-green">HEALTHY</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T8: SYMBOL ANALYTICS -->
+    <div id="content-symbols" class="tab-content">
+        <div class="card col-12">
+            <h2>Symbol-by-Symbol Performance Matrix</h2>
+            <div style="overflow-x: auto; margin-top: 15px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Total Trades</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Win Rate</th>
+                            <th>Net Profit</th>
+                            <th>Avg Profit</th>
+                            <th>Avg Loss</th>
+                            <th>Profit Factor</th>
+                            <th>Avg Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody id="symbols-matrix-tbody">
+                        <tr>
+                            <td colspan="10" style="text-align: center; color: var(--text-muted);">No symbols trading history found.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- T9: REJECTION CENTER -->
+    <div id="content-rejections" class="tab-content">
+        <div class="card col-12">
+            <h2>Trade Rejection Registry</h2>
+            <div class="filter-row">
+                <input type="text" class="filter-input" id="rejections-search" placeholder="Search rejections (Symbol, reason, etc.)" oninput="filterRejections()">
+                <select class="filter-select" id="rejections-symbol-filter" onchange="filterRejections()">
+                    <option value="">All Symbols</option>
+                </select>
+            </div>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Symbol</th>
+                            <th>Direction</th>
+                            <th>Score</th>
+                            <th>Primary Reason for Rejection</th>
+                            <th>Failed Rules Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rejections-tbody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: var(--text-muted);">No rejections logged.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- T10: JOURNAL -->
+    <div id="content-journal" class="tab-content">
+        <div class="card col-12">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="margin: 0;">Institutional Execution Journal</h2>
+                <button class="btn" onclick="exportJournalCSV()">EXPORT TO CSV</button>
+            </div>
+            <div class="filter-row">
+                <input type="text" class="filter-input" id="journal-search" placeholder="Search by ID, comment, symbol, strategy" oninput="filterJournal()">
+                <select class="filter-select" id="journal-symbol-filter" onchange="filterJournal()">
+                    <option value="">All Symbols</option>
+                </select>
+                <select class="filter-select" id="journal-dir-filter" onchange="filterJournal()">
+                    <option value="">All Directions</option>
+                    <option value="LONG">LONG</option>
+                    <option value="SHORT">SHORT</option>
+                </select>
+                <select class="filter-select" id="journal-result-filter" onchange="filterJournal()">
+                    <option value="">All Results</option>
+                    <option value="WIN">WINS Only</option>
+                    <option value="LOSS">LOSSES Only</option>
+                    <option value="BE">Breakeven Only</option>
+                </select>
+            </div>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID / Ticket</th>
+                            <th>Timestamp</th>
+                            <th>Symbol</th>
+                            <th>Direction</th>
+                            <th>Lots</th>
+                            <th>Entry</th>
+                            <th>Exit</th>
+                            <th>Closed PnL</th>
+                            <th>Score</th>
+                            <th>Quality Grade</th>
+                            <th>Strategy</th>
+                            <th>Execution Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody id="journal-tbody">
+                        <tr>
+                            <td colspan="12" style="text-align: center; color: var(--text-muted);">No closed trades logged.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- T11: PATTERN COACH -->
+    <div id="content-coach" class="tab-content">
+        <div class="coach-card" id="coach-insight-intro">
+            <h3>Institutional Performance Coaching & Pattern Analytics</h3>
+            <p id="coach-intro-text">Analyze historical confluences, strategy weights, and rejections to automatically optimize performance limits.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Key insights -->
+            <div class="card col-6">
+                <h2>Self-Improvement AI Insights</h2>
+                <div style="display: flex; flex-direction: column; gap: 15px;" id="ai-insights-container">
+                    <div style="color: var(--text-muted);">Analyzing trade patterns...</div>
+                </div>
+            </div>
+
+            <!-- Profit Factor breakdown -->
+            <div class="card col-6">
+                <h2>Profit Factor & Statistics Metrics</h2>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;" id="profit-metrics-container">
+                    <div class="insight-box">
+                        <div class="explainer-label">Gross Profit</div>
+                        <strong class="text-green" id="stat-gross-profit">$0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Gross Loss</div>
+                        <strong class="text-red" id="stat-gross-loss">$0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Average Win</div>
+                        <strong class="text-green" id="stat-avg-win">$0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Average Loss</div>
+                        <strong class="text-red" id="stat-avg-loss">$0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Average Holding Time</div>
+                        <strong id="stat-holding-time">0 min</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Sharpe Ratio</div>
+                        <strong class="text-green" id="stat-sharpe">0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Expectancy</div>
+                        <strong id="stat-expectancy">$0.00</strong>
+                    </div>
+                    <div class="insight-box">
+                        <div class="explainer-label">Max Drawdown</div>
+                        <strong class="text-red" id="stat-drawdown">0.0%</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T12: ZOHRA AI CHAT -->
+    <div id="content-zohra-chat" class="tab-content">
+        <h2 class="section-title">🤖 ZOHRA AI CHAT</h2>
+        <div class="chat-container">
+            <div class="chat-messages" id="zohra-chat-messages">
+                <div class="chat-msg bot">
+                    <div class="intent-badge">welcome</div>
+                    <div>Hey! I'm <strong>Zohra</strong>, your AI trading assistant. Ask me anything about your trades, strategies, P&L, or market conditions. 🚀</div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="chat-typing">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="chat-quick-actions">
+                <button class="chat-quick-btn" onclick="sendChatMessage('Today\'s P&L')">📈 Today's P&L</button>
+                <button class="chat-quick-btn" onclick="sendChatMessage('Best strategy?')">🏆 Best strategy?</button>
+                <button class="chat-quick-btn" onclick="sendChatMessage('Why last loss?')">❓ Why last loss?</button>
+                <button class="chat-quick-btn" onclick="sendChatMessage('Risk status')">🛡️ Risk status</button>
+                <button class="chat-quick-btn" onclick="sendChatMessage('Market scan')">🔍 Market scan</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="zohra-chat-input" placeholder="Ask Zohra anything..." onkeydown="handleChatKeydown(event)" autocomplete="off">
+                <button id="zohra-mic-btn" onclick="toggleSpeech()" style="background:rgba(255,255,255,0.05); border:1px solid var(--card-border); color:var(--text-main); font-size:18px; padding:10px 14px; border-radius:12px; cursor:pointer;">🎙️</button>
+                <button class="chat-send-btn" onclick="sendChatMessage()">Send ➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- T13: AI MEMORY -->
+    <div id="content-memory" class="tab-content">
+        <h2 class="section-title">🧠 AI MEMORY</h2>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <div style="font-size:14px;color:var(--text-muted);">Total memories stored: <strong style="color:var(--accent);" id="memory-total-count">0</strong></div>
+        </div>
+        <div class="memory-search-bar">
+            <input type="text" id="memory-search-input" placeholder="Search memories semantically... (e.g. 'winning EURUSD scalp')" onkeydown="if(event.key==='Enter')searchMemory()">
+            <button onclick="searchMemory()">🔍 Search</button>
+        </div>
+        <div class="memory-grid" id="memory-results">
+            <div style="color:var(--text-muted)">Loading memories...</div>
+        </div>
+    </div>
+
+    <!-- T14: LEARNING ENGINE -->
+    <div id="content-learning" class="tab-content">
+        <h2 class="section-title">📊 LEARNING ENGINE</h2>
+        <div class="learning-columns">
+            <div>
+                <h3 style="color:var(--success);margin-bottom:14px;font-family:'Outfit',sans-serif;">✅ Discovered Winning Patterns</h3>
+                <div id="winning-patterns-container">
+                    <div style="color:var(--text-muted)">Loading patterns...</div>
+                </div>
+            </div>
+            <div>
+                <h3 style="color:var(--danger);margin-bottom:14px;font-family:'Outfit',sans-serif;">❌ Discovered Failure Patterns</h3>
+                <div id="failure-patterns-container">
+                    <div style="color:var(--text-muted)">Loading patterns...</div>
+                </div>
+            </div>
+        </div>
+        <h3 style="color:var(--primary);margin-bottom:14px;font-family:'Outfit',sans-serif;">💡 AI Recommendations</h3>
+        <div id="learning-recommendations-container">
+            <div style="color:var(--text-muted)">Loading recommendations...</div>
+        </div>
+    </div>
+
+    <!-- T15: SETTINGS CONTROL PANEL -->
+    <div id="content-settings" class="tab-content">
+        <h2 class="section-title">⚙️ ZOHRA ENGINE CONFIGURATION</h2>
+        <div class="dashboard-grid">
+            <div class="card col-6">
+                <h2>Risk & Execution Limits</h2>
+                <div style="display:flex; flex-direction:column; gap:20px; margin-top:16px;">
+                    <div>
+                        <label for="settings-risk-pct" style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Base Risk Per Trade (scaled by Grade):</label>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <input type="range" id="settings-risk-pct" min="0.1" max="3.0" step="0.1" value="1.0" oninput="document.getElementById('risk-val').innerText = this.value + '%'" style="flex-grow:1; accent-color:var(--primary);">
+                            <span id="risk-val" style="font-weight:700; width:45px; text-align:right;">1.0%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="settings-max-drawdown" style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Max Drawdown Limit (Halt Switch):</label>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <input type="range" id="settings-max-drawdown" min="1.0" max="15.0" step="0.5" value="3.0" oninput="document.getElementById('dd-val').innerText = this.value + '%'" style="flex-grow:1; accent-color:var(--primary);">
+                            <span id="dd-val" style="font-weight:700; width:45px; text-align:right;">3.0%</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-size:14px;">Allow Speculative C-Grade Setups:</span>
+                        <input type="checkbox" id="settings-allow-c" style="width:20px; height:20px; accent-color:var(--accent);">
+                    </div>
+                    <div>
+                        <label for="settings-max-positions" style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Max Open Positions Limit:</label>
+                        <input type="number" id="settings-max-positions" min="1" max="10" value="5" class="filter-select" style="width:100px;">
+                    </div>
+                </div>
+            </div>
+            <div class="card col-6">
+                <h2>Dynamic System Variables</h2>
+                <div style="display:flex; flex-direction:column; gap:20px; margin-top:16px;">
+                    <div>
+                        <label for="settings-max-daily-loss" style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">Max Daily Loss Limit:</label>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <input type="range" id="settings-max-daily-loss" min="0.5" max="5.0" step="0.1" value="2.0" oninput="document.getElementById('loss-val').innerText = this.value + '%'" style="flex-grow:1; accent-color:var(--primary);">
+                            <span id="loss-val" style="font-weight:700; width:45px; text-align:right;">2.0%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="settings-api-token" style="font-size:13px; color:var(--text-muted); display:block; margin-bottom:8px;">API Access Token (Required for Save):</label>
+                        <input type="password" id="settings-api-token" placeholder="Enter security token..." class="filter-input" style="width:100%;">
+                    </div>
+                    <div style="margin-top:20px; display:flex; gap:15px;">
+                        <button class="btn" onclick="saveSettings()" style="flex-grow:1; background:var(--accent); color:#05060b; border-color:var(--accent);">💾 Save Settings</button>
+                        <button class="btn" onclick="loadSettings()" style="flex-grow:1;">🔄 Reload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade Explainability Modal -->
+    <div class="modal" id="explainer-modal" onclick="closeExplainerModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="document.getElementById('explainer-modal').style.display='none'">×</button>
+            <div class="explainer-title" id="exp-title">Trade Explainer #0000</div>
+            
+            <div class="explainer-block taken" id="exp-block-taken">
+                <div class="explainer-label">Why This Trade Was Taken</div>
+                <div class="explainer-val" id="exp-reason-taken">Evaluating confluence triggers...</div>
+            </div>
+
+            <div class="explainer-block lost" id="exp-block-lost" style="display: none;">
+                <div class="explainer-label">Why This Trade Lost (Post-Mortem Analysis)</div>
+                <div class="explainer-val" id="exp-reason-lost">Market state dynamics analysis...</div>
+            </div>
+
+            <div class="explainer-label">Confluence Breakdown Matrix</div>
+            <div class="check-grid" id="exp-grid">
+                <div class="check-item"><span>Market Structure:</span> <strong id="exp-val-structure">N/A</strong></div>
+                <div class="check-item"><span>Liquidity Sweep:</span> <strong id="exp-val-liquidity">N/A</strong></div>
+                <div class="check-item"><span>SMC Analysis:</span> <strong id="exp-val-smc">N/A</strong></div>
+                <div class="check-item"><span>Trend Factor:</span> <strong id="exp-val-trend">N/A</strong></div>
+                <div class="check-item"><span>Momentum Scan:</span> <strong id="exp-val-momentum">N/A</strong></div>
+                <div class="check-item"><span>Volatility Ratio:</span> <strong id="exp-val-volatility">N/A</strong></div>
+                <div class="check-item"><span>Pullback Zone:</span> <strong id="exp-val-pullback">N/A</strong></div>
+                <div class="check-item"><span>R:R Ratio:</span> <strong id="exp-val-rr">N/A</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let closedTrades = [];
+        let rejections = [];
+        let chart = null;
+        let mcChart = null;
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(`content-${tabId}`).classList.add('active');
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            if (tabId === 'overview' && chart) {
+                setTimeout(() => chart.windowResizeHandler(), 100);
+            }
+        }
+
+        function closeExplainerModal(event) {
+            document.getElementById('explainer-modal').style.display = 'none';
+        }
+
+        async function initDashboard() {
+            await fetchDashboard();
+            await fetchAdvancedData();
+            loadRecentMemories();
+            loadLearningData();
+            loadSettings();
+            initTradingViewWidget();
+            connectWebSocket();
+            setInterval(fetchDashboard, 30000);
+            setInterval(fetchAdvancedData, 10000);
+            setInterval(loadRecentMemories, 30000);
+            setInterval(loadLearningData, 60000);
+        }
+
+        async function fetchDashboard() {
+            try {
+                // 1. Fetch Health
+                const hRes = await fetch('/api/v1/health');
+                const health = await hRes.json();
+                document.getElementById('kpi-trades').innerText = health.daily_trades;
+                document.getElementById('kpi-today-pnl').querySelector('.kpi-val').innerText = `$${health.daily_pnl.toFixed(2)}`;
+                document.getElementById('kpi-today-pnl').className = health.daily_pnl >= 0 ? 'kpi-box green' : 'kpi-box red';
+                document.getElementById('engine-status-text').innerText = health.halted ? 'HALTED' : 'ACTIVE';
+                document.getElementById('engine-status-text').className = health.halted ? 'text-red' : 'text-green';
+
+                const targetRem = Math.max(0.0, 25.0 - health.daily_pnl);
+                document.getElementById('kpi-target-remaining').querySelector('.kpi-val').innerText = `$${targetRem.toFixed(2)}`;
+                document.getElementById('kpi-target-remaining').className = targetRem === 0 ? 'kpi-box green' : 'kpi-box';
+
+                // 2. Fetch Account info
+                const aRes = await fetch('/api/v1/account');
+                const account = await aRes.json();
+                document.getElementById('kpi-equity').innerText = `$${(account.equity || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+                // 3. Fetch Portfolio limits
+                const eRes = await fetch('/api/v1/exposure');
+                const exp = await eRes.json();
+                document.getElementById('forex-exposure-txt').innerText = `${exp.sectors.Forex} / ${exp.max_sector_caps.Forex}`;
+                document.getElementById('metals-exposure-txt').innerText = `${exp.sectors.Metals} / ${exp.max_sector_caps.Metals}`;
+                document.getElementById('usd-exposure-txt').innerText = `${exp.currency_stack.USD || 0} / ${exp.max_currency_cap}`;
+                document.getElementById('usd-exposure-txt').className = (exp.currency_stack.USD || 0) >= exp.max_currency_cap ? 'text-red' : 'text-green';
+
+                // 4. Fetch Opportunities
+                const oRes = await fetch('/api/v1/opportunities');
+                const opps = await oRes.json();
+                const lBody = document.getElementById('leaderboard-tbody');
+                lBody.innerHTML = '';
+                if (opps.opportunities && opps.opportunities.length > 0) {
+                    opps.opportunities.forEach(opp => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong>${opp.symbol}</strong></td>
+                            <td><span class="badge badge-info">${opp.strategy}</span></td>
+                            <td><span class="badge ${opp.direction === 'LONG' ? 'badge-buy' : 'badge-sell'}">${opp.direction}</span></td>
+                            <td><strong>${opp.confidence_score}</strong></td>
+                            <td><span class="text-green">Active Monitoring</span></td>
+                        `;
+                        lBody.appendChild(tr);
+                    });
+                } else {
+                    lBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No setups on leaderboard. Scanning...</td></tr>`;
+                }
+
+                // 5. Fetch Open positions
+                const openRes = await fetch('/api/v1/trades/open');
+                const openData = await openRes.json();
+                const openBody = document.getElementById('open-positions-tbody');
+                openBody.innerHTML = '';
+                if (openData.trades && openData.trades.length > 0) {
+                    openData.trades.forEach(t => {
+                        const tr = document.createElement('tr');
+                        const profitClass = t.pnl_usd >= 0 ? 'text-green' : 'text-red';
+                        tr.innerHTML = `
+                            <td>#${t.mt5_ticket}</td>
+                            <td><strong>${t.symbol}</strong></td>
+                            <td><span class="badge ${t.direction === 'LONG' ? 'badge-buy' : 'badge-sell'}">${t.direction}</span></td>
+                            <td>${t.position_size_lots.toFixed(2)}</td>
+                            <td>${t.entry_price.toFixed(5)}</td>
+                            <td>${t.stop_loss.toFixed(5)}</td>
+                            <td>${t.take_profit.toFixed(5)}</td>
+                            <td class="${profitClass}"><strong>$${(t.pnl_usd || 0.0).toFixed(2)}</strong></td>
+                        `;
+                        openBody.appendChild(tr);
+                    });
+                } else {
+                    openBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No open positions.</td></tr>`;
+                }
+
+                // 6. Fetch Closed Trades (Journal & Performance)
+                const tRes = await fetch('/api/v1/trades?limit=500');
+                const tData = await tRes.json();
+                closedTrades = tData.trades || [];
+
+                // 7. Fetch Rejections
+                const rRes = await fetch('/api/v1/rejections?limit=500');
+                const rData = await rRes.json();
+                rejections = rData.rejections || [];
+
+                // Perform all statistics computations and render
+                calculateGlobalMetrics();
+                renderSymbolsMatrix();
+                renderRejections();
+                renderJournal();
+                renderAICoach();
+                renderEquityChart();
+
+            } catch (err) {
+                console.error("Fetch dashboard error: ", err);
+            }
+        }
+
+        async function fetchAdvancedData() {
+            try {
+                // 1. Fetch detailed exposures
+                const expRes = await fetch('/api/v1/advanced/exposure');
+                const expData = await expRes.json();
+                const container = document.getElementById('exposures-container');
+                container.innerHTML = '';
+                Object.keys(expData.exposures).forEach(k => {
+                    const val = expData.exposures[k];
+                    const percent = Math.min(100, (Math.abs(val) / (expData.total_exposure_usd || 1000.0)) * 100);
+                    const color = val >= 0 ? '#00ffcc' : '#ff007f';
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span><strong>${k}</strong> Basket</span>
+                            <span style="color: ${color}; font-weight: 700;">$${val.toFixed(2)}</span>
+                        </div>
+                        <div class="exp-bar-container">
+                            <div class="exp-bar-fill" style="width: ${percent}%; background-color: ${color};"></div>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+
+                // 2. Fetch correlations
+                const corrRes = await fetch('/api/v1/advanced/correlation');
+                const corrData = await corrRes.json();
+                const table = document.getElementById('correlation-table');
+                table.innerHTML = '';
+                const keys = Object.keys(corrData.matrix);
+                
+                // Header
+                let thRow = '<tr><th>Symbol</th>';
+                keys.forEach(k => thRow += `<th>${k}</th>`);
+                thRow += '</tr>';
+                table.innerHTML += thRow;
+                
+                // Rows
+                keys.forEach(k1 => {
+                    let tdRow = `<tr><td><strong>${k1}</strong></td>`;
+                    keys.forEach(k2 => {
+                        const val = corrData.matrix[k1][k2];
+                        let colorClass = '';
+                        if (Math.abs(val) > 0.8) colorClass = 'text-red';
+                        else if (Math.abs(val) < 0.3) colorClass = 'text-muted';
+                        else colorClass = 'text-green';
+                        tdRow += `<td class="corr-cell ${colorClass}">${val.toFixed(2)}</td>`;
+                    });
+                    tdRow += '</tr>';
+                    table.innerHTML += tdRow;
+                });
+                
+                // Correlation alerts
+                const alertDiv = document.getElementById('correlation-alerts');
+                alertDiv.innerHTML = '';
+                corrData.alerts.forEach(al => {
+                    alertDiv.innerHTML += `<div class="text-red" style="margin-bottom: 6px;">⚠️ ${al}</div>`;
+                });
+
+                // 3. Fetch concentration warning
+                const concRes = await fetch('/api/v1/advanced/risk-concentration');
+                const concData = await concRes.json();
+                const concList = document.getElementById('concentration-alerts-list');
+                concList.innerHTML = '';
+                if (concData.alerts.length > 0) {
+                    concData.alerts.forEach(al => {
+                        concList.innerHTML += `<div class="insight-box" style="border-left: 4px solid var(--danger);">
+                            <div class="explainer-label text-red">CONCENTRATION ALERT</div>
+                            <div style="font-size: 13px;">${al}</div>
+                        </div>`;
+                    });
+                    concData.recommendations.forEach(rec => {
+                        concList.innerHTML += `<div class="insight-box" style="border-left: 4px solid var(--accent);">
+                            <div class="explainer-label text-green">RECOMMENDATION</div>
+                            <div style="font-size: 13px;">${rec}</div>
+                        </div>`;
+                    });
+                } else {
+                    concList.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 20px;">Risk distribution is within target boundaries.</div>`;
+                }
+
+                // 4. Fetch margin health
+                const marginRes = await fetch('/api/v1/advanced/margin-health');
+                const marginData = await marginRes.json();
+                if (!marginData.error) {
+                    document.getElementById('margin-level-val').innerText = `${(marginData.margin_level || 0.0).toFixed(1)}%`;
+                    document.getElementById('liquidation-risk-val').innerText = marginData.liquidation_risk;
+                    document.getElementById('liquidation-risk-val').className = marginData.liquidation_risk === "LOW" ? 'text-green' : 'text-red';
+                    document.getElementById('margin-used-val').innerText = `$${(marginData.margin_used || 0.0).toFixed(2)}`;
+                    document.getElementById('margin-free-val').innerText = `$${(marginData.margin_free || 0.0).toFixed(2)}`;
+                }
+
+                // 5. Fetch strategies performance
+                const stratRes = await fetch('/api/v1/advanced/performance/strategies');
+                const stratData = await stratRes.json();
+                const stratBody = document.getElementById('strategies-performance-tbody');
+                stratBody.innerHTML = '';
+                Object.keys(stratData.strategies).forEach(k => {
+                    const item = stratData.strategies[k];
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><strong>${k}</strong></td>
+                        <td>${item.trades}</td>
+                        <td class="text-green">${item.wins}</td>
+                        <td class="text-red">${item.losses}</td>
+                        <td><strong>${item.win_rate}%</strong></td>
+                        <td class="${item.pnl >= 0 ? 'text-green' : 'text-red'}"><strong>$${item.pnl.toFixed(2)}</strong></td>
+                        <td>${item.avg_hold_time} min</td>
+                        <td>${item.avg_rr} R</td>
+                    `;
+                    stratBody.appendChild(tr);
+                });
+
+                // Grade performance
+                const gradeBody = document.getElementById('grade-performance-tbody');
+                if (gradeBody && stratData.grades) {
+                    gradeBody.innerHTML = '';
+                    Object.keys(stratData.grades).forEach(k => {
+                        const item = stratData.grades[k];
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong>${k}</strong></td>
+                            <td>${item.trades}</td>
+                            <td class="text-green">${item.wins}</td>
+                            <td class="text-red">${item.losses}</td>
+                            <td><strong>${item.win_rate}%</strong></td>
+                            <td>${item.profit_factor}</td>
+                            <td>${item.avg_drawdown}%</td>
+                            <td>${item.avg_r_multiple}R</td>
+                            <td>$${item.expected_value.toFixed(2)}</td>
+                            <td class="${item.pnl >= 0 ? 'text-green' : 'text-red'}"><strong>$${item.pnl.toFixed(2)}</strong></td>
+                        `;
+                        gradeBody.appendChild(tr);
+                    });
+                }
+
+                // Conditions
+                const condTable = document.getElementById('conditions-performance-table');
+                condTable.innerHTML = '<tr><th>Regime</th><th>Trades</th><th>Win Rate</th><th>PnL</th></tr>';
+                Object.keys(stratData.regimes).forEach(k => {
+                    const item = stratData.regimes[k];
+                    condTable.innerHTML += `
+                        <tr>
+                            <td><strong>${k}</strong></td>
+                            <td>${item.trades}</td>
+                            <td>${item.win_rate}%</td>
+                            <td class="${item.pnl >= 0 ? 'text-green' : 'text-red'}">$${item.pnl.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+
+                // Sessions
+                const sessTable = document.getElementById('sessions-performance-table');
+                sessTable.innerHTML = '<tr><th>Session</th><th>Trades</th><th>Win Rate</th><th>PnL</th></tr>';
+                Object.keys(stratData.sessions).forEach(k => {
+                    const item = stratData.sessions[k];
+                    sessTable.innerHTML += `
+                        <tr>
+                            <td><strong>${k}</strong></td>
+                            <td>${item.trades}</td>
+                            <td>${item.win_rate}%</td>
+                            <td class="${item.pnl >= 0 ? 'text-green' : 'text-red'}">$${item.pnl.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+
+                // Timeframes
+                const tfTable = document.getElementById('timeframe-performance-table');
+                tfTable.innerHTML = '<tr><th>Timeframe</th><th>Trades</th><th>Win Rate</th><th>PnL</th></tr>';
+                Object.keys(stratData.timeframes).forEach(k => {
+                    const item = stratData.timeframes[k];
+                    tfTable.innerHTML += `
+                        <tr>
+                            <td><strong>${k}</strong></td>
+                            <td>${item.trades}</td>
+                            <td>${item.win_rate}%</td>
+                            <td class="${item.pnl >= 0 ? 'text-green' : 'text-red'}">$${item.pnl.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+
+                // 6. Fetch missed opportunities
+                const missedRes = await fetch('/api/v1/advanced/missed-opportunities');
+                const missedData = await missedRes.json();
+                
+                // 7. Fetch false signals
+                const falseRes = await fetch('/api/v1/advanced/false-signals');
+                const falseData = await falseRes.json();
+                
+                // 8. Fetch broker metrics
+                const brokerRes = await fetch('/api/v1/advanced/broker-performance');
+                const brokerData = await brokerRes.json();
+                document.getElementById('exec-delay-val').innerText = `${brokerData.execution_delay_ms} ms`;
+                document.getElementById('broker-lat-val').innerText = `${brokerData.broker_latency_ms} ms`;
+                document.getElementById('avg-spread-val').innerText = `${brokerData.average_spread_pips} Pips`;
+                document.getElementById('slippage-val').innerText = `${brokerData.average_slippage_points} Points`;
+
+                // 9. Fetch system health
+                const sHealthRes = await fetch('/api/v1/advanced/system-health');
+                const sHealthData = await sHealthRes.json();
+                const mList = document.getElementById('modules-health-list');
+                mList.innerHTML = '';
+                Object.keys(sHealthData.modules).forEach(k => {
+                    const item = sHealthData.modules[k];
+                    const activeClass = item.status === "RUNNING" ? 'text-green' : 'text-red';
+                    mList.innerHTML += `
+                        <div class="insight-box" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><strong>${k}</strong></div>
+                            <div style="font-size: 13px;">Uptime state: <strong class="${activeClass}">${item.status}</strong></div>
+                            <div style="font-size: 13px; color: var(--text-muted);">${item.latency_ms} ms delay</div>
+                        </div>
+                    `;
+                });
+
+                // 10. Fetch debriefs
+                const debriefRes = await fetch('/api/v1/advanced/debrief');
+                const debriefData = await debriefRes.json();
+                document.getElementById('debrief-morning').innerText = debriefData.morning_brief;
+                document.getElementById('debrief-midday').innerText = debriefData.midday_brief;
+                document.getElementById('debrief-eod').innerText = debriefData.end_of_day_review;
+
+                // 11. Fetch Monte Carlo
+                const mcRes = await fetch('/api/v1/advanced/monte-carlo');
+                const mcData = await mcRes.json();
+                document.getElementById('ruin-probability-val').innerText = `${mcData.ruin_probability_pct}%`;
+                document.getElementById('ruin-probability-val').className = mcData.ruin_probability_pct > 10.0 ? 'text-red' : 'text-green';
+                renderMonteCarloChart(mcData.sample_paths);
+                
+                // Run simulator once initialized
+                runRiskSimulation();
+
+            } catch (e) {
+                console.error("Advanced fetch metrics error: ", e);
+            }
+        }
+
+        async function submitNLPQuery() {
+            const val = document.getElementById('nlp-query-input').value;
+            if (!val) return;
+            
+            const resBox = document.getElementById('nlp-response-box');
+            resBox.style.display = 'block';
+            resBox.innerText = "Querying cognitive databases...";
+            
+            try {
+                const res = await fetch('/api/v1/advanced/nl-query', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({query: val})
+                });
+                const data = await res.json();
+                resBox.innerText = data.response;
+            } catch(e) {
+                resBox.innerText = "Error executing search: " + e;
+            }
+        }
+
+        async function runRiskSimulation() {
+            const mult = document.getElementById('sim-lot-mult').value;
+            const stop = document.getElementById('sim-stop-equity').value;
+            const disable = document.getElementById('sim-disable-jpy').value === "true";
+            
+            try {
+                const res = await fetch('/api/v1/advanced/simulate-risk', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({lot_mult: mult, stop_equity: stop, disable_usd_jpy: disable})
+                });
+                const data = await res.json();
+                document.getElementById('sim-orig-pnl').innerText = `$${data.original_net_profit.toFixed(2)}`;
+                document.getElementById('sim-new-pnl').innerText = `$${data.simulated_net_profit.toFixed(2)}`;
+                document.getElementById('sim-new-pnl').className = data.simulated_net_profit >= 0 ? 'text-green' : 'text-red';
+                document.getElementById('sim-new-dd').innerText = `${data.simulated_drawdown_pct}%`;
+                document.getElementById('sim-margin-level-state').innerText = data.margin_level_impact;
+                document.getElementById('sim-margin-level-state').className = data.margin_level_impact === "HEALTHY" ? 'text-green' : 'text-red';
+            } catch(e) {
+                console.error("Simulation request failed", e);
+            }
+        }
+
+        function calculateGlobalMetrics() {
+            if (closedTrades.length === 0) return;
+
+            let grossProfit = 0;
+            let grossLoss = 0;
+            let totalQuality = 0;
+            let totalDur = 0;
+            let countWin = 0;
+            let countLoss = 0;
+
+            closedTrades.forEach(t => {
+                const pnl = parseFloat(t.pnl_usd || 0);
+                if (pnl > 0) {
+                    grossProfit += pnl;
+                    countWin++;
+                } else if (pnl < 0) {
+                    grossLoss += Math.abs(pnl);
+                    countLoss++;
+                }
+                totalQuality += parseInt(t.confidence_score || 0);
+                totalDur += parseFloat(t.duration_minutes || 0);
+            });
+
+            const totalClosed = closedTrades.length;
+            const netProfit = grossProfit - grossLoss;
+            const pf = grossLoss > 0 ? (grossProfit / grossLoss) : grossProfit;
+            const avgQuality = totalClosed > 0 ? (totalQuality / totalClosed) : 0.0;
+            const avgWin = countWin > 0 ? (grossProfit / countWin) : 0.0;
+            const avgLoss = countLoss > 0 ? (grossLoss / countLoss) : 0.0;
+            const avgHolding = totalClosed > 0 ? (totalDur / totalClosed) : 0.0;
+            const winRate = totalClosed > 0 ? (countWin / totalClosed * 100) : 0.0;
+
+            const expectancy = (winRate/100 * avgWin) - ((100-winRate)/100 * avgLoss);
+
+            document.getElementById('kpi-pf').innerText = pf.toFixed(2);
+            document.getElementById('kpi-pf').className = pf >= 1.5 ? 'kpi-val text-green' : 'kpi-val text-red';
+            document.getElementById('kpi-avg-quality').innerText = avgQuality.toFixed(1);
+
+            document.getElementById('stat-gross-profit').innerText = `$${grossProfit.toFixed(2)}`;
+            document.getElementById('stat-gross-loss').innerText = `-$${grossLoss.toFixed(2)}`;
+            document.getElementById('stat-avg-win').innerText = `$${avgWin.toFixed(2)}`;
+            document.getElementById('stat-avg-loss').innerText = `-$${avgLoss.toFixed(2)}`;
+            document.getElementById('stat-holding-time').innerText = `${avgHolding.toFixed(1)} min`;
+            document.getElementById('stat-expectancy').innerText = `$${expectancy.toFixed(2)}`;
+            document.getElementById('stat-expectancy').className = expectancy >= 0 ? 'text-green' : 'text-red';
+
+            let returns = closedTrades.map(t => parseFloat(t.pnl_usd || 0));
+            if (returns.length > 1) {
+                let mean = returns.reduce((a,b)=>a+b, 0) / returns.length;
+                let variance = returns.reduce((a,b)=>a + Math.pow(b - mean, 2), 0) / (returns.length - 1);
+                let stddev = Math.sqrt(variance);
+                let sharpe = stddev > 0 ? (mean / stddev) * Math.sqrt(252) : 0.0;
+                document.getElementById('stat-sharpe').innerText = sharpe.toFixed(2);
+            }
+        }
+
+        function renderSymbolsMatrix() {
+            const tbody = document.getElementById('symbols-matrix-tbody');
+            if (closedTrades.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: var(--text-muted);">No symbols trading history found.</td></tr>`;
+                return;
+            }
+
+            const symData = {};
+            closedTrades.forEach(t => {
+                const sym = t.symbol;
+                if (!symData[sym]) {
+                    symData[sym] = { trades: 0, wins: 0, losses: 0, profit: 0.0, gp: 0.0, gl: 0.0, sumQuality: 0 };
+                }
+                const p = symData[sym];
+                p.trades++;
+                const pnl = parseFloat(t.pnl_usd || 0);
+                p.profit += pnl;
+                if (pnl > 0) {
+                    p.wins++;
+                    p.gp += pnl;
+                } else if (pnl < 0) {
+                    p.losses++;
+                    p.gl += Math.abs(pnl);
+                }
+                p.sumQuality += parseInt(t.confidence_score || 0);
+            });
+
+            tbody.innerHTML = '';
+            Object.keys(symData).forEach(sym => {
+                const p = symData[sym];
+                const winRate = p.trades > 0 ? (p.wins / p.trades * 100) : 0;
+                const avgProfit = p.wins > 0 ? (p.gp / p.wins) : 0;
+                const avgLoss = p.losses > 0 ? (p.gl / p.losses) : 0;
+                const pf = p.gl > 0 ? (p.gp / p.gl) : p.gp;
+                const avgQual = p.trades > 0 ? (p.sumQuality / p.trades) : 0;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${sym}</strong></td>
+                    <td>${p.trades}</td>
+                    <td class="text-green">${p.wins}</td>
+                    <td class="text-red">${p.losses}</td>
+                    <td><strong>${winRate.toFixed(0)}%</strong></td>
+                    <td class="${p.profit >= 0 ? 'text-green' : 'text-red'}"><strong>$${p.profit.toFixed(2)}</strong></td>
+                    <td class="text-green">$${avgProfit.toFixed(2)}</td>
+                    <td class="text-red">-$${avgLoss.toFixed(2)}</td>
+                    <td>${pf.toFixed(2)}</td>
+                    <td><strong class="text-green">${avgQual.toFixed(0)}</strong></td>
+                `;
+                tbody.appendChild(tr);
+
+                populateFilterOptions('rejections-symbol-filter', sym);
+                populateFilterOptions('journal-symbol-filter', sym);
+            });
+        }
+
+        function populateFilterOptions(selectId, value) {
+            const select = document.getElementById(selectId);
+            if (![...select.options].some(o => o.value === value)) {
+                const opt = document.createElement('option');
+                opt.value = value;
+                opt.text = value;
+                select.add(opt);
+            }
+        }
+
+        function renderRejections() {
+            filterRejections();
+        }
+
+        function filterRejections() {
+            const tbody = document.getElementById('rejections-tbody');
+            const searchVal = document.getElementById('rejections-search').value.toLowerCase();
+            const symbolVal = document.getElementById('rejections-symbol-filter').value;
+
+            const filtered = rejections.filter(r => {
+                const matchesSearch = r.symbol.toLowerCase().includes(searchVal) || 
+                                      r.reason_for_rejection.toLowerCase().includes(searchVal);
+                const matchesSymbol = symbolVal === "" || r.symbol === symbolVal;
+                return matchesSearch && matchesSymbol;
+            });
+
+            tbody.innerHTML = '';
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No rejections match the filters.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(r => {
+                const tr = document.createElement('tr');
+                const cond = typeof r.failed_conditions === "string" ? JSON.parse(r.failed_conditions) : (r.failed_conditions || []);
+                tr.innerHTML = `
+                    <td><span class="log-ts">${r.timestamp.replace('T', ' ').substring(0, 19)}</span></td>
+                    <td><strong>${r.symbol}</strong></td>
+                    <td><span class="badge ${r.direction === 'LONG' ? 'badge-buy' : 'badge-sell'}">${r.direction}</span></td>
+                    <td><strong>${r.confidence_score}</strong></td>
+                    <td class="text-red">${r.reason_for_rejection}</td>
+                    <td style="font-size: 12px; color: var(--text-muted);">${cond.join(' | ')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderJournal() {
+            filterJournal();
+        }
+
+        function filterJournal() {
+            const tbody = document.getElementById('journal-tbody');
+            const searchVal = document.getElementById('journal-search').value.toLowerCase();
+            const symbolVal = document.getElementById('journal-symbol-filter').value;
+            const dirVal = document.getElementById('journal-dir-filter').value;
+            const resultVal = document.getElementById('journal-result-filter').value;
+
+            const filtered = closedTrades.filter(t => {
+                const matchesSearch = t.trade_id.toLowerCase().includes(searchVal) || 
+                                      t.symbol.toLowerCase().includes(searchVal) || 
+                                      (t.reason_for_entry && t.reason_for_entry.toLowerCase().includes(searchVal));
+                const matchesSymbol = symbolVal === "" || t.symbol === symbolVal;
+                const matchesDir = dirVal === "" || t.direction === dirVal;
+                
+                let matchesResult = true;
+                const pnl = parseFloat(t.pnl_usd || 0);
+                if (resultVal === "WIN") matchesResult = pnl > 0.01;
+                else if (resultVal === "LOSS") matchesResult = pnl < -0.01;
+                else if (resultVal === "BE") matchesResult = Math.abs(pnl) <= 0.01;
+
+                return matchesSearch && matchesSymbol && matchesDir && matchesResult;
+            });
+
+            tbody.innerHTML = '';
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="12" style="text-align: center; color: var(--text-muted);">No closed trades match the filters.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(t => {
+                const pnl = parseFloat(t.pnl_usd || 0);
+                const score = parseInt(t.confidence_score || 0);
+                let grade = "Standard B";
+                let gradeClass = "badge-info";
+                if (score >= 95) { grade = "Inst. A+"; gradeClass = "badge-buy"; }
+                else if (score >= 80) { grade = "Strong A"; gradeClass = "badge-buy"; }
+                
+                const tr = document.createElement('tr');
+                tr.style.cursor = 'pointer';
+                tr.onclick = () => {
+                    showTradeExplainer(t);
+                    loadPlaybackSimulation(t);
+                };
+                tr.innerHTML = `
+                    <td><strong>#${t.mt5_ticket}</strong></td>
+                    <td><span class="log-ts">${t.timestamp_open.replace('T', ' ').substring(0, 19)}</span></td>
+                    <td><strong>${t.symbol}</strong></td>
+                    <td><span class="badge ${t.direction === 'LONG' ? 'badge-buy' : 'badge-sell'}">${t.direction}</span></td>
+                    <td>${t.position_size_lots.toFixed(2)}</td>
+                    <td>${t.entry_price.toFixed(5)}</td>
+                    <td>${t.exit_price ? t.exit_price.toFixed(5) : 'N/A'}</td>
+                    <td class="${pnl >= 0 ? 'text-green' : 'text-red'}"><strong>$${pnl.toFixed(2)}</strong></td>
+                    <td><strong>${score}</strong></td>
+                    <td><span class="badge ${gradeClass}">${grade}</span></td>
+                    <td>${t.strategy_used || 'scalp_m5'}</td>
+                    <td style="font-size: 12px; color: var(--text-muted); text-overflow: ellipsis; max-width: 250px; overflow: hidden; white-space: nowrap;">${t.reason_for_entry}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function showTradeExplainer(trade) {
+            document.getElementById('exp-title').innerText = `Execution Explainer Matrix | Trade #${trade.mt5_ticket} (${trade.symbol})`;
+            document.getElementById('exp-reason-taken').innerText = trade.reason_for_entry || "Executed on confluences validation.";
+
+            const pnl = parseFloat(trade.pnl_usd || 0);
+            if (pnl < 0) {
+                document.getElementById('exp-block-lost').style.display = 'block';
+                document.getElementById('exp-reason-lost').innerText = `Trade closed at a loss of $${Math.abs(pnl).toFixed(2)}. Exit Trigger: ${trade.reason_for_exit || 'Stop Loss hit'}. Post-Mortem: Price broke structural support or experienced volatility expansion during the news windows.`;
+            } else {
+                document.getElementById('exp-block-lost').style.display = 'none';
+            }
+
+            document.getElementById('exp-val-structure').innerText = (trade.score_structure || "70") + " pts";
+            document.getElementById('exp-val-liquidity').innerText = (trade.score_liquidity || "80") + " pts";
+            document.getElementById('exp-val-smc').innerText = (trade.score_smc || "60") + " pts";
+            document.getElementById('exp-val-trend').innerText = (trade.score_trend || "70") + " pts";
+            document.getElementById('exp-val-momentum').innerText = (trade.score_momentum || "85") + " pts";
+            document.getElementById('exp-val-volatility').innerText = (trade.score_volatility || "70") + " pts";
+            document.getElementById('exp-val-pullback').innerText = (trade.score_pullback || "70") + " pts";
+            document.getElementById('exp-val-rr').innerText = (trade.risk_reward_ratio ? trade.risk_reward_ratio.toFixed(2) : "1.5") + " R";
+
+            document.getElementById('explainer-modal').style.display = 'flex';
+        }
+
+        function loadPlaybackSimulation(trade) {
+            // Draw simulated candle charts step-by-step
+            const container = document.getElementById('playback-chart-container');
+            container.innerHTML = `<div id="playback-inner-chart" style="width: 100%; height: 100%;"></div>`;
+            
+            const options = {
+                series: [{
+                    data: [
+                        { x: new Date(1538778600000), y: [6629.81, 6650.5, 6622.98, 6632.01] },
+                        { x: new Date(1538780400000), y: [6632.01, 6643.59, 6620, 6630.11] },
+                        { x: new Date(1538782200000), y: [6630.11, 6636.39, 6610, 6618.31] },
+                        { x: new Date(1538784000000), y: [6618.31, 6625, 6590, 6608.23] },
+                        { x: new Date(1538785800000), y: [6608.23, 6612, 6601.31, 6605.0] }
+                    ]
+                }],
+                chart: {
+                    type: 'candlestick',
+                    height: 330,
+                    background: 'transparent',
+                    foreColor: '#838fa7',
+                    toolbar: { show: false }
+                },
+                xaxis: {
+                    type: 'datetime'
+                },
+                yaxis: {
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            };
+            const pChart = new ApexCharts(document.querySelector("#playback-inner-chart"), options);
+            pChart.render();
+            
+            // Build decision timeline
+            const tList = document.getElementById('timeline-log-list');
+            tList.innerHTML = `
+                <div class="timeline-step">
+                    <strong>[${trade.timestamp_open.substring(11,19)}] Signal Scanned</strong>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Strategy ${trade.strategy_used} triggered alignment matrix.</p>
+                </div>
+                <div class="timeline-step">
+                    <strong>Score Compiled: ${trade.confidence_score} Points</strong>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Structure: ${trade.score_structure} | SMC: ${trade.score_smc} | Volatility: ${trade.score_volatility}</p>
+                </div>
+                <div class="timeline-step">
+                    <strong>Risk Approval Passed</strong>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Margin validation cleared at leverage 1:500.</p>
+                </div>
+                <div class="timeline-step closed">
+                    <strong>Closed at exit price: ${trade.exit_price || 'N/A'}</strong>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0;">Outcome: ${trade.pnl_usd >= 0 ? 'WIN' : 'LOSS'} | Exit code: ${trade.exit_reason_code || 'SL_HIT'}</p>
+                </div>
+            `;
+            
+            switchTab('playback');
+        }
+
+        function exportJournalCSV() {
+            if (closedTrades.length === 0) {
+                alert("No trades to export.");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Ticket,Timestamp,Symbol,Direction,Lots,Entry,Exit,PnL,Score,Strategy,Reason\n";
+
+            closedTrades.forEach(t => {
+                const row = [
+                    t.mt5_ticket,
+                    t.timestamp_open,
+                    t.symbol,
+                    t.direction,
+                    t.position_size_lots,
+                    t.entry_price,
+                    t.exit_price || "",
+                    t.pnl_usd,
+                    t.confidence_score,
+                    t.strategy_used,
+                    `"${t.reason_for_entry ? t.reason_for_entry.replace(/"/g, '""') : ''}"`
+                ].join(",");
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `zohra_trade_journal_${new Date().toISOString().substring(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function renderAICoach() {
+            const container = document.getElementById('ai-insights-container');
+            container.innerHTML = '';
+
+            if (closedTrades.length < 5) {
+                container.innerHTML = `<div style="color: var(--text-muted);">Gathering more trades history to formulate AI coaching weights.</div>`;
+                return;
+            }
+
+            const symData = {};
+            closedTrades.forEach(t => {
+                const sym = t.symbol;
+                if (!symData[sym]) symData[sym] = { trades: 0, wins: 0, profit: 0 };
+                symData[sym].trades++;
+                const pnl = parseFloat(t.pnl_usd || 0);
+                symData[sym].profit += pnl;
+                if (pnl > 0) symData[sym].wins++;
+            });
+
+            let bestSym = "";
+            let bestWR = -1;
+            let worstSym = "";
+            let worstWR = 101;
+
+            Object.keys(symData).forEach(sym => {
+                const wr = (symData[sym].wins / symData[sym].trades) * 100;
+                if (wr > bestWR && symData[sym].trades >= 3) {
+                    bestWR = wr;
+                    bestSym = sym;
+                }
+                if (wr < worstWR && symData[sym].trades >= 3) {
+                    worstWR = wr;
+                    worstSym = sym;
+                }
+            });
+
+            if (bestSym) {
+                const div = document.createElement('div');
+                div.className = 'insight-box';
+                div.innerHTML = `
+                    <div class="explainer-label text-green">Symbol Optimization Recommendation</div>
+                    <div style="font-size: 14px;">Win rate for <strong>${bestSym}</strong> is high at <strong>${bestWR.toFixed(0)}%</strong>. Consider allocating higher capital weights.</div>
+                `;
+                container.appendChild(div);
+            }
+
+            if (worstSym && worstWR < 50) {
+                const div = document.createElement('div');
+                div.className = 'insight-box';
+                div.innerHTML = `
+                    <div class="explainer-label text-red">Underperforming Asset Alert</div>
+                    <div style="font-size: 14px;"><strong>${worstSym}</strong> win rate is only <strong>${worstWR.toFixed(0)}%</strong>. Consider lowering its priority weight.</div>
+                `;
+                container.appendChild(div);
+            }
+        }
+
+        function renderEquityChart() {
+            if (closedTrades.length === 0) return;
+
+            let eq = 150.0;
+            const dates = [];
+            const data = [150.0];
+
+            const chronological = [...closedTrades].reverse();
+            chronological.forEach(t => {
+                eq += parseFloat(t.pnl_usd || 0);
+                data.push(parseFloat(eq.toFixed(2)));
+                dates.push(t.timestamp_open.substring(11, 16));
+            });
+
+            dates.unshift("Start");
+
+            const options = {
+                series: [{
+                    name: 'Simulated Equity ($)',
+                    data: data
+                }],
+                chart: {
+                    type: 'area',
+                    height: 180,
+                    background: 'transparent',
+                    foreColor: '#838fa7',
+                    toolbar: { show: false }
+                },
+                colors: ['#00ffcc'],
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.35,
+                        opacityTo: 0.01,
+                        stops: [0, 90, 100]
+                    }
+                },
+                grid: {
+                    borderColor: 'rgba(255, 255, 255, 0.05)',
+                    strokeDashArray: 4
+                },
+                xaxis: {
+                    categories: dates,
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: {
+                    labels: {
+                        formatter: function (value) {
+                            return "$" + value.toFixed(2);
+                        }
+                    }
+                },
+                tooltip: {
+                    theme: 'dark'
+                }
+            };
+
+            if (chart) {
+                chart.updateSeries([{ data: data }]);
+            } else {
+                chart = new ApexCharts(document.querySelector("#equity-chart"), options);
+                chart.render();
+            }
+        }
+
+        function renderMonteCarloChart(paths) {
+            const series = [];
+            paths.forEach((p, idx) => {
+                series.push({
+                    name: `Simulation Path #${idx+1}`,
+                    data: p
+                });
+            });
+            
+            const options = {
+                series: series,
+                chart: {
+                    type: 'line',
+                    height: 250,
+                    background: 'transparent',
+                    foreColor: '#838fa7',
+                    toolbar: { show: false }
+                },
+                stroke: {
+                    width: 2,
+                    curve: 'smooth'
+                },
+                grid: {
+                    borderColor: 'rgba(255,255,255,0.05)'
+                },
+                xaxis: {
+                    categories: Array.from({length: 31}, (_, i) => `D${i}`)
+                },
+                tooltip: {
+                    theme: 'dark'
+                }
+            };
+
+            if (mcChart) {
+                mcChart.updateSeries(series);
+            } else {
+                mcChart = new ApexCharts(document.querySelector("#monte-carlo-chart"), options);
+                mcChart.render();
+            }
+        }
+
+        async function sendCommand(action) {
+            try {
+                const url = action === 'halt' ? '/api/v1/commands/halt' : '/api/v1/commands/resume';
+                const body = action === 'halt' ? JSON.stringify({reason: 'Manual UI Halt'}) : null;
+                const headers = action === 'halt' ? {'Content-Type': 'application/json'} : {};
+                
+                await fetch(url, {
+                    method: 'POST',
+                    headers: headers,
+                    body: body
+                });
+                fetchDashboard();
+            } catch (e) {
+                alert("Failed to send command: " + e);
+            }
+        }
+
+        async function closeAll() {
+            if (confirm("Are you sure you want to trigger emergency CLOSE-ALL for all open positions?")) {
+                try {
+                    await fetch('/api/v1/commands/close-all', { method: 'POST' });
+                    fetchDashboard();
+                } catch(e) {
+                    alert("Emergency close request failed: " + e);
+                }
+            }
+        }
+
+        // ─── ZOHRA CHAT ─────────────────────────────────────────
+        const chatSessionId = 'session_' + Date.now();
+
+        async function sendChatMessage(messageText) {
+            const input = document.getElementById('zohra-chat-input');
+            const msg = messageText || input.value.trim();
+            if (!msg) return;
+            input.value = '';
+
+            // Add user message
+            const messagesDiv = document.getElementById('zohra-chat-messages');
+            messagesDiv.innerHTML += `<div class="chat-msg user">${escapeHtml(msg)}</div>`;
+
+            // Show typing indicator
+            document.getElementById('chat-typing').style.display = 'block';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            try {
+                const res = await fetch('/api/v1/chat/stream', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ session_id: chatSessionId, message: msg })
+                });
+
+                if (!res.ok) {
+                    throw new Error("HTTP error " + res.status);
+                }
+
+                document.getElementById('chat-typing').style.display = 'none';
+
+                // Create bot response card
+                const botCard = document.createElement('div');
+                botCard.className = 'chat-msg bot';
+                
+                // Collapsible reasoning details panel
+                const reasoningDetails = document.createElement('details');
+                reasoningDetails.open = true;
+                reasoningDetails.style.marginBottom = '12px';
+                reasoningDetails.style.opacity = '0.9';
+                reasoningDetails.style.background = 'rgba(138,43,226,0.05)';
+                reasoningDetails.style.border = '1px solid rgba(138,43,226,0.2)';
+                reasoningDetails.style.borderRadius = '8px';
+                reasoningDetails.style.padding = '8px';
+                
+                const reasoningSummary = document.createElement('summary');
+                reasoningSummary.style.cursor = 'pointer';
+                reasoningSummary.style.color = 'var(--accent)';
+                reasoningSummary.style.fontWeight = 'bold';
+                reasoningSummary.innerText = '🧠 Agent Reasoning & Steps';
+                
+                const reasoningText = document.createElement('div');
+                reasoningText.style.padding = '8px 0 0 0';
+                reasoningText.style.fontSize = '12px';
+                reasoningText.style.fontFamily = 'monospace';
+                reasoningText.style.color = 'var(--text-muted)';
+                reasoningText.style.whiteSpace = 'pre-wrap';
+                
+                reasoningDetails.appendChild(reasoningSummary);
+                reasoningDetails.appendChild(reasoningText);
+                botCard.appendChild(reasoningDetails);
+
+                // Text response container
+                const responseContainer = document.createElement('div');
+                botCard.appendChild(responseContainer);
+                messagesDiv.appendChild(botCard);
+                
+                // Read stream
+                const reader = res.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let buffer = '';
+                let rawAccumulatedText = '';
+
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop();
+
+                    for (const line of lines) {
+                        const cleanLine = line.trim();
+                        if (cleanLine.startsWith('data: ')) {
+                            const rawData = cleanLine.substring(6);
+                            try {
+                                const payload = JSON.parse(rawData);
+                                if (payload.type === 'thought') {
+                                    reasoningText.innerText += `\n-> ${payload.content}`;
+                                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                                } else if (payload.type === 'tool') {
+                                    reasoningText.innerText += `\n🛠️ [Tool] ${payload.name}(${JSON.stringify(payload.args)})`;
+                                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                                } else if (payload.type === 'token') {
+                                    if (reasoningDetails.open) {
+                                        reasoningDetails.open = false; // collapse reasoning once response starts
+                                    }
+                                    rawAccumulatedText += payload.content;
+                                    responseContainer.innerHTML = formatChatResponse(rawAccumulatedText);
+                                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                                } else if (payload.type === 'error') {
+                                    responseContainer.innerHTML += `<div style="color:var(--danger)">⚠️ Error: ${payload.content}</div>`;
+                                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                                }
+                            } catch (err) {
+                                console.error("Error parsing JSON stream chunk:", err);
+                            }
+                        }
+                    }
+                }
+            } catch(e) {
+                document.getElementById('chat-typing').style.display = 'none';
+                messagesDiv.innerHTML += `<div class="chat-msg bot" style="border-color: var(--danger);"><div>⚠️ Connection error: ${e.message}</div></div>`;
+            }
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function formatChatResponse(text) {
+            const lines = text.split('\n');
+            let html = '';
+            let inTable = false;
+            let inCode = false;
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                
+                if (line.startsWith('```')) {
+                    if (inCode) {
+                        html += '</code></pre>';
+                        inCode = false;
+                    } else {
+                        html += '<pre style="background:rgba(0,0,0,0.3); padding:10px; border-radius:8px; border:1px solid var(--border); overflow-x:auto;"><code style="font-family:monospace; color:var(--accent);">';
+                        inCode = true;
+                    }
+                    continue;
+                }
+                
+                if (inCode) {
+                    html += escapeHtml(lines[i]) + '\n';
+                    continue;
+                }
+                
+                if (line.startsWith('|')) {
+                    const cells = line.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
+                    if (cells.length > 0) {
+                        if (cells.every(c => c.startsWith('-') || c.startsWith(':'))) {
+                            continue;
+                        }
+                        
+                        if (!inTable) {
+                            html += '<table style="width:100%; border-collapse:collapse; margin:12px 0; border:1px solid var(--border);"><thead><tr style="background:rgba(255,255,255,0.03);">';
+                            cells.forEach(c => {
+                                html += `<th style="padding:10px; border:1px solid var(--border); text-align:left; color:var(--accent); font-weight:600;">${c}</th>`;
+                            });
+                            html += '</tr></thead><tbody>';
+                            inTable = true;
+                        } else {
+                            html += '<tr>';
+                            cells.forEach(c => {
+                                html += `<td style="padding:10px; border:1px solid var(--border);">${parseLineFormatting(c)}</td>`;
+                            });
+                            html += '</tr>';
+                        }
+                        continue;
+                    }
+                } else if (inTable) {
+                    html += '</tbody></table>';
+                    inTable = false;
+                }
+                
+                if (line.startsWith('*') || line.startsWith('-')) {
+                    html += `<li style="margin-left:18px; margin-bottom:6px; list-style-type:square;">${parseLineFormatting(line.substring(1).trim())}</li>`;
+                    continue;
+                }
+                
+                if (line === '') {
+                    html += '<br>';
+                } else {
+                    html += `<div style="margin-bottom:8px; line-height:1.5;">${parseLineFormatting(line)}</div>`;
+                }
+            }
+            
+            if (inTable) html += '</tbody></table>';
+            if (inCode) html += '</code></pre>';
+            
+            return html;
+        }
+
+        function parseLineFormatting(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`(.*?)`/g, '<code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px; font-family:monospace; color:var(--accent); font-size:13px;">$1</code>');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function handleChatKeydown(e) {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
+        }
+
+        // ─── AI MEMORY ──────────────────────────────────────────
+        async function searchMemory() {
+            const query = document.getElementById('memory-search-input').value.trim();
+            const container = document.getElementById('memory-results');
+            if (!query) { loadRecentMemories(); return; }
+            container.innerHTML = '<div style="color:var(--text-muted)">Searching memories...</div>';
+            try {
+                const res = await fetch(`/api/v1/memory/search?q=${encodeURIComponent(query)}`);
+                const data = await res.json();
+                renderMemoryCards(data.results || []);
+            } catch(e) {
+                container.innerHTML = `<div style="color:var(--danger)">Error: ${e.message}</div>`;
+            }
+        }
+
+        async function loadRecentMemories() {
+            const container = document.getElementById('memory-results');
+            try {
+                const res = await fetch('/api/v1/memory/recent');
+                const data = await res.json();
+                document.getElementById('memory-total-count').textContent = data.total || '0';
+                renderMemoryCards(data.entries || []);
+            } catch(e) {
+                container.innerHTML = `<div style="color:var(--text-muted)">Memory store offline or empty.</div>`;
+            }
+        }
+
+        function renderMemoryCards(entries) {
+            const container = document.getElementById('memory-results');
+            if (!entries.length) { container.innerHTML = '<div style="color:var(--text-muted)">No memories found.</div>'; return; }
+            const categoryColors = { 'winning_trade': 'var(--success)', 'losing_trade': 'var(--danger)', 'market_event': 'var(--primary)', 'strategy_insight': '#fbbf24' };
+            container.innerHTML = entries.map(m => {
+                const color = categoryColors[m.category] || 'var(--text-muted)';
+                return `<div class="card" style="padding:16px; border-left: 3px solid ${color};">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                        <span style="background:${color}22;color:${color};padding:2px 10px;border-radius:10px;font-size:11px;">${m.category || 'unknown'}</span>
+                        <span style="font-size:11px;color:var(--text-muted)">${m.timestamp ? new Date(m.timestamp).toLocaleString() : ''}</span>
+                    </div>
+                    <div style="font-size:13px;line-height:1.5;">${escapeHtml(m.context_text || m.text || '')}</div>
+                </div>`;
+            }).join('');
+        }
+
+        // ─── LEARNING ENGINE ────────────────────────────────────
+        async function loadLearningData() {
+            try {
+                const [pRes, rRes] = await Promise.all([
+                    fetch('/api/v1/learning/patterns'),
+                    fetch('/api/v1/learning/recommendations')
+                ]);
+                const patterns = await pRes.json();
+                const recommendations = await rRes.json();
+
+                renderPatterns('winning-patterns-container', patterns.winning_patterns || [], 'var(--success)');
+                renderPatterns('failure-patterns-container', patterns.failure_patterns || [], 'var(--danger)');
+                renderRecommendations(recommendations.recommendations || []);
+            } catch(e) {
+                document.getElementById('winning-patterns-container').innerHTML = '<div style="color:var(--text-muted)">Learning engine offline.</div>';
+            }
+        }
+
+        function renderPatterns(containerId, patterns, color) {
+            const container = document.getElementById(containerId);
+            if (!patterns.length) { container.innerHTML = '<div style="color:var(--text-muted)">No patterns discovered yet.</div>'; return; }
+            container.innerHTML = patterns.map(p => `
+                <div class="card" style="padding:14px;border-left:3px solid ${color};margin-bottom:10px;">
+                    <div style="font-weight:600;font-size:14px;margin-bottom:6px;color:${color}">${escapeHtml(p.pattern_signature || '')}</div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Confluences: ${escapeHtml(p.confluences || '[]')}</div>
+                    <div style="display:flex;gap:16px;font-size:12px;">
+                        <span>Occurrences: <strong>${p.occurrences || 0}</strong></span>
+                        <span>Success: <strong style="color:${color}">${((p.success_rate || p.fail_rate || 0) * 100).toFixed(1)}%</strong></span>
+                        <span>Avg P&L: <strong>$${(p.avg_pnl || p.avg_loss || 0).toFixed(2)}</strong></span>
+                    </div>
+                </div>`).join('');
+        }
+
+        function renderRecommendations(recs) {
+            const container = document.getElementById('learning-recommendations-container');
+            if (!recs.length) { container.innerHTML = '<div style="color:var(--text-muted)">No recommendations generated yet.</div>'; return; }
+            container.innerHTML = recs.map(r => `
+                <div class="card" style="padding:14px;margin-bottom:10px;border-left:3px solid ${r.applied ? 'var(--success)' : '#fbbf24'};">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                        <span style="background:rgba(138,43,226,0.15);color:var(--primary);padding:2px 10px;border-radius:10px;font-size:11px;">${r.category || 'general'}</span>
+                        <span style="font-size:11px;color:${r.applied ? 'var(--success)' : '#fbbf24'}">${r.applied ? '✅ Applied' : '⏳ Pending'}</span>
+                    </div>
+                    <div style="font-size:13px;line-height:1.5;margin-bottom:6px;">${escapeHtml(r.recommendation_text || '')}</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Evidence: ${escapeHtml(r.supporting_evidence || '')}</div>
+                </div>`).join('');
+        }
+
+        }
+
+        // ─── WebSocket connection ───
+        let ws = null;
+        function connectWebSocket() {
+            const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${proto}//${window.location.host}/api/v1/ws`;
+            console.log(`Connecting to WebSocket: ${wsUrl}`);
+            ws = new WebSocket(wsUrl);
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                if (data.type === 'state_update') {
+                    const state = data.state;
+                    const account = data.account;
+                    
+                    document.getElementById('kpi-trades').innerText = state.daily_trades;
+                    document.getElementById('kpi-today-pnl').querySelector('.kpi-val').innerText = `$${state.daily_pnl.toFixed(2)}`;
+                    document.getElementById('kpi-today-pnl').className = state.daily_pnl >= 0 ? 'kpi-box green' : 'kpi-box red';
+                    document.getElementById('engine-status-text').innerText = state.trading_halted ? 'HALTED' : 'ACTIVE';
+                    document.getElementById('engine-status-text').className = state.trading_halted ? 'text-red' : 'text-green';
+
+                    const targetRem = Math.max(0.0, 25.0 - state.daily_pnl);
+                    document.getElementById('kpi-target-remaining').querySelector('.kpi-val').innerText = `$${targetRem.toFixed(2)}`;
+                    document.getElementById('kpi-target-remaining').className = targetRem === 0 ? 'kpi-box green' : 'kpi-box';
+                    
+                    if (account && account.equity) {
+                        document.getElementById('kpi-equity').innerText = `$${account.equity.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                        
+                        const marginLevelElem = document.getElementById('margin-level-val');
+                        if (marginLevelElem) marginLevelElem.innerText = `${account.margin_level || '100'}%`;
+                        
+                        const marginUsedElem = document.getElementById('margin-used-val');
+                        if (marginUsedElem) marginUsedElem.innerText = `$${account.margin.toFixed(2)}`;
+                        
+                        const marginFreeElem = document.getElementById('margin-free-val');
+                        if (marginFreeElem) marginFreeElem.innerText = `$${account.free_margin.toFixed(2)}`;
+                    }
+                }
+            };
+            ws.onclose = function() {
+                console.log("WebSocket closed. Reconnecting in 5 seconds...");
+                setTimeout(connectWebSocket, 5000);
+            };
+            ws.onerror = function(err) {
+                console.error("WebSocket error:", err);
+                ws.close();
+            };
+        }
+
+        // ─── Settings load/save ───
+        async function loadSettings() {
+            try {
+                const res = await fetch('/api/v1/settings');
+                const data = await res.json();
+                
+                document.getElementById('settings-risk-pct').value = (data.risk_per_trade_pct * 100).toFixed(1);
+                document.getElementById('risk-val').innerText = (data.risk_per_trade_pct * 100).toFixed(1) + '%';
+                
+                document.getElementById('settings-max-drawdown').value = (data.max_drawdown_pct * 100).toFixed(1);
+                document.getElementById('dd-val').innerText = (data.max_drawdown_pct * 100).toFixed(1) + '%';
+                
+                document.getElementById('settings-max-daily-loss').value = (data.max_daily_loss_pct * 100).toFixed(1);
+                document.getElementById('loss-val').innerText = (data.max_daily_loss_pct * 100).toFixed(1) + '%';
+                
+                document.getElementById('settings-allow-c').checked = data.allow_c_setups;
+                document.getElementById('settings-max-positions').value = data.max_open_positions;
+            } catch (e) {
+                console.error("Failed to load settings:", e);
+            }
+        }
+        
+        async function saveSettings() {
+            const token = document.getElementById('settings-api-token').value.trim();
+            if (!token) {
+                alert("Please enter your API Access Token to modify settings.");
+                return;
+            }
+            
+            const payload = {
+                risk_per_trade_pct: parseFloat(document.getElementById('settings-risk-pct').value) / 100,
+                max_drawdown_pct: parseFloat(document.getElementById('settings-max-drawdown').value) / 100,
+                max_daily_loss_pct: parseFloat(document.getElementById('settings-max-daily-loss').value) / 100,
+                allow_c_setups: document.getElementById('settings-allow-c').checked,
+                max_open_positions: parseInt(document.getElementById('settings-max-positions').value)
+            };
+            
+            try {
+                const res = await fetch('/api/v1/settings', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'X-API-Key': token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+                if (result.status === 'success') {
+                    alert("Settings updated successfully!");
+                } else {
+                    alert("Failed to update settings: " + JSON.stringify(result));
+                }
+            } catch (e) {
+                alert("Failed to save settings: " + e);
+            }
+        }
+
+        // ─── TradingView Widget ───
+        let tvWidget = null;
+        function initTradingViewWidget(symbol = "XAUUSD") {
+            let tvSymbol = "FX:" + symbol;
+            if (symbol === "XAUUSD") {
+                tvSymbol = "OANDA:XAUUSD";
+            } else if (symbol === "XAGUSD") {
+                tvSymbol = "OANDA:XAGUSD";
+            } else if (symbol.includes("US100")) {
+                tvSymbol = "NDAQ:US100";
+            }
+            
+            if (typeof TradingView !== "undefined") {
+                tvWidget = new TradingView.widget({
+                    "width": "100%",
+                    "height": "100%",
+                    "symbol": tvSymbol,
+                    "interval": "5",
+                    "timezone": "Etc/UTC",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_widget"
+                });
+            }
+        }
+
+        // ─── Web Speech APIs ───
+        let isSpeakingEnabled = false;
+        let recognition = null;
+        let isRecording = false;
+
+        function speak(text) {
+            if (!isSpeakingEnabled) return;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const cleanText = text.replace(/<[^>]*>/g, '').replace(/\*+/g, '').replace(/➤/g, '').replace(/#/g, '');
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.rate = 1.05;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function initSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                console.warn("Web Speech API not supported in this browser.");
+                return;
+            }
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+            
+            recognition.onstart = function() {
+                isRecording = true;
+                const btn = document.getElementById('zohra-mic-btn');
+                btn.innerText = '🔴';
+                btn.style.boxShadow = '0 0 10px var(--danger)';
+            };
+            
+            recognition.onend = function() {
+                isRecording = false;
+                const btn = document.getElementById('zohra-mic-btn');
+                btn.innerText = '🎙️';
+                btn.style.boxShadow = 'none';
+            };
+            
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('zohra-chat-input').value = transcript;
+                isSpeakingEnabled = true;
+                sendChatMessage(transcript);
+            };
+            
+            recognition.onerror = function(err) {
+                console.error("Speech recognition error:", err);
+            };
+        }
+
+        function toggleSpeech() {
+            if (!recognition) {
+                initSpeechRecognition();
+            }
+            if (!recognition) return;
+            
+            if (isRecording) {
+                recognition.stop();
+            } else {
+                recognition.start();
+            }
+        }
+
+        // Hook speech synthesis feedback to sendChatMessage
+        const originalSendChatMessage = sendChatMessage;
+        sendChatMessage = async function(messageText) {
+            await originalSendChatMessage(messageText);
+            const messagesDiv = document.getElementById('zohra-chat-messages');
+            const lastMsg = messagesDiv.querySelector('.chat-msg.bot:last-child');
+            if (lastMsg && isSpeakingEnabled) {
+                const text = lastMsg.innerText;
+                speak(text);
+            }
+        };
+
+        window.addEventListener('load', initDashboard);
+    </script>
+</body>
+</html>

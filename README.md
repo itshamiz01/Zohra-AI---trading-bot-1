@@ -1,8 +1,19 @@
 # Forex Trading Bot
 
+## Zohra Assistant Upgrade
+
+The existing dashboard and assistant now include a permission-controlled capability catalog, confirmed actions, real process/network reads, verified local PDF/Word/Excel creation, read-only Python source inspection and execution history. The universal Windows/Android roadmap is still in progress; unsupported features are labeled explicitly.
+
+- [Architecture and integration plan](docs/zohra-universal-architecture.md)
+- [Requested-feature status matrix](docs/zohra-integration-matrix.md)
+- [Validation results and tab/backend map](docs/zohra-foundation-validation.md)
+- [Document creation, download and regression validation](docs/zohra-documents-validation.md)
+- [Verified local PDF reading and search](docs/zohra-pdf-inspection-validation.md)
+- [Local project code inspection](docs/zohra-code-inspection-validation.md)
+
 **Strategy:** EMA Crossover + ATR Filter  
 **Timeframe:** 1 Hour  
-**Mode:** Paper Trading (OANDA Practice)  
+**Mode:** Paper Trading (MetaTrader 5 Demo)  
 
 ---
 
@@ -35,13 +46,11 @@ cd trading_bot
 pip install -r requirements.txt
 ```
 
-### 2. Set Up OANDA Practice Account
+### 2. Set Up MetaTrader 5 Account
 
-1. Go to [OANDA Demo Account](https://www.oanda.com/demo-account/)
-2. Create account and log in
-3. Go to **Account → Manage API Access**
-4. Generate API key
-5. Note your Account ID (top of dashboard)
+1. Download and install MetaTrader 5 from the official site or your broker
+2. Create a demo account (e.g., via File -> Open an Account)
+3. Note your login number, password, and server name
 
 ### 3. Configure Environment
 
@@ -53,8 +62,9 @@ cp .env.example .env
 
 Or set directly:
 ```bash
-export OANDA_ACCOUNT_ID="101-001-1234567-001"
-export OANDA_API_KEY="abcdef1234567890abcdef1234567890"
+export MT5_LOGIN="12345678"
+export MT5_PASSWORD="your_demo_password"
+export MT5_SERVER="Broker-Demo"
 ```
 
 ### 4. (Optional) Set Up Telegram
@@ -85,7 +95,7 @@ python main.py
 | `/history [n]` | Last n trades (default 10) |
 | `/equity` | 30-day equity curve summary |
 | `/stats` | Full performance statistics |
-| `/why EUR_USD` | Last signal reason for a pair |
+| `/why EURUSD` | Last signal reason for a pair |
 | `/pause` | Stop opening new trades |
 | `/resume` | Resume trading |
 | `/help` | Show all commands |
@@ -122,7 +132,7 @@ trading_bot/
 ├── main.py              # Entry point
 ├── config.py            # Settings and environment
 ├── database.py          # SQLite logging
-├── data_feed.py         # OANDA API client
+├── data_feed.py         # MetaTrader 5 data feed
 ├── strategy.py          # EMA+ATR signal logic
 ├── risk_manager.py      # Position sizing, limits
 ├── executor.py          # Order execution
@@ -153,9 +163,9 @@ trading_bot/
 ## Troubleshooting
 
 ### "Failed to fetch account summary"
-- Check OANDA credentials
-- Ensure practice account is active
-- Verify API key has trading permissions
+- Check MT5 credentials in .env
+- Ensure MetaTrader 5 desktop application is open and logged in
+- Verify terminal connection status
 
 ### No trades opening
 - Normal during low volatility

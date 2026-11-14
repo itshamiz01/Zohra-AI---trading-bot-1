@@ -1,0 +1,54 @@
+{
+  "symbols": [
+    {
+      "symbol": "XAUUSD",
+      "sector": "Metals",
+      "spread_limit": 4.5,
+      "max_spread_pips": 4.5,
+      "enabled": true,
+      "contract_size": 100.0,
+      "base_currency": "XAU",
+      "quote_currency": "USD"
+    },
+    {
+      "symbol": "GBPUSD",
+      "sector": "Forex",
+      "spread_limit": 2.5,
+      "max_spread_pips": 2.5,
+      "enabled": true,
+      "contract_size": 100000.0,
+      "base_currency": "GBP",
+      "quote_currency": "USD"
+    },
+    {
+      "symbol": "USDJPY",
+      "sector": "Forex",
+      "spread_limit": 2.5,
+      "max_spread_pips": 2.5,
+      "enabled": true,
+      "contract_size": 100000.0,
+      "base_currency": "USD",
+      "quote_currency": "JPY"
+    },
+    {
+      "symbol": "GBPJPY",
+      "sector": "Forex",
+      "spread_limit": 3.5,
+      "max_spread_pips": 3.5,
+      "enabled": true,
+      "contract_size": 100000.0,
+      "base_currency": "GBP",
+      "quote_currency": "JPY"
+    },
+    {
+      "symbol": "EURUSD",
+      "sector": "Forex",
+      "spread_limit": 2.0,
+      "max_spread_pips": 2.0,
+      "enabled": true,
+      "contract_size": 100000.0,
+      "base_currency": "EUR",
+      "quote_currency": "USD"
+    }
+  ]
+}

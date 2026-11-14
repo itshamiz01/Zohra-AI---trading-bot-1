@@ -1,0 +1,488 @@
+=== ALL EVOLUTION HISTORY ===
+ID: 1 | Time: 2026-06-23T15:12:40.269087 | Run ID: EVO_20260623_151240
+Summary: Evolution cycle completed. Recommendations generated: 0. Adjustments applied: 0.
+Adjustments: []
+Recommendations: []
+--------------------------------------------------------------------------------
+ID: 2 | Time: 2026-06-23T15:18:07.718349 | Run ID: EVO_20260623_151807
+Summary: Evolution cycle completed. Recommendations generated: 0. Adjustments applied: 0.
+Adjustments: []
+Recommendations: []
+--------------------------------------------------------------------------------
+ID: 3 | Time: 2026-06-23T15:22:36.690955 | Run ID: EVO_20260623_152236
+Summary: Evolution cycle completed. Recommendations generated: 0. Adjustments applied: 0.
+Adjustments: []
+Recommendations: []
+--------------------------------------------------------------------------------
+ID: 4 | Time: 2026-06-23T16:16:56.340139 | Run ID: EVO_20260623_161627
+Summary: Evolution cycle completed. Recommendations generated: 9. Adjustments applied: 9.
+Adjustments: [{"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}]
+Recommendations: ["Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades)."]
+--------------------------------------------------------------------------------
+ID: 5 | Time: 2026-06-23T16:20:16.485596 | Run ID: EVO_20260623_161955
+Summary: Evolution cycle completed. Recommendations generated: 9. Adjustments applied: 9.
+Adjustments: [{"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}]
+Recommendations: ["Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades)."]
+--------------------------------------------------------------------------------
+ID: 6 | Time: 2026-06-23T16:29:58.743505 | Run ID: EVO_20260623_162934
+Summary: Evolution cycle completed. Recommendations generated: 9. Adjustments applied: 9.
+Adjustments: [{"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}]
+Recommendations: ["Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades)."]
+--------------------------------------------------------------------------------
+ID: 7 | Time: 2026-06-23T16:40:28.110670 | Run ID: EVO_20260623_164005
+Summary: Evolution cycle completed. Recommendations generated: 9. Adjustments applied: 9.
+Adjustments: [{"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}]
+Recommendations: ["Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades)."]
+--------------------------------------------------------------------------------
+ID: 8 | Time: 2026-06-23T16:43:05.538158 | Run ID: EVO_20260623_164247
+Summary: Evolution cycle completed. Recommendations generated: 9. Adjustments applied: 9.
+Adjustments: [{"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}]
+Recommendations: ["Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades)."]
+--------------------------------------------------------------------------------
+ID: 9 | Time: 2026-06-23T23:34:00.251706 | Run ID: EVO_20260623_233359
+Summary: Evolution cycle completed. Recommendations generated: 22. Adjustments applied: 21.
+Adjustments: [{"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 33.3% / PF 1.00"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.69"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.5% / PF 1.15"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.9% / PF 1.27"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.3% / PF 1.41"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.4% / PF 0.65"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}]
+Recommendations: ["Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 33.3%, PF: 1.00 over 54 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 25.6%, PF: 0.69 over 39 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.5%, PF: 1.15 over 52 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 38.9%, PF: 1.27 over 18 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 37.5%, PF: 1.20 over 24 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 41.3%, PF: 1.41 over 46 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 30.0%, PF: 0.86 over 40 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 24.4%, PF: 0.65 over 45 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "High rejection concentration in category RISK (72.0%). Auditing filter bounds recommended."]
+--------------------------------------------------------------------------------
+ID: 10 | Time: 2026-06-24T02:51:33.900286 | Run ID: EVO_20260624_025133
+Summary: Evolution cycle completed. Recommendations generated: 23. Adjustments applied: 22.
+Adjustments: [{"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.1% / PF 0.78"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.69"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.3% / PF 0.95"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.5% / PF 1.15"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.9% / PF 1.27"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.3% / PF 1.41"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.4% / PF 0.65"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}]
+Recommendations: ["Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 28.1%, PF: 0.78 over 57 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 25.6%, PF: 0.69 over 39 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 32.3%, PF: 0.95 over 65 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.5%, PF: 1.15 over 52 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 38.9%, PF: 1.27 over 18 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 37.5%, PF: 1.20 over 24 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 41.3%, PF: 1.41 over 46 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 30.0%, PF: 0.86 over 40 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 24.4%, PF: 0.65 over 45 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "High rejection concentration in category RISK (85.4%). Auditing filter bounds recommended."]
+--------------------------------------------------------------------------------
+ID: 11 | Time: 2026-06-25T02:24:15.648673 | Run ID: EVO_20260625_022414
+Summary: Evolution cycle completed. Recommendations generated: 56. Adjustments applied: 55.
+Adjustments: [{"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.1% / PF 0.78"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.69"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.3% / PF 0.95"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.5% / PF 1.15"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.9% / PF 1.27"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.3% / PF 1.41"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.4% / PF 0.65"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "mean_reversion_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.5% / PF 0.81"}, {"target": "mean_reversion_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 34.3% / PF 0.62"}, {"target": "mean_reversion_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.7% / PF 0.75"}, {"target": "mean_reversion_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.53"}, {"target": "mean_reversion_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 45.2% / PF 0.92"}, {"target": "mean_reversion_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 40.0% / PF 0.94"}, {"target": "mean_reversion_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 40.5% / PF 0.97"}, {"target": "mean_reversion_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 43.8% / PF 0.87"}, {"target": "mean_reversion_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.7% / PF 1.10"}, {"target": "mean_reversion_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.1% / PF 0.68"}, {"target": "mean_reversion_EURJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.3% / PF 0.61"}, {"target": "mean_reversion_EURJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 0.78"}, {"target": "mean_reversion_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 46.7% / PF 0.93"}, {"target": "mean_reversion_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.9% / PF 0.67"}, {"target": "mean_reversion_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.7% / PF 0.61"}, {"target": "mean_reversion_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.0% / PF 0.42"}, {"target": "mean_reversion_XAUUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 42.9% / PF 0.93"}, {"target": "mean_reversion_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.68"}, {"target": "trend_following_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.1% / PF 1.23"}, {"target": "trend_following_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 21.4% / PF 0.55"}, {"target": "trend_following_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.7% / PF 1.43"}, {"target": "trend_following_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "trend_following_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 26.1% / PF 0.71"}, {"target": "trend_following_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 18.2% / PF 0.45"}, {"target": "trend_following_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 33.3% / PF 1.00"}, {"target": "trend_following_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "trend_following_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.0% / PF 0.67"}, {"target": "trend_following_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 15.0% / PF 0.35"}, {"target": "trend_following_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "trend_following_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.2% / PF 0.91"}, {"target": "trend_following_XAUUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 16.7% / PF 0.40"}, {"target": "trend_following_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "trend_following_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.8% / PF 0.93"}]
+Recommendations: ["Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 28.1%, PF: 0.78 over 57 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 25.6%, PF: 0.69 over 39 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 32.3%, PF: 0.95 over 65 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.5%, PF: 1.15 over 52 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 38.9%, PF: 1.27 over 18 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 37.5%, PF: 1.20 over 24 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 41.3%, PF: 1.41 over 46 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 30.0%, PF: 0.86 over 40 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 24.4%, PF: 0.65 over 45 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict mean_reversion on EURUSD due to poor backtest performance (WR: 35.5%, PF: 0.81 over 31 trades).", "Restrict mean_reversion on EURUSD due to poor backtest performance (WR: 34.3%, PF: 0.62 over 35 trades).", "Restrict mean_reversion on GBPUSD due to poor backtest performance (WR: 35.7%, PF: 0.75 over 42 trades).", "Restrict mean_reversion on USDJPY due to poor backtest performance (WR: 25.6%, PF: 0.53 over 39 trades).", "Restrict mean_reversion on AUDUSD due to poor backtest performance (WR: 45.2%, PF: 0.92 over 31 trades).", "Restrict mean_reversion on NZDUSD due to poor backtest performance (WR: 40.0%, PF: 0.94 over 25 trades).", "Restrict mean_reversion on USDCAD due to poor backtest performance (WR: 40.5%, PF: 0.97 over 37 trades).", "Restrict mean_reversion on USDCAD due to poor backtest performance (WR: 43.8%, PF: 0.87 over 32 trades).", "Restrict mean_reversion on USDCHF due to poor backtest performance (WR: 41.7%, PF: 1.10 over 36 trades).", "Restrict mean_reversion on USDCHF due to poor backtest performance (WR: 36.1%, PF: 0.68 over 36 trades).", "Restrict mean_reversion on EURJPY due to poor backtest performance (WR: 35.3%, PF: 0.61 over 34 trades).", "Restrict mean_reversion on EURJPY due to poor backtest performance (WR: 37.0%, PF: 0.78 over 27 trades).", "Restrict mean_reversion on CADJPY due to poor backtest performance (WR: 46.7%, PF: 0.93 over 30 trades).", "Restrict mean_reversion on CADJPY due to poor backtest performance (WR: 28.9%, PF: 0.67 over 38 trades).", "Restrict mean_reversion on AUDJPY due to poor backtest performance (WR: 35.7%, PF: 0.61 over 42 trades).", "Restrict mean_reversion on AUDJPY due to poor backtest performance (WR: 25.0%, PF: 0.42 over 24 trades).", "Restrict mean_reversion on XAUUSD due to poor backtest performance (WR: 42.9%, PF: 0.93 over 42 trades).", "Restrict mean_reversion on US30 due to poor backtest performance (WR: 30.8%, PF: 0.68 over 26 trades).", "Restrict trend_following on GBPUSD due to poor backtest performance (WR: 38.1%, PF: 1.23 over 21 trades).", "Restrict trend_following on USDJPY due to poor backtest performance (WR: 21.4%, PF: 0.55 over 14 trades).", "Restrict trend_following on USDJPY due to poor backtest performance (WR: 41.7%, PF: 1.43 over 12 trades).", "Restrict trend_following on AUDUSD due to poor backtest performance (WR: 37.5%, PF: 1.20 over 16 trades).", "Restrict trend_following on AUDUSD due to poor backtest performance (WR: 26.1%, PF: 0.71 over 23 trades).", "Restrict trend_following on NZDUSD due to poor backtest performance (WR: 18.2%, PF: 0.45 over 11 trades).", "Restrict trend_following on NZDUSD due to poor backtest performance (WR: 33.3%, PF: 1.00 over 15 trades).", "Restrict trend_following on USDCHF due to poor backtest performance (WR: 30.0%, PF: 0.86 over 10 trades).", "Restrict trend_following on USDCHF due to poor backtest performance (WR: 25.0%, PF: 0.67 over 20 trades).", "Restrict trend_following on EURGBP due to poor backtest performance (WR: 15.0%, PF: 0.35 over 20 trades).", "Restrict trend_following on EURGBP due to poor backtest performance (WR: 30.8%, PF: 0.89 over 13 trades).", "Restrict trend_following on GBPJPY due to poor backtest performance (WR: 31.2%, PF: 0.91 over 16 trades).", "Restrict trend_following on XAUUSD due to poor backtest performance (WR: 16.7%, PF: 0.40 over 18 trades).", "Restrict trend_following on US30 due to poor backtest performance (WR: 30.8%, PF: 0.89 over 13 trades).", "Restrict trend_following on US30 due to poor backtest performance (WR: 31.8%, PF: 0.93 over 22 trades).", "High rejection concentration in category RISK (90.7%). Auditing filter bounds recommended."]
+--------------------------------------------------------------------------------
+ID: 12 | Time: 2026-06-25T10:14:41.600408 | Run ID: EVO_20260625_101441
+Summary: Evolution cycle completed. Recommendations generated: 56. Adjustments applied: 55.
+Adjustments: [{"target": "mean_reversion_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.5% / PF 0.81"}, {"target": "mean_reversion_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 34.3% / PF 0.62"}, {"target": "mean_reversion_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.7% / PF 0.75"}, {"target": "mean_reversion_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.53"}, {"target": "mean_reversion_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 45.2% / PF 0.92"}, {"target": "mean_reversion_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 40.0% / PF 0.94"}, {"target": "mean_reversion_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 40.5% / PF 0.97"}, {"target": "mean_reversion_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 43.8% / PF 0.87"}, {"target": "mean_reversion_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.7% / PF 1.10"}, {"target": "mean_reversion_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.1% / PF 0.68"}, {"target": "mean_reversion_EURJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.3% / PF 0.61"}, {"target": "mean_reversion_EURJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 0.78"}, {"target": "mean_reversion_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 46.7% / PF 0.93"}, {"target": "mean_reversion_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.9% / PF 0.67"}, {"target": "mean_reversion_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.7% / PF 0.61"}, {"target": "mean_reversion_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.0% / PF 0.42"}, {"target": "mean_reversion_XAUUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 42.9% / PF 0.93"}, {"target": "mean_reversion_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.68"}, {"target": "trend_following_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.1% / PF 1.23"}, {"target": "trend_following_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 21.4% / PF 0.55"}, {"target": "trend_following_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.7% / PF 1.43"}, {"target": "trend_following_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "trend_following_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 26.1% / PF 0.71"}, {"target": "trend_following_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 18.2% / PF 0.45"}, {"target": "trend_following_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 33.3% / PF 1.00"}, {"target": "trend_following_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "trend_following_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.0% / PF 0.67"}, {"target": "trend_following_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 15.0% / PF 0.35"}, {"target": "trend_following_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "trend_following_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.2% / PF 0.91"}, {"target": "trend_following_XAUUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 16.7% / PF 0.40"}, {"target": "trend_following_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "trend_following_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.8% / PF 0.93"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.1% / PF 0.78"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.69"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.3% / PF 0.95"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.5% / PF 1.15"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.9% / PF 1.27"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.3% / PF 1.41"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.4% / PF 0.65"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}]
+Recommendations: ["Restrict mean_reversion on EURUSD due to poor backtest performance (WR: 35.5%, PF: 0.81 over 31 trades).", "Restrict mean_reversion on EURUSD due to poor backtest performance (WR: 34.3%, PF: 0.62 over 35 trades).", "Restrict mean_reversion on GBPUSD due to poor backtest performance (WR: 35.7%, PF: 0.75 over 42 trades).", "Restrict mean_reversion on USDJPY due to poor backtest performance (WR: 25.6%, PF: 0.53 over 39 trades).", "Restrict mean_reversion on AUDUSD due to poor backtest performance (WR: 45.2%, PF: 0.92 over 31 trades).", "Restrict mean_reversion on NZDUSD due to poor backtest performance (WR: 40.0%, PF: 0.94 over 25 trades).", "Restrict mean_reversion on USDCAD due to poor backtest performance (WR: 40.5%, PF: 0.97 over 37 trades).", "Restrict mean_reversion on USDCAD due to poor backtest performance (WR: 43.8%, PF: 0.87 over 32 trades).", "Restrict mean_reversion on USDCHF due to poor backtest performance (WR: 41.7%, PF: 1.10 over 36 trades).", "Restrict mean_reversion on USDCHF due to poor backtest performance (WR: 36.1%, PF: 0.68 over 36 trades).", "Restrict mean_reversion on EURJPY due to poor backtest performance (WR: 35.3%, PF: 0.61 over 34 trades).", "Restrict mean_reversion on EURJPY due to poor backtest performance (WR: 37.0%, PF: 0.78 over 27 trades).", "Restrict mean_reversion on CADJPY due to poor backtest performance (WR: 46.7%, PF: 0.93 over 30 trades).", "Restrict mean_reversion on CADJPY due to poor backtest performance (WR: 28.9%, PF: 0.67 over 38 trades).", "Restrict mean_reversion on AUDJPY due to poor backtest performance (WR: 35.7%, PF: 0.61 over 42 trades).", "Restrict mean_reversion on AUDJPY due to poor backtest performance (WR: 25.0%, PF: 0.42 over 24 trades).", "Restrict mean_reversion on XAUUSD due to poor backtest performance (WR: 42.9%, PF: 0.93 over 42 trades).", "Restrict mean_reversion on US30 due to poor backtest performance (WR: 30.8%, PF: 0.68 over 26 trades).", "Restrict trend_following on GBPUSD due to poor backtest performance (WR: 38.1%, PF: 1.23 over 21 trades).", "Restrict trend_following on USDJPY due to poor backtest performance (WR: 21.4%, PF: 0.55 over 14 trades).", "Restrict trend_following on USDJPY due to poor backtest performance (WR: 41.7%, PF: 1.43 over 12 trades).", "Restrict trend_following on AUDUSD due to poor backtest performance (WR: 37.5%, PF: 1.20 over 16 trades).", "Restrict trend_following on AUDUSD due to poor backtest performance (WR: 26.1%, PF: 0.71 over 23 trades).", "Restrict trend_following on NZDUSD due to poor backtest performance (WR: 18.2%, PF: 0.45 over 11 trades).", "Restrict trend_following on NZDUSD due to poor backtest performance (WR: 33.3%, PF: 1.00 over 15 trades).", "Restrict trend_following on USDCHF due to poor backtest performance (WR: 30.0%, PF: 0.86 over 10 trades).", "Restrict trend_following on USDCHF due to poor backtest performance (WR: 25.0%, PF: 0.67 over 20 trades).", "Restrict trend_following on EURGBP due to poor backtest performance (WR: 15.0%, PF: 0.35 over 20 trades).", "Restrict trend_following on EURGBP due to poor backtest performance (WR: 30.8%, PF: 0.89 over 13 trades).", "Restrict trend_following on GBPJPY due to poor backtest performance (WR: 31.2%, PF: 0.91 over 16 trades).", "Restrict trend_following on XAUUSD due to poor backtest performance (WR: 16.7%, PF: 0.40 over 18 trades).", "Restrict trend_following on US30 due to poor backtest performance (WR: 30.8%, PF: 0.89 over 13 trades).", "Restrict trend_following on US30 due to poor backtest performance (WR: 31.8%, PF: 0.93 over 22 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 28.1%, PF: 0.78 over 57 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 25.6%, PF: 0.69 over 39 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 32.3%, PF: 0.95 over 65 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.5%, PF: 1.15 over 52 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 38.9%, PF: 1.27 over 18 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 37.5%, PF: 1.20 over 24 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 41.3%, PF: 1.41 over 46 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 30.0%, PF: 0.86 over 40 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 24.4%, PF: 0.65 over 45 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "High rejection concentration in category RISK (90.9%). Auditing filter bounds recommended."]
+--------------------------------------------------------------------------------
+ID: 13 | Time: 2026-06-25T10:45:56.732550 | Run ID: EVO_20260625_104556
+Summary: Evolution cycle completed. Recommendations generated: 56. Adjustments applied: 55.
+Adjustments: [{"target": "mean_reversion_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.5% / PF 0.81"}, {"target": "mean_reversion_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 34.3% / PF 0.62"}, {"target": "mean_reversion_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.7% / PF 0.75"}, {"target": "mean_reversion_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.53"}, {"target": "mean_reversion_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 45.2% / PF 0.92"}, {"target": "mean_reversion_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 40.0% / PF 0.94"}, {"target": "mean_reversion_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 40.5% / PF 0.97"}, {"target": "mean_reversion_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 43.8% / PF 0.87"}, {"target": "mean_reversion_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.7% / PF 1.10"}, {"target": "mean_reversion_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.1% / PF 0.68"}, {"target": "mean_reversion_EURJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.3% / PF 0.61"}, {"target": "mean_reversion_EURJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 0.78"}, {"target": "mean_reversion_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 46.7% / PF 0.93"}, {"target": "mean_reversion_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.9% / PF 0.67"}, {"target": "mean_reversion_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 35.7% / PF 0.61"}, {"target": "mean_reversion_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.0% / PF 0.42"}, {"target": "mean_reversion_XAUUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 42.9% / PF 0.93"}, {"target": "mean_reversion_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.68"}, {"target": "trend_following_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.1% / PF 1.23"}, {"target": "trend_following_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 21.4% / PF 0.55"}, {"target": "trend_following_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.7% / PF 1.43"}, {"target": "trend_following_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "trend_following_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 26.1% / PF 0.71"}, {"target": "trend_following_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 18.2% / PF 0.45"}, {"target": "trend_following_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 33.3% / PF 1.00"}, {"target": "trend_following_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "trend_following_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.0% / PF 0.67"}, {"target": "trend_following_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 15.0% / PF 0.35"}, {"target": "trend_following_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "trend_following_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.2% / PF 0.91"}, {"target": "trend_following_XAUUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 16.7% / PF 0.40"}, {"target": "trend_following_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "trend_following_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.8% / PF 0.93"}, {"target": "zohra_v5_USDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.8% / PF 0.89"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.5% / PF 0.65"}, {"target": "zohra_v5_AUDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.2% / PF 0.64"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.1% / PF 0.90"}, {"target": "zohra_v5_NZDUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 31.6% / PF 0.92"}, {"target": "zohra_v5_USDCAD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 28.1% / PF 0.78"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 25.6% / PF 0.69"}, {"target": "zohra_v5_USDCHF", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.3% / PF 0.95"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_EURGBP", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.5% / PF 1.15"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 38.9% / PF 1.27"}, {"target": "zohra_v5_GBPJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.5% / PF 1.20"}, {"target": "zohra_v5_CADJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 41.3% / PF 1.41"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.0% / PF 0.86"}, {"target": "zohra_v5_AUDJPY", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 24.4% / PF 0.65"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 36.4% / PF 1.14"}, {"target": "zohra_v5_US30", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.1% / PF 0.95"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 37.0% / PF 1.18"}, {"target": "zohra_v5_EURUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 30.5% / PF 0.88"}, {"target": "zohra_v5_GBPUSD", "action": "RESTRICT_SYMBOL", "reason": "Win Rate 32.2% / PF 0.95"}]
+Recommendations: ["Restrict mean_reversion on EURUSD due to poor backtest performance (WR: 35.5%, PF: 0.81 over 31 trades).", "Restrict mean_reversion on EURUSD due to poor backtest performance (WR: 34.3%, PF: 0.62 over 35 trades).", "Restrict mean_reversion on GBPUSD due to poor backtest performance (WR: 35.7%, PF: 0.75 over 42 trades).", "Restrict mean_reversion on USDJPY due to poor backtest performance (WR: 25.6%, PF: 0.53 over 39 trades).", "Restrict mean_reversion on AUDUSD due to poor backtest performance (WR: 45.2%, PF: 0.92 over 31 trades).", "Restrict mean_reversion on NZDUSD due to poor backtest performance (WR: 40.0%, PF: 0.94 over 25 trades).", "Restrict mean_reversion on USDCAD due to poor backtest performance (WR: 40.5%, PF: 0.97 over 37 trades).", "Restrict mean_reversion on USDCAD due to poor backtest performance (WR: 43.8%, PF: 0.87 over 32 trades).", "Restrict mean_reversion on USDCHF due to poor backtest performance (WR: 41.7%, PF: 1.10 over 36 trades).", "Restrict mean_reversion on USDCHF due to poor backtest performance (WR: 36.1%, PF: 0.68 over 36 trades).", "Restrict mean_reversion on EURJPY due to poor backtest performance (WR: 35.3%, PF: 0.61 over 34 trades).", "Restrict mean_reversion on EURJPY due to poor backtest performance (WR: 37.0%, PF: 0.78 over 27 trades).", "Restrict mean_reversion on CADJPY due to poor backtest performance (WR: 46.7%, PF: 0.93 over 30 trades).", "Restrict mean_reversion on CADJPY due to poor backtest performance (WR: 28.9%, PF: 0.67 over 38 trades).", "Restrict mean_reversion on AUDJPY due to poor backtest performance (WR: 35.7%, PF: 0.61 over 42 trades).", "Restrict mean_reversion on AUDJPY due to poor backtest performance (WR: 25.0%, PF: 0.42 over 24 trades).", "Restrict mean_reversion on XAUUSD due to poor backtest performance (WR: 42.9%, PF: 0.93 over 42 trades).", "Restrict mean_reversion on US30 due to poor backtest performance (WR: 30.8%, PF: 0.68 over 26 trades).", "Restrict trend_following on GBPUSD due to poor backtest performance (WR: 38.1%, PF: 1.23 over 21 trades).", "Restrict trend_following on USDJPY due to poor backtest performance (WR: 21.4%, PF: 0.55 over 14 trades).", "Restrict trend_following on USDJPY due to poor backtest performance (WR: 41.7%, PF: 1.43 over 12 trades).", "Restrict trend_following on AUDUSD due to poor backtest performance (WR: 37.5%, PF: 1.20 over 16 trades).", "Restrict trend_following on AUDUSD due to poor backtest performance (WR: 26.1%, PF: 0.71 over 23 trades).", "Restrict trend_following on NZDUSD due to poor backtest performance (WR: 18.2%, PF: 0.45 over 11 trades).", "Restrict trend_following on NZDUSD due to poor backtest performance (WR: 33.3%, PF: 1.00 over 15 trades).", "Restrict trend_following on USDCHF due to poor backtest performance (WR: 30.0%, PF: 0.86 over 10 trades).", "Restrict trend_following on USDCHF due to poor backtest performance (WR: 25.0%, PF: 0.67 over 20 trades).", "Restrict trend_following on EURGBP due to poor backtest performance (WR: 15.0%, PF: 0.35 over 20 trades).", "Restrict trend_following on EURGBP due to poor backtest performance (WR: 30.8%, PF: 0.89 over 13 trades).", "Restrict trend_following on GBPJPY due to poor backtest performance (WR: 31.2%, PF: 0.91 over 16 trades).", "Restrict trend_following on XAUUSD due to poor backtest performance (WR: 16.7%, PF: 0.40 over 18 trades).", "Restrict trend_following on US30 due to poor backtest performance (WR: 30.8%, PF: 0.89 over 13 trades).", "Restrict trend_following on US30 due to poor backtest performance (WR: 31.8%, PF: 0.93 over 22 trades).", "Restrict zohra_v5 on USDJPY due to poor backtest performance (WR: 30.8%, PF: 0.89 over 26 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.5%, PF: 0.65 over 49 trades).", "Restrict zohra_v5 on AUDUSD due to poor backtest performance (WR: 24.2%, PF: 0.64 over 62 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 31.1%, PF: 0.90 over 61 trades).", "Restrict zohra_v5 on NZDUSD due to poor backtest performance (WR: 36.4%, PF: 1.14 over 55 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 31.6%, PF: 0.92 over 19 trades).", "Restrict zohra_v5 on USDCAD due to poor backtest performance (WR: 28.1%, PF: 0.78 over 57 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 25.6%, PF: 0.69 over 39 trades).", "Restrict zohra_v5 on USDCHF due to poor backtest performance (WR: 32.3%, PF: 0.95 over 65 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on EURGBP due to poor backtest performance (WR: 36.5%, PF: 1.15 over 52 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 38.9%, PF: 1.27 over 18 trades).", "Restrict zohra_v5 on GBPJPY due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 37.5%, PF: 1.20 over 24 trades).", "Restrict zohra_v5 on CADJPY due to poor backtest performance (WR: 41.3%, PF: 1.41 over 46 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 30.0%, PF: 0.86 over 40 trades).", "Restrict zohra_v5 on AUDJPY due to poor backtest performance (WR: 24.4%, PF: 0.65 over 45 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 36.4%, PF: 1.14 over 11 trades).", "Restrict zohra_v5 on US30 due to poor backtest performance (WR: 32.1%, PF: 0.95 over 28 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 37.0%, PF: 1.18 over 27 trades).", "Restrict zohra_v5 on EURUSD due to poor backtest performance (WR: 30.5%, PF: 0.88 over 59 trades).", "Restrict zohra_v5 on GBPUSD due to poor backtest performance (WR: 32.2%, PF: 0.95 over 59 trades).", "High rejection concentration in category RISK (90.9%). Auditing filter bounds recommended."]
+--------------------------------------------------------------------------------
+
+=== ALL TRADES ===
+Trade ID: 1
+  id: 1
+  trade_id: ZHR_EURAUD_20260614_235327
+  mt5_ticket: 57074595381
+  timestamp_open: 2026-06-14T23:53:27.789688
+  timestamp_close: 2026-06-15T00:00:54.740049
+  symbol: EURAUD
+  direction: SHORT
+  entry_price: 1.63967
+  exit_price: 1.63967
+  stop_loss: 1.64023
+  take_profit: 1.63884
+  position_size_lots: 0.01
+  risk_usd: 0.560000000000116
+  pnl_usd: 0.0
+  pnl_pct: 0.0
+  risk_reward_ratio: 0.0
+  confidence_score: 75
+  quality_grade: B
+  session: off
+  market_regime: Trending
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: CHAIRMAN DECISION: EXECUTE with grade B (consensus score 75/100). Bull confidence=75.0%, Bear risk=25.0%. Drawdown scaling adjusted sizing factor to 0.50.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 7
+  requested_price: 1.63967
+  slippage_points: 0.0
+  entry_spread_points: 5.0000000000105516e-05
+  execution_latency_ms: 236.7173999998613
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 2
+  id: 2
+  trade_id: ZHR_GBPJPY_20260615_034923
+  mt5_ticket: 57077310508
+  timestamp_open: 2026-06-15T03:49:23.126830
+  timestamp_close: 2026-06-15T03:55:59.464328
+  symbol: GBPJPY
+  direction: SHORT
+  entry_price: 215.194
+  exit_price: 215.18
+  stop_loss: 215.23606
+  take_profit: 215.14841
+  position_size_lots: 0.01
+  risk_usd: 0.35060000000015634
+  pnl_usd: 0.09
+  pnl_pct: 0.06
+  risk_reward_ratio: 0.2567027952081
+  confidence_score: 75
+  quality_grade: B
+  session: asian
+  market_regime: Ranging
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: CHAIRMAN DECISION: EXECUTE with grade B (consensus score 75/100). Bull confidence=75.0%, Bear risk=25.0%. Drawdown scaling adjusted sizing factor to 0.50.
+  reason_for_exit: VOLUME_DROP
+  exit_reason_code: CLOSE_FULL
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 6
+  requested_price: 215.201
+  slippage_points: 0.007000000000005002
+  entry_spread_points: 0.007000000000005002
+  execution_latency_ms: 328.0489000003399
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 3
+  id: 3
+  trade_id: ZHR_EURJPY_20260615_102425
+  mt5_ticket: 57083274115
+  timestamp_open: 2026-06-15T10:24:25.597499
+  timestamp_close: 2026-06-15T10:35:23.252003
+  symbol: EURJPY
+  direction: LONG
+  entry_price: 185.917
+  exit_price: 185.945
+  stop_loss: 185.87937
+  take_profit: 185.97344
+  position_size_lots: 0.01
+  risk_usd: 0.3763000000000716
+  pnl_usd: 0.17
+  pnl_pct: 0.11333333333333334
+  risk_reward_ratio: 0.4517672070155931
+  confidence_score: 75
+  quality_grade: B
+  session: london
+  market_regime: Trending
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: CHAIRMAN DECISION: EXECUTE with grade B (consensus score 75/100). Bull confidence=75.0%, Bear risk=25.0%. Drawdown scaling adjusted sizing factor to 0.50.
+  reason_for_exit: VOLUME_DROP
+  exit_reason_code: CLOSE_FULL
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 10
+  requested_price: 185.917
+  slippage_points: 0.0
+  entry_spread_points: 0.0030000000000143245
+  execution_latency_ms: 229.49990000051912
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 4
+  id: 4
+  trade_id: ZHR_USDCHF_20260615_104451
+  mt5_ticket: 57083572485
+  timestamp_open: 2026-06-15T10:44:51.556235
+  timestamp_close: 2026-06-15T10:53:36.445401
+  symbol: USDCHF
+  direction: SHORT
+  entry_price: 0.79231
+  exit_price: 0.7926
+  stop_loss: 0.7926
+  take_profit: 0.79187
+  position_size_lots: 0.01
+  risk_usd: 0.29000000000001247
+  pnl_usd: -0.38
+  pnl_pct: -0.2533333333333333
+  risk_reward_ratio: 1.3103448275861507
+  confidence_score: 75
+  quality_grade: B
+  session: london
+  market_regime: Trending
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: CHAIRMAN DECISION: EXECUTE with grade B (consensus score 75/100). Bull confidence=75.0%, Bear risk=25.0%. Drawdown scaling adjusted sizing factor to 0.50.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 8
+  requested_price: 0.79231
+  slippage_points: 0.0
+  entry_spread_points: 2.0000000000020002e-05
+  execution_latency_ms: 440.0338000014017
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 5
+  id: 5
+  trade_id: ZHR_EURCAD_20260622_051954
+  mt5_ticket: 57179967519
+  timestamp_open: 2026-06-22T05:19:54.782828
+  timestamp_close: 2026-06-22T05:49:33.708701
+  symbol: EURCAD
+  direction: SHORT
+  entry_price: 1.62514
+  exit_price: 1.6253600000000001
+  stop_loss: 1.62536
+  take_profit: 1.62481
+  position_size_lots: 0.03
+  risk_usd: 0.6599999999996607
+  pnl_usd: -0.47
+  pnl_pct: -0.3133333333333333
+  risk_reward_ratio: 0.7121212121215781
+  confidence_score: 82
+  quality_grade: A
+  session: asian
+  market_regime: Ranging
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: After careful consideration of both the bull and bear theses, the Investment Committee resolves to approve the proposed short position in EURCAD. The strong momentum and favorable market structure outweigh the potential risks, leading to a final consensus score of 82. This score merits an 'A' grade, indicating a high-confidence trade. The committee acknowledges the potential for news risk and low volatility but believes the trade's parameters are sufficiently robust to navigate these challenges.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 29
+  requested_price: 1.62514
+  slippage_points: 0.0
+  entry_spread_points: 3.999999999981796e-05
+  execution_latency_ms: 295.634400000381
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 6
+  id: 6
+  trade_id: ZHR_EURAUD_20260623_155101
+  mt5_ticket: 888061
+  timestamp_open: 2026-06-23T15:51:01.586908
+  timestamp_close: 2026-06-23T15:51:09.781507
+  symbol: EURAUD
+  direction: SHORT
+  entry_price: 1.085
+  exit_price: 1.085
+  stop_loss: 1.1052
+  take_profit: 1.04618
+  position_size_lots: 0.01
+  risk_usd: 23.606410204635832
+  pnl_usd: 0.0
+  pnl_pct: 0.0
+  risk_reward_ratio: 0.0
+  confidence_score: 82
+  quality_grade: A
+  session: london
+  market_regime: Ranging
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: After careful consideration of both the bull and bear theses, the Investment Committee resolves to approve the proposed short position in EURAUD under the MomentumScalp strategy. While acknowledging the potential risks and warning flags, the committee believes that the strong momentum and favorable structure outweigh these concerns. The final consensus score of 82 reflects a high degree of confidence in the trade's potential success, warranting an 'A' grade. The trade is approved to execute.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 0
+  requested_price: 1.0815935897953641
+  slippage_points: -0.0034064102046358347
+  entry_spread_points: 0.0001
+  execution_latency_ms: 34.05010000005859
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 7
+  id: 7
+  trade_id: ZHR_EURCAD_20260623_155717
+  mt5_ticket: 888437
+  timestamp_open: 2026-06-23T15:57:17.905695
+  timestamp_close: 2026-06-23T15:57:27.692844
+  symbol: EURCAD
+  direction: SHORT
+  entry_price: 1.085
+  exit_price: 1.085
+  stop_loss: 1.10355
+  take_profit: 1.04471
+  position_size_lots: 0.01
+  risk_usd: 23.53742494106403
+  pnl_usd: 0.0
+  pnl_pct: 0.0
+  risk_reward_ratio: 0.0
+  confidence_score: 82
+  quality_grade: A
+  session: london
+  market_regime: Ranging
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: After careful consideration of both the bull thesis and bear critique, the Investment Committee resolves to approve the proposed short position in EURCAD under the MomentumScalp strategy. While acknowledging the potential risks outlined, the committee believes the strong momentum and favorable structure scores outweigh the cautionary factors, given the current account drawdown of 0.00% and the base score of 75/100. The final consensus score of 82 reflects a balanced view of the trade's potential and risks, earning it an 'A' grade. The trade is approved to execute.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 0
+  requested_price: 1.080012575058936
+  slippage_points: -0.004987424941063967
+  entry_spread_points: 0.0001
+  execution_latency_ms: 1427.6985999999852
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 8
+  id: 8
+  trade_id: ZHR_EURAUD_20260623_155928
+  mt5_ticket: 888568
+  timestamp_open: 2026-06-23T15:59:28.012105
+  timestamp_close: 2026-06-23T15:59:36.136817
+  symbol: EURAUD
+  direction: LONG
+  entry_price: 1.085
+  exit_price: 1.085
+  stop_loss: 1.06729
+  take_profit: 1.1221
+  position_size_lots: 0.01
+  risk_usd: 21.921566963885475
+  pnl_usd: 0.0
+  pnl_pct: 0.0
+  risk_reward_ratio: 0.0
+  confidence_score: 82
+  quality_grade: A
+  session: london
+  market_regime: Ranging
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: After careful consideration of both the bull and bear theses, the committee resolves to approve the proposed long position in EURAUD. While there are valid concerns regarding volatility and potential resistance, the strong momentum and favorable market structure outweigh these risks. The trade is approved with a final consensus score of 82, earning a grade of A.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 0
+  requested_price: 1.0892115669638855
+  slippage_points: -0.004211566963885582
+  entry_spread_points: 0.0001
+  execution_latency_ms: 33.66310000001249
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 9
+  id: 9
+  trade_id: ZHR_GBPAUD_20260623_161004
+  mt5_ticket: 888204
+  timestamp_open: 2026-06-23T16:10:04.310091
+  timestamp_close: 2026-06-23T16:10:15.334107
+  symbol: GBPAUD
+  direction: LONG
+  entry_price: 1.085
+  exit_price: 1.085
+  stop_loss: 1.06438
+  take_profit: 1.12607
+  position_size_lots: 0.01
+  risk_usd: 24.675094705309817
+  pnl_usd: 0.0
+  pnl_pct: 0.0
+  risk_reward_ratio: 0.0
+  confidence_score: 82
+  quality_grade: A
+  session: newyork
+  market_regime: Ranging
+  strategy_used: scalp_m5
+  news_status: 0
+  reason_for_entry: After careful consideration of the bull and bear arguments, the Investment Committee approves the proposed long position in GBPAUD. The strong momentum score and favorable structure outweigh the potential risks, and the moderate volatility score suggests a manageable risk environment. The final consensus score of 82 reflects a high degree of confidence in the trade proposal, warranting an 'A' grade. The trade is approved for execution.
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 0
+  requested_price: 1.08905509470531
+  slippage_points: -0.004055094705309958
+  entry_spread_points: 0.0001
+  execution_latency_ms: 188.01600000006147
+  score_structure: 70
+  score_liquidity: 80
+  score_smc: 60
+  score_trend: 70
+  score_momentum: 85
+  score_volatility: 70
+  score_pullback: 70
+  metadata: {}
+--------------------------------------------------
+Trade ID: 10
+  id: 10
+  trade_id: ZHR_TEST_NZDUSD
+  mt5_ticket: 57214787536
+  timestamp_open: 2026-06-23T15:00:00
+  timestamp_close: 2026-06-23T16:57:52.045789
+  symbol: NZDUSD
+  direction: SHORT
+  entry_price: 0.56786
+  exit_price: 0.56677
+  stop_loss: 0.56751
+  take_profit: 0.5663
+  position_size_lots: 0.01
+  risk_usd: None
+  pnl_usd: 1.09
+  pnl_pct: 0.7266666666666667
+  risk_reward_ratio: 0.0
+  confidence_score: None
+  quality_grade: None
+  session: None
+  market_regime: None
+  strategy_used: zohra_v5
+  news_status: 0
+  reason_for_entry: None
+  reason_for_exit: SL/TP Target Hit (Broker Exit)
+  exit_reason_code: BROKER_EXIT
+  be_moved: 0
+  half_closed: 0
+  duration_minutes: 117
+  requested_price: None
+  slippage_points: None
+  entry_spread_points: None
+  execution_latency_ms: None
+  score_structure: 0
+  score_liquidity: 0
+  score_smc: 0
+  score_trend: 0
+  score_momentum: 0
+  score_volatility: 0
+  score_pullback: 0
+  metadata: {}
+--------------------------------------------------

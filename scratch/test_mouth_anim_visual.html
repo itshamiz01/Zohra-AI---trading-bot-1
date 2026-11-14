@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mouth Anim Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { margin: 0; background: #020204; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; color: #ffd700; font-family: sans-serif; }
+        #canvas-box { width: 760px; height: 580px; position: relative; border: 1px solid rgba(212,175,55,0.3); box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        canvas { width: 100%; height: 100%; display: block; }
+        .controls { margin-top: 15px; display: flex; gap: 15px; align-items: center; }
+        button { background: rgba(212,175,55,0.2); border: 1px solid #d4af37; color: #ffd700; padding: 8px 18px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: rgba(212,175,55,0.4); }
+    </style>
+</head>
+<body>
+    <div id="canvas-box">
+        <canvas id="c"></canvas>
+    </div>
+    <div class="controls">
+        <button id="btn-talk" onclick="toggleTalk()">TEST TALKING (SIMULATED PHONEMES)</button>
+        <button id="btn-mic" onclick="toggleMic()">USE REAL MICROPHONE</button>
+        <span id="status-txt">Status: RESTING (STILL)</span>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('c');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(40, 760 / 580, 1, 1000);
+        camera.position.z = 175;
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(760, 580);
+        renderer.setPixelRatio(window.devicePixelRatio || 1);
+
+        // Load master face texture
+        const loader = new THREE.TextureLoader();
+        loader.load('/static/zohra_face_master.png', (texture) => {
+            texture.generateMipmaps = true;
+            texture.minFilter = THREE.LinearMipmapLinearFilter;
+            texture.magFilter = THREE.LinearFilter;
+
+            // 1. Dark inner mouth cavity backing
+            const mouthCavityGeo = new THREE.PlaneGeometry(24, 14);
+            const mouthCavityMat = new THREE.MeshBasicMaterial({ color: 0x050302 });
+            const mouthCavity = new THREE.Mesh(mouthCavityGeo, mouthCavityMat);
+            mouthCavity.position.set(0, -9.5, -0.5);
+            scene.add(mouthCavity);
+
+            // 2. High-definition face plane geometry: 120 x 96 segments
+            const w = 150, h = 121;
+            const segX = 90, segY = 90;
+            const geo = new THREE.PlaneGeometry(w, h, segX, segY);
+            
+            // Store original rest positions
+            const posAttr = geo.attributes.position;
+            const basePos = new Float32Array(posAttr.array.length);
+            basePos.set(posAttr.array);
+
+            const mat = new THREE.MeshBasicMaterial({
+                map: texture,
+                transparent: true,
+                opacity: 0.98
+            });
+
+            const faceMesh = new THREE.Mesh(geo, mat);
+            scene.add(faceMesh);
+
+            // 3. Constellation molecular nodes & bonds
+            fetch('/static/zohra_master_nodes.json').then(r => r.json()).then(nodes => {
+                const nodeCount = nodes.length;
+                const nodeGeo = new THREE.BufferGeometry();
+                const nodePos = new Float32Array(nodeCount * 3);
+                const nodeBasePos = new Float32Array(nodeCount * 3);
+                const nodeCols = new Float32Array(nodeCount * 3);
+
+                for (let i = 0; i < nodeCount; i++) {
+                    const n = nodes[i];
+                    nodePos[i * 3] = n[0];
+                    nodePos[i * 3 + 1] = n[1];
+                    nodePos[i * 3 + 2] = 0.5;
+
+                    nodeBasePos[i * 3] = n[0];
+                    nodeBasePos[i * 3 + 1] = n[1];
+                    nodeBasePos[i * 3 + 2] = 0.5;
+
+                    nodeCols[i * 3] = n[2] / 255;
+                    nodeCols[i * 3 + 1] = n[3] / 255;
+                    nodeCols[i * 3 + 2] = n[4] / 255;
+                }
+
+                nodeGeo.setAttribute('position', new THREE.BufferAttribute(nodePos, 3));
+                nodeGeo.setAttribute('color', new THREE.BufferAttribute(nodeCols, 3));
+
+                // Golden glowing star sprite
+                const starCanvas = document.createElement('canvas');
+                starCanvas.width = starCanvas.height = 32;
+                const sctx = starCanvas.getContext('2d');
+                const sgrad = sctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+                sgrad.addColorStop(0, '#ffffff');
+                sgrad.addColorStop(0.25, '#ffe57f');
+                sgrad.addColorStop(0.5, '#d4af37');
+                sgrad.addColorStop(1, 'transparent');
+                sctx.fillStyle = sgrad;
+                sctx.arc(16, 16, 16, 0, Math.PI * 2);
+                sctx.fill();
+                const starTex = new THREE.CanvasTexture(starCanvas);
+
+                const pointCloud = new THREE.Points(nodeGeo, new THREE.PointsMaterial({
+                    size: 4.5,
+                    map: starTex,
+                    vertexColors: true,
+                    transparent: true,
+                    blending: THREE.AdditiveBlending,
+                    depthWrite: false
+                }));
+                scene.add(pointCloud);
+
+                // Connecting bonds
+                const lineIndices = [];
+                for (let i = 0; i < nodeCount; i++) {
+                    for (let j = i + 1; j < nodeCount; j++) {
+                        const dx = nodeBasePos[i * 3] - nodeBasePos[j * 3];
+                        const dy = nodeBasePos[i * 3 + 1] - nodeBasePos[j * 3 + 1];
+                        const dist = Math.sqrt(dx*dx + dy*dy);
+                        if (dist < 14) {
+                            lineIndices.push(i, j);
+                        }
+                    }
+                }
+                const lineGeo = new THREE.BufferGeometry();
+                lineGeo.setAttribute('position', nodeGeo.attributes.position);
+                lineGeo.setIndex(lineIndices);
+                const lines = new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({
+                    color: 0xd4af37,
+                    transparent: true,
+                    opacity: 0.25,
+                    blending: THREE.AdditiveBlending
+                }));
+                scene.add(lines);
+            });
+
+            // State & Audio variables
+            let mouthOpen = 0;
+            let targetMouthOpen = 0;
+            let isTalking = false;
+            let isMicActive = false;
+            let audioAnalyser = null;
+            let freqData = null;
+
+            window.toggleTalk = function() {
+                isTalking = !isTalking;
+                document.getElementById('status-txt').textContent = isTalking ? 'Status: TALKING (ARTICULATING)' : 'Status: RESTING (STILL)';
+            };
+
+            window.toggleMic = async function() {
+                if (!isMicActive) {
+                    try {
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                        const src = ctx.createMediaStreamSource(stream);
+                        audioAnalyser = ctx.createAnalyser();
+                        audioAnalyser.fftSize = 64;
+                        src.connect(audioAnalyser);
+                        freqData = new Uint8Array(audioAnalyser.frequencyBinCount);
+                        isMicActive = true;
+                        document.getElementById('status-txt').textContent = 'Status: MIC CONNECTED (SPEAK NOW)';
+                    } catch(e) {
+                        alert('Microphone access failed: ' + e);
+                    }
+                }
+            };
+
+            // Mouth center in Three.js coords (w=150, h=121, center=(0,0)):
+            // In image (516x418): mouth_x=258 -> 0, mouth_y=234 -> -9.8
+            const mouthCenterY = -9.8;
+            const chinCenterY = -23.0;
+
+            let clock = new THREE.Clock();
+            function animate() {
+                requestAnimationFrame(animate);
+                const t = clock.getElapsedTime();
+
+                // 1. Determine talking target
+                if (audioAnalyser && freqData) {
+                    audioAnalyser.getByteFrequencyData(freqData);
+                    let sum = 0;
+                    for (let i = 2; i < 16; i++) sum += freqData[i];
+                    const vol = (sum / 14) / 128.0;
+                    if (vol > 0.08) {
+                        isTalking = true;
+                        const phoneme = Math.sin(t * 16) * 0.4 + 0.6;
+                        targetMouthOpen = Math.min(1.0, vol * 2.0) * phoneme;
+                        document.getElementById('status-txt').textContent = 'Status: TALKING TO ZOHRA';
+                    } else if (isMicActive) {
+                        isTalking = false;
+                        targetMouthOpen = 0;
+                        document.getElementById('status-txt').textContent = 'Status: LISTENING (WAITING FOR SPEECH)';
+                    }
+                } else if (isTalking) {
+                    // Natural human speech phonemes simulation:
+                    // Syllable rate ~3.5 Hz modulated by harmonic mouth shaping
+                    const syllable = Math.sin(t * 14.0) * 0.5 + 0.5;
+                    const vowel = Math.cos(t * 8.0) * 0.3 + 0.7;
+                    targetMouthOpen = syllable * vowel;
+                } else {
+                    targetMouthOpen = 0;
+                }
+
+                // Smooth mouth interpolation
+                mouthOpen += (targetMouthOpen - mouthOpen) * 0.35;
+
+                // 2. ONLY move vertices when talking (or closing down to 0)
+                if (mouthOpen > 0.002 || Math.abs(targetMouthOpen - mouthOpen) > 0.002) {
+                    const pos = posAttr.array;
+                    const vCount = pos.length / 3;
+
+                    for (let i = 0; i < vCount; i++) {
+                        const bx = basePos[i * 3];
+                        const by = basePos[i * 3 + 1];
+
+                        // Check horizontal distance from center of mouth
+                        const dx = Math.abs(bx);
+                        if (dx < 28) {
+                            const horizWeight = Math.cos((dx / 28) * Math.PI * 0.5) ** 1.5;
+
+                            // Vertices below the mouth opening line (lower lip & chin)
+                            if (by <= mouthCenterY) {
+                                const distLowerLip = Math.abs(by - (mouthCenterY - 3.5));
+                                const lowerLipWeight = Math.exp(-(distLowerLip * distLowerLip) / 35.0);
+
+                                const distChin = Math.abs(by - chinCenterY);
+                                const chinWeight = Math.exp(-(distChin * distChin) / 80.0);
+
+                                const dy = -(lowerLipWeight * 6.8 + chinWeight * 3.8) * horizWeight * mouthOpen;
+                                pos[i * 3 + 1] = by + dy;
+                            }
+                            // Vertices above the mouth opening line (upper lip)
+                            else if (by > mouthCenterY && by < mouthCenterY + 12) {
+                                const distUpperLip = Math.abs(by - (mouthCenterY + 2.5));
+                                const upperLipWeight = Math.exp(-(distUpperLip * distUpperLip) / 22.0);
+
+                                const dy = +(upperLipWeight * 1.8) * horizWeight * mouthOpen;
+                                pos[i * 3 + 1] = by + dy;
+                            } else {
+                                pos[i * 3 + 1] = by;
+                            }
+                        } else {
+                            pos[i * 3 + 1] = by;
+                        }
+                    }
+                    posAttr.needsUpdate = true;
+                }
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>

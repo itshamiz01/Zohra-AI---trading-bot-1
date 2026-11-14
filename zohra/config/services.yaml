@@ -1,0 +1,24 @@
+core:
+  name: Zohra Core
+  host: 127.0.0.1
+  port: 8000
+  health_path: /healthz
+  required: true
+trading:
+  name: Trading Execution Service
+  host: 127.0.0.1
+  port: 8010
+  health_path: /healthz
+  required: true
+sandbox:
+  name: Tool Execution Sandbox
+  host: 127.0.0.1
+  port: 8020
+  health_path: /healthz
+  required: true
+voice:
+  name: Voice Pipeline
+  host: 127.0.0.1
+  port: 8030
+  health_path: /healthz
+  required: false

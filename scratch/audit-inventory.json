@@ -1,0 +1,5256 @@
+[
+  {
+    "file": "audit.py",
+    "lines": 62,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "check_deal.py",
+    "lines": 43,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "check_symbol_info.py",
+    "lines": 30,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "cross_bot_report.py",
+    "lines": 268,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "data_feed.py",
+    "lines": 205,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "diagnose_bot_independence.py",
+    "lines": 76,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "llm_interface.py",
+    "lines": 187,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "main.py",
+    "lines": 56,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "query_trades.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "read_log_tail.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "read_logs.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "replay_today_candles.py",
+    "lines": 64,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "run_zohra.py",
+    "lines": 54,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "run_zohra_unified.py",
+    "lines": 187,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 107,
+        "kind": "review marker",
+        "text": "except NotImplementedError:"
+      }
+    ]
+  },
+  {
+    "file": "scheduler.py",
+    "lines": 207,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_db_tickets.py",
+    "lines": 44,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_deal_dates.py",
+    "lines": 16,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_equity_curve.py",
+    "lines": 13,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_face_landmarks.py",
+    "lines": 26,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_losses.py",
+    "lines": 51,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_mt5_trades.py",
+    "lines": 197,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_open_positions_history.py",
+    "lines": 40,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_trade_failures.py",
+    "lines": 46,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/analyze_trades.py",
+    "lines": 168,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_fleet_and_committee_fixes.py",
+    "lines": 136,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_frontend_upgrade.py",
+    "lines": 1294,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_master_hologram_to_dashboard.py",
+    "lines": 345,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_masterpiece_face.py",
+    "lines": 279,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_multi_symbol_config.py",
+    "lines": 361,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_permanent_markup.py",
+    "lines": 231,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_pure_floating_molecules.py",
+    "lines": 311,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/apply_scalping_priority.py",
+    "lines": 319,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/audit_inventory.py",
+    "lines": 47,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 36,
+        "kind": "review marker",
+        "text": "if re.search(r'\\b(TODO|FIXME|NotImplementedError|stub|mock|placeholder)\\b', text, re.I):"
+      }
+    ]
+  },
+  {
+    "file": "scratch/build_floating_molecular_face.py",
+    "lines": 205,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/build_gold_command_center.py",
+    "lines": 2051,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 1147,
+        "kind": "review marker",
+        "text": "<input type=\"text\" placeholder=\"Semantic memory search...\" style=\"width:100%;padding:10px;background:rgba(0,0,0,0.5);border:1px solid var(--gold-border);color:#fff;border-radius:6p"
+      }
+    ]
+  },
+  {
+    "file": "scratch/build_organic_constellation_face.py",
+    "lines": 190,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/build_reference_molecule_face.py",
+    "lines": 248,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_candles.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_db.py",
+    "lines": 26,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_db_a.py",
+    "lines": 22,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_equity_curve_a.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_euraud.py",
+    "lines": 28,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_git.py",
+    "lines": 28,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_git_log.py",
+    "lines": 11,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_hie.py",
+    "lines": 23,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_live_positions.py",
+    "lines": 52,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_log_activity.py",
+    "lines": 34,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_logs_today.py",
+    "lines": 25,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_mt5_live.py",
+    "lines": 45,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_open_trades.py",
+    "lines": 50,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_positions.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_startups.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_system_events.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_today_trades.py",
+    "lines": 71,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/check_trades_db.py",
+    "lines": 19,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/close_all_live_positions.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/close_all_trades_and_stop_terminals.py",
+    "lines": 138,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/detailed_deals_analysis.py",
+    "lines": 58,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/diagnose_bots.py",
+    "lines": 82,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/disable_symbols.py",
+    "lines": 24,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/dump_db_a.py",
+    "lines": 34,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/extract_master_molecules.py",
+    "lines": 64,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/feather_master_face.py",
+    "lines": 32,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/fetch_all_mt5_deals.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_all_dbs.py",
+    "lines": 24,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_consensus.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_dates_and_sample.py",
+    "lines": 29,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_dbs.py",
+    "lines": 7,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_exact_lines.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_html_lines.py",
+    "lines": 11,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_html_sections.py",
+    "lines": 11,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_log_dates.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/find_modified_files.py",
+    "lines": 26,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/fix_execution_bugs.py",
+    "lines": 63,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/fix_load_bot_profile.py",
+    "lines": 36,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/fix_order_direction_and_stops.py",
+    "lines": 159,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/fix_stale_trades.py",
+    "lines": 42,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/forensic_agent_db.py",
+    "lines": 46,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/forensic_all_trades.py",
+    "lines": 30,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/forensic_dump.py",
+    "lines": 76,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/forensic_main_db.py",
+    "lines": 66,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/forensic_query.py",
+    "lines": 54,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/gen_math_face.py",
+    "lines": 200,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/gen_real_face.py",
+    "lines": 225,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/generate_face_molecules.py",
+    "lines": 148,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/generate_final_report.py",
+    "lines": 118,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/get_git_diff.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/get_mt5_positions.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/get_trade_details.py",
+    "lines": 33,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/grep_logs.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inject_molecular_hologram_js.py",
+    "lines": 449,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/insert_test_trade.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_accounts.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_databases.py",
+    "lines": 36,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_db_schema.py",
+    "lines": 24,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_endpoints.py",
+    "lines": 8,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_equity_curve_values.py",
+    "lines": 16,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_fe_be.py",
+    "lines": 43,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_js_funcs.py",
+    "lines": 19,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_logs.py",
+    "lines": 31,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_risk_events_details.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/inspect_today_logs.py",
+    "lines": 31,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/list_models.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/list_routes.py",
+    "lines": 23,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/map_zohra_features.py",
+    "lines": 22,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/parse_main_diff.py",
+    "lines": 23,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/parse_old_engine.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/parse_settings_diff.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/parse_settings_diff_v2.py",
+    "lines": 25,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/patch_dashboard.py",
+    "lines": 362,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 217,
+        "kind": "review marker",
+        "text": "<div id=\"backtest-results-placeholder\" style=\"text-align: center; padding: 50px 0; color: var(--text-muted);\">"
+      },
+      {
+        "line": 276,
+        "kind": "review marker",
+        "text": "document.getElementById('backtest-results-placeholder').style.display = 'none';"
+      }
+    ]
+  },
+  {
+    "file": "scratch/print_analytics.py",
+    "lines": 9,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_endpoints.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_execution_block.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_full_equity_curve.py",
+    "lines": 8,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_june_23_lines.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_june_23_lines_engine.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_methods.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_run_loop.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/print_trades_a.py",
+    "lines": 7,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/query_bot_a_account.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/query_dbs.py",
+    "lines": 31,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/query_mt5_details.py",
+    "lines": 32,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/query_mt5_history.py",
+    "lines": 42,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_all_trades_a.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_approved_journal.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_diff.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_ev_short.py",
+    "lines": 9,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_evolution.py",
+    "lines": 30,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_journal.py",
+    "lines": 40,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_problem_logs.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_rejections.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_task_91_log.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_task_log.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_today_trades.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/read_zohra_decision.py",
+    "lines": 11,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/run_audit_tests.py",
+    "lines": 43,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 7,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch"
+      }
+    ]
+  },
+  {
+    "file": "scratch/run_debug_detect.py",
+    "lines": 23,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/run_hie_pipeline.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/scratch_check_loop.py",
+    "lines": 27,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/scratch_check_mt5.py",
+    "lines": 38,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_all_june_25.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_all_june_25_wide.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_bot2_config.py",
+    "lines": 6,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_bot2_db.py",
+    "lines": 7,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_closures.py",
+    "lines": 22,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_errors.py",
+    "lines": 27,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_errors_june_24.py",
+    "lines": 19,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_euraud_logs.py",
+    "lines": 16,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_euraud_setup.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_ibkr_fallback.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_june_23_symbols.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_june_24_logs.py",
+    "lines": 13,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_log.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_logs.py",
+    "lines": 47,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_logs_direct.py",
+    "lines": 22,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_logs_exact.py",
+    "lines": 13,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_losses.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_losses_pnl.py",
+    "lines": 13,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_mt5_broker_mode.py",
+    "lines": 9,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_mt5_connect_23.py",
+    "lines": 13,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_ports.py",
+    "lines": 7,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_raw.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_scalp.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_scalp_pairs.py",
+    "lines": 19,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_scalping_prices.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_scalping_strategy.py",
+    "lines": 11,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_scratch_symbols.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_symbol_logs.py",
+    "lines": 24,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_symbol_overrides.py",
+    "lines": 22,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_today_usdjpy.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_today_usdjpy_real_utc.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_today_usdjpy_utc.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_usdjpy_exact.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_usdjpy_only.py",
+    "lines": 23,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_v_override.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_broker.py",
+    "lines": 9,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_execution.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_execution_price.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_logs.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_mode.py",
+    "lines": 9,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_virtual.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/search_zohra_virtual_end.py",
+    "lines": 10,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_agentic_chat.py",
+    "lines": 116,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 14,
+        "kind": "review marker",
+        "text": "# Mock google.generativeai if needed or just patch the GenAI class"
+      },
+      {
+        "line": 40,
+        "kind": "review marker",
+        "text": "# Counter to return different mock contents during loop execution"
+      },
+      {
+        "line": 106,
+        "kind": "review marker",
+        "text": "assert \"EURUSD\" in final_response, \"Agent response did not contain mock balance info.\""
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_api_endpoints.py",
+    "lines": 47,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_classification.py",
+    "lines": 44,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_committee.py",
+    "lines": 103,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_face_math.py",
+    "lines": 82,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_gemini.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_hologram_build.py",
+    "lines": 8,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_in_process_app.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_institutional.py",
+    "lines": 81,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_mouth_anim_visual.html",
+    "lines": 261,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_mouth_math.py",
+    "lines": 40,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_news.py",
+    "lines": 33,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_pipeline_and_guard.py",
+    "lines": 97,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_remediation_run.py",
+    "lines": 124,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_scout_hybrid.py",
+    "lines": 161,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 83,
+        "kind": "empty function",
+        "name": "stub_dispatch_validation"
+      },
+      {
+        "line": 10,
+        "kind": "review marker",
+        "text": "# Mock mt5_broker to run completely locally"
+      },
+      {
+        "line": 26,
+        "kind": "review marker",
+        "text": "print(f\"[MOCK BROKER] Position #{ticket} OPENED: {order['direction']} {order['symbol']} lots={order['volume_lots']} comment={order['comment']}\")"
+      },
+      {
+        "line": 37,
+        "kind": "review marker",
+        "text": "print(f\"[MOCK BROKER] Position #{ticket} CLOSED: lots={lots}\")"
+      },
+      {
+        "line": 47,
+        "kind": "review marker",
+        "text": "print(f\"[MOCK BROKER] Position #{ticket} MODIFIED: new SL={new_sl}\")"
+      },
+      {
+        "line": 82,
+        "kind": "review marker",
+        "text": "# Stub out background validation dispatch during test to keep execution purely synchronous"
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_sim_broker_correct.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 14,
+        "kind": "review marker",
+        "text": "print(\"EURAUD Mock Data Close Prices:\")"
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_sim_broker_prices.py",
+    "lines": 16,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 13,
+        "kind": "review marker",
+        "text": "print(\"EURAUD Mock Data Close Prices:\")"
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_telemetry.py",
+    "lines": 54,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_telemetry_direct.py",
+    "lines": 16,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_telemetry_get.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_tier2_api.py",
+    "lines": 64,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 16,
+        "kind": "review marker",
+        "text": "# Ensure a mock trade exists in the database for the replay test"
+      },
+      {
+        "line": 47,
+        "kind": "review marker",
+        "text": "# Mock MT5 broker calls inside endpoint to return None so it triggers mock DataFrame generation"
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_tier2_run.py",
+    "lines": 136,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 19,
+        "kind": "review marker",
+        "text": "# Create a mock DataFrame representing a strong upward trend with pivots"
+      },
+      {
+        "line": 60,
+        "kind": "review marker",
+        "text": "# Mock mt5_broker copy_rates/get_ohlcv"
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_trade_levels.py",
+    "lines": 70,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 15,
+        "kind": "review marker",
+        "text": "# Mock candle dataframe with ATR ~ 8.0 for Gold"
+      }
+    ]
+  },
+  {
+    "file": "scratch/test_trail_calculation.py",
+    "lines": 54,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/test_validation_error.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/update_talking_demo.py",
+    "lines": 63,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/update_to_molecular_hologram.py",
+    "lines": 111,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/verify_injections.py",
+    "lines": 23,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/view_generate_signal.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/view_log_tail.py",
+    "lines": 14,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch/view_scalp_sl.py",
+    "lines": 25,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "scratch_read_db.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "strategy.py",
+    "lines": 202,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "telegram_bot.py",
+    "lines": 268,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "test_all_strategies_direction.py",
+    "lines": 85,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "test_connections.py",
+    "lines": 170,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "test_mt5_trade.py",
+    "lines": 207,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "test_unified_system.py",
+    "lines": 91,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "test_verification_pipeline.py",
+    "lines": 46,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/analyze_rejections.py",
+    "lines": 115,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/config.py",
+    "lines": 67,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/data_feed.py",
+    "lines": 147,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/database.py",
+    "lines": 216,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/executor.py",
+    "lines": 230,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/llm_interface.py",
+    "lines": 187,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/main.py",
+    "lines": 71,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/risk_manager.py",
+    "lines": 181,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/scalping_module.py",
+    "lines": 520,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/scheduler.py",
+    "lines": 207,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/strategy.py",
+    "lines": 200,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/telegram_bot.py",
+    "lines": 259,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/zohra_enhanced_core.py",
+    "lines": 832,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "trading_bot2/zohra_v5.py",
+    "lines": 353,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/__init__.py",
+    "lines": 6,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/__init__.py",
+    "lines": 6,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/academic_research_agent.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/automation_agent.py",
+    "lines": 64,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/correlation_research_agent.py",
+    "lines": 113,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/execution_agent.py",
+    "lines": 198,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/framework.py",
+    "lines": 545,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/internet_research_agent.py",
+    "lines": 85,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 54,
+        "kind": "review marker",
+        "text": "# Fallback to local mock knowledge base if search fails or is empty"
+      }
+    ]
+  },
+  {
+    "file": "zohra/agents/market_analysis_agent.py",
+    "lines": 50,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/memory_agent.py",
+    "lines": 38,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/news_agent.py",
+    "lines": 106,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/pdf_intelligence_agent.py",
+    "lines": 94,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/performance_agent.py",
+    "lines": 104,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/risk_agent.py",
+    "lines": 232,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/session_research_agent.py",
+    "lines": 115,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/smc_research_agent.py",
+    "lines": 120,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/trend_research_agent.py",
+    "lines": 116,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/vision_agent.py",
+    "lines": 149,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/agents/youtube_learning_agent.py",
+    "lines": 83,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 50,
+        "kind": "review marker",
+        "text": "# Segment the transcript into mock chapters based on pauses or keywords"
+      }
+    ]
+  },
+  {
+    "file": "zohra/analytics/__init__.py",
+    "lines": 3,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/analytics/advanced_analytics.py",
+    "lines": 1076,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/analytics/independence_analytics.py",
+    "lines": 186,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/analytics/performance.py",
+    "lines": 462,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/analytics/telemetry_provider.py",
+    "lines": 76,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/analytics/workspace_data.py",
+    "lines": 83,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/__init__.py",
+    "lines": 1,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/app.py",
+    "lines": 2510,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 869,
+        "kind": "review marker",
+        "text": "p = conn_db.placeholder()"
+      },
+      {
+        "line": 1357,
+        "kind": "review marker",
+        "text": "<input type=\"text\" id=\"filter-symbol\" placeholder=\"Symbol (e.g. EURUSD)\" class=\"btn\" style=\"background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-m"
+      },
+      {
+        "line": 1358,
+        "kind": "review marker",
+        "text": "<input type=\"text\" id=\"filter-setup\" placeholder=\"Setup (e.g. BOS)\" class=\"btn\" style=\"background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main);"
+      }
+    ]
+  },
+  {
+    "file": "zohra/api/automation_router.py",
+    "lines": 148,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 72,
+        "kind": "review marker",
+        "text": "raise NotImplementedError(f\"Unsupported workflow action: {action}\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra/api/chat_router.py",
+    "lines": 96,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 95,
+        "kind": "review marker",
+        "text": "# Router placeholder if FastAPI not installed"
+      }
+    ]
+  },
+  {
+    "file": "zohra/api/connectors/__init__.py",
+    "lines": 5,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/connectors/analytics_connector.py",
+    "lines": 78,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/connectors/db_connector.py",
+    "lines": 91,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/connectors/engine_connector.py",
+    "lines": 192,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/crypto_router.py",
+    "lines": 71,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/dashboard.html",
+    "lines": 2214,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 1146,
+        "kind": "review marker",
+        "text": "<form onsubmit=\"event.preventDefault();loadMemory()\"><label for=\"memory-query\">Search stored memories</label><input id=\"memory-query\" type=\"search\" placeholder=\"Search...\" style=\"w"
+      }
+    ]
+  },
+  {
+    "file": "zohra/api/evolution_router.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/intelligence_router.py",
+    "lines": 219,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/living-dashboard.html",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/mission_control_router.py",
+    "lines": 118,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/plugins_router.py",
+    "lines": 78,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/static/test_mouth_anim.html",
+    "lines": 261,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/static/workspaces.js",
+    "lines": 386,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/validation_router.py",
+    "lines": 224,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 65,
+        "kind": "review marker",
+        "text": "# Simple mock SMA strategy function"
+      }
+    ]
+  },
+  {
+    "file": "zohra/api/vision_router.py",
+    "lines": 100,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/voice_router.py",
+    "lines": 122,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/api/workspace_router.py",
+    "lines": 25,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/__init__.py",
+    "lines": 94,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/_adapter_template.py",
+    "lines": 339,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 10,
+        "kind": "review marker",
+        "text": "3. Implement all methods marked with # TODO"
+      },
+      {
+        "line": 46,
+        "kind": "review marker",
+        "text": "Implement all methods marked with # TODO."
+      },
+      {
+        "line": 51,
+        "kind": "review marker",
+        "text": "# TODO: Load your broker credentials from environment"
+      },
+      {
+        "line": 61,
+        "kind": "review marker",
+        "text": "return \"template\"  # TODO: Change to your broker name (e.g., \"zerodha\", \"binance\")"
+      },
+      {
+        "line": 76,
+        "kind": "review marker",
+        "text": "# TODO: Implement connection logic"
+      },
+      {
+        "line": 84,
+        "kind": "review marker",
+        "text": "# TODO: Set authentication headers"
+      },
+      {
+        "line": 87,
+        "kind": "review marker",
+        "text": "# TODO: Make a test API call to validate credentials"
+      },
+      {
+        "line": 122,
+        "kind": "review marker",
+        "text": "# TODO: Implement API call"
+      },
+      {
+        "line": 126,
+        "kind": "review marker",
+        "text": "\"equity\": 0.0,      # TODO: Fetch from API"
+      },
+      {
+        "line": 127,
+        "kind": "review marker",
+        "text": "\"balance\": 0.0,     # TODO: Fetch from API"
+      },
+      {
+        "line": 132,
+        "kind": "review marker",
+        "text": "\"currency\": \"USD\",  # TODO: Set correct currency"
+      },
+      {
+        "line": 158,
+        "kind": "review marker",
+        "text": "# TODO: Implement API call"
+      },
+      {
+        "line": 185,
+        "kind": "review marker",
+        "text": "# TODO: Implement API call"
+      },
+      {
+        "line": 201,
+        "kind": "review marker",
+        "text": "# TODO: Implement order placement"
+      },
+      {
+        "line": 217,
+        "kind": "review marker",
+        "text": "# TODO: Implement order modification"
+      },
+      {
+        "line": 222,
+        "kind": "review marker",
+        "text": "# TODO: Implement order cancellation"
+      },
+      {
+        "line": 237,
+        "kind": "review marker",
+        "text": "# TODO: Implement position query"
+      },
+      {
+        "line": 253,
+        "kind": "review marker",
+        "text": "# TODO: Implement position closing"
+      },
+      {
+        "line": 301,
+        "kind": "review marker",
+        "text": "# TODO: Implement SL/TP modification"
+      },
+      {
+        "line": 318,
+        "kind": "review marker",
+        "text": "# TODO: Implement symbol info lookup"
+      }
+    ]
+  },
+  {
+    "file": "zohra/brokers/base.py",
+    "lines": 52,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/broker_logger.py",
+    "lines": 256,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/coindcx_adapter.py",
+    "lines": 599,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 589,
+        "kind": "review marker",
+        "text": "\"placeholder, implement with socketio/websocket-client\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra/brokers/dhan_adapter.py",
+    "lines": 514,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/ibkr_adapter.py",
+    "lines": 186,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 96,
+        "kind": "review marker",
+        "text": "# Generate reasonable mock prices around the base price"
+      }
+    ]
+  },
+  {
+    "file": "zohra/brokers/interfaces.py",
+    "lines": 494,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/manager.py",
+    "lines": 410,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/models.py",
+    "lines": 548,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/mt5_broker.py",
+    "lines": 932,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/pipeline.py",
+    "lines": 593,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/resilience.py",
+    "lines": 395,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/brokers/sim_broker.py",
+    "lines": 302,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 83,
+        "kind": "review marker",
+        "text": "# Ensure all requested timeframes have valid data, fallback to mock if None"
+      },
+      {
+        "line": 150,
+        "kind": "review marker",
+        "text": "# Standalone mock generator for offline ticks"
+      }
+    ]
+  },
+  {
+    "file": "zohra/config/__init__.py",
+    "lines": 4,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/config/bot_profile.py",
+    "lines": 382,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/config/settings.py",
+    "lines": 500,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/config/strategy_config.py",
+    "lines": 298,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/__init__.py",
+    "lines": 20,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/adaptive_scorer.py",
+    "lines": 453,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/agent_message.py",
+    "lines": 33,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/analytics_engines.py",
+    "lines": 198,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/backtest.py",
+    "lines": 248,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 64,
+        "kind": "review marker",
+        "text": "# Mock broker references in the global scope / execution context using sys.modules to avoid namespace shadowing"
+      }
+    ]
+  },
+  {
+    "file": "zohra/core/backup_manager.py",
+    "lines": 139,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/base_module.py",
+    "lines": 35,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 16,
+        "kind": "empty function",
+        "name": "initialize"
+      },
+      {
+        "line": 21,
+        "kind": "empty function",
+        "name": "shutdown"
+      },
+      {
+        "line": 25,
+        "kind": "empty function",
+        "name": "on_event"
+      }
+    ]
+  },
+  {
+    "file": "zohra/core/business_memory.py",
+    "lines": 195,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/business_orchestrator.py",
+    "lines": 60,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/cognitive_memory.py",
+    "lines": 123,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/confidence_calibrator.py",
+    "lines": 84,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/confluence_engine.py",
+    "lines": 591,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/correlation_engine.py",
+    "lines": 112,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/cross_bot_monitor.py",
+    "lines": 256,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/cross_bot_signal_registry.py",
+    "lines": 194,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/crypto_engine.py",
+    "lines": 254,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/crypto_intelligence.py",
+    "lines": 65,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/crypto_portfolio.py",
+    "lines": 169,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/crypto_risk.py",
+    "lines": 134,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/decision_engine.py",
+    "lines": 185,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/email_manager.py",
+    "lines": 84,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/engine.py",
+    "lines": 647,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/engine_registry.py",
+    "lines": 249,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/enums.py",
+    "lines": 88,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/fact_verification.py",
+    "lines": 66,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/goal_manager.py",
+    "lines": 38,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/habit_tracker.py",
+    "lines": 31,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/health_monitor.py",
+    "lines": 118,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/infrastructure_orchestrator.py",
+    "lines": 236,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/investment_committee.py",
+    "lines": 385,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/knowledge_graph.py",
+    "lines": 88,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 44,
+        "kind": "review marker",
+        "text": "# Create placeholder node"
+      },
+      {
+        "line": 45,
+        "kind": "review marker",
+        "text": "self.add_node(source, source.replace('_', ' ').capitalize(), \"General\", \"Automated concept placeholder.\")"
+      },
+      {
+        "line": 49,
+        "kind": "review marker",
+        "text": "# Create placeholder node"
+      },
+      {
+        "line": 50,
+        "kind": "review marker",
+        "text": "self.add_node(target, target.replace('_', ' ').capitalize(), \"General\", \"Automated concept placeholder.\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra/core/learning_memory.py",
+    "lines": 182,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/learning_orchestrator.py",
+    "lines": 86,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/market_regime.py",
+    "lines": 269,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/market_replay.py",
+    "lines": 99,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/memory_api.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/message_bus.py",
+    "lines": 563,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/mistake_detector.py",
+    "lines": 85,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/models.py",
+    "lines": 121,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/opportunity_engine.py",
+    "lines": 110,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/personal_memory.py",
+    "lines": 297,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/personal_orchestrator.py",
+    "lines": 109,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/plugin_manager.py",
+    "lines": 89,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/portfolio_risk_coordinator.py",
+    "lines": 263,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/position_manager.py",
+    "lines": 208,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/project_manager.py",
+    "lines": 57,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/publisher_agent.py",
+    "lines": 44,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/report_generator.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/research_memory.py",
+    "lines": 237,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/research_orchestrator.py",
+    "lines": 129,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/risk_guardian.py",
+    "lines": 214,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/scaling_system.py",
+    "lines": 206,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/scout_engine.py",
+    "lines": 207,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/service_discovery.py",
+    "lines": 171,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/shadow_ai.py",
+    "lines": 201,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/shadow_ai_analyst.py",
+    "lines": 76,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/signal_arbitrator.py",
+    "lines": 25,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/signal_scorer.py",
+    "lines": 557,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/social_memory.py",
+    "lines": 152,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/social_orchestrator.py",
+    "lines": 84,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/social_scheduler.py",
+    "lines": 40,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/social_script_writer.py",
+    "lines": 72,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/state_store.py",
+    "lines": 90,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/strategy_fingerprint.py",
+    "lines": 120,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/symbol_manager.py",
+    "lines": 110,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/symbol_resolver.py",
+    "lines": 169,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/symbol_worker.py",
+    "lines": 189,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/task_manager.py",
+    "lines": 29,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/task_scheduler.py",
+    "lines": 145,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/trend_intelligence.py",
+    "lines": 32,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/validation_committee.py",
+    "lines": 692,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/workflow_engine.py",
+    "lines": 156,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/core/zohra_core.py",
+    "lines": 146,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/db/__init__.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/db/connection.py",
+    "lines": 164,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 150,
+        "kind": "review marker",
+        "text": "def placeholder(self) -> str:"
+      }
+    ]
+  },
+  {
+    "file": "zohra/db/repositories/__init__.py",
+    "lines": 5,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/db/repositories/equity.py",
+    "lines": 45,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 22,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      },
+      {
+        "line": 35,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      }
+    ]
+  },
+  {
+    "file": "zohra/db/repositories/rejections.py",
+    "lines": 88,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 14,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      },
+      {
+        "line": 48,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      },
+      {
+        "line": 64,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      }
+    ]
+  },
+  {
+    "file": "zohra/db/repositories/trades.py",
+    "lines": 143,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 15,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      },
+      {
+        "line": 66,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      },
+      {
+        "line": 81,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      },
+      {
+        "line": 101,
+        "kind": "review marker",
+        "text": "p = self.db.placeholder()"
+      }
+    ]
+  },
+  {
+    "file": "zohra/db/schema.py",
+    "lines": 1781,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/diagnostics/__init__.py",
+    "lines": 4,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/diagnostics/strategy_logger.py",
+    "lines": 74,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/__init__.py",
+    "lines": 30,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/account_worker.py",
+    "lines": 824,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/components/__init__.py",
+    "lines": 37,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/components/connection_manager.py",
+    "lines": 252,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/components/data_stream_processor.py",
+    "lines": 418,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 118,
+        "kind": "review marker",
+        "text": "# Connect WebSocket (placeholder - actual implementation depends on Dhan WebSocket API)"
+      },
+      {
+        "line": 156,
+        "kind": "review marker",
+        "text": "# This is a placeholder implementation"
+      },
+      {
+        "line": 204,
+        "kind": "review marker",
+        "text": "# This is a placeholder - actual implementation would send WebSocket message"
+      }
+    ]
+  },
+  {
+    "file": "zohra/engines/components/instrument_registry.py",
+    "lines": 367,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 89,
+        "kind": "review marker",
+        "text": "# Get instruments from broker (this is a placeholder - actual implementation"
+      },
+      {
+        "line": 108,
+        "kind": "review marker",
+        "text": "This is a placeholder implementation. In practice, this would call"
+      }
+    ]
+  },
+  {
+    "file": "zohra/engines/components/order_manager.py",
+    "lines": 395,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/components/session_manager.py",
+    "lines": 278,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/config.py",
+    "lines": 181,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/__init__.py",
+    "lines": 87,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/__init__.py",
+    "lines": 44,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/connection_manager.py",
+    "lines": 216,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/data_stream_processor.py",
+    "lines": 275,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 252,
+        "kind": "review marker",
+        "text": "# This is a placeholder implementation"
+      }
+    ]
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/event_publisher.py",
+    "lines": 73,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/instrument_registry.py",
+    "lines": 156,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/integration_bridge.py",
+    "lines": 147,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 33,
+        "kind": "review marker",
+        "text": "# For now, we'll use placeholder implementations"
+      },
+      {
+        "line": 47,
+        "kind": "review marker",
+        "text": "# Placeholder implementation"
+      },
+      {
+        "line": 59,
+        "kind": "review marker",
+        "text": "decision=AIDecision.APPROVE,  # Placeholder"
+      },
+      {
+        "line": 61,
+        "kind": "review marker",
+        "text": "reasoning=\"Setup meets criteria (placeholder implementation)\","
+      },
+      {
+        "line": 83,
+        "kind": "review marker",
+        "text": "# Placeholder implementation"
+      },
+      {
+        "line": 121,
+        "kind": "review marker",
+        "text": "# Placeholder implementation"
+      },
+      {
+        "line": 146,
+        "kind": "review marker",
+        "text": "# Import asyncio for placeholder sleep"
+      }
+    ]
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/order_manager.py",
+    "lines": 248,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/position_manager.py",
+    "lines": 258,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/components/session_manager.py",
+    "lines": 150,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/config.py",
+    "lines": 92,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/engine.py",
+    "lines": 416,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/logging_config.py",
+    "lines": 209,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine/models.py",
+    "lines": 112,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/indian_market_engine.py",
+    "lines": 456,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/market_data_service.py",
+    "lines": 262,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/models.py",
+    "lines": 395,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/risk_decision_engine.py",
+    "lines": 404,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/strategy_engine.py",
+    "lines": 500,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/engines/supervisor.py",
+    "lines": 555,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/event_bus.py",
+    "lines": 90,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/__init__.py",
+    "lines": 58,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/confidence_calibration_engine.py",
+    "lines": 255,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/failure_pattern_detector.py",
+    "lines": 240,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/hie_orchestrator.py",
+    "lines": 283,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/historical_data_engine.py",
+    "lines": 431,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/historical_intelligence_scoring.py",
+    "lines": 315,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/historical_pattern_database.py",
+    "lines": 269,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/learning_engine_hie.py",
+    "lines": 332,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/market_memory_engine.py",
+    "lines": 288,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/market_replay_engine.py",
+    "lines": 297,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/outcome_analysis_engine.py",
+    "lines": 398,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/setup_detection_engine.py",
+    "lines": 745,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/symbol_intelligence_profiles.py",
+    "lines": 337,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/hie/trade_similarity_engine.py",
+    "lines": 254,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/__init__.py",
+    "lines": 39,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/adx.py",
+    "lines": 31,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/atr.py",
+    "lines": 106,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/bollinger.py",
+    "lines": 79,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/ema.py",
+    "lines": 95,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/fibonacci.py",
+    "lines": 122,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/fvg.py",
+    "lines": 128,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/market_structure.py",
+    "lines": 201,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/momentum.py",
+    "lines": 102,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/mtf.py",
+    "lines": 96,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/order_block.py",
+    "lines": 131,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/rsi.py",
+    "lines": 19,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/structure.py",
+    "lines": 142,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/supply_demand.py",
+    "lines": 148,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/support_resistance.py",
+    "lines": 143,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/volume.py",
+    "lines": 67,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/indicators/vwap.py",
+    "lines": 61,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/integrations/__init__.py",
+    "lines": 1,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/integrations/ai_agent.py",
+    "lines": 97,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 92,
+        "kind": "review marker",
+        "text": "p = db.placeholder()"
+      }
+    ]
+  },
+  {
+    "file": "zohra/integrations/news.py",
+    "lines": 206,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/integrations/voice.py",
+    "lines": 25,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/__init__.py",
+    "lines": 32,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/cross_market.py",
+    "lines": 270,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 209,
+        "kind": "review marker",
+        "text": "\"\"\"VIX placeholder \u2014 requires data feed.\"\"\""
+      },
+      {
+        "line": 214,
+        "kind": "review marker",
+        "text": "\"\"\"Bond yield trend placeholder.\"\"\""
+      }
+    ]
+  },
+  {
+    "file": "zohra/intelligence/decision_pipeline.py",
+    "lines": 285,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/macro_intelligence.py",
+    "lines": 218,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/models.py",
+    "lines": 412,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/multi_timeframe.py",
+    "lines": 280,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/portfolio_intelligence.py",
+    "lines": 351,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/regime_engine.py",
+    "lines": 405,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/smart_money.py",
+    "lines": 360,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/strategy_marketplace.py",
+    "lines": 269,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/strategy_optimizer.py",
+    "lines": 292,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/intelligence/strategy_sdk.py",
+    "lines": 353,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 61,
+        "kind": "empty function",
+        "name": "on_fill"
+      },
+      {
+        "line": 65,
+        "kind": "empty function",
+        "name": "on_close"
+      }
+    ]
+  },
+  {
+    "file": "zohra/learning/evolution_engine.py",
+    "lines": 199,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/learning/pattern_detector.py",
+    "lines": 399,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 261,
+        "kind": "review marker",
+        "text": "# 5. Pattern Discovery Logging (Mock patterns or basic groupings)"
+      }
+    ]
+  },
+  {
+    "file": "zohra/learning/strategy_knowledge_base.py",
+    "lines": 331,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/learning/strategy_validation_lab.py",
+    "lines": 295,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/learning/trade_forensics.py",
+    "lines": 435,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/learning/walk_forward_optimizer.py",
+    "lines": 180,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/logging/__init__.py",
+    "lines": 4,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/logging/rejection_logger.py",
+    "lines": 41,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/logging/trade_logger.py",
+    "lines": 76,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/memory/__init__.py",
+    "lines": 3,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/memory/lifecycle_memory.py",
+    "lines": 775,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/memory/vector_store.py",
+    "lines": 229,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/__init__.py",
+    "lines": 34,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/capital_allocator.py",
+    "lines": 44,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 18,
+        "kind": "empty function",
+        "name": "__init__"
+      }
+    ]
+  },
+  {
+    "file": "zohra/mission_control/capital_rotation.py",
+    "lines": 56,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/commander.py",
+    "lines": 145,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/correlation_engine.py",
+    "lines": 35,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 18,
+        "kind": "empty function",
+        "name": "__init__"
+      }
+    ]
+  },
+  {
+    "file": "zohra/mission_control/cross_market.py",
+    "lines": 58,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/decision_engine.py",
+    "lines": 93,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 23,
+        "kind": "empty function",
+        "name": "__init__"
+      }
+    ]
+  },
+  {
+    "file": "zohra/mission_control/mission_control.py",
+    "lines": 98,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/opportunity_ranker.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 19,
+        "kind": "empty function",
+        "name": "__init__"
+      }
+    ]
+  },
+  {
+    "file": "zohra/mission_control/optimization_loop.py",
+    "lines": 41,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/portfolio_intel.py",
+    "lines": 51,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/risk_manager.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/self_healing.py",
+    "lines": 180,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/mission_control/strategy_switcher.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/plugins/__init__.py",
+    "lines": 2,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/reporting/__init__.py",
+    "lines": 3,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/reporting/charts.py",
+    "lines": 100,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/reporting/report_generator.py",
+    "lines": 616,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/security/__init__.py",
+    "lines": 15,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/security/permissions.py",
+    "lines": 179,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/__init__.py",
+    "lines": 1,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/automation/approval_system.py",
+    "lines": 57,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/automation/browser_automation.py",
+    "lines": 37,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 11,
+        "kind": "review marker",
+        "text": "Falls back to a mock browser simulator if Playwright is not installed."
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/automation/desktop_automation.py",
+    "lines": 71,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/automation/task_planner.py",
+    "lines": 77,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/automation/windows_integration.py",
+    "lines": 850,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/automation/workflow_engine.py",
+    "lines": 119,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 108,
+        "kind": "review marker",
+        "text": "if isinstance(e, (PermissionError, ValueError, NotImplementedError)):"
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/chat/__init__.py",
+    "lines": 6,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/agent_brain.py",
+    "lines": 552,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/agents.py",
+    "lines": 818,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/base_agent.py",
+    "lines": 27,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 25,
+        "kind": "empty function",
+        "name": "on_event"
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/chat/command_router.py",
+    "lines": 543,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/context_manager.py",
+    "lines": 242,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/conversation_memory.py",
+    "lines": 104,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 81,
+        "kind": "review marker",
+        "text": "placeholder = db.placeholder()"
+      },
+      {
+        "line": 83,
+        "kind": "review marker",
+        "text": "f\"SELECT role, message FROM chat_sessions WHERE session_id = {placeholder} ORDER BY id DESC LIMIT 50 OFFSET {self.limit}\","
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/chat/explain_layer.py",
+    "lines": 449,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/intent_layer.py",
+    "lines": 369,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/model_router.py",
+    "lines": 135,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/prompt_manager.py",
+    "lines": 157,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/reasoning_orchestrator.py",
+    "lines": 167,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/reflection_engine.py",
+    "lines": 115,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/session_manager.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/chat/tool_calling.py",
+    "lines": 351,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 61,
+        "kind": "review marker",
+        "text": "placeholder = db.placeholder()"
+      },
+      {
+        "line": 73,
+        "kind": "review marker",
+        "text": "query += f\" AND t.mt5_ticket = {placeholder}\""
+      },
+      {
+        "line": 76,
+        "kind": "review marker",
+        "text": "query += f\" AND t.symbol = {placeholder}\""
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/chat/vector_memory.py",
+    "lines": 57,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/evolution/cost_optimizer.py",
+    "lines": 46,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/evolution/evolution_engine.py",
+    "lines": 92,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/plugins/event_bus.py",
+    "lines": 51,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/plugins/mcp_client.py",
+    "lines": 68,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/plugins/plugin_manager.py",
+    "lines": 123,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 16,
+        "kind": "empty function",
+        "name": "on_enable"
+      },
+      {
+        "line": 20,
+        "kind": "empty function",
+        "name": "on_disable"
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/tool_execution/__init__.py",
+    "lines": 21,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/tool_execution/engine.py",
+    "lines": 293,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/tool_execution/models.py",
+    "lines": 61,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/tool_execution/queue.py",
+    "lines": 36,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/camera_capture.py",
+    "lines": 127,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/chart_vision.py",
+    "lines": 17,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/models.py",
+    "lines": 83,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/object_detection.py",
+    "lines": 44,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/ocr_engine.py",
+    "lines": 129,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 29,
+        "kind": "review marker",
+        "text": "logger.warning(f\"Failed to load EasyOCR: {e}. Falling back to text extraction stub.\")"
+      },
+      {
+        "line": 32,
+        "kind": "review marker",
+        "text": "logger.info(\"Using local OCR text extraction stub.\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/vision/preprocessing.py",
+    "lines": 38,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/screen_capture.py",
+    "lines": 79,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/ui_detector.py",
+    "lines": 115,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/vision_memory.py",
+    "lines": 134,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/vision/window_recognition.py",
+    "lines": 109,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/__init__.py",
+    "lines": 12,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/audio_capture.py",
+    "lines": 254,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/interrupt_detector.py",
+    "lines": 69,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 20,
+        "kind": "review marker",
+        "text": "\"\"\"Mock Voice Activity Detection (VAD) model.\"\"\""
+      }
+    ]
+  },
+  {
+    "file": "zohra/services/voice/models.py",
+    "lines": 18,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/speaker_id.py",
+    "lines": 117,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/stt_connector.py",
+    "lines": 186,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/tts_connector.py",
+    "lines": 123,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/voice_gateway.py",
+    "lines": 357,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/voice_memory.py",
+    "lines": 145,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/services/voice/wake_word.py",
+    "lines": 50,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 10,
+        "kind": "review marker",
+        "text": "Mock Keyword Spotting (KWS) model."
+      }
+    ]
+  },
+  {
+    "file": "zohra/strategies/__init__.py",
+    "lines": 4,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/atr_expansion.py",
+    "lines": 129,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/base.py",
+    "lines": 30,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 15,
+        "kind": "empty function",
+        "name": "generate_signal"
+      }
+    ]
+  },
+  {
+    "file": "zohra/strategies/base_strategy.py",
+    "lines": 119,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 113,
+        "kind": "empty function",
+        "name": "evaluate"
+      }
+    ]
+  },
+  {
+    "file": "zohra/strategies/bollinger_rsi.py",
+    "lines": 155,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/breakout.py",
+    "lines": 151,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/breakout_strategy.py",
+    "lines": 164,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/chart_pattern_strategy.py",
+    "lines": 776,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/crypto_strategies.py",
+    "lines": 205,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 153,
+        "kind": "review marker",
+        "text": "# Mock order block price level at the recent 20-bar min low"
+      }
+    ]
+  },
+  {
+    "file": "zohra/strategies/ema_pullback.py",
+    "lines": 153,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/false_breakout.py",
+    "lines": 136,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/fibonacci_pullback.py",
+    "lines": 144,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/fvg.py",
+    "lines": 129,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/liquidity_mss.py",
+    "lines": 148,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/mean_reversion.py",
+    "lines": 159,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/momentum_continuation.py",
+    "lines": 130,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/mtf_alignment.py",
+    "lines": 126,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/order_block.py",
+    "lines": 129,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/regime_suite.py",
+    "lines": 95,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/scalp_m5.py",
+    "lines": 172,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/scalping_strategy.py",
+    "lines": 1000,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/strategy_registry.py",
+    "lines": 117,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/supply_demand.py",
+    "lines": 136,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/support_resistance.py",
+    "lines": 137,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/trend_following.py",
+    "lines": 168,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/volume_breakout.py",
+    "lines": 127,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/vwap_mean_reversion.py",
+    "lines": 144,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/strategies/zohra_scoring_v5.py",
+    "lines": 324,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_15_strategy_confluence.py",
+    "lines": 231,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 98,
+        "kind": "review marker",
+        "text": "# Mock evaluate_all with only 2 candidate signals"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_5_strategies.py",
+    "lines": 219,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_agents.py",
+    "lines": 186,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 2,
+        "kind": "review marker",
+        "text": "from unittest.mock import MagicMock, patch"
+      },
+      {
+        "line": 75,
+        "kind": "review marker",
+        "text": "# Mock MT5 broker"
+      },
+      {
+        "line": 79,
+        "kind": "review marker",
+        "text": "# Mock Scorer kill switch (not blocked)"
+      },
+      {
+        "line": 81,
+        "kind": "review marker",
+        "text": "# Mock position sizing (Lots = 0.15 for grade A)"
+      },
+      {
+        "line": 107,
+        "kind": "review marker",
+        "text": "# Mock news and risk agents"
+      },
+      {
+        "line": 125,
+        "kind": "review marker",
+        "text": "# Mock MT5 execution"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_architecture_v2.py",
+    "lines": 92,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_backtest.py",
+    "lines": 93,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 4,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch, MagicMock"
+      },
+      {
+        "line": 50,
+        "kind": "review marker",
+        "text": "# Mock decision engine to generate a BUY setup at bar index 110"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_brain_v3.py",
+    "lines": 105,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_chart_pattern.py",
+    "lines": 163,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 106,
+        "kind": "review marker",
+        "text": "# Since calculation is done on the fly, we can mock or force close values."
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_conversational_center.py",
+    "lines": 165,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 2,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch"
+      },
+      {
+        "line": 131,
+        "kind": "review marker",
+        "text": "# Mock all LLM keys to force offline fallback routing"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_crypto_engine.py",
+    "lines": 173,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 9,
+        "kind": "review marker",
+        "text": "from unittest.mock import MagicMock, patch"
+      },
+      {
+        "line": 72,
+        "kind": "review marker",
+        "text": "# Mock historical data for low volatility"
+      },
+      {
+        "line": 109,
+        "kind": "review marker",
+        "text": "# Mock prices (BTC = 60000, ETH = 3000) -> Portfolio value: 1000 + 9000 + 3600 = 13600 USD"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_dashboard_workspaces.py",
+    "lines": 170,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 3,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_data_integrity_audit.py",
+    "lines": 113,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 3,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_die.py",
+    "lines": 134,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 10,
+        "kind": "review marker",
+        "text": "from unittest.mock import MagicMock, patch"
+      },
+      {
+        "line": 101,
+        "kind": "review marker",
+        "text": "# Mock regime as TRENDING"
+      },
+      {
+        "line": 105,
+        "kind": "review marker",
+        "text": "# Mock strategy generates a BUY signal"
+      },
+      {
+        "line": 116,
+        "kind": "review marker",
+        "text": "# Mock confluence yields score of 85 (high confluence)"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_engine_registry.py",
+    "lines": 67,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 25,
+        "kind": "review marker",
+        "text": "# Register mock engines"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_framework_v5.py",
+    "lines": 218,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 32,
+        "kind": "review marker",
+        "text": "# Mock memory store to verify procedural scope enforcement"
+      },
+      {
+        "line": 68,
+        "kind": "review marker",
+        "text": "# Mock global policy for check_permission"
+      },
+      {
+        "line": 130,
+        "kind": "review marker",
+        "text": "# Mock clock to simulate lock expiration"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_intelligence.py",
+    "lines": 223,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 160,
+        "kind": "empty function",
+        "name": "on_init"
+      },
+      {
+        "line": 27,
+        "kind": "review marker",
+        "text": "# \u2500\u2500\u2500 Mock Data Helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+      },
+      {
+        "line": 30,
+        "kind": "review marker",
+        "text": "\"\"\"Generate mock trend/range OHLCV pandas DataFrame.\"\"\""
+      },
+      {
+        "line": 60,
+        "kind": "review marker",
+        "text": "# Record mock returns to build return history"
+      },
+      {
+        "line": 169,
+        "kind": "review marker",
+        "text": "\"reason\": \"Mock entry signal\""
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_memory_v4.py",
+    "lines": 121,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_mission_control.py",
+    "lines": 75,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_mission_control_expanded.py",
+    "lines": 106,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 6,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_multi_bot_specialization.py",
+    "lines": 220,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_multi_symbol.py",
+    "lines": 111,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_permissions.py",
+    "lines": 76,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_regime_engine.py",
+    "lines": 70,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_risk_guardian_fixes.py",
+    "lines": 243,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 9,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch, MagicMock"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_sim_broker.py",
+    "lines": 84,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/test_validation.py",
+    "lines": 184,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 18,
+        "kind": "review marker",
+        "text": "# \u2500\u2500\u2500 Mock Data Helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+      },
+      {
+        "line": 21,
+        "kind": "review marker",
+        "text": "\"\"\"Generate mock stable OHLCV pandas DataFrame.\"\"\""
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_vision_v7.py",
+    "lines": 207,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 3,
+        "kind": "review marker",
+        "text": "from unittest.mock import patch"
+      },
+      {
+        "line": 120,
+        "kind": "review marker",
+        "text": "# On any platform, we should get a non-empty result (mock or real)"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_voice_v6.py",
+    "lines": 159,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 5,
+        "kind": "review marker",
+        "text": "from unittest.mock import MagicMock"
+      },
+      {
+        "line": 48,
+        "kind": "review marker",
+        "text": "# Setup mock event handler"
+      },
+      {
+        "line": 128,
+        "kind": "review marker",
+        "text": "# Setup mock event handler"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_windows_v8.py",
+    "lines": 186,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 143,
+        "kind": "review marker",
+        "text": "# Or mock the metadata sizes to simulate a zip bomb"
+      }
+    ]
+  },
+  {
+    "file": "zohra/tests/test_xauusd_strategy_engine.py",
+    "lines": 308,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tests/verify_core_intelligence.py",
+    "lines": 90,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tools/analyze_rejections.py",
+    "lines": 58,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/tools/health_monitor.py",
+    "lines": 163,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/utils/__init__.py",
+    "lines": 4,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/utils/mt5_connection.py",
+    "lines": 53,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 18,
+        "kind": "review marker",
+        "text": "logger.warning(\"MetaTrader5 package not installed. Wrapper running in mock mode.\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra/utils/mt5_utils.py",
+    "lines": 38,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/utils/session.py",
+    "lines": 26,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/validation/__init__.py",
+    "lines": 19,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/validation/audit_system.py",
+    "lines": 159,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/validation/backtester.py",
+    "lines": 335,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/validation/broker_monitor.py",
+    "lines": 167,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 67,
+        "kind": "review marker",
+        "text": "# Mock or ping the adapter"
+      }
+    ]
+  },
+  {
+    "file": "zohra/validation/explainability.py",
+    "lines": 200,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/validation/paper_engine.py",
+    "lines": 212,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra/validation/replay_engine.py",
+    "lines": 173,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 53,
+        "kind": "review marker",
+        "text": "# Standard mock generator for offline replays"
+      },
+      {
+        "line": 132,
+        "kind": "review marker",
+        "text": "# \u2500\u2500\u2500 Mock Generator for Offline Presets \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+      }
+    ]
+  },
+  {
+    "file": "zohra.py",
+    "lines": 48,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra1.py",
+    "lines": 39,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra2.py",
+    "lines": 39,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra3.py",
+    "lines": 39,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra_backups/pre_correlation_audit_20260831_112141/confluence_engine.py",
+    "lines": 464,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra_backups/pre_correlation_audit_20260831_112141/settings.py",
+    "lines": 399,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra_backups/pre_correlation_audit_20260831_112141/zohra.py",
+    "lines": 2182,
+    "scope": "archive/copy",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 409,
+        "kind": "review marker",
+        "text": "logger.critical(\"\ud83d\udea8 MetaTrader 5 connection lost or failed. Broker failover is disabled to prevent split-brain trading on stub adapters.\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra_legacy.py",
+    "lines": 2177,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": [
+      {
+        "line": 409,
+        "kind": "review marker",
+        "text": "logger.critical(\"\ud83d\udea8 MetaTrader 5 connection lost or failed. Broker failover is disabled to prevent split-brain trading on stub adapters.\")"
+      }
+    ]
+  },
+  {
+    "file": "zohra_main.py",
+    "lines": 78,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohra_precision_v3.py",
+    "lines": 466,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohrastatus.py",
+    "lines": 80,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  },
+  {
+    "file": "zohratest.py",
+    "lines": 125,
+    "scope": "active/test/tool",
+    "syntax_error": null,
+    "markers": []
+  }
+]

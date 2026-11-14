@@ -1,0 +1,2 @@
+# Assistant-only public search; does not change the trading environment settings.
+ddgs==9.16.0

@@ -1,0 +1,528 @@
+"""
+Setting up unified MetaTrader 5 broker adapter.
+All MT5 calls are centralized here.
+"""
+
+import os
+import sys
+import logging
+from datetime import datetime, timedelta
+from typing import Optional, Dict, List, Tuple, Any
+
+import pandas as pd
+import numpy as np
+
+# Resolve imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from zohra.brokers.base import BrokerAdapter
+from zohra.config.settings import (
+    MT5_LOGIN, MT5_PASSWORD, MT5_SERVER,
+    MAGIC_SMC, MAGIC_SCALP,
+    MIN_LOT_SIZE, MAX_LOT_SIZE, LOT_STEP
+)
+
+logger = logging.getLogger("zohra.mt5")
+
+from zohra.utils.mt5_connection import mt5, MT5_AVAILABLE
+
+
+class MT5Broker(BrokerAdapter):
+    """
+    Complete MT5 broker interface.
+    Implements BrokerAdapter for unified quantitative strategy execution.
+    """
+
+    def __init__(self):
+        self._connected = False
+        self._cache = {}
+
+    @property
+    def name(self) -> str:
+        return "mt5"
+
+    # ─── Connection ────────────────────────────────────────
+
+    def connect(self) -> bool:
+        if not MT5_AVAILABLE:
+            logger.error("MetaTrader5 package not installed.")
+            return False
+
+        # If already initialized, just sign in to avoid tearing down other thread connections
+        term = mt5.terminal_info()
+        if term is not None:
+            if mt5.login(login=MT5_LOGIN, password=MT5_PASSWORD, server=MT5_SERVER):
+                self._connected = True
+                return True
+            else:
+                logger.warning(f"MT5 login failed: {mt5.last_error()} — attempting full re-initialization")
+
+        if not mt5.initialize(login=MT5_LOGIN, password=MT5_PASSWORD, server=MT5_SERVER):
+            logger.error(f"MT5 init failed: {mt5.last_error()}")
+            return False
+
+        account = mt5.account_info()
+        if account is None:
+            logger.error("MT5: Could not get account info")
+            return False
+
+        self._connected = True
+        logger.info(f"✅ MT5 Connected: #{account.login} | {account.server} | "
+                    f"${account.equity:.2f} equity")
+        return True
+
+    def disconnect(self):
+        if MT5_AVAILABLE:
+            mt5.shutdown()
+        self._connected = False
+        logger.info("MT5 disconnected")
+
+    def is_connected(self) -> bool:
+        if not MT5_AVAILABLE:
+            return False
+            
+        import time
+        now = time.time()
+        if "is_connected" in self._cache:
+            val, ts = self._cache["is_connected"]
+            if now - ts < 2.0:
+                return val
+
+        try:
+            acc = None
+            for _ in range(3):
+                acc = mt5.account_info()
+                if acc is not None:
+                    break
+                time.sleep(0.1)
+                
+            if acc is None:
+                self._connected = False
+                self._cache["is_connected"] = (False, now)
+                return False
+                
+            term = mt5.terminal_info()
+            if term is not None and not term.connected:
+                logger.warning("MT5: Terminal is active but disconnected from trade server.")
+                self._connected = False
+                self._cache["is_connected"] = (False, now)
+                return False
+                
+            self._connected = True
+            self._cache["is_connected"] = (True, now)
+            return True
+        except Exception:
+            self._connected = False
+            self._cache["is_connected"] = (False, now)
+            return False
+
+    # ─── Account Info ──────────────────────────────────────
+
+    def get_account_info(self) -> Optional[Dict]:
+        if not MT5_AVAILABLE:
+            return None
+            
+        import time
+        now = time.time()
+        if "account_info" in self._cache:
+            val, ts = self._cache["account_info"]
+            if now - ts < 1.0:
+                return val
+
+        account = mt5.account_info()
+        if account is None:
+            return None
+            
+        res = {
+            "login":    account.login,
+            "server":   account.server,
+            "equity":   account.equity,
+            "balance":  account.balance,
+            "margin":   account.margin,
+            "free_margin": account.margin_free,
+            "profit":   account.profit,
+            "leverage": account.leverage,
+            "currency": account.currency,
+        }
+        self._cache["account_info"] = (res, now)
+        return res
+
+    def get_account_summary(self) -> Dict[str, Any]:
+        info = self.get_account_info()
+        if not info:
+            return {}
+        return {
+            "balance": info["balance"],
+            "equity": info["equity"],
+            "margin": info["margin"],
+            "free_margin": info["free_margin"],
+            "currency": info["currency"],
+            "login": info["login"],
+            "server": info["server"],
+        }
+
+    def get_equity(self) -> float:
+        info = self.get_account_info()
+        return info['equity'] if info else 0.0
+
+    def get_balance(self) -> float:
+        info = self.get_account_info()
+        return info['balance'] if info else 0.0
+
+    # ─── Market Data ───────────────────────────────────────
+
+    def get_ohlcv(self, symbol: str, timeframe_str: str, count: int = 300) -> Optional[pd.DataFrame]:
+        """
+        Fetch OHLCV bars from MT5.
+        timeframe_str: "M1", "M5", "M15", "H1", "H4", "D1"
+        """
+        if not MT5_AVAILABLE:
+            return None
+
+        TF_MAP = {
+            "M1":  mt5.TIMEFRAME_M1,  "M5":  mt5.TIMEFRAME_M5,
+            "M15": mt5.TIMEFRAME_M15, "M30": mt5.TIMEFRAME_M30,
+            "H1":  mt5.TIMEFRAME_H1,  "H4":  mt5.TIMEFRAME_H4,
+            "D1":  mt5.TIMEFRAME_D1,  "W1":  mt5.TIMEFRAME_W1,
+        }
+        tf = TF_MAP.get(timeframe_str.upper(), mt5.TIMEFRAME_H1)
+
+        if not mt5.symbol_select(symbol, True):
+            logger.warning(f"Symbol {symbol} not available")
+            return None
+
+        rates = mt5.copy_rates_from_pos(symbol, tf, 0, count)
+        if rates is None or len(rates) < min(10, count):
+            logger.warning(f"No data for {symbol} {timeframe_str}")
+            return None
+
+        df = pd.DataFrame(rates)
+        df['time'] = pd.to_datetime(df['time'], unit='s', utc=True)
+        df.set_index('time', inplace=True)
+        df.rename(columns={
+            'open': 'open', 'high': 'high', 'low': 'low',
+            'close': 'close', 'real_volume': 'real_volume',
+            'tick_volume': 'tick_volume'
+        }, inplace=True)
+        return df
+
+    def get_candles(self, symbol: str, timeframe: str = "H1", count: int = 200) -> pd.DataFrame:
+        df = self.get_ohlcv(symbol, timeframe, count)
+        if df is None:
+            return pd.DataFrame()
+        df_reset = df.reset_index()
+        df_reset.rename(columns={"tick_volume": "volume"}, inplace=True)
+        return df_reset
+
+    def get_multi_tf(self, symbol: str, timeframes: List[str],
+                     count: int = 300) -> Dict[str, Optional[pd.DataFrame]]:
+        """Fetch multiple timeframes at once."""
+        return {tf: self.get_ohlcv(symbol, tf, count) for tf in timeframes}
+
+    def get_tick(self, symbol: str) -> Optional[Dict]:
+        """Current bid/ask tick."""
+        if not MT5_AVAILABLE:
+            return None
+        tick = mt5.symbol_info_tick(symbol)
+        if tick is None:
+            return None
+        return {"bid": tick.bid, "ask": tick.ask, "time": tick.time,
+                "spread": tick.ask - tick.bid}
+
+    def get_current_price(self, symbol: str) -> Dict[str, float]:
+        tick = self.get_tick(symbol)
+        if not tick:
+            return {}
+        return {
+            "bid": tick["bid"],
+            "ask": tick["ask"],
+            "mid": (tick["bid"] + tick["ask"]) / 2,
+            "spread": tick["spread"]
+        }
+
+    def get_spread_pips(self, symbol: str) -> float:
+        """Get current spread in pips."""
+        tick = self.get_tick(symbol)
+        if not tick:
+            return 999.0
+        spread = tick['ask'] - tick['bid']
+        if "JPY" in symbol:
+            return spread * 100
+        elif "XAU" in symbol:
+            return spread * 10
+        else:
+            return spread * 10_000
+
+    # ─── Filling Mode ──────────────────────────────────────
+
+    def _get_filling(self, symbol: str) -> int:
+        if not MT5_AVAILABLE:
+            return 0
+        info = mt5.symbol_info(symbol)
+        if info is None:
+            return mt5.ORDER_FILLING_FOK
+        fm = info.filling_mode
+        if fm & 1: return mt5.ORDER_FILLING_FOK
+        if fm & 2: return mt5.ORDER_FILLING_IOC
+        if fm & 4: return mt5.ORDER_FILLING_RETURN
+        return mt5.ORDER_FILLING_FOK
+
+    # ─── Order Execution ───────────────────────────────────
+
+    def open_trade(self, symbol: str, direction: str, lots: float,
+                   stop_loss: float, take_profit: float,
+                   magic: int = None, comment: str = "Zohra") -> Optional[Dict]:
+        """
+        Open a market order.
+        Returns trade dict with ticket, or None on failure.
+        """
+        if not MT5_AVAILABLE:
+            logger.warning("MT5 not available — simulating trade open")
+            return {"ticket": 99999, "price": 0, "symbol": symbol}
+
+        if not mt5.symbol_select(symbol, True):
+            logger.error(f"Cannot select {symbol}")
+            return None
+
+        tick = mt5.symbol_info_tick(symbol)
+        if tick is None:
+            logger.error(f"No tick data for {symbol}")
+            return None
+
+        # Snap lots to broker step
+        lots = round(round(lots / LOT_STEP) * LOT_STEP, 2)
+        lots = max(MIN_LOT_SIZE, min(lots, MAX_LOT_SIZE))
+
+        if direction == "LONG":
+            order_type = mt5.ORDER_TYPE_BUY
+            price      = tick.ask
+        else:
+            order_type = mt5.ORDER_TYPE_SELL
+            price      = tick.bid
+
+        magic_num = magic or MAGIC_SMC
+
+        request = {
+            "action":      mt5.TRADE_ACTION_DEAL,
+            "symbol":      symbol,
+            "volume":      lots,
+            "type":        order_type,
+            "price":       price,
+            "sl":          round(stop_loss,   5),
+            "tp":          round(take_profit, 5),
+            "deviation":   10,
+            "magic":       magic_num,
+            "comment":     comment[:31],            # MT5 max 31 chars
+            "type_time":   mt5.ORDER_TIME_GTC,
+            "type_filling": self._get_filling(symbol),
+        }
+
+        result = mt5.order_send(request)
+
+        if result is None:
+            err = mt5.last_error()
+            logger.error(f"❌ Order failed: mt5.order_send returned None (terminal disconnected or invalid parameters). Last error: {err}")
+            return None
+
+        if result.retcode == mt5.TRADE_RETCODE_DONE:
+            logger.info(f"✅ TRADE OPENED: {symbol} {direction} {lots}L @ {price} "
+                        f"| SL={stop_loss} TP={take_profit} | Ticket={result.order}")
+            return {
+                "ticket":    result.order,
+                "symbol":    symbol,
+                "direction": direction,
+                "lots":      lots,
+                "price":     price,
+                "stop_loss": stop_loss,
+                "take_profit": take_profit,
+                "opened_at": datetime.utcnow().isoformat(),
+            }
+        else:
+            logger.error(f"❌ Order failed: {result.retcode} — {result.comment}")
+            return None
+
+    def open_position(self, order: Dict) -> Dict:
+        symbol = order["symbol"]
+        direction = order["direction"]
+        lots = order.get("volume_lots") or (order.get("position_size", 1000) / 100_000)
+        sl = order["stop_loss"]
+        tp = order["take_profit"]
+        comment = order.get("comment", "Zohra")
+        magic = order.get("magic")
+
+        res = self.open_trade(symbol, direction, lots, sl, tp, magic=magic, comment=comment)
+        if not res:
+            return {"success": False, "error": "MT5 deal failed", "retcode": None}
+        return {"success": True, "mt5_ticket": res["ticket"], "fill_price": res["price"], "volume_lots": res["lots"]}
+
+    def close_trade(self, ticket: int, symbol: str, direction: str,
+                    lots: float = None, comment: str = "Zohra-Close") -> Optional[Dict]:
+        """
+        Close a position by ticket.
+        If lots specified, closes partially.
+        """
+        if not MT5_AVAILABLE:
+            return {"success": True, "pnl": 0}
+
+        positions = mt5.positions_get(ticket=ticket)
+        if not positions:
+            logger.warning(f"No position found for ticket {ticket}")
+            return None
+
+        pos   = positions[0]
+        close_lots = lots or pos.volume
+        close_lots = round(close_lots, 2)
+
+        tick = mt5.symbol_info_tick(symbol)
+        if tick is None:
+            return None
+
+        # Close = opposite side
+        if pos.type == mt5.ORDER_TYPE_BUY:
+            order_type = mt5.ORDER_TYPE_SELL
+            price      = tick.bid
+        else:
+            order_type = mt5.ORDER_TYPE_BUY
+            price      = tick.ask
+
+        request = {
+            "action":      mt5.TRADE_ACTION_DEAL,
+            "symbol":      symbol,
+            "volume":      close_lots,
+            "type":        order_type,
+            "position":    ticket,
+            "price":       price,
+            "deviation":   10,
+            "magic":       pos.magic,
+            "comment":     comment[:31],
+            "type_time":   mt5.ORDER_TIME_GTC,
+            "type_filling": self._get_filling(symbol),
+        }
+
+        result = mt5.order_send(request)
+
+        if result is None:
+            err = mt5.last_error()
+            logger.error(f"❌ Close failed: mt5.order_send returned None. Last error: {err}")
+            return None
+
+        if result.retcode == mt5.TRADE_RETCODE_DONE:
+            pnl   = pos.profit
+            emoji = "✅" if pnl >= 0 else "❌"
+            logger.info(f"{emoji} CLOSED {symbol} ticket={ticket} | P&L=${pnl:.2f} | {comment}")
+            return {"success": True, "pnl": pnl, "price": price, "ticket": ticket}
+        else:
+            logger.error(f"❌ Close failed: {result.retcode} — {result.comment}")
+            return None
+
+    def close_position(self, ticket: int, symbol: str, volume: float, direction: str) -> Dict:
+        res = self.close_trade(ticket, symbol, direction, lots=volume, comment="Zohra_Close")
+        if not res:
+            return {"success": False, "error": "MT5 close failed"}
+        return {"success": True, "exit_price": res["price"], "profit_loss": res["pnl"]}
+
+    def modify_trade(self, ticket: int, new_sl: float = None,
+                     new_tp: float = None) -> bool:
+        """Modify SL/TP on open position."""
+        if not MT5_AVAILABLE:
+            return True
+
+        positions = mt5.positions_get(ticket=ticket)
+        if not positions:
+            return False
+
+        pos = positions[0]
+        sl  = round(new_sl, 5) if new_sl else pos.sl
+        tp  = round(new_tp, 5) if new_tp else pos.tp
+
+        request = {
+            "action":   mt5.TRADE_ACTION_SLTP,
+            "position": ticket,
+            "sl":       sl,
+            "tp":       tp,
+        }
+        result = mt5.order_send(request)
+        if result is None:
+            err = mt5.last_error()
+            logger.error(f"❌ Modify failed: mt5.order_send returned None. Last error: {err}")
+            return False
+        if result.retcode == mt5.TRADE_RETCODE_DONE:
+            logger.info(f"🔄 Modified ticket={ticket}: SL={sl} TP={tp}")
+            return True
+        else:
+            logger.error(f"❌ Modify failed: {result.retcode}")
+            return False
+
+    def modify_stop(self, ticket: int, symbol: str, stop_loss: float, take_profit: Optional[float] = None) -> Dict:
+        ok = self.modify_trade(ticket, new_sl=stop_loss, new_tp=take_profit)
+        return {"success": ok, "error": None if ok else "MT5 modification failed"}
+
+    # ─── Position Queries ──────────────────────────────────
+
+    def get_open_positions(self, magic: int = None,
+                           symbol: str = None) -> List[Dict]:
+        """Get all open positions, optionally filtered."""
+        if not MT5_AVAILABLE:
+            return []
+
+        if symbol:
+            positions = mt5.positions_get(symbol=symbol)
+        else:
+            positions = mt5.positions_get()
+
+        if positions is None:
+            return []
+
+        result = []
+        for pos in positions:
+            if magic and pos.magic != magic:
+                continue
+            result.append({
+                "ticket":     pos.ticket,
+                "symbol":     pos.symbol,
+                "direction":  "LONG" if pos.type == mt5.ORDER_TYPE_BUY else "SHORT",
+                "lots":       pos.volume,
+                "volume":     pos.volume,
+                "entry_price": pos.price_open,
+                "current_price": pos.price_current,
+                "stop_loss":  pos.sl,
+                "take_profit": pos.tp,
+                "profit":     pos.profit,
+                "magic":      pos.magic,
+                "comment":    pos.comment,
+                "open_time":  datetime.utcfromtimestamp(pos.time).isoformat(),
+            })
+        return result
+
+    def close_all_positions(self, magic: int = None, comment: str = "Emergency-Close") -> int:
+        """Close all open positions. Returns count closed."""
+        positions = self.get_open_positions(magic=magic)
+        closed = 0
+        for pos in positions:
+            result = self.close_trade(
+                pos['ticket'], pos['symbol'], pos['direction'], comment=comment
+            )
+            if result and result.get('success'):
+                closed += 1
+        return closed
+
+    # ─── Symbol Info ───────────────────────────────────────
+
+    def get_symbol_info(self, symbol: str) -> Optional[Dict]:
+        if not MT5_AVAILABLE:
+            return None
+        info = mt5.symbol_info(symbol)
+        if info is None:
+            return None
+        return {
+            "symbol":    info.name,
+            "digits":    info.digits,
+            "point":     info.point,
+            "min_lot":   info.volume_min,
+            "max_lot":   info.volume_max,
+            "lot_step":  info.volume_step,
+            "contract":  info.trade_contract_size,
+        }
+
+
+# Singleton
+mt5_broker = MT5Broker()

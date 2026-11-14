@@ -65,7 +65,7 @@ class TradingScheduler:
                 if exit_info["reason"] == "TRAIL_UPDATE":
                     # Update stop loss
                     executor.modify_stop(
-                        db_pos["oanda_trade_id"],
+                        db_pos["mt5_ticket"],
                         exit_info["new_stop"]
                     )
                     db.log_system("INFO", 
@@ -75,7 +75,7 @@ class TradingScheduler:
                     # Close position
                     result = executor.close_position(
                         db_pos["trade_id"],
-                        db_pos["oanda_trade_id"],
+                        db_pos["mt5_ticket"],
                         symbol,
                         db_pos["direction"]
                     )

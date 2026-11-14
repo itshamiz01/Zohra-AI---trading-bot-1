@@ -1,0 +1,77 @@
+{
+  "current_theme": "cyber_blue",
+  "themes": {
+    "zohra_dark": {
+      "name": "Zohra Dark (Default)",
+      "variables": {
+        "--bg": "#05060b",
+        "--card-bg": "rgba(13, 16, 29, 0.75)",
+        "--card-border": "rgba(255, 255, 255, 0.05)",
+        "--card-hover": "rgba(255, 255, 255, 0.09)",
+        "--primary": "#8a2be2",
+        "--primary-glow": "rgba(138, 43, 226, 0.35)",
+        "--accent": "#00ffcc",
+        "--accent-glow": "rgba(0, 255, 204, 0.2)",
+        "--danger": "#ff007f",
+        "--danger-glow": "rgba(255, 0, 127, 0.2)",
+        "--text-main": "#f3f4f6",
+        "--text-muted": "#838fa7",
+        "--success": "#00ffcc"
+      }
+    },
+    "cyber_blue": {
+      "name": "Cyber Neon Blue",
+      "variables": {
+        "--bg": "#000814",
+        "--card-bg": "rgba(0, 29, 61, 0.7)",
+        "--card-border": "rgba(0, 180, 216, 0.15)",
+        "--card-hover": "rgba(0, 180, 216, 0.25)",
+        "--primary": "#00b4d8",
+        "--primary-glow": "rgba(0, 180, 216, 0.4)",
+        "--accent": "#90e0ef",
+        "--accent-glow": "rgba(144, 224, 239, 0.3)",
+        "--danger": "#ff0054",
+        "--danger-glow": "rgba(255, 0, 84, 0.3)",
+        "--text-main": "#e0f2fe",
+        "--text-muted": "#7dd3fc",
+        "--success": "#00f5d4"
+      }
+    },
+    "amber": {
+      "name": "Amber Terminal",
+      "variables": {
+        "--bg": "#0d0900",
+        "--card-bg": "rgba(26, 17, 0, 0.8)",
+        "--card-border": "rgba(255, 170, 0, 0.15)",
+        "--card-hover": "rgba(255, 170, 0, 0.25)",
+        "--primary": "#ffaa00",
+        "--primary-glow": "rgba(255, 170, 0, 0.4)",
+        "--accent": "#ffea00",
+        "--accent-glow": "rgba(255, 234, 0, 0.3)",
+        "--danger": "#ff3300",
+        "--danger-glow": "rgba(255, 51, 0, 0.3)",
+        "--text-main": "#fff2cc",
+        "--text-muted": "#ffd966",
+        "--success": "#ffeb3b"
+      }
+    },
+    "matrix": {
+      "name": "Digital Matrix",
+      "variables": {
+        "--bg": "#000a02",
+        "--card-bg": "rgba(0, 20, 4, 0.85)",
+        "--card-border": "rgba(0, 255, 70, 0.15)",
+        "--card-hover": "rgba(0, 255, 70, 0.3)",
+        "--primary": "#00ff46",
+        "--primary-glow": "rgba(0, 255, 70, 0.5)",
+        "--accent": "#39ff14",
+        "--accent-glow": "rgba(57, 255, 20, 0.3)",
+        "--danger": "#e63946",
+        "--danger-glow": "rgba(230, 57, 70, 0.3)",
+        "--text-main": "#e8f5e9",
+        "--text-muted": "#81c784",
+        "--success": "#39ff14"
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+"""
+╔══════════════════════════════════════════════════════════════════════╗
+║                    ZOHRA — CAPITAL SCALING ENGINE                    ║
+║          Layer 3 Dynamic Position Management & Scaling               ║
+╚══════════════════════════════════════════════════════════════════════╝
+"""
+
+import logging
+import asyncio
+from typing import Dict, Any
+from zohra.brokers.mt5_broker import mt5_broker
+from zohra.core.risk_guardian import risk_guardian
+from zohra.db.schema import db
+
+logger = logging.getLogger("zohra.scaling")
+
+class CapitalScalingSystem:
+    """
+    Capital Scaling System:
+    - Scales up approved positions dynamically.
+    - Curtails or closes rejected probe positions immediately.
+    """
+    async def apply_scaling(self, probe_trade: dict, ruling: dict):
+        """
+        Takes an active probe trade and the validation ruling.
+        Executes scale-up deals, risk reductions, or position closures.
+        """
+        symbol = probe_trade["symbol"]
+        ticket = probe_trade["mt5_ticket"]
+        direction = probe_trade["direction"]
+        action = ruling["action"]
+        grade = ruling["grade"]
+
+        logger.info(f"⚙️  [Scaling] Applying ruling for active probe #{ticket}: {action} (Grade {grade})")
+
+        # 1. Close immediately if rejected
+        if action == "REJECT":
+            logger.warning(f"🚨 [Scaling] Probe position #{ticket} REJECTED by Committee. Closing immediately...")
+            
+            # Retrieve open volume details
+            positions = await asyncio.to_thread(mt5_broker.get_open_positions)
+            matching = next((p for p in positions if p["ticket"] == ticket), None)
+            
+            if matching:
+                lots = matching["lots"]
+                close_res = await asyncio.to_thread(
+                    mt5_broker.close_position, 
+                    ticket, symbol, lots, direction
+                )
+                if close_res.get("success"):
+                    logger.info(f"✅ [Scaling] Closed rejected probe #{ticket} successfully.")
+                    try:
+                        db.log_system("INFO", f"Closed rejected probe position #{ticket} on {symbol}", "Scaling")
+                    except Exception:
+                        pass
+                else:
+                    logger.error(f"❌ [Scaling] Failed to close rejected probe #{ticket}: {close_res.get('comment')}")
+            return
+
+        # 2. Reduce risk if speculative (Grade C)
+        if action == "REDUCE":
+            logger.warning(f"🛡️  [Scaling] Probe position #{ticket} graded C (Speculative). Moving stop loss to Breakeven.")
+            # Move SL to breakeven (entry price) to eliminate downside risk
+            modify_res = await asyncio.to_thread(
+                mt5_broker.modify_trade,
+                ticket,
+                new_sl=probe_trade["entry_price"]
+            )
+            if modify_res.get("success"):
+                logger.info(f"✅ [Scaling] Successfully moved SL to Breakeven for probe #{ticket}.")
+            else:
+                logger.error(f"❌ [Scaling] Failed to modify SL to Breakeven for probe #{ticket}: {modify_res.get('comment')}")
+            return
+
+        # 3. Maintain if Grade B
+        if action == "MAINTAIN":
+            logger.info(f"✊ [Scaling] Probe position #{ticket} graded B. Maintaining current probe size ({probe_trade['position_size_lots']} lots).")
+            return
+
+        # 4. Scale up if Grade A or A+
+        scale_lots = 0.0
+        if action == "SCALE_MAX": # Grade A+ (adds 0.02)
+            scale_lots = 0.20 if symbol == "XAUUSD" else 0.02
+        elif action == "SCALE_NORMAL": # Grade A (adds 0.01)
+            scale_lots = 0.10 if symbol == "XAUUSD" else 0.01
+
+        if scale_lots > 0:
+            # Check Risk Guardian again before executing scale-up order
+            is_safe, reason = risk_guardian.evaluate_execution_safety(symbol, direction, scale_lots)
+            if not is_safe:
+                logger.warning(f"⏭️  [Scaling] Risk Guardian blocked scale-up order: {reason}. Maintaining base probe.")
+                return
+
+            order = {
+                "symbol": symbol,
+                "direction": direction,
+                "volume_lots": scale_lots,
+                "stop_loss": probe_trade["stop_loss"],
+                "take_profit": probe_trade["take_profit"],
+                "comment": f"ZSC_SCALE_{grade}",
+                "magic": probe_trade["magic"]
+            }
+
+            logger.info(f"🚀 [Scaling] Scaling UP position: Adding {scale_lots} lots to {symbol} (Probe Ticket #{ticket})")
+            
+            # Execute scale-up deal order
+            exec_res = await asyncio.to_thread(mt5_broker.open_position, order)
+            if exec_res.get("success"):
+                new_ticket = exec_res["mt5_ticket"]
+                fill_price = exec_res["fill_price"]
+                probe_trade["scaling_lots_added"] = scale_lots
+                logger.info(f"✅ [Scaling] Scale-up filled successfully! Added Ticket #{new_ticket} at {fill_price}.")
+            else:
+                logger.error(f"❌ [Scaling] Scale-up execution failed for {symbol}: {exec_res.get('comment')}")
+
+# Singleton
+scaling_system = CapitalScalingSystem()

@@ -10,6 +10,8 @@ __pycache__/
 
 # Logs & generated data
 logs/
+assistant_workspace/
+assistant_runtime/.env
 
 # Editor / OS
 .vscode/

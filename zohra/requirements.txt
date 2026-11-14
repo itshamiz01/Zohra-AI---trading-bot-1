@@ -1,0 +1,30 @@
+# ════════════════════════════════════════════════
+#  ZOHRA TRADING ENGINE — REQUIREMENTS
+# ════════════════════════════════════════════════
+
+# Core
+MetaTrader5>=5.0.45
+pandas>=2.0.0
+numpy>=1.24.0
+python-dotenv>=1.0.0
+
+# Database
+# For PostgreSQL support (optional):
+# psycopg2-binary>=2.9.0
+
+# API & Dashboard
+fastapi>=0.110.0
+uvicorn>=0.27.0
+pydantic>=2.0.0
+
+# Charts & Reports
+matplotlib>=3.8.0
+
+# Notifications
+requests>=2.31.0
+
+# LLM Integration
+groq>=0.4.0
+
+# Utilities
+pytz>=2024.1

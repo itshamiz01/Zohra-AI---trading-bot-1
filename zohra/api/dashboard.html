@@ -1,0 +1,2831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOHRA AI OS // COMMAND CENTER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/static/face-speech.js?v=20260926-soft-lips-2"></script>
+    <script src="/static/face-effects.js?v=20260926-snap-presence-6"></script>
+
+    <style>
+        :root {
+            --bg-void: #020204;
+            --bg-panel: rgba(10, 11, 16, 0.88);
+            --bg-panel-hover: rgba(16, 18, 26, 0.95);
+            --gold-primary: #d4af37;
+            --gold-bright: #ffd700;
+            --gold-light: #f5df88;
+            --gold-dim: #8e7827;
+            --gold-border: rgba(212, 175, 55, 0.22);
+            --gold-border-bright: rgba(212, 175, 55, 0.45);
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --text-white: #ffffff;
+            --text-gold: #e5c158;
+            --text-muted: #8e8671;
+            --text-dim: #5c5545;
+            --green-emerald: #00ffcc;
+            --green-glow: rgba(0, 255, 204, 0.25);
+            --red-ruby: #ff007f;
+            --amber-warn: #ffaa00;
+            --sidebar-width: 210px;
+            --right-col-width: 290px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-border) transparent;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-white);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+        }
+
+        /* ─── APP SHELL ─── */
+        .app-shell {
+            display: grid;
+            grid-template-rows: 54px 1fr;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* ─── TOPBAR ─── */
+        .os-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            background: rgba(4, 5, 8, 0.95);
+            border-bottom: 1px solid var(--gold-border);
+            z-index: 100;
+            position: relative;
+        }
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .brand-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--gold-bright);
+            text-shadow: 0 0 12px var(--gold-glow);
+            line-height: 1.1;
+        }
+        .brand-sub {
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Angular Sci-Fi Banner */
+        .center-hud-banner {
+            background: rgba(14, 15, 22, 0.9);
+            border: 1px solid var(--gold-border);
+            padding: 5px 28px;
+            clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 100%, 0 100%);
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: var(--text-gold);
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(212,175,55,0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .account-selector-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(18, 20, 28, 0.9);
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            padding: 4px 10px;
+        }
+        .account-selector-box select {
+            background: transparent;
+            border: none;
+            color: var(--text-gold);
+            font-family: 'Space Grotesk', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .account-selector-box select option {
+            background: #0d0f17;
+            color: #fff;
+        }
+        .demo-pill {
+            font-size: 9px;
+            font-weight: 800;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-bright);
+            border: 1px solid var(--gold-border);
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+        .topbar-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .topbar-icons button {
+            background: transparent; border: 0; color: inherit; cursor: pointer;
+            width: 28px; height: 28px; font-size: 15px;
+        }
+        .topbar-icons button:hover {
+            color: var(--gold-bright);
+        }
+        .time-box {
+            text-align: right;
+            border-left: 1px solid var(--gold-border);
+            padding-left: 14px;
+        }
+        .time-label {
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .time-val {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        /* ─── MAIN LAYOUT ─── */
+        .os-main {
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr var(--right-col-width);
+            height: calc(100vh - 54px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ─── LEFT SIDEBAR ─── */
+        .os-sidebar {
+            background: rgba(5, 6, 10, 0.95);
+            border-right: 1px solid var(--gold-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 14px 10px;
+            overflow-y: auto;
+            z-index: 50;
+        }
+        .radar-reticle {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            border: 1px dashed var(--gold-border);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.08);
+            animation: rotateReticle 24s linear infinite;
+        }
+        @keyframes rotateReticle {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .reticle-z {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--gold-bright);
+            text-shadow: 0 0 12px var(--gold-glow);
+            transform: rotate(0deg); /* un-rotate */
+            animation: unRotateReticle 24s linear infinite;
+        }
+        @keyframes unRotateReticle {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .capability-filters { display:flex; gap:10px; flex-wrap:wrap; margin:16px 0; }
+        .capability-filters input, .capability-filters select { min-width:0; max-width:100%; padding:8px; background:#111; color:var(--text-main); border:1px solid var(--gold-border); border-radius:4px; }
+        .capability-filters input { flex:1 1 180px; }
+        .capability-row { padding:14px 0; border-top:1px solid var(--gold-border); overflow-wrap:anywhere; }
+        .capability-heading { display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:13px; }
+        .capability-heading label { margin-left:auto; display:flex; align-items:center; gap:6px; }
+        .capability-badge { color:var(--gold-bright); font-size:12px; }
+        .capability-row p, #capability-security, #capability-control-result { font-size:12px; margin:8px 0; line-height:1.5; overflow-wrap:anywhere; }
+        .capability-muted { color:var(--text-muted); }
+        .capability-row pre { font-size:11px; white-space:pre-wrap; overflow-wrap:anywhere; }
+        .capability-row details { margin-top:10px; font-size:12px; }
+        .native-controls { margin-top:14px; display:grid; gap:10px; font-size:12px; max-width:580px; }
+        .native-controls button { justify-self:start; min-height:32px; }
+        .native-controls label { display:grid; grid-template-columns:minmax(0,1fr) 60px; gap:8px; overflow-wrap:anywhere; }
+        .native-controls input[type="range"] { grid-column:1; width:100%; min-width:0; accent-color:var(--gold-primary); }
+        .native-controls output { grid-column:2; grid-row:2; text-align:right; }
+        .native-controls input[type="checkbox"] { width:16px; height:16px; }
+        .native-controls label.native-toggle { grid-template-columns:20px minmax(0,1fr); align-items:center; }
+        .native-controls time { color:var(--text-muted); font-size:11px; overflow-wrap:anywhere; }
+        .capability-activity-row { display:flex; flex-wrap:wrap; gap:10px; padding:10px 0; border-top:1px solid var(--gold-border); font-size:12px; overflow-wrap:anywhere; }
+        .document-controls { display:grid; grid-template-columns:150px minmax(0,1fr); gap:12px; max-width:760px; margin-top:16px; }
+        .document-controls label { display:grid; gap:6px; min-width:0; font-size:12px; color:var(--text-muted); }
+        .document-controls input, .document-controls select, .document-controls textarea { width:100%; min-width:0; box-sizing:border-box; border:1px solid var(--gold-border); border-radius:4px; padding:9px; color:var(--text-white); background:#101210; font:inherit; }
+        .document-controls textarea { resize:vertical; line-height:1.6; }
+        .document-controls .document-content, .document-controls .document-title { grid-column:1 / -1; }
+        .document-controls button { justify-self:start; min-height:36px; grid-column:1 / -1; }
+        .document-files { display:grid; gap:10px; margin-top:16px; }
+        .document-files div { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+        .document-download { color:var(--gold-primary); overflow-wrap:anywhere; font-size:13px; }
+        .document-files small { color:var(--text-muted); font-size:11px; }
+        .document-icon { display:inline-block; width:16px; height:16px; vertical-align:middle; background:currentColor; mask-size:contain; mask-repeat:no-repeat; }
+        .document-icon-download { mask-image:url('/static/icons/lucide-download.svg'); }
+        .document-icon-file { mask-image:url('/static/icons/lucide-file-check.svg'); }
+        .document-inspect-button, .pdf-inspection button { border:1px solid var(--gold-border); border-radius:4px; background:#141613; color:var(--gold-primary); padding:6px 9px; cursor:pointer; font:inherit; }
+        .document-inspect-button:disabled, .pdf-inspection button:disabled { opacity:.45; cursor:not-allowed; }
+        .pdf-inspection { border-top:1px solid var(--gold-border); margin-top:18px; padding-top:14px; max-width:760px; min-width:0; }
+        .pdf-inspection h4, .pdf-inspection h5 { font-size:13px; margin:0 0 10px; overflow-wrap:anywhere; }
+        .pdf-inspection h5 { margin-top:14px; }
+        .pdf-search { display:flex; flex-wrap:wrap; align-items:end; gap:10px; margin:12px 0; }
+        .pdf-search label { display:grid; gap:6px; min-width:min(100%,240px); font-size:12px; }
+        .pdf-search input { box-sizing:border-box; width:100%; padding:8px; background:#101210; color:var(--text-white); border:1px solid var(--gold-border); border-radius:4px; }
+        .pdf-inspection .pdf-meta { color:var(--text-muted); font-size:11px; }
+        .pdf-inspection .pdf-error { color:#ec8d89; }
+        .code-inspection { border-top:1px solid var(--gold-border); margin-top:16px; padding-top:12px; max-width:760px; min-width:0; }
+        .code-inspection h4 { font-size:13px; margin:0 0 10px; overflow-wrap:anywhere; }
+        .code-inspection ul { margin:8px 0; padding-left:20px; font-size:12px; line-height:1.6; overflow-wrap:anywhere; }
+        .code-inspection .pdf-error { color:#ec8d89; }
+        .pdf-match, .pdf-navigation { display:flex; flex-wrap:wrap; align-items:start; gap:8px; margin:9px 0; font-size:12px; overflow-wrap:anywhere; }
+        .pdf-page-text { white-space:pre-wrap; overflow-wrap:anywhere; font-family:inherit; font-size:12px; line-height:1.5; color:var(--text-white); max-height:350px; overflow:auto; }
+        @media (max-width:600px) { .document-controls { grid-template-columns:minmax(0,1fr); } }
+        #capability-approval[hidden] { display:none; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            user-select: none;
+        }
+        .nav-item:hover {
+            color: var(--text-white);
+            background: rgba(212, 175, 55, 0.06);
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+        .nav-item.active {
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--gold-border-bright);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.12);
+        }
+        .nav-icon {
+            font-size: 13px;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Sidebar Bottom Status Card */
+        .sidebar-status-card {
+            background: rgba(14, 16, 24, 0.85);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .status-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .status-badge-title {
+            font-size: 8px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .status-state-live {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--green-emerald);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .health-ring-box {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .health-ring-svg {
+            transform: rotate(-90deg);
+            width: 44px;
+            height: 44px;
+        }
+        .health-ring-bg {
+            stroke: rgba(255, 255, 255, 0.08);
+            stroke-width: 3;
+            fill: none;
+        }
+        .health-ring-val {
+            stroke: var(--green-emerald);
+            stroke-width: 3;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 2;
+            stroke-linecap: round;
+            fill: none;
+            transition: stroke-dashoffset 0.8s ease;
+        }
+        .health-text-inner {
+            position: absolute;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        /* ─── WORKSPACE VIEWS ─── */
+        .workspace-view {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .workspace-view.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ─── CENTER STAGE ─── */
+        .os-center {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            padding: 22px 24px 20px;
+            background: radial-gradient(circle at 52% 38%, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
+        }
+
+        /* Subtle Constellation Canvas Background */
+        #celestial-particle-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 3D Molecular Hologram Stage - Large & Prominent */
+        .central-hologram-stage {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(980px, calc(100vw - var(--sidebar-width) - var(--right-col-width) - 48px));
+            height: min(700px, calc(100vh - 215px));
+            min-width: 560px;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+        #zohra-hologram-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: saturate(1.08) contrast(1.04);
+        }
+        .holo-controls {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            z-index: 7;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 5px;
+            max-width: min(510px, 88%);
+            font-size: 10px;
+        }
+        .os-center.portrait-dormant { background: none; }
+        .portrait-dormant #celestial-particle-canvas,
+        .portrait-dormant #zohra-hologram-canvas { visibility: hidden; }
+        .portrait-dormant .central-hologram-stage { background: var(--bg-dark, #050608); }
+        .portrait-dormant .hologram-status-pill { display: none; }
+        .holo-modes { display: flex; border: 1px solid var(--gold-border); background: rgba(5, 9, 15, 0.86); }
+        .holo-modes button {
+            min-height: 30px; padding: 5px 9px; border: 0; border-right: 1px solid var(--gold-border);
+            background: transparent; color: var(--text-muted); cursor: pointer; font: inherit;
+        }
+        .holo-modes button:last-child { border-right: 0; }
+        .holo-modes button[aria-pressed="true"] { color: #fff; background: rgba(44, 158, 193, 0.32); }
+        .holo-controls label {
+            display: inline-flex; align-items: center; gap: 5px; min-height: 30px;
+            padding: 4px 8px; border: 1px solid var(--gold-border);
+            background: rgba(5, 9, 15, 0.86); color: var(--gold-light); cursor: pointer;
+        }
+        .holo-controls input { accent-color: #51bfd7; margin: 0; }
+        #holo-formation-toggle {
+            min-height: 30px; min-width: 72px; padding: 5px 9px;
+            border: 1px solid var(--gold-border); background: rgba(5, 9, 15, 0.86);
+            color: var(--gold-light); cursor: pointer; font: inherit;
+        }
+        #holo-control-status { flex-basis: 100%; text-align: right; color: #9dc6d1; min-height: 12px; }
+        .hologram-status-pill {
+            position: absolute;
+            bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10, 12, 18, 0.88);
+            border: 1px solid var(--gold-border);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.12);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        .central-hologram-stage:hover .hologram-status-pill,
+        .central-hologram-stage:focus-within .hologram-status-pill {
+            opacity: 0.86;
+            transform: translateY(0);
+        }
+        .holo-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold-bright);
+            box-shadow: 0 0 8px var(--gold-bright);
+            animation: holoDotPulse 1.8s infinite ease-in-out;
+        }
+        @keyframes holoDotPulse {
+            0%, 100% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 1.0; }
+        }
+
+        /* Center Bottom Summary Cards */
+        .bottom-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            z-index: 10;
+            position: absolute;
+            bottom: 20px;
+            left: 24px;
+            right: 24px;
+        }
+        .summary-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .summary-card:hover {
+            border-color: var(--gold-border-bright);
+            background: var(--bg-panel-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.08);
+        }
+        .card-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .card-metric-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .card-metric-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #fff;
+            margin: 2px 0;
+        }
+        .card-metric-sub {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .sub-win { color: var(--green-emerald); }
+        .sub-loss { color: var(--red-ruby); }
+        
+        .sparkline-svg {
+            width: 60px;
+            height: 20px;
+            overflow: visible;
+        }
+
+        /* ─── RIGHT COLUMN ─── */
+        .os-right {
+            background: rgba(5, 6, 10, 0.95);
+            border-left: 1px solid var(--gold-border);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 14px;
+            overflow-y: auto;
+            z-index: 50;
+        }
+        .panel-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            position: relative;
+        }
+        .panel-box-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* AI Agent Network Graph & Counters */
+        .agent-network-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+        .network-svg-box {
+            width: 96px;
+            height: 96px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .network-svg {
+            width: 100%;
+            height: 100%;
+        }
+        .network-stats-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 11px;
+            font-family: 'Space Grotesk', monospace;
+        }
+        .net-stat-item {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+        }
+        .net-stat-item strong {
+            color: var(--gold-light);
+        }
+        .view-agents-btn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 6px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            color: var(--text-gold);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .view-agents-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* Performance Circular Rings */
+        .rings-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 4px;
+        }
+        .ring-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .ring-container {
+            width: 58px;
+            height: 58px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ring-svg {
+            width: 58px;
+            height: 58px;
+            transform: rotate(-90deg);
+        }
+        .ring-bg-circle {
+            stroke: rgba(255, 255, 255, 0.07);
+            stroke-width: 4;
+            fill: none;
+        }
+        .ring-val-circle {
+            stroke: var(--gold-bright);
+            stroke-width: 4;
+            stroke-dasharray: 100;
+            stroke-linecap: round;
+            fill: none;
+            transition: stroke-dashoffset 0.6s ease;
+        }
+        .ring-pct-txt {
+            position: absolute;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .ring-lbl {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* Active Operations */
+        .ops-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: 11px;
+        }
+        .op-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .op-name {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-white);
+        }
+        .op-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green-emerald);
+            box-shadow: 0 0 8px var(--green-emerald);
+        }
+        .op-dot.amber {
+            background: var(--amber-warn);
+            box-shadow: 0 0 8px var(--amber-warn);
+        }
+        .op-state {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--green-emerald);
+        }
+        .op-state.training { color: var(--amber-warn); }
+
+        /* ZOHRA Voice Waveform */
+        .waveform-box {
+            height: 48px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        #voice-canvas {
+            width: 100%;
+            height: 100%;
+        }
+        .voice-mic-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            cursor: pointer;
+        }
+        .voice-mic-status:hover {
+            color: var(--gold-bright);
+        }
+
+        /* ─── WORKSPACE VIEWS (Trading, Risk, Memory, Learning, etc.) ─── */
+        .workspace-view {
+            display: none;
+            padding: 20px 28px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .workspace-view.active {
+            display: block;
+        }
+
+        /* Trading Division Tables */
+        .table-panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .os-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .os-table th {
+            text-align: left;
+            padding: 8px 10px;
+            color: var(--gold-light);
+            border-bottom: 1px solid var(--gold-border);
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .os-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .badge-buy {
+            background: rgba(0,255,204,0.15);
+            color: var(--green-emerald);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .badge-sell {
+            background: rgba(255,0,127,0.15);
+            color: var(--red-ruby);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .voice-mic-status { width: 100%; background: transparent; border: 0; text-align: left; font: inherit; }
+        .conversation-log { max-height: 130px; overflow-y: auto; overflow-wrap: anywhere; font-size: 12px; line-height: 1.5; }
+        .conversation-log:empty { display: none; }
+        .conversation-log p { margin: 8px 0; }
+        .conversation-log pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 11px; }
+        .conversation-confirmation { padding-top: 8px; border-top: 1px solid #3e555b; }
+        .conversation-confirmation button { margin: 4px 8px 4px 0; padding: 7px 12px; border: 1px solid #5b8787; border-radius: 4px; background: #112627; color: #c9eeea; cursor: pointer; }
+        .conversation-confirmation button:disabled { opacity: 0.4; cursor: default; }
+        .conversation-log strong { color: #9cdbd1; }
+        .conversation-sources { margin: 8px 0 12px; font-size: 12px; }
+        .conversation-sources summary { color: #9cdbd1; cursor: pointer; }
+        .conversation-sources ul { margin: 6px 0; padding-left: 18px; }
+        .conversation-sources li { margin-bottom: 8px; }
+        .conversation-sources a { color: #a9dcf0; overflow-wrap: anywhere; }
+        .conversation-sources small { display: block; color: #98a7b0; }
+        #voice-conversation { max-height: 320px; font-size: 14px; }
+        .conversation-form { display: flex; gap: 6px; margin-top: 10px; min-width: 0; }
+        .conversation-form input { flex: 1; width: 0; min-width: 0; padding: 9px; border: 1px solid #3e555b; border-radius: 4px; background: #0b1418; color: #e4edee; font: inherit; font-size: 13px; }
+        .conversation-form button { flex: none; padding: 8px 10px; border: 1px solid #5b8787; border-radius: 4px; background: #112627; color: #c9eeea; cursor: pointer; }
+        .conversation-form button:disabled { opacity: 0.4; cursor: default; }
+        .conversation-form [data-conversation-stop] { width: 38px; padding: 8px; color: #e6a8a8; }
+        .command-conversation { display: block; margin: 0; }
+        #view-command-center.active { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; justify-content: stretch; align-content: start; height: auto; min-height: 100%; }
+        #view-command-center .central-hologram-stage { position: relative; top: auto; left: auto; transform: none; width: min(980px, 100%); min-width: 0; height: min(700px, calc(100dvh - 330px)); min-height: 500px; grid-row: 2; justify-self: center; }
+        #view-command-center .holo-controls { position: relative; inset: auto; max-width: 100%; grid-row: 1; margin-bottom: 8px; }
+        #view-command-center .command-conversation { grid-row: 3; position: relative; z-index: 6; padding: 10px 0; border-top: 1px solid #263b3f; background: #060a0c; }
+        .os-center { overflow-y: auto; }
+        .os-right { overflow-y: auto; }
+
+        /* Responsive */
+        @media (max-width: 1280px) {
+            .app-shell {
+                overflow: auto;
+            }
+            .os-main {
+                grid-template-columns: 180px 1fr;
+            }
+            .os-right {
+                display: none;
+            }
+            .command-conversation { display: block; }
+            .os-center { overflow-y: auto; }
+            #view-command-center .central-hologram-stage { position: relative; top: auto; left: auto; transform: none; width: 100%; min-width: 0; height: 440px; min-height: 440px; grid-row: 2; }
+            #view-command-center .holo-controls { position: relative; inset: auto; max-width: 100%; grid-row: 1; justify-content: center; margin-bottom: 8px; }
+            #view-command-center .command-conversation { grid-row: 3; position: relative; z-index: 6; padding: 10px 0; margin: 0; border-top: 1px solid #263b3f; background: #060a0c; }
+            .bottom-cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .central-hologram-stage {
+                width: min(760px, calc(100vw - 220px));
+                height: min(600px, calc(100vh - 245px));
+            }
+        }
+    
+        .workspace-record { padding: 12px 0; border-bottom: 1px solid var(--gold-border); min-width: 0; }
+        .workspace-field { padding: 5px 0; display: flex; gap: 12px; flex-wrap: wrap; overflow-wrap: anywhere; }
+        .workspace-field > strong { color: var(--gold-light); font-size: 12px; text-transform: capitalize; }
+        .workspace-field > span { font-size: 12px; color: var(--text-main); white-space: pre-wrap; }
+        .workspace-field > details { flex-basis: 100%; min-width: 0; }
+        .workspace-field summary { cursor: pointer; color: var(--text-muted); font-size: 12px; }
+        .workspace-empty { color: var(--text-muted); font-size: 12px; }
+        .table-panel { overflow-x: auto; }
+        .card-metric-val { overflow-wrap: anywhere; }
+        .os-center, .workspace-view, .account-selector-box { min-width: 0; }
+        .account-selector-box select { max-width: 220px; min-width: 0; }
+        :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+        body.dim-portrait #zohra-hologram-canvas { filter: brightness(0.7); }
+        @media (max-width: 900px) {
+            .center-hud-banner { display: none; }
+            .os-topbar { padding: 0 12px; gap: 12px; }
+            .topbar-right { gap: 8px; min-width: 0; }
+        }
+        @media (max-width: 600px) {
+            .app-shell { grid-template-rows: 96px 1fr; }
+            .os-topbar { flex-wrap: wrap; align-content: center; gap: 8px; }
+            .brand-sub, .time-box, .radar-reticle, .sidebar-status-card { display: none; }
+            .topbar-right { display: contents; }
+            .topbar-icons { margin-left: auto; gap: 6px; }
+            .account-selector-box { order: 3; width: 100%; }
+            .account-selector-box select { flex: 1; max-width: none; }
+            .os-main { height: calc(100dvh - 96px); grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+            .os-sidebar { padding: 6px; overflow: auto; border-bottom: 1px solid var(--gold-border); }
+            .os-sidebar > div { min-width: 0; }
+            .nav-menu { flex-direction: row; overflow-x: auto; }
+            .nav-item { flex: 0 0 auto; font-size: 10px; padding: 8px; }
+            .os-center { overflow-y: auto; }
+            .central-hologram-stage { position: relative; top: auto; left: auto; transform: none; width: 100%; min-width: 0; height: 390px; min-height: 390px; flex-shrink: 0; }
+            #view-command-center .central-hologram-stage { height: 390px; min-height: 390px; }
+            .holo-controls { position: relative; inset: auto; max-width: 100%; margin: -7px 0 12px; justify-content: center; }
+            #holo-control-status { text-align: center; }
+            .bottom-cards-grid { position: relative; inset: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .workspace-header { flex-wrap: wrap; gap: 12px; }
+            .workspace-view { padding: 12px; }
+            .workspace-view h2 { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-shell">
+        
+        <!-- ═══ TOPBAR ═══ -->
+        <header class="os-topbar">
+            <div class="brand-left">
+                <div class="brand-title">ZOHRA</div>
+                <div class="brand-sub">AI OS ★ v1.7.3</div>
+            </div>
+
+            <div class="center-hud-banner">
+                <span>ZOHRA AI OS // COMMAND CENTER</span>
+            </div>
+
+            <div class="topbar-right">
+                <!-- Persistent Multi-Account Selector -->
+                <div class="account-selector-box" title="Switch MT5 Account Context">
+                    <span style="color:var(--gold-bright);font-size:12px;">⚡</span>
+                    <select id="os-account-selector" aria-label="Account" onchange="onAccountSelectorChange(this.value)">
+                        <option value="all">ALL FLEET</option>
+                    </select>
+                    <span class="demo-pill" id="execution-mode">UNKNOWN</span>
+                </div>
+
+                <div class="topbar-icons">
+                    <button type="button" title="Search memories" aria-label="Search memories" onclick="switchView('memory'); document.getElementById('memory-query').focus()">🔍</button>
+                    <button type="button" title="System health" aria-label="System health" onclick="switchView('evolution')">🔔</button>
+                    <button type="button" title="Dim portrait" aria-label="Dim portrait" aria-pressed="false" onclick="this.setAttribute('aria-pressed', document.body.classList.toggle('dim-portrait'))">☀️</button>
+                    <button type="button" title="Settings" aria-label="Settings" onclick="switchView('settings')">⚙️</button>
+                </div>
+
+                <div class="time-box">
+                    <div class="time-label">SYSTEM TIME</div>
+                    <div class="time-val" id="top-system-time">11:47:32 PM</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ═══ MAIN THREE-PANE BODY ═══ -->
+        <div class="os-main">
+
+            <!-- ─── LEFT SIDEBAR ─── -->
+            <nav class="os-sidebar">
+                <div>
+                    <!-- Radar Monogram Reticle -->
+                    <div class="radar-reticle" title="ZOHRA Neural Matrix Active">
+                        <div class="reticle-z">Z</div>
+                    </div>
+
+                    <!-- Menu List -->
+                    <div class="nav-menu">
+                        <div class="nav-item active" id="nav-command-center" onclick="switchView('command-center')">
+                            <span class="nav-icon">⌂</span>
+                            <span>COMMAND CENTER</span>
+                        </div>
+                        <div class="nav-item" id="nav-dashboard" onclick="switchView('dashboard')">
+                            <span class="nav-icon">◫</span>
+                            <span>DASHBOARD</span>
+                        </div>
+                        <div class="nav-item" id="nav-ai-agents" onclick="switchView('ai-agents')">
+                            <span class="nav-icon">⚡</span>
+                            <span>AI AGENTS</span>
+                        </div>
+                        <div class="nav-item" id="nav-trading" onclick="switchView('trading')">
+                            <span class="nav-icon">📈</span>
+                            <span>TRADING DIVISION</span>
+                        </div>
+                        <div class="nav-item" id="nav-research" onclick="switchView('research')">
+                            <span class="nav-icon">Ⓐ</span>
+                            <span>RESEARCH DIVISION</span>
+                        </div>
+                        <div class="nav-item" id="nav-memory" onclick="switchView('memory')">
+                            <span class="nav-icon">🗂</span>
+                            <span>MEMORY CORE</span>
+                        </div>
+                        <div class="nav-item" id="nav-learning" onclick="switchView('learning')">
+                            <span class="nav-icon">🎓</span>
+                            <span>LEARNING DIVISION</span>
+                        </div>
+                        <div class="nav-item" id="nav-automation" onclick="switchView('automation')">
+                            <span class="nav-icon">⚙</span>
+                            <span>AUTOMATION</span>
+                        </div>
+                        <div class="nav-item" id="nav-voice" onclick="switchView('voice')">
+                            <span class="nav-icon">🎙</span>
+                            <span>VOICE SYSTEM</span>
+                        </div>
+                        <div class="nav-item" id="nav-vision" onclick="switchView('vision')">
+                            <span class="nav-icon">👁</span>
+                            <span>VISION SYSTEM</span>
+                        </div>
+                        <div class="nav-item" id="nav-plugin" onclick="switchView('plugin')">
+                            <span class="nav-icon">🧩</span>
+                            <span>PLUGIN SYSTEM</span>
+                        </div>
+                        <div class="nav-item" id="nav-capabilities" onclick="switchView('capabilities')">
+                            <span class="nav-icon" aria-hidden="true">&#9638;</span>
+                            <span>CAPABILITY CENTER</span>
+                        </div>
+                        <div class="nav-item" id="nav-evolution" onclick="switchView('evolution')">
+                            <span class="nav-icon">⨁</span>
+                            <span>EVOLUTION ENGINE</span>
+                        </div>
+                        <div class="nav-item" id="nav-settings" onclick="switchView('settings')">
+                            <span class="nav-icon">⚙</span>
+                            <span>SETTINGS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Status Card -->
+                <div class="sidebar-status-card">
+                    <div class="status-left">
+                        <span class="status-badge-title">ZOHRA STATUS</span>
+                        <div class="status-state-live">
+                            <span style="font-size:10px;">🛡️</span> ONLINE
+                        </div>
+                    </div>
+                    <div class="health-ring-box" title="API connection status">
+                        <svg class="health-ring-svg">
+                            <circle class="health-ring-bg" cx="22" cy="22" r="16"></circle>
+                            <circle class="health-ring-val" cx="22" cy="22" r="16" id="health-ring-circle"></circle>
+                        </svg>
+                        <span class="health-text-inner" id="health-ring-txt">--</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- ─── CENTER: WORKSPACE PANELS ─── -->
+
+            <!-- 1. LANDING VIEW: COMMAND CENTER (Matches Reference Image) -->
+            <main class="os-center workspace-view active portrait-dormant" id="view-command-center">
+                <!-- Three.js Celestial Sparkle Canvas -->
+                <canvas id="celestial-particle-canvas"></canvas>
+
+                <!-- 3D Molecular Hologram Stage (Zero Direct Images) -->
+                <div class="central-hologram-stage" id="zohra-hologram-stage" onclick="toggleVoiceCapture()" title="Talk to Zohra" tabindex="0" role="button" aria-label="Talk to Zohra">
+                    <canvas id="zohra-hologram-canvas"></canvas>
+                    <div class="hologram-status-pill" id="hologram-voice-indicator">
+                        <span class="holo-dot"></span>
+                        <span id="holo-speech-state">HOLOGRAPHIC QUANTUM CORE // IDLE</span>
+                    </div>
+                </div>
+
+                <div class="holo-controls" aria-label="Portrait effects">
+                    <button type="button" id="holo-formation-toggle" onclick="toggleHoloFormation()">Form face</button>
+                    <label title="Talk to Zohra"><input type="checkbox" id="holo-talk-toggle" onchange="toggleVoiceCapture(this.checked)">Talk</label>
+                    <div class="holo-modes" role="group" aria-label="Particle effect">
+                        <button type="button" data-holo-mode="0" aria-pressed="true" onclick="setHoloEffect(0)">Gather</button>
+                        <button type="button" data-holo-mode="1" aria-pressed="false" onclick="setHoloEffect(1)">Resonance</button>
+                        <button type="button" data-holo-mode="2" aria-pressed="false" onclick="setHoloEffect(2)">Gesture</button>
+                    </div>
+                    <label title="Snap or clap to show/hide; say over or now you can go to hide"><input type="checkbox" id="holo-sound-toggle" onchange="toggleHoloSound(this.checked)">Sound</label>
+                    <label title="Let hand motion move the surrounding particles"><input type="checkbox" id="holo-camera-toggle" onchange="toggleHoloCamera(this.checked)">Camera</label>
+                    <span id="holo-control-status" role="status" aria-live="polite"></span>
+                </div>
+
+                <section class="command-conversation" aria-label="Zohra conversation">
+                    <div id="command-conversation" class="conversation-log" role="log" aria-label="Conversation"></div>
+                    <form class="conversation-form" onsubmit="sendAssistantText(event, 'command-message')">
+                        <input id="command-message" aria-label="Message Zohra" placeholder="Message Zohra" maxlength="4000" autocomplete="off" required>
+                        <button type="submit" aria-label="Send message" title="Send message">Send</button>
+                        <button type="button" data-conversation-stop onclick="stopConversationReply()" aria-label="Stop reply" title="Stop reply" disabled>&#9632;</button>
+                    </form>
+                </section>
+            </main>
+
+            <!-- 2. TRADING DIVISION WORKSPACE VIEW -->
+            <section class="workspace-view" id="view-trading">
+                <div class="table-panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">📈 TRADING DIVISION // LIVE ACCOUNTS WORKSPACE</h2>
+                        <div>
+                            <button class="view-agents-btn" style="width:auto;padding:6px 14px;display:inline-block;" onclick="closeAllPositions()">CLOSE ALL TRADES</button>
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;">
+                        <div style="background:rgba(0,0,0,0.4);padding:12px;border-radius:6px;border:1px solid var(--gold-border);">
+                            <div style="font-size:10px;color:var(--text-muted);">BALANCE</div>
+                            <div style="font-size:18px;font-weight:900;color:#fff;" id="td-balance">--</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.4);padding:12px;border-radius:6px;border:1px solid var(--gold-border);">
+                            <div style="font-size:10px;color:var(--text-muted);">EQUITY</div>
+                            <div style="font-size:18px;font-weight:900;color:var(--gold-bright);" id="td-equity">--</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.4);padding:12px;border-radius:6px;border:1px solid var(--gold-border);">
+                            <div style="font-size:10px;color:var(--text-muted);">TODAY'S NET REALIZED P&L</div>
+                            <div style="font-size:18px;font-weight:900;color:var(--green-emerald);" id="td-pnl">--</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.4);padding:12px;border-radius:6px;border:1px solid var(--gold-border);">
+                            <div style="font-size:10px;color:var(--text-muted);">OPEN POSITIONS</div>
+                            <div style="font-size:18px;font-weight:900;color:#fff;" id="td-positions">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Positions Table -->
+                <div class="table-panel">
+                    <h3 style="font-size:14px;color:var(--gold-light);letter-spacing:1px;text-transform:uppercase;">OPEN POSITIONS</h3>
+                    <table class="os-table">
+                        <thead>
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Account</th>
+                                <th>Symbol</th>
+                                <th>Type</th>
+                                <th>Volume</th>
+                                <th>Open Price</th>
+                                <th>Current</th>
+                                <th>SL</th>
+                                <th>TP</th>
+                                <th>Floating PnL</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trading-positions-tbody">
+                            <tr><td colspan="11" style="text-align:center;color:var(--text-muted);padding:18px;">Loading recorded positions...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Trade History Table -->
+                <div class="table-panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <h3 style="font-size:14px;color:var(--gold-light);letter-spacing:1px;text-transform:uppercase;">CLOSED TRADE EXECUTIONS & JOURNAL</h3>
+                        <button class="view-agents-btn" style="width:auto;padding:4px 10px;" onclick="exportJournalCSV()">EXPORT CSV</button>
+                    </div>
+                    <table class="os-table">
+                        <thead>
+                            <tr>
+                                <th>Close Time</th>
+                                <th>Ticket</th>
+                                <th>Symbol</th>
+                                <th>Type</th>
+                                <th>Entry</th>
+                                <th>Exit</th>
+                                <th>P&L ($)</th>
+                                <th>Strategy</th>
+                                <th>Exit Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trading-history-tbody">
+                            <!-- Populated via JS from trades DB -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 3. AI AGENTS VIEW -->
+            <section class="workspace-view" id="view-ai-agents">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">⚡ REGISTERED AI MODULES</h2>
+                    
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:12px;" id="agents-cards-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. DASHBOARD & CONSENSUS VIEW -->
+            <section class="workspace-view" id="view-dashboard">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">◫ 15-STRATEGY DIRECTIONAL CONSENSUS RADAR</h2>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;margin-top:14px;" id="dash-consensus-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. OTHER DIVISIONS (Placeholders with real data) -->
+            <section class="workspace-view" id="view-research">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">Ⓐ RESEARCH DIVISION // NEWS & MACRO RADAR</h2>
+                    
+                    <div id="research-events-list" style="margin-top:16px;"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-memory">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">🗂 MEMORY CORE // VECTOR VAULT</h2>
+                    
+                    <div style="margin-top:16px;">
+                        <form onsubmit="event.preventDefault();loadMemory()"><label for="memory-query">Search stored memories</label><input id="memory-query" type="search" placeholder="Search..." style="width:100%;padding:10px;background:rgba(0,0,0,0.5);border:1px solid var(--gold-border);color:#fff;border-radius:6px;"><button class="view-agents-btn" type="submit">Search</button></form><div id="memory-results" aria-live="polite"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-learning">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">🎓 LEARNING DIVISION // SETUP CALIBRATION LAB</h2>
+                    <div id="learning-records"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-automation">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">⚙ AUTOMATION // WORKFLOW CONTROL</h2>
+                    <form onsubmit="runWorkflow(event)" style="display:flex;gap:12px;margin-top:12px;">
+                        <select id="workflow-command" aria-label="Workflow"><option value="prepare trading plan">Prepare trading plan</option><option value="system status">System status</option></select>
+                        <button class="view-agents-btn" type="submit" style="width:auto;">Run workflow</button>
+                    </form>
+                    <p id="workflow-result" role="status"></p>
+                    <div id="automation-workflows-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px;"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-voice">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">🎙 VOICE SYSTEM // AUDIO GATEWAY</h2>
+                    <label><input type="checkbox" id="voice-talk-toggle" onchange="toggleVoiceCapture(this.checked)">Talk</label>
+                    <p id="voice-transcript" role="status"></p>
+                    <div id="voice-conversation" class="conversation-log" role="log" aria-label="Conversation"></div>
+                    <form class="conversation-form" onsubmit="sendAssistantText(event, 'voice-message')">
+                        <input id="voice-message" aria-label="Message Zohra" placeholder="Message Zohra" maxlength="4000" autocomplete="off" required>
+                        <button type="submit" aria-label="Send message" title="Send message">Send</button>
+                        <button type="button" data-conversation-stop onclick="stopConversationReply()" aria-label="Stop reply" title="Stop reply" disabled>&#9632;</button>
+                    </form>
+                    <div id="voice-diagnostics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px;"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-vision">
+                <div class="table-panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+                        <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">👁 VISION SYSTEM // SCREEN INTELLIGENCE</h2>
+                        <button class="view-agents-btn" style="width:auto;padding:6px 14px;" onclick="runVisionCapture()">CAPTURE NOW</button>
+                    </div>
+                    <div id="vision-diagnostics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px;"></div>
+                    <div id="vision-capture-panel" style="margin-top:14px;"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-plugin">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">🧩 PLUGIN SYSTEM // EXTENSION CONTROL</h2>
+                    <div id="plugins-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:14px;"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-capabilities">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">CAPABILITY CENTER</h2>
+                    <div class="capability-filters">
+                        <input id="capability-query" type="search" aria-label="Search capabilities" placeholder="Search capabilities" oninput="renderCapabilities()">
+                        <select id="capability-state" aria-label="Capability availability" onchange="renderCapabilities()">
+                            <option value="">All states</option><option>Available</option><option>Permission Required</option><option>Dependency Missing</option><option>Unsupported</option>
+                        </select>
+                    </div>
+                    <p id="capability-security" role="status"></p>
+                    <p id="capability-control-result" role="status"></p>
+                    <div id="capability-approval" class="conversation-confirmation" hidden></div>
+                    <div id="capability-list" aria-live="polite"></div>
+                    <h3 style="font-size:14px;margin-top:24px;">ACTIVITY</h3>
+                    <div id="capability-activity" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-evolution">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">⨁ EVOLUTION ENGINE // SYSTEM OPTIMIZATION</h2>
+                    <div id="evolution-health-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px;"></div>
+                    <div id="evolution-recommendations-list" style="margin-top:14px;"></div>
+                </div>
+            </section>
+
+            <section class="workspace-view" id="view-settings">
+                <div class="table-panel">
+                    <h2 style="font-family:'Outfit';font-size:20px;color:var(--gold-bright);">⚙ SYSTEM & RISK CONFIGURATION</h2><form onsubmit="saveSettings(event)">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+                        <div>
+                            <label style="font-size:11px;color:var(--text-muted);">RISK PER TRADE (%)</label>
+                            <input id="risk-setting" name="risk" aria-label="Risk per trade percent" type="number" min="0.01" max="5" required step="0.01" style="width:100%;padding:8px;background:#111;border:1px solid var(--gold-border);color:#fff;border-radius:4px;margin-top:4px;">
+                        </div>
+                        <div>
+                            <label style="font-size:11px;color:var(--text-muted);">MAX OPEN POSITIONS PER ACCOUNT</label>
+                            <input id="positions-setting" name="positions" aria-label="Maximum open positions" type="number" min="1" max="100" required step="1" style="width:100%;padding:8px;background:#111;border:1px solid var(--gold-border);color:#fff;border-radius:4px;margin-top:4px;">
+                        </div>
+                    </div><button class="view-agents-btn" type="submit">Apply settings</button><p id="settings-result" role="status"></p></form>
+                </div>
+            </section>
+
+            <!-- ─── RIGHT COLUMN ─── -->
+            <aside class="os-right">
+                <!-- 1. AI AGENT NETWORK -->
+                <div class="panel-box">
+                    <div class="panel-box-hdr">
+                        <span>AI AGENT NETWORK</span>
+                        <span>⋮</span>
+                    </div>
+                    <div class="agent-network-row">
+                        <!-- Network SVG graph with central Z -->
+                        <div class="network-svg-box">
+                            <svg class="network-svg" viewBox="0 0 100 100">
+                                <!-- Lines -->
+                                <line x1="50" y1="50" x2="20" y2="20" stroke="rgba(0,255,204,0.4)" stroke-width="1.2"></line>
+                                <line x1="50" y1="50" x2="80" y2="20" stroke="rgba(0,255,204,0.4)" stroke-width="1.2"></line>
+                                <line x1="50" y1="50" x2="85" y2="55" stroke="rgba(0,255,204,0.4)" stroke-width="1.2"></line>
+                                <line x1="50" y1="50" x2="65" y2="85" stroke="rgba(255,170,0,0.4)" stroke-width="1.2"></line>
+                                <line x1="50" y1="50" x2="30" y2="85" stroke="rgba(0,255,204,0.4)" stroke-width="1.2"></line>
+                                <line x1="50" y1="50" x2="15" y2="55" stroke="rgba(0,255,204,0.4)" stroke-width="1.2"></line>
+                                <!-- Satellite Nodes -->
+                                <circle cx="20" cy="20" r="4" fill="#00ffcc"></circle>
+                                <circle cx="80" cy="20" r="4" fill="#00ffcc"></circle>
+                                <circle cx="85" cy="55" r="4" fill="#00ffcc"></circle>
+                                <circle cx="65" cy="85" r="4" fill="#ffaa00"></circle>
+                                <circle cx="30" cy="85" r="4" fill="#00ffcc"></circle>
+                                <circle cx="15" cy="55" r="4" fill="#00ffcc"></circle>
+                                <!-- Central Z Node -->
+                                <circle cx="50" cy="50" r="14" fill="#07080e" stroke="#d4af37" stroke-width="1.5"></circle>
+                                <text x="50" y="55" text-anchor="middle" font-family="'Outfit'" font-size="12" font-weight="900" fill="#ffd700">Z</text>
+                            </svg>
+                        </div>
+                        <div class="network-stats-list">
+                            <div class="net-stat-item"><span>CORE</span><strong id="agent-stat-core">--</strong></div>
+                            <div class="net-stat-item"><span>ACTIVE</span><strong id="agent-stat-active" style="color:var(--green-emerald);">--</strong></div>
+                            <div class="net-stat-item"><span>BUSY</span><strong id="agent-stat-busy" style="color:var(--amber-warn);">--</strong></div>
+                            <div class="net-stat-item"><span>OFFLINE</span><strong id="agent-stat-offline">--</strong></div>
+                        </div>
+                    </div>
+                    <button class="view-agents-btn" onclick="switchView('ai-agents')">VIEW AGENTS</button>
+                </div>
+
+                <!-- 2. SYSTEM PERFORMANCE -->
+                <div class="panel-box">
+                    <div class="panel-box-hdr">
+                        <span>SYSTEM PERFORMANCE</span>
+                        <span>⋮</span>
+                    </div>
+                    <div class="rings-row">
+                        <!-- CPU -->
+                        <div class="ring-item">
+                            <div class="ring-container">
+                                <svg class="ring-svg">
+                                    <circle class="ring-bg-circle" cx="29" cy="29" r="22"></circle>
+                                    <circle class="ring-val-circle" cx="29" cy="29" r="22" id="cpu-ring-circle" stroke-dashoffset="76"></circle>
+                                </svg>
+                                <span class="ring-pct-txt" id="cpu-pct-txt">--</span>
+                            </div>
+                            <span class="ring-lbl">CPU</span>
+                        </div>
+                        <!-- GPU (Truthful) -->
+                        <div class="ring-item" title="Host graphics: Integrated GPU">
+                            <div class="ring-container">
+                                <svg class="ring-svg">
+                                    <circle class="ring-bg-circle" cx="29" cy="29" r="22"></circle>
+                                    <circle class="ring-val-circle" cx="29" cy="29" r="22" stroke="rgba(255,255,255,0.2)" stroke-dashoffset="100"></circle>
+                                </svg>
+                                <span class="ring-pct-txt" style="font-size:9px;color:var(--text-muted);" id="gpu-pct-txt">N/A</span>
+                            </div>
+                            <span class="ring-lbl">GPU</span>
+                        </div>
+                        <!-- RAM -->
+                        <div class="ring-item">
+                            <div class="ring-container">
+                                <svg class="ring-svg">
+                                    <circle class="ring-bg-circle" cx="29" cy="29" r="22"></circle>
+                                    <circle class="ring-val-circle" cx="29" cy="29" r="22" id="ram-ring-circle" stroke-dashoffset="32"></circle>
+                                </svg>
+                                <span class="ring-pct-txt" id="ram-pct-txt">--</span>
+                            </div>
+                            <span class="ring-lbl">RAM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. ACTIVE OPERATIONS -->
+                <div class="panel-box">
+                    <div class="panel-box-hdr">
+                        <span>ACTIVE OPERATIONS</span>
+                        <span>⋮</span>
+                    </div>
+                    <div class="ops-list"><p>Loading operations...</p></div>
+                </div>
+
+                <!-- 4. ZOHRA VOICE -->
+                <div class="panel-box">
+                    <div class="panel-box-hdr">
+                        <span>ZOHRA VOICE</span>
+                        <span>⋮</span>
+                    </div>
+                    <div class="waveform-box">
+                        <canvas id="voice-canvas"></canvas>
+                    </div>
+                    <button type="button" class="voice-mic-status" onclick="toggleVoiceCapture()" aria-label="Toggle conversation microphone" aria-pressed="false" id="voice-talk-button">
+                        <span>🎙</span>
+                        <span id="voice-status-txt" role="status">Microphone off</span>
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- ═══ APPLICATION JAVASCRIPT LOGIC ═══ -->
+    <script>
+        let currentView = 'command-center';
+        let currentAccount = 'all';
+        let audioContext = null;
+        let micStream = null;
+        let isListening = false;
+
+        // View Switching
+        function switchView(viewId) {
+            currentView = viewId;
+            document.querySelectorAll('.workspace-view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+            const targetView = document.getElementById(`view-${viewId}`) || document.getElementById('view-command-center');
+            targetView.classList.add('active');
+
+            const targetNav = document.getElementById(`nav-${viewId}`) || document.getElementById('nav-command-center');
+            targetNav.classList.add('active');
+
+            if (viewId === 'trading') loadTradingData();
+            if (viewId === 'ai-agents') loadAgentsList();
+            if (viewId === 'dashboard') loadDashboardConsensus();
+            if (workspaceLoaders[viewId]) workspaceLoaders[viewId]();
+        }
+
+        // Account Selection Change
+        function onAccountSelectorChange(accId) {
+            currentAccount = accId;
+            fetchTelemetryData();
+            if (currentView === 'trading') loadTradingData();
+        }
+
+        // Real-time Clock
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            const el = document.getElementById('top-system-time');
+            if (el) el.textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ─── GOLDEN CONSTELLATION CANVAS ───
+        function initCelestialCanvas() {
+            const canvas = document.getElementById('celestial-particle-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            function resize() {
+                w = canvas.width = canvas.clientWidth;
+                h = canvas.height = canvas.clientHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const numStars = 140;
+            const stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * (w || 1000),
+                    y: Math.random() * (h || 700),
+                    vx: (Math.random() - 0.5) * 0.25,
+                    vy: (Math.random() - 0.5) * 0.25,
+                    radius: Math.random() * 1.5 + 0.6,
+                    alpha: Math.random() * 0.65 + 0.35,
+                    pulse: Math.random() * Math.PI * 2,
+                    pulseSpeed: 0.015 + Math.random() * 0.025
+                });
+            }
+
+            function anim() {
+                requestAnimationFrame(anim);
+                if (!w || !h) resize();
+                ctx.clearRect(0, 0, w, h);
+                const tint = ZohraFaceEffects.paletteAt(performance.now() / 1000);
+                const rgb = tint.map(channel => Math.round(channel * 255)).join(', ');
+                const pearl = tint.map(channel => Math.round((0.65 + channel * 0.35) * 255)).join(', ');
+
+                // Draw constellation filaments
+                for (let i = 0; i < numStars; i++) {
+                    const s1 = stars[i];
+                    for (let j = i + 1; j < numStars; j++) {
+                        const s2 = stars[j];
+                        const dx = s1.x - s2.x;
+                        const dy = s1.y - s2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 80) {
+                            const lineAlpha = (1 - dist / 80) * 0.12;
+                            ctx.strokeStyle = `rgba(${rgb}, ${lineAlpha})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.beginPath();
+                            ctx.moveTo(s1.x, s1.y);
+                            ctx.lineTo(s2.x, s2.y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Draw glowing golden stars
+                for (let i = 0; i < numStars; i++) {
+                    const s = stars[i];
+                    s.x += s.vx;
+                    s.y += s.vy;
+                    if (s.x < 0) s.x = w;
+                    if (s.x > w) s.x = 0;
+                    if (s.y < 0) s.y = h;
+                    if (s.y > h) s.y = 0;
+
+                    s.pulse += s.pulseSpeed;
+                    const currentAlpha = s.alpha * (0.6 + 0.4 * Math.sin(s.pulse));
+
+                    // Soft radial glow
+                    const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.radius * 3.5);
+                    grad.addColorStop(0, `rgba(${pearl}, ${currentAlpha})`);
+                    grad.addColorStop(0.4, `rgba(${rgb}, ${currentAlpha * 0.4})`);
+                    grad.addColorStop(1, `rgba(${rgb}, 0)`);
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.radius * 3.5, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Core pinpoint
+                    ctx.fillStyle = `rgba(${pearl}, ${Math.min(1, currentAlpha * 1.5)})`;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            anim();
+        }
+        // ─── ZOHRA REAL GIRL CONSTELLATION MOLECULAR FACE ───
+        let holoScene = null, holoCamera = null, holoRenderer = null;
+        let holoMoleculesGeo = null;
+        let holoBasePos = null;
+        let holoCurPos = null;
+        let holoSpeechRig = null;
+        let holoMouthCavity = null;
+        let holoMotionWeights = null;
+        let holoPhases = null;
+        let holoPointCloud = null;
+        let holoLines = null;
+        let holoGroup = null;
+        let holoMoleculesCount = 0;
+        let holoMouthOpen = 0;
+        let isHoloSpeaking = false;
+        let isMicHooked = false;
+        let holoAudioAnalyser = null;
+        let holoFreqData = null;
+        let holoDemoActive = false;
+        let holoDemoTimeout = null;
+        let holoAudioCtx = null;
+        let holoPlaybackAnalyser = null, holoPlaybackSource = null, holoPlaybackMedia = null;
+        let holoPlaybackSamples = null, holoPlaybackFrequencies = null;
+        let holoSpeechPose = {open: 0, round: 0};
+        let holoPreviewText = '', holoPreviewStart = 0, holoPreviewOffset = 0;
+        let holoPreviewMedia = null;
+        let holoEffectMode = 0, holoEffectKick = 0;
+        let holoEffectMaterial = null, holoWaveLines = [], holoHaloLines = [];
+        let holoSatelliteCloud = null, holoSatelliteSeeds = null;
+        let holoFormation = ZohraFaceEffects.createFormationState(), holoScatterPos = null;
+        let holoSoundEnabled = false, holoSoundSamples = null, holoSoundState = ZohraFaceEffects.createSoundState();
+        let holoSoundRequest = 0, holoIgnoreMicUntil = 0;
+        let holoLastSoundSample = 0, holoMicSource = null;
+        let holoGesture = {x: 0, y: 0, pinch: 0, active: false};
+        let holoCameraStream = null, holoCameraVideo = null, holoHandLandmarker = null;
+        let holoCameraActive = false, holoLastCameraScan = 0, holoCameraRequest = 0;
+
+        function setHoloControlStatus(message) {
+            const status = document.getElementById('holo-control-status');
+            if (status) status.textContent = message;
+        }
+
+        function setHoloEffect(mode) {
+            holoEffectMode = Math.max(0, Math.min(2, Number(mode) || 0));
+            holoEffectKick = 1;
+            document.querySelectorAll('[data-holo-mode]').forEach(button => {
+                button.setAttribute('aria-pressed', String(Number(button.dataset.holoMode) === holoEffectMode));
+            });
+            const canvas = document.getElementById('zohra-hologram-canvas');
+            if (canvas) canvas.dataset.effectMode = ZohraFaceEffects.MODES[holoEffectMode].toLowerCase();
+            setHoloControlStatus(`${ZohraFaceEffects.MODES[holoEffectMode]} effect`);
+        }
+
+        function setHoloFormation(visible) {
+            const assembled = ZohraFaceEffects.setFormation(holoFormation, visible);
+            const ready = assembled && holoFormation.value === 1;
+            holoEffectKick = 1;
+            document.getElementById('holo-formation-toggle').textContent = assembled ? 'Hide face' : 'Form face';
+            document.getElementById('view-command-center').classList.toggle('portrait-dormant', !assembled);
+            document.getElementById('zohra-hologram-stage').setAttribute('aria-label',
+                ready ? 'Talk with Zohra' : assembled ? 'Forming Zohra' : 'Form Zohra');
+            if (!assembled) {
+                holoPreviewMedia?.onended?.();
+                clearVoicePlayback();
+                cancelVoiceResponse();
+                holoSpeechPose = {open: 0, round: 0};
+                holoMouthOpen = 0;
+                if (isListening) toggleVoiceCapture(false);
+            }
+            setHoloControlStatus(ready ? 'Zohra ready' : assembled ? 'Forming Zohra' : 'Zohra hidden');
+        }
+
+        function toggleHoloFormation() {
+            setHoloFormation(!holoFormation.target);
+        }
+
+        function handleHoloVoiceCommand(text) {
+            if (ZohraFaceEffects.portraitCommand(text) !== 'hide') return false;
+            setHoloFormation(false);
+            return true;
+        }
+
+        function sampleHoloSound(input = null) {
+            if (!holoSoundEnabled || !holoAudioAnalyser || !holoAudioCtx ||
+                    holoPreviewMedia || performance.now() < holoIgnoreMicUntil ||
+                    (holoPlaybackMedia && !holoPlaybackMedia.paused)) return null;
+            const now = performance.now();
+            if (!input && now - holoLastSoundSample < 40) return null;
+            holoLastSoundSample = now;
+            const samples = input || holoSoundSamples;
+            if (!input) holoAudioAnalyser.getFloatTimeDomainData(samples);
+            holoAudioAnalyser.getByteFrequencyData(holoFreqData);
+            const event = ZohraFaceEffects.detectSound(samples, holoFreqData,
+                holoAudioCtx.sampleRate, now, holoSoundState);
+            if (event) {
+                toggleHoloFormation();
+                setHoloControlStatus(`${event === 'whistle' ? 'Whistle' : 'Snap or clap'} · ${holoFormation.target ? 'Forming Zohra' : 'Zohra hidden'}`);
+            }
+            return event;
+        }
+
+        function releaseHoloMicIfUnused() {
+            if (isListening || holoSoundEnabled) return;
+            holoMicSource?.disconnect();
+            holoMicSource = null;
+            micStream?.getTracks().forEach(track => track.stop());
+            micStream = null;
+            holoAudioAnalyser?.disconnect();
+            holoAudioAnalyser = null;
+            holoSoundSamples = holoFreqData = null;
+            isMicHooked = false;
+        }
+
+        async function toggleHoloSound(enabled) {
+            const request = ++holoSoundRequest;
+            holoSoundEnabled = enabled;
+            if (enabled) {
+                holoSoundState = ZohraFaceEffects.createSoundState();
+                let connected = false;
+                try {
+                    connected = await inputStartupLimit(connectMicrophoneStream(true), 20000);
+                } catch (error) {
+                    console.warn('Sound switching unavailable:', error);
+                }
+                if (request !== holoSoundRequest) return;
+                if (!connected) {
+                    holoSoundEnabled = false;
+                    document.getElementById('holo-sound-toggle').checked = false;
+                    setHoloControlStatus('Microphone unavailable');
+                    return;
+                }
+                startVoiceSession();
+                if (!isListening) document.getElementById('voice-status-txt').textContent = 'Sound controls listening';
+                setHoloControlStatus('Sound controls listening');
+            } else {
+                if (!isListening) stopVoiceSession();
+                releaseHoloMicIfUnused();
+                if (!isListening) document.getElementById('voice-status-txt').textContent = 'Microphone off';
+                setHoloControlStatus('Sound switching off');
+            }
+        }
+
+        function trackHoloPointer(event) {
+            if (holoCameraActive) return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            holoGesture = {x: 2 * (event.clientX - rect.left) / rect.width - 1,
+                y: 1 - 2 * (event.clientY - rect.top) / rect.height,
+                pinch: event.buttons ? 1 : 0.45, active: true};
+            if (event.buttons && holoEffectMode === 2) holoEffectKick = Math.max(holoEffectKick, 0.3);
+        }
+
+        function stopHoloCamera() {
+            holoCameraRequest++;
+            holoCameraActive = false;
+            holoCameraStream?.getTracks().forEach(track => track.stop());
+            holoCameraStream = null;
+            if (holoCameraVideo) holoCameraVideo.srcObject = null;
+            holoCameraVideo = null;
+            holoGesture.active = false;
+            document.getElementById('holo-camera-toggle').checked = false;
+        }
+
+        function inputStartupLimit(promise, milliseconds) {
+            let timer;
+            return Promise.race([promise, new Promise((_, reject) => {
+                timer = setTimeout(() => reject(new Error('Input startup timed out')), milliseconds);
+            })]).finally(() => clearTimeout(timer));
+        }
+
+        async function toggleHoloCamera(enabled) {
+            if (!enabled) {
+                stopHoloCamera();
+                setHoloControlStatus('Camera off');
+                return;
+            }
+            const request = ++holoCameraRequest;
+            setHoloControlStatus('Loading hand tracking');
+            try {
+                if (!holoHandLandmarker) {
+                    const {FilesetResolver, HandLandmarker} = await inputStartupLimit(import(
+                        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/+esm'), 20000);
+                    if (request !== holoCameraRequest) return;
+                    const vision = await inputStartupLimit(FilesetResolver.forVisionTasks(
+                        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm'), 20000);
+                    if (request !== holoCameraRequest) return;
+                    holoHandLandmarker = await inputStartupLimit(HandLandmarker.createFromOptions(vision, {
+                        baseOptions: {modelAssetPath:
+                            'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task'},
+                        runningMode: 'VIDEO', numHands: 1
+                    }), 20000);
+                }
+                if (request !== holoCameraRequest) return;
+                setHoloControlStatus('Allow camera access in the browser');
+                const streamPromise = navigator.mediaDevices.getUserMedia({video: {
+                    facingMode: 'user', width: 640, height: 480}, audio: false});
+                streamPromise.then(stream => {
+                    if (request !== holoCameraRequest) stream.getTracks().forEach(track => track.stop());
+                }, () => {});
+                holoCameraStream = await inputStartupLimit(streamPromise, 20000);
+                if (request !== holoCameraRequest) {
+                    holoCameraStream.getTracks().forEach(track => track.stop());
+                    holoCameraStream = null;
+                    return;
+                }
+                holoCameraVideo = document.createElement('video');
+                holoCameraVideo.muted = true;
+                holoCameraVideo.playsInline = true;
+                holoCameraVideo.srcObject = holoCameraStream;
+                await holoCameraVideo.play();
+                holoCameraActive = true;
+                setHoloEffect(2);
+                setHoloControlStatus('Hand tracking on');
+                requestAnimationFrame(scanHoloCamera);
+            } catch (error) {
+                if (request !== holoCameraRequest) return;
+                console.warn('Hand tracking unavailable:', error);
+                stopHoloCamera();
+                setHoloControlStatus(error.message === 'Input startup timed out' ?
+                    'Camera timed out; use pointer or touch' : 'Camera tracking unavailable');
+            }
+        }
+
+        function scanHoloCamera(now) {
+            if (!holoCameraActive) return;
+            requestAnimationFrame(scanHoloCamera);
+            if (now - holoLastCameraScan < 100 || holoCameraVideo.readyState < 2) return;
+            holoLastCameraScan = now;
+            try {
+                const result = holoHandLandmarker.detectForVideo(holoCameraVideo, now);
+                const gesture = ZohraFaceEffects.handGesture(result.landmarks?.[0]);
+                if (gesture) {
+                    const previousPinch = holoGesture.pinch;
+                    holoGesture = {...gesture, active: true};
+                    if (gesture.pinch > 0.7 && previousPinch <= 0.7) holoEffectKick = 1;
+                } else {
+                    holoGesture.active = false;
+                }
+            } catch (error) {
+                console.warn('Hand tracking stopped:', error);
+                stopHoloCamera();
+                setHoloControlStatus('Camera tracking stopped');
+            }
+        }
+
+        async function connectHologramPlayback(media, isCurrent = () => true) {
+            if (!holoAudioCtx) holoAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (holoAudioCtx.state === 'suspended') await holoAudioCtx.resume();
+            if (!isCurrent()) return;
+            disconnectHologramPlayback();
+            holoPlaybackMedia = media;
+            holoPlaybackSource = holoAudioCtx.createMediaElementSource(media);
+            holoPlaybackAnalyser = holoAudioCtx.createAnalyser();
+            holoPlaybackAnalyser.fftSize = 1024;
+            holoPlaybackAnalyser.smoothingTimeConstant = 0.25;
+            holoPlaybackSamples = new Float32Array(holoPlaybackAnalyser.fftSize);
+            holoPlaybackFrequencies = new Uint8Array(holoPlaybackAnalyser.frequencyBinCount);
+            holoPlaybackSource.connect(holoPlaybackAnalyser);
+            holoPlaybackAnalyser.connect(holoAudioCtx.destination);
+        }
+
+        function disconnectHologramPlayback(media) {
+            if (media && media !== holoPlaybackMedia) return;
+            if (holoPlaybackMedia) holoIgnoreMicUntil = performance.now() + 550;
+            holoPlaybackSource?.disconnect();
+            holoPlaybackAnalyser?.disconnect();
+            holoPlaybackSource = holoPlaybackAnalyser = holoPlaybackMedia = null;
+            holoPlaybackSamples = holoPlaybackFrequencies = null;
+        }
+
+        function zohraSeededRandom(seed) {
+            return function() {
+                seed |= 0;
+                seed = seed + 0x6D2B79F5 | 0;
+                let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+                t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+                return ((t ^ t >>> 14) >>> 0) / 4294967296;
+            };
+        }
+
+        function buildProceduralZohraMoleculeFace() {
+            const rand = zohraSeededRandom(19092026);
+            const molecules = [];
+            const bonds = [];
+
+            const add = (x, y, z, r, g, b, size, speech = 0, motion = 0.55, alpha = 0.92) => {
+                const index = molecules.length;
+                const phase = rand() * Math.PI * 2;
+                molecules.push([x, y, z, r, g, b, size, speech, phase, motion, alpha]);
+                return index;
+            };
+
+            const connect = (a, b) => {
+                if (a >= 0 && b >= 0) bonds.push(a, b);
+            };
+
+            const faceWidth = (y) => {
+                const t = Math.max(0, Math.min(1, (y + 39) / 85));
+                let width = 13 + 18 * Math.pow(Math.sin(Math.PI * t), 0.68);
+                if (y < -19) width *= 0.72 + (y + 39) / 20 * 0.28;
+                if (y > 28) width *= 0.84 + (46 - y) / 18 * 0.14;
+                return Math.max(7, width);
+            };
+
+            const faceDepth = (x, y) => {
+                const rx = Math.max(1, faceWidth(y));
+                const dome = Math.sqrt(Math.max(0, 1 - Math.pow(x / (rx * 1.08), 2) - Math.pow((y - 2) / 57, 2))) * 21 - 7;
+                const nose = Math.exp(-(x * x) / 18 - Math.pow(y - 2, 2) / 160) * 13;
+                const bridge = Math.exp(-(x * x) / 8 - Math.pow(y - 13, 2) / 190) * 5.5;
+                const eyes = -(
+                    Math.exp(-Math.pow(x - 10.2, 2) / 35 - Math.pow(y - 16.5, 2) / 18) +
+                    Math.exp(-Math.pow(x + 10.2, 2) / 35 - Math.pow(y - 16.5, 2) / 18)
+                ) * 5.2;
+                const cheeks = (
+                    Math.exp(-Math.pow(x - 14, 2) / 60 - Math.pow(y + 2, 2) / 72) +
+                    Math.exp(-Math.pow(x + 14, 2) / 60 - Math.pow(y + 2, 2) / 72)
+                ) * 5.4;
+                const lips = Math.exp(-(x * x) / 75 - Math.pow(y + 18, 2) / 24) * 5.2;
+                const chin = Math.exp(-(x * x) / 72 - Math.pow(y + 31, 2) / 45) * 3.2;
+                return dome + nose + bridge + eyes + cheeks + lips + chin;
+            };
+
+            const colorGold = (light, warmth = 0) => {
+                const l = Math.max(0, Math.min(1, light));
+                return [
+                    Math.round(92 + l * 150),
+                    Math.round(50 + l * 132 + warmth * 12),
+                    Math.round(18 + l * 66)
+                ];
+            };
+
+            const addCurve = (count, pointFn, options = {}) => {
+                let first = -1;
+                let prev = -1;
+                for (let i = 0; i < count; i++) {
+                    const t = count === 1 ? 0 : i / (count - 1);
+                    const p = pointFn(t, i);
+                    const c = p.color || options.color || [245, 188, 65];
+                    const idx = add(
+                        p.x, p.y, p.z,
+                        c[0], c[1], c[2],
+                        p.size || options.size || 2.4,
+                        p.speech ?? options.speech ?? 0,
+                        p.motion ?? options.motion ?? 0.45,
+                        p.alpha ?? options.alpha ?? 0.95
+                    );
+                    if (first < 0) first = idx;
+                    if (prev >= 0 && options.connect !== false) connect(prev, idx);
+                    prev = idx;
+                }
+                if (options.closed && first >= 0 && prev >= 0) connect(prev, first);
+            };
+
+            // Skin surface: a soft 3D ellipsoid with denser cheeks, nose, and lip volumes.
+            for (let i = 0; i < 8200; i++) {
+                const y = -39 + rand() * 86;
+                const rx = faceWidth(y);
+                const x = (rand() * 2 - 1) * rx;
+                if (Math.abs(x) > rx) continue;
+                const edge = 1 - Math.abs(x) / rx;
+                const z = faceDepth(x, y) + (rand() - 0.5) * 1.8;
+                const featureGlow =
+                    Math.exp(-(x * x) / 20 - Math.pow(y - 2, 2) / 130) * 0.2 +
+                    Math.exp(-Math.pow(Math.abs(x) - 11, 2) / 38 - Math.pow(y - 16, 2) / 20) * 0.18 +
+                    Math.exp(-(x * x) / 85 - Math.pow(y + 18, 2) / 28) * 0.22;
+                const light = 0.22 + edge * 0.16 + Math.max(0, z + 8) / 58 + featureGlow + rand() * 0.08;
+                const c = colorGold(light, 0.1);
+                const speech = Math.exp(-(x * x) / 86 - Math.pow(y + 20, 2) / 55);
+                add(x, y, z, c[0], c[1], c[2], 0.8 + rand() * 1.05, speech > 0.12 ? speech * (y < -18 ? 0.8 : -0.36) : 0, 0.28, 0.58 + edge * 0.18);
+            }
+
+            // Face outline and jaw contours.
+            [-1, 1].forEach(side => {
+                addCurve(145, t => {
+                    const y = 46 - t * 86;
+                    const x = side * (faceWidth(y) + 0.4 + Math.sin(t * Math.PI * 2) * 0.5);
+                    const z = faceDepth(x * 0.92, y) - 1.2;
+                    return { x, y, z, size: 1.55, color: [236, 164, 55], motion: 0.42, alpha: 0.65 };
+                });
+                addCurve(100, t => {
+                    const y = -12 - t * 23;
+                    const x = side * (15.5 - Math.pow(t, 0.8) * 8.5);
+                    return { x, y, z: faceDepth(x, y) + 1.2, size: 1.55, color: [246, 178, 68], motion: 0.35, alpha: 0.7 };
+                });
+            });
+
+            // Eyes, irises, lashes, and brows.
+            [-1, 1].forEach(side => {
+                const cx = side * 10.7;
+                const cy = 16.5;
+                addCurve(120, t => {
+                    const u = t * 2 - 1;
+                    return {
+                        x: cx + u * 8.2,
+                        y: cy + 2.1 * Math.sin(Math.PI * t) + 0.3 * side * u,
+                        z: 18.5,
+                        size: 2.05,
+                        color: [244, 210, 125],
+                        motion: 0.22
+                    };
+                });
+                addCurve(100, t => {
+                    const u = t * 2 - 1;
+                    return {
+                        x: cx + u * 7.6,
+                        y: cy - 1.4 * Math.sin(Math.PI * t) - 0.2 * side * u,
+                        z: 17.4,
+                        size: 1.8,
+                        color: [204, 130, 46],
+                        motion: 0.22
+                    };
+                });
+                addCurve(90, t => {
+                    const a = t * Math.PI * 2;
+                    return {
+                        x: cx + Math.cos(a) * 2.65,
+                        y: cy + Math.sin(a) * 1.95,
+                        z: 19.2,
+                        size: 1.75,
+                        color: [74, 170, 150],
+                        motion: 0.18
+                    };
+                }, { closed: true });
+                addCurve(54, t => {
+                    const a = t * Math.PI * 2;
+                    return {
+                        x: cx + Math.cos(a) * 1.05,
+                        y: cy + Math.sin(a) * 0.86,
+                        z: 19.7,
+                        size: 2.1,
+                        color: [255, 232, 170],
+                        motion: 0.16
+                    };
+                }, { closed: true });
+                addCurve(92, t => {
+                    const u = t * 2 - 1;
+                    return {
+                        x: cx + u * 8.8,
+                        y: cy + 7.0 + 2.8 * Math.sin(Math.PI * t) + side * u * 0.8,
+                        z: 15.3,
+                        size: 1.75,
+                        color: [172, 92, 28],
+                        motion: 0.33
+                    };
+                });
+                for (let k = 0; k < 14; k++) {
+                    const u = -0.86 + k * 0.132;
+                    const baseX = cx + u * 8;
+                    const baseY = cy + 1.8 * Math.sqrt(Math.max(0, 1 - u * u));
+                    const tipX = baseX + side * (1.3 + rand() * 1.2);
+                    const tipY = baseY + 2.8 + rand() * 1.6;
+                    const a = add(baseX, baseY, 18.7, 255, 215, 104, 1.75, 0, 0.2, 0.8);
+                    const b = add(tipX, tipY, 17.6, 240, 169, 58, 1.25, 0, 0.26, 0.75);
+                    connect(a, b);
+                }
+            });
+
+            // Nose bridge, tip, nostrils, and philtrum.
+            addCurve(130, t => {
+                const y = 23 - t * 32;
+                const x = Math.sin(t * Math.PI * 1.2) * 0.65;
+                return { x, y, z: faceDepth(x, y) + 2.1, size: 1.55, color: [228, 164, 66], motion: 0.24, alpha: 0.72 };
+            });
+            [-1, 1].forEach(side => {
+                addCurve(85, t => {
+                    const y = 12 - t * 19;
+                    const x = side * (2.1 + 3.0 * Math.sin(t * Math.PI * 0.95));
+                    return { x, y, z: faceDepth(x, y) + 1.4, size: 1.35, color: [210, 132, 44], motion: 0.26, alpha: 0.62 };
+                });
+                addCurve(42, t => {
+                    const a = Math.PI * (0.05 + t * 0.9);
+                    return {
+                        x: side * (3.6 + Math.cos(a) * 2.0),
+                        y: -7.2 + Math.sin(a) * 1.25,
+                        z: 15.2,
+                        size: 1.35,
+                        color: [170, 86, 24],
+                        motion: 0.24
+                    };
+                });
+            });
+            addCurve(60, t => ({
+                x: (t * 2 - 1) * 2.5,
+                y: -9.5 - Math.sin(Math.PI * t) * 3.8,
+                z: faceDepth((t * 2 - 1) * 2.5, -10.5) + 1.5,
+                size: 1.2,
+                color: [224, 148, 52],
+                motion: 0.25
+            }));
+
+            // Lips with explicit speech weights: upper lip lifts, lower lip opens downward.
+            const lipTop = [255, 192, 88];
+            const lipHot = [255, 231, 142];
+            addCurve(145, t => {
+                const u = t * 2 - 1;
+                const cupids = -Math.abs(u) * 1.3 + Math.sin(Math.PI * t) * 2.15;
+                return { x: u * 10.4, y: -16.4 + cupids, z: 16.9, size: 1.95, color: lipTop, speech: -0.75, motion: 0.2 };
+            });
+            addCurve(136, t => {
+                const u = t * 2 - 1;
+                return { x: u * 10.7, y: -18.4 - Math.pow(Math.abs(u), 1.9) * 0.45, z: 17.4, size: 1.85, color: [110, 48, 20], speech: 0.25, motion: 0.18, alpha: 0.7 };
+            });
+            addCurve(140, t => {
+                const u = t * 2 - 1;
+                return { x: u * 9.8, y: -20.6 - 2.45 * Math.sin(Math.PI * t), z: 17.8, size: 2.05, color: lipHot, speech: 0.95, motion: 0.2 };
+            });
+            addCurve(72, t => ({
+                x: (t * 2 - 1) * 6.5,
+                y: -24.2 - Math.sin(Math.PI * t) * 1.4,
+                z: 12.8,
+                size: 1.35,
+                color: [236, 161, 58],
+                speech: 0.55,
+                motion: 0.2
+            }));
+
+            // Neck, collarbones, and shoulders.
+            for (let i = 0; i < 1500; i++) {
+                const y = -42 - rand() * 32;
+                const neckWidth = y > -56 ? 8.8 + (Math.abs(y + 42) / 14) * 2.2 : 15 + Math.abs(y + 56) * 1.2;
+                const x = (rand() * 2 - 1) * neckWidth;
+                const z = Math.sqrt(Math.max(0, 1 - Math.pow(x / Math.max(1, neckWidth), 2))) * 9 - 7 + (rand() - 0.5) * 2.2;
+                const c = colorGold(0.38 + rand() * 0.32, 0.1);
+                add(x, y, z, c[0], c[1], c[2], 0.75 + rand() * 1.1, y > -48 ? 0.2 : 0, 0.35, 0.58);
+            }
+            [-1, 1].forEach(side => {
+                addCurve(95, t => {
+                    const x = side * (7 + t * 39);
+                    const y = -55 - Math.sin(t * Math.PI) * 6 - t * 8;
+                    return { x, y, z: -5 + t * 5, size: 1.35, color: [220, 143, 46], motion: 0.35, alpha: 0.65 };
+                });
+            });
+
+            // Curly hair: many independent molecule strands around the face.
+            for (let s = 0; s < 42; s++) {
+                const side = s % 2 === 0 ? -1 : 1;
+                const phase = rand() * Math.PI * 2;
+                const topY = 46 + rand() * 12;
+                const length = 58 + rand() * 28;
+                const outward = 4 + rand() * 17;
+                const wave = 4.2 + rand() * 3.8;
+                addCurve(72, t => {
+                    const y = topY - t * length;
+                    const localWidth = faceWidth(Math.max(-35, Math.min(42, y)));
+                    const baseX = side * (localWidth + outward * Math.pow(t, 0.72) + rand() * 0.18);
+                    const x = baseX + Math.sin(phase + t * Math.PI * (3.2 + rand() * 2.4)) * (1.5 + wave * t);
+                    const z = -7 + Math.cos(phase + t * Math.PI * 5.5) * (5.5 + 8 * t);
+                    const hot = 0.28 + (1 - t) * 0.3 + rand() * 0.34;
+                    const c = colorGold(hot, -0.1);
+                    return { x, y, z, size: 0.95 + rand() * 1.65, color: c, motion: 0.95 + t * 0.35, alpha: 0.62 };
+                });
+            }
+            for (let s = 0; s < 16; s++) {
+                const phase = rand() * Math.PI * 2;
+                addCurve(62, t => {
+                    const x = -20 + s * 2.7 + Math.sin(phase + t * 8) * 2.6;
+                    const y = 42 + Math.sin(t * Math.PI) * 11 - t * 12;
+                    const z = -5 + Math.cos(phase + t * 7) * 9;
+                    return { x, y, z, size: 1.0 + rand() * 1.35, color: [198, 112, 28], motion: 0.85, alpha: 0.58 };
+                });
+            }
+
+            // Ambient star field around the figure so she feels suspended inside the command center.
+            for (let i = 0; i < 1800; i++) {
+                const a = rand() * Math.PI * 2;
+                const radius = 46 + rand() * 58;
+                const x = Math.cos(a) * radius * (0.78 + rand() * 0.45);
+                const y = -52 + rand() * 125;
+                const z = -32 + rand() * 62;
+                const c = rand() > 0.86 ? [255, 244, 186] : colorGold(0.25 + rand() * 0.62);
+                add(x, y, z, c[0], c[1], c[2], 0.7 + rand() * 1.8, 0, 1.1, 0.34 + rand() * 0.28);
+            }
+
+            return { molecules, bonds, rigKind: 'procedural' };
+        }
+
+        function initZohraMolecularHologram() {
+            const canvas = document.getElementById('zohra-hologram-canvas');
+            if (!canvas || typeof THREE === 'undefined') return;
+
+            holoScene = new THREE.Scene();
+            holoGroup = new THREE.Group();
+            holoGroup.position.y = -2;
+            holoScene.add(holoGroup);
+
+            // Camera tuned for a full bust made from procedural molecules.
+            holoCamera = new THREE.PerspectiveCamera(48, canvas.clientWidth / canvas.clientHeight, 1, 1000);
+            holoCamera.position.set(0, -3, 176);
+
+            holoRenderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                alpha: true,
+                antialias: true,
+                powerPreference: 'high-performance'
+            });
+            holoRenderer.setSize(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight, false);
+            holoRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+            // Radiant golden molecule sprite with brilliant white-gold core
+            const atomCanvas = document.createElement('canvas');
+            atomCanvas.width = atomCanvas.height = 64;
+            const actx = atomCanvas.getContext('2d');
+            const grad = actx.createRadialGradient(32, 32, 0, 32, 32, 32);
+            grad.addColorStop(0.0,  '#ffffff');
+            grad.addColorStop(0.25, '#fff5d0');
+            grad.addColorStop(0.55, '#ffcc00');
+            grad.addColorStop(0.80, 'rgba(220,150,10,0.4)');
+            grad.addColorStop(1.0,  'rgba(180,100,0,0)');
+            actx.fillStyle = grad;
+            actx.beginPath(); actx.arc(32, 32, 32, 0, Math.PI * 2); actx.fill();
+            const atomTex = new THREE.CanvasTexture(atomCanvas);
+
+            // Smaller tight sprite for constellation bonds / edge detail
+            const dotCanvas = document.createElement('canvas');
+            dotCanvas.width = dotCanvas.height = 32;
+            const dctx = dotCanvas.getContext('2d');
+            const dg = dctx.createRadialGradient(16,16,0,16,16,16);
+            dg.addColorStop(0.0, 'rgba(255,255,255,0.95)');
+            dg.addColorStop(0.4, 'rgba(255,255,255,0.6)');
+            dg.addColorStop(1.0, 'rgba(255,255,255,0)');
+            dctx.fillStyle = dg;
+            dctx.beginPath(); dctx.arc(16,16,16,0,Math.PI*2); dctx.fill();
+            const dotTex = new THREE.CanvasTexture(dotCanvas);
+
+            // Attach molecule coordinate data. The face is rendered only as particles and bonds.
+            const attachMoleculeData = (moleculeData) => {
+            const molecules = moleculeData.molecules;
+            holoMoleculesCount = molecules.length;
+            const N = holoMoleculesCount;
+
+            holoBasePos = new Float32Array(N * 3);
+            holoScatterPos = ZohraFaceEffects.createScatter(N);
+            holoCurPos = new Float32Array(holoScatterPos);
+            const colors = new Float32Array(N * 3);
+            const sizes  = new Float32Array(N);
+            const alphas = new Float32Array(N);
+            holoSpeechRig = ZohraFaceSpeech.createRig(molecules, moleculeData.rigKind || 'reference');
+            holoMotionWeights = new Float32Array(N);
+            holoPhases = new Float32Array(N);
+
+            for (let i = 0; i < N; i++) {
+                const m = molecules[i];
+                // m: [x, y, z, r, g, b, size, speech_weight, phase, motion_weight, alpha]
+                holoBasePos[i*3]   = m[0];
+                holoBasePos[i*3+1] = m[1];
+                holoBasePos[i*3+2] = m[2];
+                colors[i*3]   = m[3] / 255;
+                colors[i*3+1] = m[4] / 255;
+                colors[i*3+2] = m[5] / 255;
+                sizes[i] = m[6];
+                holoPhases[i] = m[8] ?? ((i * 17) % 628) / 100;
+                holoMotionWeights[i] = m[9] ?? 0.42;
+                alphas[i] = m[10] ?? 0.76;
+            }
+
+            holoMoleculesGeo = new THREE.BufferGeometry();
+            holoMoleculesGeo.setAttribute('position', new THREE.BufferAttribute(holoCurPos, 3));
+            holoMoleculesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            holoMoleculesGeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+            holoMoleculesGeo.setAttribute('alpha', new THREE.BufferAttribute(alphas, 1));
+            holoMoleculesGeo.setAttribute('motionWeight', new THREE.BufferAttribute(holoMotionWeights, 1));
+            holoMoleculesGeo.setAttribute('phase', new THREE.BufferAttribute(holoPhases, 1));
+            holoMoleculesGeo.setAttribute('lipWeight', new THREE.BufferAttribute(holoSpeechRig.lip, 1));
+
+            const moleculeMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    pointTexture: { value: atomTex },
+                    uTime: {value: 0}, uMode: {value: 0}, uPulse: {value: 0},
+                    uFormation: {value: 0},
+                    uTint: {value: new THREE.Vector3(0.48, 0.92, 0.85)},
+                    uSpeech: {value: 0}, uGesture: {value: new THREE.Vector3(0, 0, 0)}
+                },
+                vertexShader: [
+                    'attribute vec3 color;',
+                    'attribute float size;',
+                    'attribute float alpha;',
+                    'attribute float motionWeight;',
+                    'attribute float phase;',
+                    'attribute float lipWeight;',
+                    'uniform float uTime;',
+                    'uniform float uMode;',
+                    'uniform float uPulse;',
+                    'uniform float uFormation;',
+                    'uniform vec3 uTint;',
+                    'uniform float uSpeech;',
+                    'uniform vec3 uGesture;',
+                    'varying vec3 vColor;',
+                    'varying float vAlpha;',
+                    'varying float vRim;',
+                    'void main() {',
+                    '  vec3 p = position;',
+                    '  vRim = smoothstep(0.4, 0.9, motionWeight);',
+                    '  if (uMode < 0.5) {',
+                    '    vec2 radial = normalize(p.xy - vec2(0.0, -6.0) + vec2(0.001));',
+                    '    float release = (uPulse + 0.18 * (1.0 + sin(uTime * 0.85 + phase))) * vRim;',
+                    '    p.xy += radial * release * (4.0 + 5.0 * sin(phase * 2.4));',
+                    '    p.z += release * sin(uTime * 1.7 + phase) * 3.0;',
+                    '  } else if (uMode < 1.5) {',
+                    '    p.y += vRim * sin(p.x * 0.16 + uTime * 2.4 + phase) * (0.7 + uSpeech * 2.4);',
+                    '  } else {',
+                    '    vec2 center = uGesture.xy * vec2(62.0, 47.0);',
+                    '    vec2 away = p.xy - center;',
+                    '    float dist = length(away);',
+                    '    float reach = exp(-dist * dist / 1500.0) * vRim * uGesture.z;',
+                    '    p.xy += normalize(away + vec2(0.001)) * reach *',
+                    '      (3.0 + uPulse * 8.0) * sin(uTime * 5.0 - dist * 0.23);',
+                    '  }',
+                    '  float luminance = dot(color, vec3(0.299, 0.587, 0.114));',
+                    '  float shimmer = 0.96 + 0.04 * sin(uTime * 0.18 + p.y * 0.1 + phase * 0.05);',
+                    '  vColor = uTint * luminance * 1.7 * shimmer;',
+                    '  vColor = mix(uTint * 0.55, vColor, uFormation);',
+                    '  vAlpha = alpha * uFormation;',
+                    '  vRim = mix(1.0, vRim, uFormation);',
+                    '  vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);',
+                    '  gl_PointSize = size * mix(0.58, 1.0, uFormation) * (275.0 / max(34.0, -mvPosition.z));',
+                    '  gl_Position = projectionMatrix * mvPosition;',
+                    '}'
+                ].join('\n'),
+                fragmentShader: [
+                    'uniform sampler2D pointTexture;',
+                    'varying vec3 vColor;',
+                    'varying float vAlpha;',
+                    'varying float vRim;',
+                    'void main() {',
+                    '  vec4 tex = texture2D(pointTexture, gl_PointCoord);',
+                    '  vec3 sprite = vec3(tex.a);',
+                    '  gl_FragColor = vec4(vColor * sprite, vAlpha * tex.a);',
+                    '}'
+                ].join('\n'),
+                transparent: true,
+                blending: THREE.NormalBlending,
+                depthTest: false,
+                depthWrite: false
+            });
+
+            holoPointCloud = new THREE.Points(holoMoleculesGeo, moleculeMaterial);
+            holoEffectMaterial = moleculeMaterial;
+            holoPointCloud.renderOrder = 2;
+            holoGroup.add(holoPointCloud);
+
+            holoMouthCavity = new THREE.Mesh(new THREE.CircleGeometry(1, 40),
+                new THREE.MeshBasicMaterial({color: 0x100702, transparent: true, opacity: 0,
+                    depthTest: false, depthWrite: false}));
+            holoMouthCavity.renderOrder = 1;
+            holoGroup.add(holoMouthCavity);
+
+            const sparkPos = [];
+            const sparkCol = [];
+            for (let i = 0; i < N; i++) {
+                const ri = colors[i*3];
+                const gi = colors[i*3+1];
+                const bi = colors[i*3+2];
+                const lum = ri * 0.32 + gi * 0.58 + bi * 0.1;
+                if (holoSpeechRig.vertical[i] === 0 && ((lum > 0.90 && i % 3 === 0) || sizes[i] > 3.45)) {
+                    sparkPos.push(holoBasePos[i*3], holoBasePos[i*3+1], holoBasePos[i*3+2] + 0.25);
+                    sparkCol.push(lum, lum, lum);
+                }
+            }
+            const sparkGeo = new THREE.BufferGeometry();
+            sparkGeo.setAttribute('position', new THREE.Float32BufferAttribute(sparkPos, 3));
+            sparkGeo.setAttribute('color', new THREE.Float32BufferAttribute(sparkCol, 3));
+            const sparkCloud = new THREE.Points(sparkGeo, new THREE.PointsMaterial({
+                size: 3.0,
+                map: dotTex,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.42,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                sizeAttenuation: true
+            }));
+            holoGroup.add(sparkCloud);
+            sparkCloud.visible = false;
+            window._holoSparkCloud = sparkCloud;
+
+            const bondIndices = moleculeData.bonds || [];
+            const linesGeo = new THREE.BufferGeometry();
+            linesGeo.setAttribute('position', holoMoleculesGeo.attributes.position);
+            linesGeo.setIndex(bondIndices);
+            holoLines = new THREE.LineSegments(linesGeo, new THREE.LineBasicMaterial({
+                color: 0xffcc22,
+                transparent: true,
+                opacity: 0.05,
+                blending: THREE.AdditiveBlending
+            }));
+            holoGroup.add(holoLines);
+            holoLines.visible = false;
+            holoMouthCavity.visible = false;
+
+            for (let line = 0; line < 8; line++) {
+                const geometry = new THREE.BufferGeometry();
+                geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(144 * 3), 3));
+                const wave = new THREE.Line(geometry, new THREE.LineBasicMaterial({
+                    color: line % 2 ? 0x37bfd7 : 0xe6ad54, transparent: true,
+                    opacity: 0.32, depthTest: false, depthWrite: false,
+                    blending: THREE.AdditiveBlending
+                }));
+                wave.renderOrder = 0;
+                holoGroup.add(wave);
+                holoWaveLines.push(wave);
+            }
+            for (let ring = 0; ring < 3; ring++) {
+                const geometry = new THREE.BufferGeometry();
+                geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(128 * 3), 3));
+                const halo = new THREE.LineLoop(geometry, new THREE.LineBasicMaterial({
+                    color: 0x43c4da, transparent: true, opacity: 0.13,
+                    depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending
+                }));
+                halo.renderOrder = 0;
+                holoGroup.add(halo);
+                holoHaloLines.push(halo);
+            }
+            const satelliteCanvas = document.createElement('canvas');
+            satelliteCanvas.width = satelliteCanvas.height = 32;
+            const satelliteContext = satelliteCanvas.getContext('2d');
+            const satelliteGlow = satelliteContext.createRadialGradient(16, 16, 0, 16, 16, 16);
+            satelliteGlow.addColorStop(0, '#ffffff');
+            satelliteGlow.addColorStop(0.3, 'rgba(255,255,255,0.9)');
+            satelliteGlow.addColorStop(1, 'rgba(255,255,255,0)');
+            satelliteContext.fillStyle = satelliteGlow;
+            satelliteContext.fillRect(0, 0, 32, 32);
+            const satelliteRandom = zohraSeededRandom(25309);
+            const satellitePositions = new Float32Array(1600 * 3);
+            holoSatelliteSeeds = new Float32Array(1600 * 6);
+            for (let i = 0; i < 1600; i++) {
+                const angle = satelliteRandom() * Math.PI * 2;
+                const radius = 1 + satelliteRandom() * 0.6;
+                holoSatelliteSeeds[i*6] = Math.cos(angle) * 57 * radius;
+                holoSatelliteSeeds[i*6+1] = 12 + Math.sin(angle) * 69 * radius;
+                holoSatelliteSeeds[i*6+2] = (satelliteRandom() - 0.5) * 230;
+                holoSatelliteSeeds[i*6+3] = (satelliteRandom() - 0.5) * 170;
+                holoSatelliteSeeds[i*6+4] = angle;
+                holoSatelliteSeeds[i*6+5] = satelliteRandom() * Math.PI * 2;
+            }
+            const satelliteGeometry = new THREE.BufferGeometry();
+            satelliteGeometry.setAttribute('position', new THREE.BufferAttribute(satellitePositions, 3));
+            holoSatelliteCloud = new THREE.Points(satelliteGeometry, new THREE.PointsMaterial({
+                color: 0x32bddd, size: 2.3, map: new THREE.CanvasTexture(satelliteCanvas),
+                transparent: true, opacity: 0.56, blending: THREE.AdditiveBlending,
+                depthTest: false, depthWrite: false, sizeAttenuation: true
+            }));
+            holoSatelliteCloud.renderOrder = 0;
+            holoGroup.add(holoSatelliteCloud);
+
+            console.log(`Zohra molecular face: ${N} molecules, ${bondIndices.length / 2} bonds`);
+            canvas.dataset.faceReady = 'true';
+            canvas.dataset.effectMode = ZohraFaceEffects.MODES[holoEffectMode].toLowerCase();
+            };
+
+            fetch('/static/zohra_reference_molecules.json')
+                .then(res => {
+                    if (!res.ok) throw new Error(`molecule dataset ${res.status}`);
+                    return res.json();
+                })
+                .then(attachMoleculeData)
+                .catch(error => {
+                    console.warn('Original face data unavailable:', error);
+                    canvas.dataset.faceReady = 'false';
+                    setHoloControlStatus('Original face data unavailable');
+                });
+
+
+            // ─── ANIMATION LOOP ───
+            const clock = new THREE.Clock();
+            function render() {
+                requestAnimationFrame(render);
+                const delta = clock.getDelta();
+                const t = clock.elapsedTime;
+                // Only peripheral effects use the faster clock; speech and facial motion stay real-time.
+                const effectTime = t * ZohraFaceEffects.MOTION_SPEED;
+                const tint = ZohraFaceEffects.paletteAt(performance.now() / 1000);
+                const articulation = ZohraFaceSpeech.ARTICULATION;
+                const faceDrift = ZohraFaceEffects.FACE_DRIFT;
+                canvas.dataset.particleTint = tint.map(channel => channel.toFixed(3)).join(',');
+                if (holoLines) holoLines.material.color.setRGB(...tint);
+                if (window._holoSparkCloud) window._holoSparkCloud.material.color.setRGB(...tint);
+                const previousFormation = holoFormation.value;
+                const formation = holoMoleculesGeo ? ZohraFaceEffects.advanceFormation(holoFormation, delta) :
+                    ZohraFaceEffects.formationBlend(holoFormation.value);
+                if (previousFormation !== holoFormation.value && holoFormation.value === holoFormation.target) {
+                    setHoloControlStatus(holoFormation.target ? 'Zohra ready' : 'Zohra hidden');
+                    document.getElementById('zohra-hologram-stage').setAttribute('aria-label',
+                        holoFormation.target ? 'Talk with Zohra' : 'Form Zohra');
+                }
+                canvas.dataset.formationProgress = formation.toFixed(4);
+                canvas.dataset.formation = formation === 1 ? 'formed' : formation === 0 ? 'dispersed' :
+                    holoFormation.target ? 'forming' : 'dispersing';
+                canvas.dataset.portraitVisible = String(formation > 0);
+                document.getElementById('view-command-center').classList.toggle('portrait-dormant', formation === 0);
+                if (holoGroup) holoGroup.visible = formation > 0;
+                if (holoLines) holoLines.visible = formation > 0.995;
+                if (window._holoSparkCloud) window._holoSparkCloud.visible = formation > 0.995;
+                if (holoMouthCavity) holoMouthCavity.visible = formation > 0.995;
+                let target = {open: 0, round: 0};
+                const playing = holoPlaybackMedia && !holoPlaybackMedia.paused && !holoPlaybackMedia.ended;
+                if (playing && holoPlaybackAnalyser) {
+                    holoPlaybackAnalyser.getFloatTimeDomainData(holoPlaybackSamples);
+                    holoPlaybackAnalyser.getByteFrequencyData(holoPlaybackFrequencies);
+                    target = ZohraFaceSpeech.measure(holoPlaybackSamples, holoPlaybackFrequencies, holoAudioCtx.sampleRate);
+                } else if (holoDemoActive) {
+                    target = ZohraFaceSpeech.previewPose(holoPreviewText,
+                        (performance.now() - holoPreviewStart) / 1000, holoPreviewOffset);
+                }
+                isHoloSpeaking = Boolean(playing || holoDemoActive);
+                holoSpeechPose = ZohraFaceSpeech.smoothPose(holoSpeechPose, target, delta);
+                holoMouthOpen = holoSpeechPose.open;
+                canvas.dataset.mouthOpen = holoMouthOpen.toFixed(3);
+                canvas.dataset.speechSource = playing ?
+                    (holoPreviewMedia === holoPlaybackMedia ? 'preview' : 'voice-output') : 'idle';
+                if (holoSoundEnabled && !isListening) sampleHoloSound();
+                holoEffectKick = Math.max(0, holoEffectKick - delta * 1.55);
+                if (holoEffectMaterial) {
+                    const uniforms = holoEffectMaterial.uniforms;
+                    uniforms.uTime.value = effectTime;
+                    uniforms.uFormation.value = formation;
+                    uniforms.uTint.value.set(...tint);
+                    uniforms.uMode.value = holoEffectMode;
+                    uniforms.uPulse.value = holoEffectKick + (holoEffectMode === 0 ?
+                        0.38 * Math.pow(Math.max(0, Math.sin(effectTime * 0.75)), 3) : 0);
+                    uniforms.uSpeech.value = holoMouthOpen;
+                    uniforms.uGesture.value.set(holoGesture.x, holoGesture.y,
+                        holoGesture.active ? holoGesture.pinch : 0);
+                }
+
+                // ── 2. Deform ONLY speaking molecules ──
+                if (holoMoleculesGeo && holoBasePos) {
+                    const pos = holoMoleculesGeo.attributes.position.array;
+                    const N = holoMoleculesCount;
+                    const mo = holoMouthOpen;
+
+                    for (let i = 0; i < N; i++) {
+                        const bx = holoBasePos[i*3];
+                        const by = holoBasePos[i*3+1];
+                        const bz = holoBasePos[i*3+2];
+                        const sw = holoSpeechRig.vertical[i];
+                        const ph = holoPhases[i];
+
+                        // Subpixel facial drift stays gentle; only the surrounding molecules use the fast clock.
+                        const mw = holoMotionWeights ? holoMotionWeights[i] : 0.45;
+                        const driftTime = mw > 0.4 ? effectTime : t;
+                        const fx = Math.sin(driftTime * 0.56 + ph) * (mw <= 0.4 ? faceDrift.x : 0.18 * mw);
+                        const fy = Math.cos(driftTime * 0.52 + ph * 1.1) * (mw <= 0.4 ? faceDrift.y : 0.22 * mw);
+                        const fz = Math.sin(driftTime * 0.66 + bx * 0.05 + ph) * (mw <= 0.4 ? faceDrift.z : 0.2 * mw);
+
+                        // Speech articulation — ONLY when mouth is open
+                        const spkY = -sw * mo * articulation.vertical;
+                        const spkZ = holoSpeechRig.lip[i] * mo * (articulation.depth + holoSpeechPose.round * articulation.roundDepth);
+                        const spkX = -holoSpeechRig.horizontal[i] * holoSpeechRig.lip[i] * holoSpeechPose.round * mo * articulation.horizontal;
+
+                        const sx = holoScatterPos[i*3] + Math.sin(effectTime * 1.1 + ph) * 7;
+                        const sy = holoScatterPos[i*3+1] + Math.cos(effectTime * 0.9 + ph) * 5;
+                        const sz = holoScatterPos[i*3+2] + Math.sin(effectTime * 1.3 + ph) * 8;
+                        pos[i*3]   = sx * (1 - formation) + (bx + fx + spkX) * formation;
+                        pos[i*3+1] = sy * (1 - formation) + (by + fy + spkY) * formation;
+                        pos[i*3+2] = sz * (1 - formation) + (bz + fz + spkZ) * formation;
+                    }
+                    holoMoleculesGeo.attributes.position.needsUpdate = true;
+                    const mouth = holoSpeechRig.mouth;
+                    holoMouthCavity.position.set(mouth.x, mouth.y - mo * articulation.cavityDrop, mouth.z - 0.5);
+                    holoMouthCavity.scale.set(mouth.halfWidth * (1 - holoSpeechPose.round * 0.15), Math.max(0.01, mo * articulation.cavityHeight), 1);
+                    holoMouthCavity.material.opacity = Math.min(0.82, mo * 5);
+                }
+
+                // ── 3. Gentle whole-head levitation (makes her feel alive) ──
+                if (holoGroup) {
+                    holoGroup.position.y = -2 + Math.sin(t * 0.55) * 0.28;
+                    holoGroup.position.x = Math.cos(t * 0.38) * 0.18;
+                    holoGroup.rotation.y = Math.sin(t * 0.28) * 0.012;
+                    holoGroup.rotation.x = Math.sin(t * 0.22) * 0.004;
+                }
+
+                holoWaveLines.forEach((wave, line) => {
+                    wave.material.color.setRGB(...tint);
+                    wave.visible = holoEffectMode !== 0;
+                    if (!wave.visible) return;
+                    const points = wave.geometry.attributes.position.array;
+                    for (let j = 0; j < 144; j++) {
+                        const x = -108 + j * (216 / 143);
+                        const focus = holoEffectMode === 2 && holoGesture.active ?
+                            Math.exp(-Math.pow((x - holoGesture.x * 62) / 35, 2)) : 0;
+                        points[j*3] = x;
+                        points[j*3+1] = -28 + line * 7 +
+                            Math.sin(x * 0.095 + effectTime * (1.15 + line * 0.12)) * (3 + holoMouthOpen * 8 + focus * 7) +
+                            Math.sin(x * 0.24 - effectTime * 1.7 + line) * 1.4;
+                        points[j*3+2] = -34;
+                    }
+                    wave.material.opacity = holoEffectMode === 1 ? 0.31 + holoMouthOpen * 0.25 : 0.25;
+                    wave.geometry.attributes.position.needsUpdate = true;
+                });
+                holoHaloLines.forEach((halo, ring) => {
+                    halo.material.color.setRGB(...tint);
+                    halo.visible = holoEffectMode !== 0;
+                    if (!halo.visible) return;
+                    const points = halo.geometry.attributes.position.array;
+                    const centerX = holoEffectMode === 2 && holoGesture.active ? holoGesture.x * 18 : 0;
+                    const centerY = holoEffectMode === 2 && holoGesture.active ? 17 + holoGesture.y * 10 : 17;
+                    const breathe = Math.sin(effectTime * 0.8 - ring * 0.7) * 1.7 + holoEffectKick * 7;
+                    for (let j = 0; j < 128; j++) {
+                        const angle = j * Math.PI * 2 / 128;
+                        points[j*3] = centerX + Math.cos(angle) * (42 + ring * 9 + breathe);
+                        points[j*3+1] = centerY + Math.sin(angle) * (53 + ring * 11 + breathe);
+                        points[j*3+2] = -37;
+                    }
+                    halo.material.opacity = 0.23 + holoEffectKick * 0.14 + holoMouthOpen * 0.1;
+                    halo.geometry.attributes.position.needsUpdate = true;
+                });
+                if (holoSatelliteCloud) {
+                    const positions = holoSatelliteCloud.geometry.attributes.position.array;
+                    const scatter = Math.min(1, (0.5 - 0.5 * Math.cos(effectTime * 0.82)) * 0.7 + holoEffectKick * 0.43);
+                    for (let i = 0; i < 1600; i++) {
+                        const start = i * 6;
+                        const anchorX = holoSatelliteSeeds[start];
+                        const anchorY = holoSatelliteSeeds[start+1];
+                        const looseX = holoSatelliteSeeds[start+2];
+                        const looseY = holoSatelliteSeeds[start+3];
+                        const phase = holoSatelliteSeeds[start+5];
+                        if (holoEffectMode === 0) {
+                            positions[i*3] = anchorX + (looseX - anchorX) * scatter + Math.sin(effectTime + phase) * 1.5;
+                            positions[i*3+1] = anchorY + (looseY - anchorY) * scatter + Math.cos(effectTime * 0.8 + phase) * 1.5;
+                        } else if (holoEffectMode === 1) {
+                            positions[i*3] = looseX;
+                            positions[i*3+1] = -15 + Math.sin(looseX * 0.09 + effectTime * 1.7 + phase) *
+                                (17 + holoMouthOpen * 14) + looseY * 0.24;
+                        } else {
+                            const orbit = holoSatelliteSeeds[start+4] + effectTime * (0.24 + (i % 7) * 0.02);
+                            positions[i*3] = Math.cos(orbit) * (65 + (i % 17)) +
+                                (holoGesture.active ? holoGesture.x * 13 : 0);
+                            positions[i*3+1] = 12 + Math.sin(orbit) * (68 + (i % 13)) +
+                                (holoGesture.active ? holoGesture.y * 9 : 0);
+                        }
+                        positions[i*3+2] = -40;
+                    }
+                    holoSatelliteCloud.geometry.attributes.position.needsUpdate = true;
+                    holoSatelliteCloud.material.color.setRGB(...tint);
+                    holoSatelliteCloud.material.opacity = holoEffectMode === 0 ? 0.55 : 0.7;
+                }
+
+                // ── 4. Status pill ──
+                const pill = document.getElementById('holo-speech-state');
+                if (pill) {
+                    if (formation < 0.995) {
+                        pill.textContent = holoFormation.target ? 'MOLECULAR CORE // FORMING' : 'MOLECULAR FIELD // DISPERSED';
+                        pill.style.color = '#9dc6d1';
+                    } else if (isHoloSpeaking || holoDemoActive) {
+                        pill.textContent = 'HOLOGRAPHIC CORE // SPEAKING';
+                        pill.style.color = 'var(--gold-bright)';
+                    } else if (isMicHooked) {
+                        pill.textContent = 'HOLOGRAPHIC CORE // LISTENING';
+                        pill.style.color = 'var(--green-emerald)';
+                    } else {
+                        pill.textContent = 'HOLOGRAPHIC CORE // IDLE';
+                        pill.style.color = 'var(--gold-light)';
+                    }
+                }
+
+                holoRenderer.render(holoScene, holoCamera);
+            }
+            render();
+
+            const resizeHologram = () => {
+                const width = canvas.parentElement.clientWidth;
+                const height = canvas.parentElement.clientHeight;
+                if (!width || !height) return;
+                holoCamera.aspect = width / height;
+                holoCamera.position.z = 176 * Math.max(1, 1.22 / holoCamera.aspect);
+                holoCamera.updateProjectionMatrix();
+                holoRenderer.setSize(width, height, false);
+            };
+            new ResizeObserver(resizeHologram).observe(canvas.parentElement);
+            window.addEventListener('resize', resizeHologram);
+            resizeHologram();
+        }
+
+        let holoPreviewLoading = false;
+        async function toggleTalkingDemo(durationSec = 8) {
+            if (holoFormation.target === 0) {
+                toggleHoloFormation();
+                return;
+            }
+            if (holoFormation.value < 1) return;
+            if (holoPreviewMedia) {
+                holoPreviewMedia.onended?.();
+                return;
+            }
+            if (holoPreviewLoading) return;
+            holoPreviewLoading = true;
+            let url = null;
+            try {
+                const response = await fetch('/api/v1/voice/preview', {cache: 'no-store'});
+                if (!response.ok) throw new Error('Female voice unavailable');
+                if (!holoFormation.target) return;
+                url = URL.createObjectURL(await response.blob());
+                if (!holoFormation.target) { URL.revokeObjectURL(url); return; }
+                if (typeof clearVoicePlayback === 'function') clearVoicePlayback();
+                const media = new Audio(url);
+                holoPreviewMedia = media;
+                const finish = () => {
+                    if (holoPreviewMedia !== media) return;
+                    media.pause();
+                    disconnectHologramPlayback(media);
+                    URL.revokeObjectURL(url);
+                    holoPreviewMedia = null;
+                    clearTimeout(holoDemoTimeout);
+                    if (document.getElementById('holo-control-status').textContent === 'Zohra speaking') {
+                        setHoloControlStatus(holoFormation.target ? 'Zohra ready' : 'Zohra hidden');
+                    }
+                };
+                media.onended = media.onerror = finish;
+                await connectHologramPlayback(media, () => holoPreviewMedia === media);
+                if (holoPreviewMedia !== media) return;
+                await media.play();
+                setHoloControlStatus('Zohra speaking');
+                holoDemoTimeout = setTimeout(finish, durationSec * 1000);
+            } catch (error) {
+                if (holoPreviewMedia) holoPreviewMedia.onended?.();
+                else if (url) URL.revokeObjectURL(url);
+                setHoloControlStatus(error.message || 'Voice preview unavailable');
+            } finally {
+                holoPreviewLoading = false;
+            }
+        }
+
+        // ─── GOLDEN VOICE WAVEFORM SIMULATOR & MIC HOOK ───
+        async function connectMicrophoneStream(forSound = false) {
+            try {
+                if (micStream?.active && holoAudioAnalyser) {
+                    if (holoAudioCtx.state === 'suspended') await holoAudioCtx.resume();
+                    return true;
+                }
+                if (!holoAudioCtx) {
+                    holoAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (holoAudioCtx.state === 'suspended') await holoAudioCtx.resume();
+                const stream = await navigator.mediaDevices.getUserMedia({audio: {
+                    echoCancellation: true, noiseSuppression: !holoSoundEnabled,
+                    autoGainControl: !holoSoundEnabled
+                }});
+                if (forSound && !holoSoundEnabled) {
+                    stream.getTracks().forEach(track => track.stop());
+                    return false;
+                }
+                micStream = stream;
+                holoMicSource = holoAudioCtx.createMediaStreamSource(stream);
+                holoAudioAnalyser = holoAudioCtx.createAnalyser();
+                holoAudioAnalyser.fftSize = 2048;
+                holoAudioAnalyser.smoothingTimeConstant = 0.1;
+                holoMicSource.connect(holoAudioAnalyser);
+                holoFreqData = new Uint8Array(holoAudioAnalyser.frequencyBinCount);
+                holoSoundSamples = new Float32Array(holoAudioAnalyser.fftSize);
+                isMicHooked = true;
+                return true;
+            } catch (err) {
+                console.warn("Microphone not available:", err);
+                return false;
+            }
+        }
+
+        function initVoiceWaveform() {
+            const canvas = document.getElementById('voice-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let t = 0;
+
+            function drawWave() {
+                requestAnimationFrame(drawWave);
+                t += 0.05;
+                const w = canvas.width = canvas.clientWidth;
+                const h = canvas.height = canvas.clientHeight;
+                ctx.clearRect(0, 0, w, h);
+
+                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = '#ffd700';
+                ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+                ctx.shadowBlur = 8;
+                ctx.beginPath();
+
+                const bars = 48;
+                const barWidth = w / bars;
+                for (let i = 0; i < bars; i++) {
+                    const distFromCenter = Math.abs(i - bars / 2) / (bars / 2);
+                    const envelope = Math.cos(distFromCenter * Math.PI * 0.5);
+                    const activeAmp = (isListening || isHoloSpeaking) ? (Math.sin(t * 2.5 + i * 0.4) * 0.5 + 0.5) * 18 * envelope : 2.5;
+                    
+                    const x = i * barWidth + barWidth * 0.5;
+                    const y1 = h * 0.5 - activeAmp;
+                    const y2 = h * 0.5 + activeAmp;
+                    ctx.moveTo(x, y1);
+                    ctx.lineTo(x, y2);
+                }
+                ctx.stroke();
+            }
+            drawWave();
+        }
+
+        let voiceCaptureRequest = 0;
+        async function toggleVoiceCapture(enabled = !isListening) {
+            const request = ++voiceCaptureRequest;
+            const el = document.getElementById('voice-status-txt');
+            isListening = Boolean(enabled);
+            updateVoiceCaptureUI();
+            if (enabled) {
+                let connected = false;
+                try { connected = await inputStartupLimit(connectMicrophoneStream(), 20000); }
+                catch (error) { console.warn('Conversation microphone unavailable:', error); }
+                if (request !== voiceCaptureRequest) { releaseHoloMicIfUnused(); return; }
+                isListening = connected;
+                if (el) el.textContent = connected ? 'Listening' : 'Microphone unavailable';
+                if (connected) { setHoloFormation(true); startVoiceSession(); }
+                else releaseHoloMicIfUnused();
+            } else {
+                cancelVoiceResponse();
+                clearVoicePlayback();
+                if (!holoSoundEnabled) stopVoiceSession();
+                releaseHoloMicIfUnused();
+                if (el) el.textContent = holoSoundEnabled ? 'Sound controls listening' : 'Microphone off';
+                window._demoTalkingActive = false;
+                isHoloSpeaking = false;
+            }
+            updateVoiceCaptureUI();
+        }
+
+        // ─── REAL TELEMETRY INGESTION ───
+        function updateRingGauge(circleId, textId, pctVal) {
+            const circ = document.getElementById(circleId);
+            const txt = document.getElementById(textId);
+            if (!circ || !txt) return;
+
+            const radius = 22;
+            const circumference = 2 * Math.PI * radius; // ~138.23
+            const pct = Math.min(100, Math.max(0, pctVal));
+            const offset = circumference - (pct / 100) * circumference;
+
+            circ.style.strokeDasharray = circumference;
+            circ.style.strokeDashoffset = offset;
+            txt.textContent = `${Math.round(pct)}%`;
+        }
+
+        // Init Sequence
+        window.addEventListener('DOMContentLoaded', () => {
+            initCelestialCanvas();
+            initZohraMolecularHologram();
+            const hologramStage = document.getElementById('zohra-hologram-stage');
+            if (hologramStage) {
+                hologramStage.addEventListener('pointermove', trackHoloPointer);
+                hologramStage.addEventListener('pointerleave', () => {
+                    if (!holoCameraActive) holoGesture.active = false;
+                });
+                hologramStage.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        toggleVoiceCapture();
+                    }
+                });
+            }
+            initVoiceWaveform();
+            fetchTelemetryData();
+            loadTradingData();
+            setInterval(fetchTelemetryData, 3000); // 3s live polling
+        });
+    </script>
+    <script src="/static/workspaces.js?v=20261002-code-inspection-1"></script>
+</body>
+</html>
