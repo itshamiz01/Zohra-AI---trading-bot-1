@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://zohra-ai-trading-bot-livid.vercel.app/api/:path*" },
+    { "source": "/static/:path*", "destination": "https://zohra-ai-trading-bot-livid.vercel.app/static/:path*" },
+    { "source": "/health", "destination": "https://zohra-ai-trading-bot-livid.vercel.app/health" }
+  ]
+}
