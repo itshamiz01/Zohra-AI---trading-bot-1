@@ -14,6 +14,7 @@ dependencies = [
     "pytz>=2024.1",
     "matplotlib>=3.8.0",
     "groq>=0.4.0",
+    "metaapi-cloud-sdk>=16",
 ]
 
 [tool.vercel]

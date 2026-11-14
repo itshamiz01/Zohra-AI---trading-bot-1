@@ -48,6 +48,12 @@ except ImportError:
     CoinDCXAdapter = None
     coindcx_broker = None
 
+try:
+    from zohra.brokers.metaapi_adapter import MetaApiBrokerAdapter, metaapi_broker
+except Exception:
+    MetaApiBrokerAdapter = None
+    metaapi_broker = None
+
 
 # ── Auto-registration ────────────────────────────────────
 # Register MT5 adapter by default (preserving existing behavior)
@@ -68,6 +74,10 @@ if "coindcx" in _active_brokers and coindcx_broker is not None:
 if "ibkr" in _active_brokers and ibkr_broker is not None:
     broker_manager.register_adapter("ibkr", ibkr_broker)
     logger.info("IBKR adapter registered")
+
+if "metaapi" in _active_brokers and metaapi_broker is not None:
+    broker_manager.register_adapter("metaapi", metaapi_broker)
+    logger.info("MetaApi cloud adapter registered")
 
 # Set default broker from environment
 _default_broker = os.getenv("DEFAULT_BROKER", "mt5").lower().strip()
@@ -91,4 +101,5 @@ __all__ = [
     "IBKRBrokerAdapter", "ibkr_broker",
     "DhanAdapter", "dhan_broker",
     "CoinDCXAdapter", "coindcx_broker",
+    "MetaApiBrokerAdapter", "metaapi_broker",
 ]
